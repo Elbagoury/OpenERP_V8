@@ -139,7 +139,7 @@ class configmanager(object):
         group.add_option("-P", "--import-partial", dest="import_partial", my_default='',
                         help="Use this for big data importation, if it crashes you will be able to continue at the current state. Provide a filename to store intermediate importation states.")
         group.add_option("--pidfile", dest="pidfile", help="file where the server pid will be stored")
-        group.add_option("--addons-path", dest="addons_path",
+        group.add_option("--addons-path", dest="addons_path", my_default='openerp/addons,openerp/addons-tgb,openerp/addons-aeroo-1204',
                          help="specify additional addons paths (separated by commas).",
                          action="callback", callback=self._check_addons_path, nargs=1, type="string")
         group.add_option("--load", dest="server_wide_modules", help="Comma-separated list of server-wide modules default=web")
@@ -241,9 +241,9 @@ class configmanager(object):
         group = optparse.OptionGroup(parser, "Database related options")
         group.add_option("-d", "--database", dest="db_name", my_default=False,
                          help="specify the database name")
-        group.add_option("-r", "--db_user", dest="db_user", my_default=False,
+        group.add_option("-r", "--db_user", dest="db_user", my_default='openerp',
                          help="specify the database user name")
-        group.add_option("-w", "--db_password", dest="db_password", my_default=False,
+        group.add_option("-w", "--db_password", dest="db_password", my_default='openerp',
                          help="specify the database password")
         group.add_option("--pg_path", dest="pg_path", help="specify the pg executable path")
         group.add_option("--db_host", dest="db_host", my_default=False,

@@ -1,0 +1,1924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- Example -->
+    	<record id="wizard_report_form_example" model="ir.ui.view">
+            <field name="name">report.wizard.form.example</field>
+            <field name="model">report.wizard.example</field>
+            <field name="arch" type="xml">
+                <form string="Example" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="servicegowhere_ar_filing_as_dormant_company_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_attendance_list_agm_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_confirmation_for_ye_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_directors_resolution_agm_ye_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_dormant_company_confirmation_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_engement_letter_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_minutes_of_meeting_agm_ye_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="servicegowhere_notice_of_meeting_agm_ye_jun_2015_fname" invisible="1" class="oe_inline oe_right"/>
+                	<group col='4' colspan='2'>
+	                	<group>
+	                		<field name="servicegowhere_ar_filing_as_dormant_company_jun_2015_datas" filename="servicegowhere_ar_filing_as_dormant_company_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="servicegowhere_directors_resolution_agm_ye_jun_2015_datas" filename="servicegowhere_directors_resolution_agm_ye_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="servicegowhere_minutes_of_meeting_agm_ye_jun_2015_datas" filename="servicegowhere_minutes_of_meeting_agm_ye_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="servicegowhere_dormant_company_confirmation_jun_2015_datas" filename="servicegowhere_dormant_company_confirmation_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="servicegowhere_attendance_list_agm_jun_2015_datas" filename="servicegowhere_attendance_list_agm_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+							<field name="servicegowhere_confirmation_for_ye_jun_2015_datas" filename="servicegowhere_confirmation_for_ye_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>               		
+	                		<field name="servicegowhere_engement_letter_jun_2015_datas" filename="servicegowhere_engement_letter_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="servicegowhere_notice_of_meeting_agm_ye_jun_2015_datas" filename="servicegowhere_notice_of_meeting_agm_ye_jun_2015_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_example" model="ir.actions.act_window">
+            <field name="name">Example</field>
+            <field name="res_model">report.wizard.example</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_example"/>
+        </record>
+        
+<!-- AGM_Dormant -->
+        <record id="wizard_report_form_agm_dormant" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.dormant</field>
+            <field name="model">report.wizard.agm.dormant</field>
+            <field name="arch" type="xml">
+                <form string="AGM_Dormant" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="attendance_list_agm_ye_dec_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="confirmation_for_ye_31_december_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="directors_resolution_agm_ye_dec_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="dormant_company_confirmation_ye_31122015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="engement_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="minutes_of_meeting_agm_ye_dec_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="notice_of_meeting_agm_ye_dec_2015_flavors_apple_fname" invisible="1" class="oe_inline oe_right"/>
+                	<group>
+                		<button string="Example" type="action" name="%(action_wizard_report_example)d" context="{'default_partner_id':partner_id,'example':1}"/>
+	                </group>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple_datas" filename="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="attendance_list_agm_ye_dec_2015_flavors_apple_datas" filename="attendance_list_agm_ye_dec_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="confirmation_for_ye_31_december_2015_flavors_apple_datas" filename="confirmation_for_ye_31_december_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="dormant_company_confirmation_ye_31122015_flavors_apple_datas" filename="dormant_company_confirmation_ye_31122015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+							<field name="directors_resolution_agm_ye_dec_2015_flavors_apple_datas" filename="directors_resolution_agm_ye_dec_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="engement_letter_datas" filename="engement_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="minutes_of_meeting_agm_ye_dec_2015_flavors_apple_datas" filename="minutes_of_meeting_agm_ye_dec_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="notice_of_meeting_agm_ye_dec_2015_flavors_apple_datas" filename="notice_of_meeting_agm_ye_dec_2015_flavors_apple_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_dormant" model="ir.actions.act_window">
+            <field name="name">AGM_Dormant</field>
+            <field name="res_model">report.wizard.agm.dormant</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_dormant"/>
+        </record>
+        
+<!-- 1st AGM_One Director -->
+        <record id="wizard_report_form_agm_one" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.one</field>
+            <field name="model">report.wizard.agm.one</field>
+            <field name="arch" type="xml">
+                <form string="1st AGM_One Director" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_1st_agm_attendance_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_minutes_of_meeting_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_notice_of_meeting_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_resolution_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_appointment_letter_1st_agm_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_ar_cert_under_s197_1st_agm_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_declaration_of_directors_1st_agm_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_letter_of_representation_1st_agm_one_oirector_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_statement_1st_agm_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_1st_agm_attendance_one_director_datas" filename="format_1st_agm_attendance_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_minutes_of_meeting_one_director_datas" filename="format_1st_agm_minutes_of_meeting_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_notice_of_meeting_one_director_datas" filename="format_1st_agm_notice_of_meeting_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_resolution_one_director_datas" filename="format_1st_agm_resolution_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_statement_1st_agm_one_director_datas" filename="format_statement_1st_agm_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+							<field name="format_appointment_letter_1st_agm_one_director_datas" filename="format_appointment_letter_1st_agm_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_ar_cert_under_s197_1st_agm_one_director_datas" filename="format_ar_cert_under_s197_1st_agm_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_declaration_of_directors_1st_agm_one_director_datas" filename="format_declaration_of_directors_1st_agm_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_letter_of_representation_1st_agm_one_oirector_datas" filename="format_letter_of_representation_1st_agm_one_oirector_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_one" model="ir.actions.act_window">
+            <field name="name">1st AGM_One Director</field>
+            <field name="res_model">report.wizard.agm.one</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_one"/>
+        </record>
+        
+<!-- 1st AGM_Two Directors -->
+        <record id="wizard_report_form_agm_two" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.two</field>
+            <field name="model">report.wizard.agm.two</field>
+            <field name="arch" type="xml">
+                <form string="1st AGM_Two Directors" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_1st_agm_attendance_list_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_minutes_of_meeting_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_notice_of_meeting_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_1st_agm_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_appointment_letter_1st_agm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_ar_cert_under_s197_1st_agm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_declaration_of_directors_1st_agm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_letter_of_representation_1st_agm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_statement_by_exempt_pte_co_exempt_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_1st_agm_attendance_list_datas" filename="format_1st_agm_attendance_list_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_minutes_of_meeting_datas" filename="format_1st_agm_minutes_of_meeting_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_notice_of_meeting_datas" filename="format_1st_agm_notice_of_meeting_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_1st_agm_resolution_datas" filename="format_1st_agm_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_statement_by_exempt_pte_co_exempt_datas" filename="format_statement_by_exempt_pte_co_exempt_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+							<field name="format_appointment_letter_1st_agm_datas" filename="format_appointment_letter_1st_agm_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_ar_cert_under_s197_1st_agm_datas" filename="format_ar_cert_under_s197_1st_agm_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_declaration_of_directors_1st_agm_datas" filename="format_declaration_of_directors_1st_agm_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_letter_of_representation_1st_agm_datas" filename="format_letter_of_representation_1st_agm_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_two" model="ir.actions.act_window">
+            <field name="name">1st AGM_Two Directors</field>
+            <field name="res_model">report.wizard.agm.two</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_two"/>
+        </record>
+        
+<!-- 1st AGM_Two Directors -->
+        <record id="wizard_report_form_subsequent_year_agm_two" model="ir.ui.view">
+            <field name="name">report.wizard.form.subsequent.year.agm.two</field>
+            <field name="model">report.wizard.subsequent.year.agm.two</field>
+            <field name="arch" type="xml">
+                <form string="Subsequent Year AGM_Two Directors" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_appointment_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_ar_cert_under_s197_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_declaration_of_directors_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_dr_and_agm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_letter_of_representation_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_statement_by_exempt_pte_co_exempt_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_appointment_letter_datas" filename="format_appointment_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_ar_cert_under_s197_datas" filename="format_ar_cert_under_s197_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_statement_by_exempt_pte_co_exempt_datas" filename="format_statement_by_exempt_pte_co_exempt_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+							<field name="format_declaration_of_directors_datas" filename="format_declaration_of_directors_fname" nolabel='1' readonly='1' colspan='2'/>
+							<field name="format_dr_and_agm_datas" filename="format_dr_and_agm_fname" nolabel='1' readonly='1' colspan='2'/>
+                        	<field name="format_letter_of_representation_datas" filename="format_letter_of_representation_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_subsequent_year_agm_two" model="ir.actions.act_window">
+            <field name="name">Subsequent Year AGM_Two Directors</field>
+            <field name="res_model">report.wizard.subsequent.year.agm.two</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_subsequent_year_agm_two"/>
+        </record>
+        
+<!-- AGM Format Documents -->
+        <record id="wizard_report_form_agm_format_documents" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.format.documents</field>
+            <field name="model">report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="AGM Format Documents" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group col='6' colspan='2'>
+                		<button string="1st AGM_One Director" type="action" name="%(action_wizard_report_agm_one)d" context="{'default_partner_id':partner_id,'agm_one':1}" colspan='2'/>
+                		<button string="1st AGM_Two Directors" type="action" name="%(action_wizard_report_agm_two)d" context="{'default_partner_id':partner_id,'agm_two':1}" colspan='2'/>
+                		<button string="Subsequent Year AGM_Two Directors" type="action" name="%(action_wizard_report_subsequent_year_agm_two)d" context="{'default_partner_id':partner_id,'subsequent_year_agm_two':1}" colspan='2'/>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_format_documents" model="ir.actions.act_window">
+            <field name="name">AGM Format Documents</field>
+            <field name="res_model">report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_format_documents"/>
+        </record>
+        
+<!-- AGM_Strike off_Templates -->
+        <record id="wizard_report_form_agm_strike_off_templates" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.strike.off.templates</field>
+            <field name="model">report.wizard.agm.strike.off.templates</field>
+            <field name="arch" type="xml">
+                <form string="AGM_Strike off_Templates" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="company_info_20150627_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_acra_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_agreement_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_appointment_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_letter_to_iras_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_minutes_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_notice_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="company_info_20150627_datas" filename="company_info_20150627_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_acra_resolution_datas" filename="strike_off_acra_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_agreement_letter_datas" filename="strike_off_agreement_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_appointment_letter_datas" filename="strike_off_appointment_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="strike_off_letter_datas" filename="strike_off_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_letter_to_iras_datas" filename="strike_off_letter_to_iras_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_minutes_datas" filename="strike_off_minutes_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_notice_datas" filename="strike_off_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_strike_off_templates" model="ir.actions.act_window">
+            <field name="name">AGM_Strike off_Templates</field>
+            <field name="res_model">report.wizard.agm.strike.off.templates</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_strike_off_templates"/>
+        </record>
+        
+<!-- AGM_YE Blank -->
+        <record id="wizard_report_form_agm_ye_blank" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.ye.blank</field>
+            <field name="model">report.wizard.agm.ye.blank</field>
+            <field name="arch" type="xml">
+                <form string="AGM_YE Blank" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="ar_cert_under_s197_companyname_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="certificate_by_an_exempt_pte_companyname_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="ddf_310814_companyname_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="dr_and_agm_fye_31_08_2014_companyname_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="ar_cert_under_s197_companyname_datas" filename="ar_cert_under_s197_companyname_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="certificate_by_an_exempt_pte_companyname_datas" filename="certificate_by_an_exempt_pte_companyname_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="ddf_310814_companyname_datas" filename="ddf_310814_companyname_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="dr_and_agm_fye_31_08_2014_companyname_datas" filename="dr_and_agm_fye_31_08_2014_companyname_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm_ye_blank" model="ir.actions.act_window">
+            <field name="name">AGM_YE Blank</field>
+            <field name="res_model">report.wizard.agm.ye.blank</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm_ye_blank"/>
+        </record>
+        
+<!-- AGM -->        
+        <record id="wizard_report_form_agm" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm</field>
+            <field name="model">report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="AGM" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group col='8' colspan='2'>
+                		<button string="AGM_Dormant" type="action" name="%(action_wizard_report_agm_dormant)d" context="{'default_partner_id':partner_id,'agm_dormant':1}" colspan='2'/>
+                		<button string="AGM Format Documents" type="action" name="%(action_wizard_report_agm_format_documents)d" context="{'default_partner_id':partner_id}" colspan='2'/>
+                		<button string="AGM_Strike off_Templates" type="action" name="%(action_wizard_report_agm_strike_off_templates)d" context="{'default_partner_id':partner_id,'agm_strike_off_templates':1}" colspan='2'/>
+                		<button string="AGM_YE Blank" type="action" name="%(action_wizard_report_agm_ye_blank)d" context="{'default_partner_id':partner_id,'agm_ye_blank':1}" colspan='2'/>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_agm" model="ir.actions.act_window">
+            <field name="name">AGM</field>
+            <field name="res_model">report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_agm"/>
+        </record>
+        
+<!-- Bo sung Back -->
+		<record id="wizard_report_form_agm_dormant_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.dormant.inherit</field>
+            <field name="model">report.wizard.agm.dormant</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_dormant"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id,'agm_dormant':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_example_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.example.inherit</field>
+            <field name="model">report.wizard.example</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_example"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM_Dormant" type="object" name="back_to_agm_dormant"/>
+        			or
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id,'example':0,'agm_dormant':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_agm_format_documents_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.format.documents.inherit</field>
+            <field name="model">report.wizard</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_format_documents"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_agm_one_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.one.inherit</field>
+            <field name="model">report.wizard.agm.one</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_one"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM Format Documents" type="action" name="%(action_wizard_report_agm_format_documents)d" context="{'default_partner_id':partner_id}"/>
+        			or
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_agm_two_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.two.inherit</field>
+            <field name="model">report.wizard.agm.two</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_two"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM Format Documents" type="action" name="%(action_wizard_report_agm_format_documents)d" context="{'default_partner_id':partner_id}"/>
+        			or
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_subsequent_year_agm_two_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.subsequent.year.agm.two.inherit</field>
+            <field name="model">report.wizard.subsequent.year.agm.two</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_subsequent_year_agm_two"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM Format Documents" type="action" name="%(action_wizard_report_agm_format_documents)d" context="{'default_partner_id':partner_id}"/>
+        			or
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_agm_strike_off_templates_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.strike.off.templates.inherit</field>
+            <field name="model">report.wizard.agm.strike.off.templates</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_strike_off_templates"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_agm_ye_blank_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm.ye.blank.inherit</field>
+            <field name="model">report.wizard.agm.ye.blank</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_agm_ye_blank"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to AGM" type="action" name="%(action_wizard_report_agm)d" context="{'default_partner_id':partner_id}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+<!-- ECI Template -->        
+        <record id="wizard_report_form_eci_template" model="ir.ui.view">
+            <field name="name">report.wizard.form.eci.template</field>
+            <field name="model">report.wizard.eci.template</field>
+            <field name="arch" type="xml">
+                <form string="ECI Template" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="eci_form_for_company_ya_2016_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="eci_form_for_tax_agent_ya_2016_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="eci_form_for_company_ya_2016_datas" filename="eci_form_for_company_ya_2016_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="eci_form_for_tax_agent_ya_2016_datas" filename="eci_form_for_tax_agent_ya_2016_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_eci_template" model="ir.actions.act_window">
+            <field name="name">ECI Template</field>
+            <field name="res_model">report.wizard.eci.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_eci_template"/>
+            <field name="context">{'eci_template': 1}</field>
+        </record>
+        
+<!-- Appointment Letters -->        
+        <record id="wizard_report_form_appointment_letters" model="ir.ui.view">
+            <field name="name">report.wizard.form.appointment.letters</field>
+            <field name="model">report.wizard.appointment.letters</field>
+            <field name="arch" type="xml">
+                <form string="Appointment Letters" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_appointment_letter_responsibilities_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_corp_sercretary_fee_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_letter_of_confirmation_of_accounts_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_request_handover_secretary_doc_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_appointment_letter_responsibilities_datas" filename="format_appointment_letter_responsibilities_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_corp_sercretary_fee_datas" filename="format_corp_sercretary_fee_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_letter_of_confirmation_of_accounts_datas" filename="format_letter_of_confirmation_of_accounts_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_request_handover_secretary_doc_datas" filename="format_request_handover_secretary_doc_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_appointment_letters" model="ir.actions.act_window">
+            <field name="name">Appointment Letters</field>
+            <field name="res_model">report.wizard.appointment.letters</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_appointment_letters"/>
+            <field name="context">{'eci_template': 1}</field>
+        </record>
+        
+<!-- Appointment of Secretary -->        
+        <record id="wizard_report_form_appointment_of_secretary" model="ir.ui.view">
+            <field name="name">report.wizard.form.appointment.of.secretary</field>
+            <field name="model">report.wizard.appointment.of.secretary</field>
+            <field name="arch" type="xml">
+                <form string="Appointment of Secretary" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="request_handover_secretary_doc_han_dian_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="termination_letter_of_corp_amicorp_aquavina_investment_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resigned_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_form_49_appoint_secretary_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="request_handover_secretary_doc_han_dian_datas" filename="request_handover_secretary_doc_han_dian_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="termination_letter_of_corp_amicorp_aquavina_investment_datas" filename="termination_letter_of_corp_amicorp_aquavina_investment_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_form_49_appoint_secretary_datas" filename="format_form_49_appoint_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="resigned_letter_datas" filename="resigned_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_appointment_of_secretary" model="ir.actions.act_window">
+            <field name="name">Appointment of Secretary</field>
+            <field name="res_model">report.wizard.appointment.of.secretary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_appointment_of_secretary"/>
+            <field name="context">{'eci_template': 1}</field>
+        </record>
+        
+<!-- Change of Company Name -->        
+        <record id="wizard_report_form_change_of_company_name" model="ir.ui.view">
+            <field name="name">report.wizard.form.change.of.company.name</field>
+            <field name="model">report.wizard.change.of.company.name</field>
+            <field name="arch" type="xml">
+                <form string="Change of Company Name" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_change_co_name_attendance_list_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_change_co_name_minutes_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_change_co_name_notice_of_egm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_change_co_name_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_form_11_change_of_co_name_notice_of_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_change_co_name_attendance_list_datas" filename="format_change_co_name_attendance_list_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_change_co_name_minutes_datas" filename="format_change_co_name_minutes_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_form_11_change_of_co_name_notice_of_resolution_datas" filename="format_form_11_change_of_co_name_notice_of_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_change_co_name_notice_of_egm_datas" filename="format_change_co_name_notice_of_egm_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_change_co_name_resolution_datas" filename="format_change_co_name_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_change_of_company_name" model="ir.actions.act_window">
+            <field name="name">Change of Company Name</field>
+            <field name="res_model">report.wizard.change.of.company.name</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_change_of_company_name"/>
+            <field name="context">{'eci_template': 1}</field>
+        </record>
+        
+<!-- 1st Directors Resolution_Format -->
+        <record id="wizard_report_form_1st_directors_resolution_format" model="ir.ui.view">
+            <field name="name">report.wizard.form.1st.directors.resolution.format</field>
+            <field name="model">report.wizard.1st.directors.resolution.format</field>
+            <field name="arch" type="xml">
+                <form string="1st Directors Resolution_Format" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="1st_resolution_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="1st_resolution_two_directors_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_statutory_records_doc_ack_letter_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="1st_resolution_one_director_datas" filename="1st_resolution_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="1st_resolution_two_directors_datas" filename="1st_resolution_two_directors_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_statutory_records_doc_ack_letter_datas" filename="format_statutory_records_doc_ack_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_1st_directors_resolution_format" model="ir.actions.act_window">
+            <field name="name">1st Directors Resolution_Format</field>
+            <field name="res_model">report.wizard.1st.directors.resolution.format</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_1st_directors_resolution_format"/>
+        </record>
+        
+<!-- Forms 45 &amp; 49 -->
+        <record id="wizard_report_form_forms_45_49" model="ir.ui.view">
+            <field name="name">report.wizard.forms.45.49</field>
+            <field name="model">report.wizard.forms.45.49</field>
+            <field name="arch" type="xml">
+                <form string="Forms 45 &amp; 49" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form49_format_one_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_two_directors_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form45_format_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form49_format_one_director_datas" filename="form49_format_one_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45_format_datas" filename="form45_format_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_two_directors_datas" filename="format_two_directors_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_forms_45_49" model="ir.actions.act_window">
+            <field name="name">Forms 45 &amp; 49</field>
+            <field name="res_model">report.wizard.forms.45.49</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_forms_45_49"/>
+        </record>
+        
+<!-- Share Certificates_One Director_Format -->
+        <record id="wizard_report_form_share_certificates_one" model="ir.ui.view">
+            <field name="name">report.wizard.share.certificates.one</field>
+            <field name="model">report.wizard.share.certificates.one</field>
+            <field name="arch" type="xml">
+                <form string="Share Certificates_One Director_Format" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="share_cert_1_xx_shares_format03_our_reg_office_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="share_cert_1_xx_shares_format04_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="share_cert_1_xx_shares_format03_our_reg_office_datas" filename="share_cert_1_xx_shares_format03_our_reg_office_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="share_cert_1_xx_shares_format04_datas" filename="share_cert_1_xx_shares_format04_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_share_certificates_one" model="ir.actions.act_window">
+            <field name="name">Share Certificates_One Director_Format</field>
+            <field name="res_model">report.wizard.share.certificates.one</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_share_certificates_one"/>
+        </record>
+        
+<!-- Share Certificates_Two Director_Format -->
+        <record id="wizard_report_form_share_certificates_two" model="ir.ui.view">
+            <field name="name">report.wizard.share.certificates.two</field>
+            <field name="model">report.wizard.share.certificates.two</field>
+            <field name="arch" type="xml">
+                <form string="Share Certificates_Two Director_Format" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="share_cert_1_xx_shares_format01_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="share_cert_1_xx_shares_format02_our_reg_office_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="share_cert_1_xx_shares_format01_datas" filename="share_cert_1_xx_shares_format01_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="share_cert_1_xx_shares_format02_our_reg_office_datas" filename="share_cert_1_xx_shares_format02_our_reg_office_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_share_certificates_two" model="ir.actions.act_window">
+            <field name="name">Share Certificates_Two Director_Format</field>
+            <field name="res_model">report.wizard.share.certificates.two</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_share_certificates_two"/>
+        </record>
+        
+<!-- Incorporation_1st Resolution_Two Directors -->        
+        <record id="wizard_report_form_incorporation_1st_resolution_two_directors" model="ir.ui.view">
+            <field name="name">report.wizard.form.agm</field>
+            <field name="model">report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Incorporation_1st Resolution_Two Directors" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group col='4' colspan='2'>
+                		<button string="1st Directors Resolution_Format" type="action" name="%(action_wizard_report_1st_directors_resolution_format)d" context="{'default_partner_id':partner_id,'1st_directors_resolution_format':1}" colspan='2'/>
+                		<button string="Forms 45 &amp; 49" type="action" name="%(action_wizard_report_forms_45_49)d" context="{'default_partner_id':partner_id,'forms_45_49':1}" colspan='2'/>
+                		<button string="Share Certificates_One Director_Format" type="action" name="%(action_wizard_report_share_certificates_one)d" context="{'default_partner_id':partner_id,'share_certificates_one':1}" colspan='2'/>
+                		<button string="Share Certificates_Two Director_Format" type="action" name="%(action_wizard_report_share_certificates_two)d" context="{'default_partner_id':partner_id,'share_certificates_two':1}" colspan='2'/>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_incorporation_1st_resolution_two_directors" model="ir.actions.act_window">
+            <field name="name">Incorporation_1st Resolution_Two Directors</field>
+            <field name="res_model">report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_incorporation_1st_resolution_two_directors"/>
+        </record>
+        
+<!-- Bo sung Back -->
+		<record id="wizard_report_form_1st_directors_resolution_format_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.1st.directors.resolution.format.inherit</field>
+            <field name="model">report.wizard.1st.directors.resolution.format</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_1st_directors_resolution_format"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to Incorporation_1st Resolution_Two Directors" type="action" name="%(action_wizard_report_incorporation_1st_resolution_two_directors)d" context="{'default_partner_id':partner_id,'1st_directors_resolution_format':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_forms_45_49_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.forms.45.49.inherit</field>
+            <field name="model">report.wizard.forms.45.49</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_forms_45_49"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to Incorporation_1st Resolution_Two Directors" type="action" name="%(action_wizard_report_incorporation_1st_resolution_two_directors)d" context="{'default_partner_id':partner_id,'forms_45_49':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_share_certificates_one_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.share.certificates.one.inherit</field>
+            <field name="model">report.wizard.share.certificates.one</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_share_certificates_one"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to Incorporation_1st Resolution_Two Directors" type="action" name="%(action_wizard_report_incorporation_1st_resolution_two_directors)d" context="{'default_partner_id':partner_id,'share_certificates_one':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_share_certificates_two_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.share.certificates.two.inherit</field>
+            <field name="model">report.wizard.share.certificates.two</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_share_certificates_two"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to Incorporation_1st Resolution_Two Directors" type="action" name="%(action_wizard_report_incorporation_1st_resolution_two_directors)d" context="{'default_partner_id':partner_id,'share_certificates_two':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+<!-- Issue shares -->        
+        <record id="wizard_report_form_issue_shares" model="ir.ui.view">
+            <field name="name">report.wizard.form.issue.shares</field>
+            <field name="model">report.wizard.issue.shares</field>
+            <field name="arch" type="xml">
+                <form string="Issue shares" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_attendance_list_issue_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_director_resolution_issue_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_letter_consent_of_waiver_issue_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_minutes_of_egm_issue_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_notice_of_egm_issue_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_paid_up_capital_application_k_shares_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_attendance_list_issue_shares_datas" filename="format_attendance_list_issue_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_director_resolution_issue_shares_datas" filename="format_director_resolution_issue_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_letter_consent_of_waiver_issue_shares_datas" filename="format_letter_consent_of_waiver_issue_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_minutes_of_egm_issue_shares_datas" filename="format_minutes_of_egm_issue_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_notice_of_egm_issue_shares_datas" filename="format_notice_of_egm_issue_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_paid_up_capital_application_k_shares_datas" filename="format_paid_up_capital_application_k_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_issue_shares" model="ir.actions.act_window">
+            <field name="name">Issue shares</field>
+            <field name="res_model">report.wizard.issue.shares</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_issue_shares"/>
+            <field name="context">{'issue_shares': 1}</field>
+        </record>
+        
+<!-- Resignation of Director and Secretary -->        
+        <record id="wizard_report_form_resignation_director_secretary" model="ir.ui.view">
+            <field name="name">report.wizard.form.resignation.director.secretary</field>
+            <field name="model">report.wizard.resignation.director.secretary</field>
+            <field name="arch" type="xml">
+                <form string="Resignation of Director and Secretary" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="format_resignation_letter_director_name_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_resolution_resign_director_and_appoint_secretary_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_form_49_resigned_as_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="format_form_49_resigned_as_director_and_appoint_secretary_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="format_resignation_letter_director_name_datas" filename="format_resignation_letter_director_name_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_form_49_resigned_as_director_and_appoint_secretary_datas" filename="format_form_49_resigned_as_director_and_appoint_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="format_form_49_resigned_as_director_datas" filename="format_form_49_resigned_as_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="format_resolution_resign_director_and_appoint_secretary_datas" filename="format_resolution_resign_director_and_appoint_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resignation_director_secretary" model="ir.actions.act_window">
+            <field name="name">Resignation of Director and Secretary</field>
+            <field name="res_model">report.wizard.resignation.director.secretary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resignation_director_secretary"/>
+            <field name="context">{'resignation_director_secretary': 1}</field>
+        </record>
+
+<!-- resolution form page 01-->
+        <record id="wizard_report_form_resolution_form_page01" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page01</field>
+            <field name="model">report.wizard.resolution.form.page01</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 01" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="bfd_form45bdeclarationbysecretary_11062008_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="explanationform61a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form5a_notice_of_error_lodged_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form5_proprietor_partnership_info_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form6_declaration_of_compliace_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form11_agm_notice_of_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form14a_co_chang_name_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form14b_foreign_company_name_app_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form16a_convert_to_unlimited_co_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form16b_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="bfd_form45bdeclarationbysecretary_11062008_datas" filename="bfd_form45bdeclarationbysecretary_11062008_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="explanationform61a_datas" filename="explanationform61a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form5a_notice_of_error_lodged_datas" filename="form5a_notice_of_error_lodged_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form5_proprietor_partnership_info_datas" filename="form5_proprietor_partnership_info_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form6_declaration_of_compliace_datas" filename="form6_declaration_of_compliace_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form11_agm_notice_of_resolution_datas" filename="form11_agm_notice_of_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form14a_co_chang_name_datas" filename="form14a_co_chang_name_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form14b_foreign_company_name_app_datas" filename="form14b_foreign_company_name_app_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form16a_convert_to_unlimited_co_datas" filename="form16a_convert_to_unlimited_co_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form16b_datas" filename="form16b_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page01" model="ir.actions.act_window">
+            <field name="name">resolution form</field>
+            <field name="res_model">report.wizard.resolution.form.page01</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page01"/>
+        </record>
+        
+<!-- resolution form page 02-->
+        <record id="wizard_report_form_resolution_form_page02" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page02</field>
+            <field name="model">report.wizard.resolution.form.page02</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 02" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form18_not_issued_prospectus_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form21_increase_number_of_members_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form22_issued_prospectus_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form24_allotment_of_shares_more_500members_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form26_statement_of_amount_or_rate_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form27_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form27_redemption_of_redeemable_preference_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form28_increase_share_capital_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29a_propose_special_resolution_in_company_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form18_not_issued_prospectus_datas" filename="form18_not_issued_prospectus_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form21_increase_number_of_members_datas" filename="form21_increase_number_of_members_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form22_issued_prospectus_datas" filename="form22_issued_prospectus_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form24_allotment_of_shares_more_500members_datas" filename="form24_allotment_of_shares_more_500members_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form26_statement_of_amount_or_rate_datas" filename="form26_statement_of_amount_or_rate_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form27_datas" filename="form27_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form27_redemption_of_redeemable_preference_shares_datas" filename="form27_redemption_of_redeemable_preference_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form28_increase_share_capital_datas" filename="form28_increase_share_capital_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form29a_datas" filename="form29a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form29a_propose_special_resolution_in_company_datas" filename="form29a_propose_special_resolution_in_company_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page02" model="ir.actions.act_window">
+            <field name="name">resolution form page 02</field>
+            <field name="res_model">report.wizard.resolution.form.page02</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page02"/>
+        </record>
+
+<!-- resolution form page 03-->
+        <record id="wizard_report_form_resolution_form_page03" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page03</field>
+            <field name="model">report.wizard.resolution.form.page03</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 03" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form29b_non_resident_shares_of_company_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29d_purchase_or_acquisition_preference_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form30_notice_of_place_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form33_affidavit_verifying_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form34_particualars_in_respect_of_charge_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form35_containing_particulars_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form36_particulars_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form37_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form38a_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form38_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form29b_non_resident_shares_of_company_datas" filename="form29b_non_resident_shares_of_company_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form29d_purchase_or_acquisition_preference_shares_datas" filename="form29d_purchase_or_acquisition_preference_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form30_notice_of_place_datas" filename="form30_notice_of_place_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form33_affidavit_verifying_datas" filename="form33_affidavit_verifying_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form34_particualars_in_respect_of_charge_datas" filename="form34_particualars_in_respect_of_charge_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form35_containing_particulars_datas" filename="form35_containing_particulars_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form36_particulars_datas" filename="form36_particulars_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form37_affidavit_datas" filename="form37_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form38a_affidavit_datas" filename="form38a_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form38_affidavit_datas" filename="form38_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page03" model="ir.actions.act_window">
+            <field name="name">resolution form page 03</field>
+            <field name="res_model">report.wizard.resolution.form.page03</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page03"/>
+        </record>
+        
+<!-- resolution form page 04-->
+        <record id="wizard_report_form_resolution_form_page04" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page04</field>
+            <field name="model">report.wizard.resolution.form.page04</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 04" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form41_memorandum_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form42_memorandum_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form44a_change_of_situation_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form44_change_address_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form45a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form45_appt_director_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form45b_secretary_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form46_undertaking_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form47_declaration_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form48b_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form41_memorandum_datas" filename="form41_memorandum_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form42_memorandum_datas" filename="form42_memorandum_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form44a_change_of_situation_datas" filename="form44a_change_of_situation_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form44_change_address_datas" filename="form44_change_address_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45a_datas" filename="form45a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form45_appt_director_datas" filename="form45_appt_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45b_secretary_datas" filename="form45b_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form46_undertaking_datas" filename="form46_undertaking_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form47_declaration_datas" filename="form47_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form48b_datas" filename="form48b_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page04" model="ir.actions.act_window">
+            <field name="name">resolution form page 04</field>
+            <field name="res_model">report.wizard.resolution.form.page04</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page04"/>
+        </record>
+        
+<!-- resolution form page 05-->
+        <record id="wizard_report_form_resolution_form_page05" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page05</field>
+            <field name="model">report.wizard.resolution.form.page05</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 05" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form48c_report_on_conduct_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form48_statutory_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form49_appt_co_officier_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form51_statutory_report_of_a_public_company_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form52_copy_of_minute_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form53_change_registered_add_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form54_notice_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form55_annual_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form56_certification_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form57_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form48c_report_on_conduct_datas" filename="form48c_report_on_conduct_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form48_statutory_datas" filename="form48_statutory_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form49_appt_co_officier_datas" filename="form49_appt_co_officier_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form51_statutory_report_of_a_public_company_datas" filename="form51_statutory_report_of_a_public_company_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form52_copy_of_minute_datas" filename="form52_copy_of_minute_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form53_change_registered_add_datas" filename="form53_change_registered_add_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form54_notice_datas" filename="form54_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form55_annual_datas" filename="form55_annual_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form56_certification_datas" filename="form56_certification_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form57_datas" filename="form57_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page05" model="ir.actions.act_window">
+            <field name="name">resolution form page 05</field>
+            <field name="res_model">report.wizard.resolution.form.page05</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page05"/>
+        </record>
+        
+<!-- resolution form page 06-->
+        <record id="wizard_report_form_resolution_form_page06" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page06</field>
+            <field name="model">report.wizard.resolution.form.page06</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 06" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form59_notice_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form60_notice_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form61_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form61a_stm_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form62_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form62a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form62_affidavit_verifying_statement_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63b_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63b_notice_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form59_notice_datas" filename="form59_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form60_notice_datas" filename="form60_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61_datas" filename="form61_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61a_stm_of_affairs_datas" filename="form61a_stm_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form62_datas" filename="form62_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form62a_datas" filename="form62a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form62_affidavit_verifying_statement_of_affairs_datas" filename="form62_affidavit_verifying_statement_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63a_datas" filename="form63a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63b_datas" filename="form63b_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63b_notice_datas" filename="form63b_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page06" model="ir.actions.act_window">
+            <field name="name">resolution form page 06</field>
+            <field name="res_model">report.wizard.resolution.form.page06</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page06"/>
+        </record>
+        
+<!-- resolution form page 07-->
+        <record id="wizard_report_form_resolution_form_page07" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page07</field>
+            <field name="model">report.wizard.resolution.form.page07</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 07" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form63c_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63d_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63e_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63f_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63g_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63h_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63i_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63j_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63k_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63l_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form63c_datas" filename="form63c_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63d_datas" filename="form63d_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63e_datas" filename="form63e_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63f_datas" filename="form63f_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63g_datas" filename="form63g_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form63h_datas" filename="form63h_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63i_datas" filename="form63i_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63j_datas" filename="form63j_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63k_datas" filename="form63k_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63l_datas" filename="form63l_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page07" model="ir.actions.act_window">
+            <field name="name">resolution form page 07</field>
+            <field name="res_model">report.wizard.resolution.form.page07</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page07"/>
+        </record>
+        
+<!-- resolution form page 08-->
+        <record id="wizard_report_form_resolution_form_page08" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page08</field>
+            <field name="model">report.wizard.resolution.form.page08</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 08" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form63m_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63n_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63o_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63p_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63q_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63r_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63s_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63t_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63u_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63v_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form63m_datas" filename="form63m_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63n_datas" filename="form63n_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63o_datas" filename="form63o_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63p_datas" filename="form63p_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63q_datas" filename="form63q_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form63r_datas" filename="form63r_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63s_datas" filename="form63s_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63t_datas" filename="form63t_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63u_datas" filename="form63u_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63v_datas" filename="form63v_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page08" model="ir.actions.act_window">
+            <field name="name">resolution form page 08</field>
+            <field name="res_model">report.wizard.resolution.form.page08</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page08"/>
+        </record>
+        
+<!-- resolution form page 09-->
+        <record id="wizard_report_form_resolution_form_page09" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page09</field>
+            <field name="model">report.wizard.resolution.form.page09</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 09" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form63w_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form64_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form65_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form65a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form67_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form68_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form69_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form70_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form71_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form72_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form63w_datas" filename="form63w_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form64_datas" filename="form64_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form65_datas" filename="form65_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form65a_datas" filename="form65a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form67_datas" filename="form67_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form68_datas" filename="form68_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form69_datas" filename="form69_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form70_datas" filename="form70_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form71_datas" filename="form71_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form72_datas" filename="form72_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page09" model="ir.actions.act_window">
+            <field name="name">resolution form page 09</field>
+            <field name="res_model">report.wizard.resolution.form.page09</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page09"/>
+        </record>
+        
+<!-- resolution form page 10-->
+        <record id="wizard_report_form_resolution_form_page10" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page10</field>
+            <field name="model">report.wizard.resolution.form.page10</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 10" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="form73_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form74_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form_25_allotment_not_cash_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form58_notice_to_non_assenting_shareholder_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="form73_datas" filename="form73_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form74_datas" filename="form74_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form_25_allotment_not_cash_datas" filename="form_25_allotment_not_cash_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form58_notice_to_non_assenting_shareholder_datas" filename="form58_notice_to_non_assenting_shareholder_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page10" model="ir.actions.act_window">
+            <field name="name">resolution form page 10</field>
+            <field name="res_model">report.wizard.resolution.form.page10</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page10"/>
+        </record>
+        
+<!-- resolution form page 11-->
+        <record id="wizard_report_form_resolution_form_page11" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page11</field>
+            <field name="model">report.wizard.resolution.form.page11</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 11" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page11" model="ir.actions.act_window">
+            <field name="name">resolution form page 11</field>
+            <field name="res_model">report.wizard.resolution.form.page11</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page11"/>
+        </record>
+        
+<!-- resolution form page 12-->
+        <record id="wizard_report_form_resolution_form_page12" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page12</field>
+            <field name="model">report.wizard.resolution.form.page12</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 12" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page12" model="ir.actions.act_window">
+            <field name="name">resolution form page 12</field>
+            <field name="res_model">report.wizard.resolution.form.page12</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page12"/>
+        </record>
+        
+<!-- resolution form page 13-->
+        <record id="wizard_report_form_resolution_form_page13" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page13</field>
+            <field name="model">report.wizard.resolution.form.page13</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 13" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page13" model="ir.actions.act_window">
+            <field name="name">resolution form page 13</field>
+            <field name="res_model">report.wizard.resolution.form.page13</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page13"/>
+        </record>
+        
+<!-- resolution form page 14-->
+        <record id="wizard_report_form_resolution_form_page14" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page14</field>
+            <field name="model">report.wizard.resolution.form.page14</field>
+            <field name="arch" type="xml">
+                <form string="resolution form page 14" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form_page14" model="ir.actions.act_window">
+            <field name="name">resolution form page 14</field>
+            <field name="res_model">report.wizard.resolution.form.page14</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form_page14"/>
+        </record>
+
+<!-- resolution form -->
+        <record id="wizard_report_form_resolution_form" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form</field>
+            <field name="model">report.wizard.resolution.form</field>
+            <field name="arch" type="xml">
+                <form string="resolution form" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+	                <group col='7' colspan='1'>
+	                	<button string="Page-01" type="action" name="%(action_wizard_report_resolution_form_page01)d" context="{'default_partner_id':partner_id,'resolution_form_page01':1}"/>
+	                	<button string="Page-02" type="action" name="%(action_wizard_report_resolution_form_page02)d" context="{'default_partner_id':partner_id,'resolution_form_page02':1}"/>
+	                	<button string="Page-03" type="action" name="%(action_wizard_report_resolution_form_page03)d" context="{'default_partner_id':partner_id,'resolution_form_page03':1}"/>
+	                	<button string="Page-04" type="action" name="%(action_wizard_report_resolution_form_page04)d" context="{'default_partner_id':partner_id,'resolution_form_page04':1}"/>
+	                	<button string="Page-05" type="action" name="%(action_wizard_report_resolution_form_page05)d" context="{'default_partner_id':partner_id,'resolution_form_page05':1}"/>
+	                	<button string="Page-06" type="action" name="%(action_wizard_report_resolution_form_page06)d" context="{'default_partner_id':partner_id,'resolution_form_page06':1}"/>
+	                	<button string="Page-07" type="action" name="%(action_wizard_report_resolution_form_page07)d" context="{'default_partner_id':partner_id,'resolution_form_page07':1}"/>
+	                </group>
+	                <group col='7' colspan='1'>
+	                	<button string="Page-08" type="action" name="%(action_wizard_report_resolution_form_page08)d" context="{'default_partner_id':partner_id,'resolution_form_page08':1}"/>
+	                	<button string="Page-09" type="action" name="%(action_wizard_report_resolution_form_page09)d" context="{'default_partner_id':partner_id,'resolution_form_page09':1}"/>
+	                	<button string="Page-10" type="action" name="%(action_wizard_report_resolution_form_page10)d" context="{'default_partner_id':partner_id,'resolution_form_page10':1}"/>
+	                	<button string="Page-11" type="action" name="%(action_wizard_report_resolution_form_page11)d" context="{'default_partner_id':partner_id,'resolution_form_page11':1}"/>
+	                	<button string="Page-12" type="action" name="%(action_wizard_report_resolution_form_page12)d" context="{'default_partner_id':partner_id,'resolution_form_page12':1}"/>
+	                	<button string="Page-13" type="action" name="%(action_wizard_report_resolution_form_page13)d" context="{'default_partner_id':partner_id,'resolution_form_page13':1}"/>
+	                	<button string="Page-14" type="action" name="%(action_wizard_report_resolution_form_page14)d" context="{'default_partner_id':partner_id,'resolution_form_page14':1}"/>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_resolution_form" model="ir.actions.act_window">
+            <field name="name">resolution form</field>
+            <field name="res_model">report.wizard.resolution.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_resolution_form"/>
+        </record>
+        
+<!-- Bo sung Back -->
+		<record id="wizard_report_form_resolution_form_page01_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page01.inherit</field>
+            <field name="model">report.wizard.resolution.form.page01</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page01"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page01':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page02_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page02.inherit</field>
+            <field name="model">report.wizard.resolution.form.page02</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page02"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page02':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page03_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page03.inherit</field>
+            <field name="model">report.wizard.resolution.form.page03</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page03"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page03':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page04_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page04.inherit</field>
+            <field name="model">report.wizard.resolution.form.page04</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page04"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page04':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page05_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page05.inherit</field>
+            <field name="model">report.wizard.resolution.form.page05</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page05"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page05':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page06_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page06.inherit</field>
+            <field name="model">report.wizard.resolution.form.page06</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page06"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page06':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page07_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page07.inherit</field>
+            <field name="model">report.wizard.resolution.form.page07</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page07"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page07':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page08_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page08.inherit</field>
+            <field name="model">report.wizard.resolution.form.page08</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page08"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page08':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page09_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page09.inherit</field>
+            <field name="model">report.wizard.resolution.form.page09</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page09"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page09':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page10_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page10.inherit</field>
+            <field name="model">report.wizard.resolution.form.page10</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page10"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page10':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page11_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page11.inherit</field>
+            <field name="model">report.wizard.resolution.form.page11</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page11"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page11':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page12_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page12.inherit</field>
+            <field name="model">report.wizard.resolution.form.page12</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page12"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page12':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page13_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page13.inherit</field>
+            <field name="model">report.wizard.resolution.form.page13</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page13"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page13':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        <record id="wizard_report_form_resolution_form_page14_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.resolution.form.page14.inherit</field>
+            <field name="model">report.wizard.resolution.form.page14</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_resolution_form_page14"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to resolution form" type="action" name="%(action_wizard_report_resolution_form)d" context="{'default_partner_id':partner_id,'resolution_form_page14':0}"/>
+            	</xpath>
+        	</field>
+        </record>
+        
+<!-- Format_EGM dated xxxx -->        
+        <record id="wizard_report_form_format_egm_dated_xxxx" model="ir.ui.view">
+            <field name="name">report.wizard.form.format.egm.dated.xxxx</field>
+            <field name="model">report.wizard.format.egm.dated.xxxx</field>
+            <field name="arch" type="xml">
+                <form string="Format_EGM dated xxxx" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="attendance_list_transfer_of_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="letter_consent_of_waiver_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="minutes_transfer_of_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="notice_of_egm_transfer_of_shares_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_transfer_of_shares_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="attendance_list_transfer_of_shares_datas" filename="attendance_list_transfer_of_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="letter_consent_of_waiver_datas" filename="letter_consent_of_waiver_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="minutes_transfer_of_shares_datas" filename="minutes_transfer_of_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="notice_of_egm_transfer_of_shares_datas" filename="notice_of_egm_transfer_of_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="resolution_transfer_of_shares_datas" filename="resolution_transfer_of_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_format_egm_dated_xxxx" model="ir.actions.act_window">
+            <field name="name">Format_EGM dated xxxx</field>
+            <field name="res_model">report.wizard.format.egm.dated.xxxx</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_format_egm_dated_xxxx"/>
+            <field name="context">{'resignation_director_secretary': 1}</field>
+        </record>
+        
+<!-- Format_Share Transfer Form -->        
+        <record id="wizard_report_form_format_share_transfer_form" model="ir.ui.view">
+            <field name="name">report.wizard.form.format.share.transfer.form</field>
+            <field name="model">report.wizard.format.share.transfer.form</field>
+            <field name="arch" type="xml">
+                <form string="Format_Share Transfer Form" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="share_transfer_form_from_who_to_who_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="share_transfer_form_from_who_to_who_datas" filename="share_transfer_form_from_who_to_who_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_format_share_transfer_form" model="ir.actions.act_window">
+            <field name="name">Format_Share Transfer Form</field>
+            <field name="res_model">report.wizard.format.share.transfer.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_format_share_transfer_form"/>
+            <field name="context">{'resignation_director_secretary': 1}</field>
+        </record>
+        
+<!-- share transfer -->
+        <record id="wizard_report_form_share_transfer" model="ir.ui.view">
+            <field name="name">report.wizard.share.transfer</field>
+            <field name="model">report.wizard.share.transfer</field>
+            <field name="arch" type="xml">
+                <form string="share transfer" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group>
+                		<button string="Format_EGM dated xxxx" type="action" name="%(action_wizard_report_format_egm_dated_xxxx)d" context="{'default_partner_id':partner_id,'format_egm_dated_xxxx':1}"/>
+                		<button string="Format_Share Transfer Form" type="action" name="%(action_wizard_report_format_share_transfer_form)d" context="{'default_partner_id':partner_id,'format_share_transfer_form':1}"/>
+	                </group>
+                	<field name="share_transfer1_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="share_transfer2_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="share_transfer1_datas" filename="share_transfer1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="share_transfer2_datas" filename="share_transfer2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_share_transfer" model="ir.actions.act_window">
+            <field name="name">share transfer</field>
+            <field name="res_model">report.wizard.share.transfer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_share_transfer"/>
+            <field name="context">{'share_transfer': 1}</field>
+        </record>
+        
+<!-- Bo sung Back -->
+		<record id="wizard_report_form_format_egm_dated_xxxx_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.format.egm.dated.xxxx.inherit</field>
+            <field name="model">report.wizard.format.egm.dated.xxxx</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_format_egm_dated_xxxx"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to share transfer" type="action" name="%(action_wizard_report_share_transfer)d" context="{'default_partner_id':partner_id,'share_transfer':1,'format_egm_dated_xxxx':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+        <record id="wizard_report_form_format_share_transfer_form_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.format.share.transfer.form.inherit</field>
+            <field name="model">report.wizard.format.share.transfer.form</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_format_share_transfer_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to share transfer" type="action" name="%(action_wizard_report_share_transfer)d" context="{'default_partner_id':partner_id,'share_transfer':1,'format_share_transfer_form':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+<!-- Strike off Sample -->        
+        <record id="wizard_report_form_strike_off_sample" model="ir.ui.view">
+            <field name="name">report.wizard.form.strike.off.sample</field>
+            <field name="model">report.wizard.strike.off.sample</field>
+            <field name="arch" type="xml">
+                <form string="Strike off Sample" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<field name="agreement_strike_off_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="appointment_letter_flavors_whisky_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_notice_strike_off_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="flavors_whisky_strike_off_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="letter_to_irsa_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="minutes_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="request_handover_secretary_doc_flavors_whisky_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="resolution_strike_off_egm_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="strike_off_declaration_flavors_apple_goh_hock_leong_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="agreement_strike_off_datas" filename="agreement_strike_off_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="appointment_letter_flavors_whisky_datas" filename="appointment_letter_flavors_whisky_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_notice_strike_off_datas" filename="egm_notice_strike_off_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="flavors_whisky_strike_off_letter_datas" filename="flavors_whisky_strike_off_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="letter_to_irsa_datas" filename="letter_to_irsa_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="minutes_datas" filename="minutes_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="request_handover_secretary_doc_flavors_whisky_datas" filename="request_handover_secretary_doc_flavors_whisky_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="resolution_strike_off_egm_datas" filename="resolution_strike_off_egm_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="strike_off_declaration_flavors_apple_goh_hock_leong_datas" filename="strike_off_declaration_flavors_apple_goh_hock_leong_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_strike_off_sample" model="ir.actions.act_window">
+            <field name="name">Strike off Sample</field>
+            <field name="res_model">report.wizard.strike.off.sample</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_strike_off_sample"/>
+            <field name="context">{'resignation_director_secretary': 1}</field>
+        </record>
+        
+<!-- Strike off_EGM_Templates -->
+        <record id="wizard_report_form_strike_off_egm_templates" model="ir.ui.view">
+            <field name="name">report.wizard.strike.off.egm.templates</field>
+            <field name="model">report.wizard.strike.off.egm.templates</field>
+            <field name="arch" type="xml">
+                <form string="Strike off_EGM_Templates" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group>
+                		<button string="Strike off Sample" type="action" name="%(action_wizard_report_strike_off_sample)d" context="{'default_partner_id':partner_id,'strike_off_sample':1}"/>
+	                </group>
+                	<field name="egm_strike_off_acra_resolution_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_agreement_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_appointment_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_declaration_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_letter_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_letter_to_iras_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_minutes_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="egm_strike_off_notice_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="healthy_rays_strike_off_declaration_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="healty_rays_strike_off_notice_fname" invisible="1" class="oe_inline oe_right"/>
+	                <group col='4' colspan='2'>
+	                	<group>
+	                		<field name="egm_strike_off_acra_resolution_datas" filename="egm_strike_off_acra_resolution_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_agreement_letter_datas" filename="egm_strike_off_agreement_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_appointment_letter_datas" filename="egm_strike_off_appointment_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_declaration_datas" filename="egm_strike_off_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="healthy_rays_strike_off_declaration_datas" filename="healthy_rays_strike_off_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="egm_strike_off_letter_datas" filename="egm_strike_off_letter_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_letter_to_iras_datas" filename="egm_strike_off_letter_to_iras_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_minutes_datas" filename="egm_strike_off_minutes_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="egm_strike_off_notice_datas" filename="egm_strike_off_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="healty_rays_strike_off_notice_datas" filename="healty_rays_strike_off_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                </group>
+	                <footer>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_wizard_report_strike_off_egm_templates" model="ir.actions.act_window">
+            <field name="name">Strike off_EGM_Templates</field>
+            <field name="res_model">report.wizard.strike.off.egm.templates</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_report_form_strike_off_egm_templates"/>
+            <field name="context">{'strike_off_egm_templates': 1}</field>
+        </record>
+        
+<!-- Bo sung Back -->
+		<record id="wizard_report_form_strike_off_sample_inherit" model="ir.ui.view">
+            <field name="name">report.wizard.form.strike.off.sample.inherit</field>
+            <field name="model">report.wizard.strike.off.sample</field>
+            <field name="inherit_id" ref="tgb_crm_customized.wizard_report_form_strike_off_sample"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Close']" position="before">
+        			<button string="Back to Strike off_EGM_Templates" type="action" name="%(action_wizard_report_strike_off_egm_templates)d" context="{'default_partner_id':partner_id,'strike_off_egm_templates':1,'strike_off_sample':0}"/>
+        			or
+            	</xpath>
+        	</field>
+        </record>
+        
+    </data>
+</openerp>

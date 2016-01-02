@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<report
+            id="base.res_partner_address_report"
+            menu="False"
+            model="res.partner"
+            name="res.partner"
+            string="Labels"
+            xml="base/res/res_partner_report_address.xml"
+            xsl="base/res/res_partner_report_address.xsl"
+            groups="base.group_no_one"/>
+            
+        <report 
+            id="account.action_report_print_overdue"
+            menu="False"
+            model="res.partner"
+            report_type="qweb-pdf"
+            string="Due Payments"
+            name="account.report_overdue"
+            file="account.report_overdue"
+        />
+        
+        <record model="ir.values" id="account.ir_values_account_partner_ledger">
+           <field name="key2" eval="'client_print_multi'"/>
+           <field name="model" eval="'res.partner'"/>
+           <field name="name">Print Partner Ledger</field>
+           <field name="value" eval=""/>
+       </record>
+       
+       <report 
+            id="sale.report_sale_order"
+            menu="False"
+            string="Quotation / Order"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+        />
+        
+        <report 
+            string="Picking" 
+            menu="False"
+            id="stock.action_report_picking" 
+            model="stock.picking" 
+            report_type="qweb-pdf"
+            name="stock.report_picking" 
+            file="stock.report_picking" 
+        />
+        
+        <report 
+            id="account.account_invoices"
+            menu="False"
+            model="account.invoice"
+            string="Invoices"
+            report_type="qweb-pdf"
+            name="account.report_invoice"
+            file="account.report_invoice"
+            attachment_use="True"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+        />
+        
+        <report 
+            string="Purchase Order" 
+            id="purchase.action_report_purchase_order"
+            menu="False"  
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            name="purchase.report_purchaseorder" 
+            file="purchase.report_purchaseorder" 
+        />
+        
+        <report 
+            string="Request for Quotation" 
+            id="purchase.report_purchase_quotation"
+            menu="False" 
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            name="purchase.report_purchasequotation" 
+            file="purchase.report_purchasequotation"
+        />
+        
+    </data>
+</openerp>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='parent_id']" position="before">
+            		<label for="code" class="oe_edit_only"/>
+            		<h1><field name="code" placeholder="Code"/></h1>
+            	</xpath>
+            	<xpath expr="//field[@name='title']" position="after">
+            		<field name="attention"/>
+            		<field name="tax_code"/>
+            	</xpath>
+            	<xpath expr="//field[@name='website']" position="before">
+            		<label for="street" string="Delivery Address"/>
+                    <div>
+                        <field name="delivery_street" placeholder="Street..."/>
+                        <field name="delivery_street2"/>
+                        <div class="address_format">
+                            <field name="delivery_city" placeholder="City" style="width: 40%"/>
+                            <field name="delivery_state_id" class="oe_no_button" placeholder="State" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>
+                            <field name="delivery_zip" placeholder="ZIP" style="width: 20%" attrs="{'readonly': [('use_parent_address','=',True)]}"/>
+                        </div>
+                        <field name="delivery_country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                    </div>
+            	</xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Format_EGM dated xxxx -->
+		<record id="attendance_list_transfer_of_shares" model="ir.actions.report.xml">
+	        <field name="name">attendance_list_transfer_of_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">attendance_list_transfer_of_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/attendance_list_transfer_of_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="attendance_list_transfer_of_shares"
+			model="res.partner"
+			name="attendance_list_transfer_of_shares"
+	        string="attendance_list_transfer_of_shares"
+	        rml="tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/attendance_list_transfer_of_shares.odt"/>
+	        
+        <record id="letter_consent_of_waiver" model="ir.actions.report.xml">
+	        <field name="name">letter_consent_of_waiver</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">letter_consent_of_waiver</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/letter_consent_of_waiver.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="letter_consent_of_waiver"
+			model="res.partner"
+			name="letter_consent_of_waiver"
+	        string="letter_consent_of_waiver"
+	        rml="tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/letter_consent_of_waiver.odt"/>
+	        
+        <record id="minutes_transfer_of_shares" model="ir.actions.report.xml">
+	        <field name="name">minutes_transfer_of_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">minutes_transfer_of_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/minutes_transfer_of_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="minutes_transfer_of_shares"
+			model="res.partner"
+			name="minutes_transfer_of_shares"
+	        string="minutes_transfer_of_shares"
+	        rml="tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/minutes_transfer_of_shares.odt"/>
+	        
+        <record id="notice_of_egm_transfer_of_shares" model="ir.actions.report.xml">
+	        <field name="name">notice_of_egm_transfer_of_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">notice_of_egm_transfer_of_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/notice_of_egm_transfer_of_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="notice_of_egm_transfer_of_shares"
+			model="res.partner"
+			name="notice_of_egm_transfer_of_shares"
+	        string="notice_of_egm_transfer_of_shares"
+	        rml="tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/notice_of_egm_transfer_of_shares.odt"/>
+	        
+        <record id="resolution_transfer_of_shares" model="ir.actions.report.xml">
+	        <field name="name">resolution_transfer_of_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">resolution_transfer_of_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/resolution_transfer_of_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="resolution_transfer_of_shares"
+			model="res.partner"
+			name="resolution_transfer_of_shares"
+	        string="resolution_transfer_of_shares"
+	        rml="tgb_crm_customized/report/share_transfer/format_egm_dated_xxxx/resolution_transfer_of_shares.odt"/>
+	        
+	</data>
+</openerp>

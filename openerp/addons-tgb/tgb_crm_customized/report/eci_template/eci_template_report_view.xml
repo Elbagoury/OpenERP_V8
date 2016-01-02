@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- ECI Form (For Company) YA 2016 (2) -->
+        <record id="eci_form_for_company_ya_2016" model="ir.actions.report.xml">
+	        <field name="name">eci_form_for_company_ya_2016</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">eci_form_for_company_ya_2016</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/eci_template/eci_form_for_company_ya_2016.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="eci_form_for_company_ya_2016"
+			model="res.partner"
+			name="eci_form_for_company_ya_2016"
+	        string="eci_form_for_company_ya_2016"
+	        rml="tgb_crm_customized/report/eci_template/eci_form_for_company_ya_2016.ods"/>
+	        
+<!-- ECI Form (For Tax Agent) YA 2016 -->
+        <record id="eci_form_for_tax_agent_ya_2016" model="ir.actions.report.xml">
+	        <field name="name">eci_form_for_tax_agent_ya_2016</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">eci_form_for_tax_agent_ya_2016</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/eci_template/eci_form_for_tax_agent_ya_2016.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="eci_form_for_tax_agent_ya_2016"
+			model="res.partner"
+			name="eci_form_for_tax_agent_ya_2016"
+	        string="eci_form_for_tax_agent_ya_2016"
+	        rml="tgb_crm_customized/report/eci_template/eci_form_for_tax_agent_ya_2016.ods"/>
+
+	</data>
+</openerp>

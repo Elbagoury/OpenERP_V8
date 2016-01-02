@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- resolution form page02-->
+		<record id="form18_not_issued_prospectus" model="ir.actions.report.xml">
+	        <field name="name">form18_not_issued_prospectus</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form18_not_issued_prospectus</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form18_not_issued_prospectus.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form18_not_issued_prospectus"
+			model="res.partner"
+			name="form18_not_issued_prospectus"
+	        string="form18_not_issued_prospectus"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form18_not_issued_prospectus.odt"/>
+	        
+        <record id="form21_increase_number_of_members" model="ir.actions.report.xml">
+	        <field name="name">form21_increase_number_of_members</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form21_increase_number_of_members</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form21_increase_number_of_members.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form21_increase_number_of_members"
+			model="res.partner"
+			name="form21_increase_number_of_members"
+	        string="form21_increase_number_of_members"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form21_increase_number_of_members.odt"/>
+	        
+        <record id="form22_issued_prospectus" model="ir.actions.report.xml">
+	        <field name="name">form22_issued_prospectus</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form22_issued_prospectus</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form22_issued_prospectus.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form22_issued_prospectus"
+			model="res.partner"
+			name="form22_issued_prospectus"
+	        string="form22_issued_prospectus"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form22_issued_prospectus.odt"/>
+	        
+        <record id="form24_allotment_of_shares_more_500members" model="ir.actions.report.xml">
+	        <field name="name">form24_allotment_of_shares_more_500members</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form24_allotment_of_shares_more_500members</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form24_allotment_of_shares_more_500members.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form24_allotment_of_shares_more_500members"
+			model="res.partner"
+			name="form24_allotment_of_shares_more_500members"
+	        string="form24_allotment_of_shares_more_500members"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form24_allotment_of_shares_more_500members.odt"/>
+	        
+        <record id="form26_statement_of_amount_or_rate_of_commission_brokerage" model="ir.actions.report.xml">
+	        <field name="name">form26_statement_of_amount_or_rate_of_commission_brokerage</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form26_statement_of_amount_or_rate_of_commission_brokerage</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form26_statement_of_amount_or_rate_of_commission_brokerage.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form26_statement_of_amount_or_rate_of_commission_brokerage"
+			model="res.partner"
+			name="form26_statement_of_amount_or_rate_of_commission_brokerage"
+	        string="form26_statement_of_amount_or_rate_of_commission_brokerage"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form26_statement_of_amount_or_rate_of_commission_brokerage.odt"/>
+	        
+        <record id="form27" model="ir.actions.report.xml">
+	        <field name="name">form27</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form27</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form27.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form27"
+			model="res.partner"
+			name="form27"
+	        string="form27"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form27.odt"/>
+	        
+        <record id="form27_redemption_of_redeemable_preference_shares" model="ir.actions.report.xml">
+	        <field name="name">form27_redemption_of_redeemable_preference_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form27_redemption_of_redeemable_preference_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form27_redemption_of_redeemable_preference_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form27_redemption_of_redeemable_preference_shares"
+			model="res.partner"
+			name="form27_redemption_of_redeemable_preference_shares"
+	        string="form27_redemption_of_redeemable_preference_shares"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form27_redemption_of_redeemable_preference_shares.odt"/>
+	        
+        <record id="form28_increase_share_capital" model="ir.actions.report.xml">
+	        <field name="name">form28_increase_share_capital</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form28_increase_share_capital</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form28_increase_share_capital.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form28_increase_share_capital"
+			model="res.partner"
+			name="form28_increase_share_capital"
+	        string="form28_increase_share_capital"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form28_increase_share_capital.odt"/>
+	        
+        <record id="form29a" model="ir.actions.report.xml">
+	        <field name="name">form29a</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form29a</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form29a.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form29a"
+			model="res.partner"
+			name="form29a"
+	        string="form29a"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form29a.odt"/>
+	        
+        <record id="form29a_propose_special_resolution_in_company" model="ir.actions.report.xml">
+	        <field name="name">form29a_propose_special_resolution_in_company</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form29a_propose_special_resolution_in_company</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form29a_propose_special_resolution_in_company.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form29a_propose_special_resolution_in_company"
+			model="res.partner"
+			name="form29a_propose_special_resolution_in_company"
+	        string="form29a_propose_special_resolution_in_company"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form29a_propose_special_resolution_in_company.odt"/>
+	        
+	</data>
+</openerp>

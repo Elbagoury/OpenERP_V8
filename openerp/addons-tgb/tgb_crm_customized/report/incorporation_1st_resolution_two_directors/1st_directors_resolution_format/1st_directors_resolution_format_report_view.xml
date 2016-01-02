@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- 1st Directors Resolution_Format -->
+		<record id="1st_resolution_one_director" model="ir.actions.report.xml">
+	        <field name="name">1st_resolution_one_director</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">1st_resolution_one_director</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/1st_resolution_one_director.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="1st_resolution_one_director"
+			model="res.partner"
+			name="1st_resolution_one_director"
+	        string="1st_resolution_one_director"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/1st_resolution_one_director.odt"/>
+	        
+        <record id="1st_resolution_two_directors" model="ir.actions.report.xml">
+	        <field name="name">1st_resolution_two_directors</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">1st_resolution_two_directors</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/1st_resolution_two_directors.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="1st_resolution_two_directors"
+			model="res.partner"
+			name="1st_resolution_two_directors"
+	        string="1st_resolution_two_directors"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/1st_resolution_two_directors.odt"/>
+	        
+        <record id="format_statutory_records_doc_ack_letter" model="ir.actions.report.xml">
+	        <field name="name">format_statutory_records_doc_ack_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_statutory_records_doc_ack_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/format_statutory_records_doc_ack_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_statutory_records_doc_ack_letter"
+			model="res.partner"
+			name="format_statutory_records_doc_ack_letter"
+	        string="format_statutory_records_doc_ack_letter"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/1st_directors_resolution_format/format_statutory_records_doc_ack_letter.odt"/>
+
+	</data>
+</openerp>

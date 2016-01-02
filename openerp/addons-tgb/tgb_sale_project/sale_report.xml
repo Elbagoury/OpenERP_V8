@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<report 
+    		menu="False"
+            id="sale.report_sale_order"
+            string="Quotation / Order"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+    	/>
+    	
+        <report 
+            id="sample_with_one_project_report"
+            string="Sample With One Project"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="tgb_sale_project.report_sample_with_one_project" 
+            name="tgb_sale_project.report_sample_with_one_project"
+        />
+    </data>
+</openerp>

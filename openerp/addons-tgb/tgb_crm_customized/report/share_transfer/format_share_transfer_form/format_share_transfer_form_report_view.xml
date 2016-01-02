@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Format_Share Transfer Form -->
+		<record id="share_transfer_form_from_who_to_who" model="ir.actions.report.xml">
+	        <field name="name">share_transfer_form_from_who_to_who</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">share_transfer_form_from_who_to_who</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/format_share_transfer_form/share_transfer_form_from_who_to_who.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="share_transfer_form_from_who_to_who"
+			model="res.partner"
+			name="share_transfer_form_from_who_to_who"
+	        string="share_transfer_form_from_who_to_who"
+	        rml="tgb_crm_customized/report/share_transfer/format_share_transfer_form/share_transfer_form_from_who_to_who.ods"/>
+	        
+	</data>
+</openerp>

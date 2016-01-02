@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- resolution form page12-->
+		<record id="resolution_form12" model="ir.actions.report.xml">
+	        <field name="name">resolution_form12</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">resolution_form12</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/resolution_form1.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="resolution_form12"
+			model="res.partner"
+			name="resolution_form12"
+	        string="resolution_form12"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/resolution_form1.odt"/>
+	        
+        <record id="resolution_form22" model="ir.actions.report.xml">
+	        <field name="name">resolution_form22</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">resolution_form22</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/resolution_form2.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="resolution_form22"
+			model="res.partner"
+			name="resolution_form22"
+	        string="resolution_form22"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/resolution_form2.odt"/>
+	        
+	</data>
+</openerp>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- AGM_YE Blank -->
+		<record id="ar_cert_under_s197_companyname" model="ir.actions.report.xml">
+	        <field name="name">ar_cert_under_s197_companyname</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">ar_cert_under_s197_companyname</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_ye_blank/ar_cert_under_s197_companyname.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="ar_cert_under_s197_companyname"
+			model="res.partner"
+			name="ar_cert_under_s197_companyname"
+	        string="ar_cert_under_s197_companyname"
+	        rml="tgb_crm_customized/report/agm/agm_ye_blank/ar_cert_under_s197_companyname.odt"/>
+	        
+        <record id="certificate_by_an_exempt_pte_companyname" model="ir.actions.report.xml">
+	        <field name="name">certificate_by_an_exempt_pte_companyname</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">certificate_by_an_exempt_pte_companyname</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_ye_blank/certificate_by_an_exempt_pte_companyname.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="certificate_by_an_exempt_pte_companyname"
+			model="res.partner"
+			name="certificate_by_an_exempt_pte_companyname"
+	        string="certificate_by_an_exempt_pte_companyname"
+	        rml="tgb_crm_customized/report/agm/agm_ye_blank/certificate_by_an_exempt_pte_companyname.odt"/>
+	        
+        <record id="ddf_310814_companyname" model="ir.actions.report.xml">
+	        <field name="name">ddf_310814_companyname</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">ddf_310814_companyname</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_ye_blank/ddf_310814_companyname.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="ddf_310814_companyname"
+			model="res.partner"
+			name="ddf_310814_companyname"
+	        string="ddf_310814_companyname"
+	        rml="tgb_crm_customized/report/agm/agm_ye_blank/ddf_310814_companyname.odt"/>
+	        
+        <record id="dr_and_agm_fye_31_08_2014_companyname" model="ir.actions.report.xml">
+	        <field name="name">dr_and_agm_fye_31_08_2014_companyname</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">dr_and_agm_fye_31_08_2014_companyname</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_ye_blank/dr_and_agm_fye_31_08_2014_companyname.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="dr_and_agm_fye_31_08_2014_companyname"
+			model="res.partner"
+			name="dr_and_agm_fye_31_08_2014_companyname"
+	        string="dr_and_agm_fye_31_08_2014_companyname"
+	        rml="tgb_crm_customized/report/agm/agm_ye_blank/dr_and_agm_fye_31_08_2014_companyname.odt"/>
+
+	</data>
+</openerp>

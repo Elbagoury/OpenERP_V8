@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- 1st AGM_Two Directors -->
+        <record id="format_1st_agm_attendance_list" model="ir.actions.report.xml">
+	        <field name="name">format_1st_agm_attendance_list</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_1st_agm_attendance_list</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_attendance_list.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_1st_agm_attendance_list"
+			model="res.partner"
+			name="format_1st_agm_attendance_list"
+	        string="format_1st_agm_attendance_list"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_attendance_list.odt"/>
+        
+        <record id="format_1st_agm_minutes_of_meeting" model="ir.actions.report.xml">
+	        <field name="name">format_1st_agm_minutes_of_meeting</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_1st_agm_minutes_of_meeting</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_minutes_of_meeting.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_1st_agm_minutes_of_meeting"
+			model="res.partner"
+			name="format_1st_agm_minutes_of_meeting"
+	        string="format_1st_agm_minutes_of_meeting"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_minutes_of_meeting.odt"/>
+	        
+        <record id="format_1st_agm_notice_of_meeting" model="ir.actions.report.xml">
+	        <field name="name">format_1st_agm_notice_of_meeting</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_1st_agm_notice_of_meeting</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_notice_of_meeting.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_1st_agm_notice_of_meeting"
+			model="res.partner"
+			name="format_1st_agm_notice_of_meeting"
+	        string="format_1st_agm_notice_of_meeting"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_notice_of_meeting.odt"/>
+	        
+        <record id="format_1st_agm_resolution" model="ir.actions.report.xml">
+	        <field name="name">format_1st_agm_resolution</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_1st_agm_resolution</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_resolution.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_1st_agm_resolution"
+			model="res.partner"
+			name="format_1st_agm_resolution"
+	        string="format_1st_agm_resolution"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_1st_agm_resolution.odt"/>
+	        
+        <record id="format_appointment_letter_1st_agm" model="ir.actions.report.xml">
+	        <field name="name">format_appointment_letter_1st_agm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_appointment_letter_1st_agm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_appointment_letter_1st_agm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_appointment_letter_1st_agm"
+			model="res.partner"
+			name="format_appointment_letter_1st_agm"
+	        string="format_appointment_letter_1st_agm"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_appointment_letter_1st_agm.odt"/>
+	        
+        <record id="format_ar_cert_under_s197_1st_agm" model="ir.actions.report.xml">
+	        <field name="name">format_ar_cert_under_s197_1st_agm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_ar_cert_under_s197_1st_agm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_ar_cert_under_s197_1st_agm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_ar_cert_under_s197_1st_agm"
+			model="res.partner"
+			name="format_ar_cert_under_s197_1st_agm"
+	        string="format_ar_cert_under_s197_1st_agm"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_ar_cert_under_s197_1st_agm.odt"/>
+	        
+        <record id="format_declaration_of_directors_1st_agm" model="ir.actions.report.xml">
+	        <field name="name">format_declaration_of_directors_1st_agm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_declaration_of_directors_1st_agm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_declaration_of_directors_1st_agm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_declaration_of_directors_1st_agm"
+			model="res.partner"
+			name="format_declaration_of_directors_1st_agm"
+	        string="format_declaration_of_directors_1st_agm"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_declaration_of_directors_1st_agm.odt"/>
+	        
+        <record id="format_letter_of_representation_1st_agm" model="ir.actions.report.xml">
+	        <field name="name">format_letter_of_representation_1st_agm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_letter_of_representation_1st_agm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_letter_of_representation_1st_agm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_letter_of_representation_1st_agm"
+			model="res.partner"
+			name="format_letter_of_representation_1st_agm"
+	        string="format_letter_of_representation_1st_agm"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_letter_of_representation_1st_agm.odt"/>
+	        
+        <record id="format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm" model="ir.actions.report.xml">
+	        <field name="name">format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm"
+			model="res.partner"
+			name="format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm"
+	        string="format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm"
+	        rml="tgb_crm_customized/report/agm/agm_format_documents/1st_agm_two_directors/format_statement_by_exempt_pte_co_exempt_from_audit_s205c_1st_agm.odt"/>
+        
+	</data>
+</openerp>

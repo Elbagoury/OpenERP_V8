@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Forms 45 & 49 -->
+		<record id="form49_format_one_director" model="ir.actions.report.xml">
+	        <field name="name">form49_format_one_director</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form49_format_one_director</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/form49_format_one_director.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form49_format_one_director"
+			model="res.partner"
+			name="form49_format_one_director"
+	        string="form49_format_one_director"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/form49_format_one_director.odt"/>
+	        
+        <record id="format_two_directors" model="ir.actions.report.xml">
+	        <field name="name">format_two_directors</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_two_directors</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/format_two_directors.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_two_directors"
+			model="res.partner"
+			name="format_two_directors"
+	        string="format_two_directors"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/format_two_directors.odt"/>
+	        
+        <record id="form45_format" model="ir.actions.report.xml">
+	        <field name="name">form45_format</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form45_format</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/form45_format.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form45_format"
+			model="res.partner"
+			name="form45_format"
+	        string="form45_format"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/forms_45_49/form45_format.odt"/>
+	        
+	</data>
+</openerp>

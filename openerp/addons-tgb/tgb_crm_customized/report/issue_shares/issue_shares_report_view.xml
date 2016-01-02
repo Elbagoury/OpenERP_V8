@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Issue shares -->
+        <record id="format_attendance_list_issue_shares" model="ir.actions.report.xml">
+	        <field name="name">format_attendance_list_issue_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_attendance_list_issue_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_attendance_list_issue_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_attendance_list_issue_shares"
+			model="res.partner"
+			name="format_attendance_list_issue_shares"
+	        string="format_attendance_list_issue_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_attendance_list_issue_shares.odt"/>
+	        
+        <record id="format_director_resolution_issue_shares" model="ir.actions.report.xml">
+	        <field name="name">format_director_resolution_issue_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_director_resolution_issue_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_director_resolution_issue_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_director_resolution_issue_shares"
+			model="res.partner"
+			name="format_director_resolution_issue_shares"
+	        string="format_director_resolution_issue_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_director_resolution_issue_shares.odt"/>
+	        
+        <record id="format_letter_consent_of_waiver_issue_shares" model="ir.actions.report.xml">
+	        <field name="name">format_letter_consent_of_waiver_issue_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_letter_consent_of_waiver_issue_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_letter_consent_of_waiver_issue_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_letter_consent_of_waiver_issue_shares"
+			model="res.partner"
+			name="format_letter_consent_of_waiver_issue_shares"
+	        string="format_letter_consent_of_waiver_issue_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_letter_consent_of_waiver_issue_shares.odt"/>
+	        
+        <record id="format_minutes_of_egm_issue_shares" model="ir.actions.report.xml">
+	        <field name="name">format_minutes_of_egm_issue_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_minutes_of_egm_issue_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_minutes_of_egm_issue_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_minutes_of_egm_issue_shares"
+			model="res.partner"
+			name="format_minutes_of_egm_issue_shares"
+	        string="format_minutes_of_egm_issue_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_minutes_of_egm_issue_shares.odt"/>
+	        
+    	<record id="format_notice_of_egm_issue_shares" model="ir.actions.report.xml">
+	        <field name="name">format_notice_of_egm_issue_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_notice_of_egm_issue_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_notice_of_egm_issue_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_notice_of_egm_issue_shares"
+			model="res.partner"
+			name="format_notice_of_egm_issue_shares"
+	        string="format_notice_of_egm_issue_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_notice_of_egm_issue_shares.odt"/>
+	        
+        <record id="format_paid_up_capital_application_k_shares" model="ir.actions.report.xml">
+	        <field name="name">format_paid_up_capital_application_k_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_paid_up_capital_application_k_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/issue_shares/format_paid_up_capital_application_k_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_paid_up_capital_application_k_shares"
+			model="res.partner"
+			name="format_paid_up_capital_application_k_shares"
+	        string="format_paid_up_capital_application_k_shares"
+	        rml="tgb_crm_customized/report/issue_shares/format_paid_up_capital_application_k_shares.odt"/>
+	        
+	</data>
+</openerp>

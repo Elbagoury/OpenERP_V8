@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- resolution form page03-->
+		<record id="form29b_non_resident_shares_of_company" model="ir.actions.report.xml">
+	        <field name="name">form29b_non_resident_shares_of_company</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form29b_non_resident_shares_of_company</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form29b_non_resident_shares_of_company.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form29b_non_resident_shares_of_company"
+			model="res.partner"
+			name="form29b_non_resident_shares_of_company"
+	        string="form29b_non_resident_shares_of_company"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form29b_non_resident_shares_of_company.odt"/>
+	        
+        <record id="form29d_purchase_or_acquisition_preference_shares" model="ir.actions.report.xml">
+	        <field name="name">form29d_purchase_or_acquisition_preference_shares</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form29d_purchase_or_acquisition_preference_shares</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form29d_purchase_or_acquisition_preference_shares.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form29d_purchase_or_acquisition_preference_shares"
+			model="res.partner"
+			name="form29d_purchase_or_acquisition_preference_shares"
+	        string="form29d_purchase_or_acquisition_preference_shares"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form29d_purchase_or_acquisition_preference_shares.odt"/>
+	        
+        <record id="form30_notice_of_place" model="ir.actions.report.xml">
+	        <field name="name">form30_notice_of_place</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form30_notice_of_place</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form30_notice_of_place.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form30_notice_of_place"
+			model="res.partner"
+			name="form30_notice_of_place"
+	        string="form30_notice_of_place"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form30_notice_of_place.odt"/>
+	        
+        <record id="form33_affidavit_verifying" model="ir.actions.report.xml">
+	        <field name="name">form33_affidavit_verifying</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form33_affidavit_verifying</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form33_affidavit_verifying.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form33_affidavit_verifying"
+			model="res.partner"
+			name="form33_affidavit_verifying"
+	        string="form33_affidavit_verifying"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form33_affidavit_verifying.odt"/>
+	        
+        <record id="form34_particualars_in_respect_of_charge" model="ir.actions.report.xml">
+	        <field name="name">form34_particualars_in_respect_of_charge</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form34_particualars_in_respect_of_charge</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form34_particualars_in_respect_of_charge.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form34_particualars_in_respect_of_charge"
+			model="res.partner"
+			name="form34_particualars_in_respect_of_charge"
+	        string="form34_particualars_in_respect_of_charge"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form34_particualars_in_respect_of_charge.odt"/>
+        
+        <record id="form35_containing_particulars" model="ir.actions.report.xml">
+	        <field name="name">form35_containing_particulars</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form35_containing_particulars</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form35_containing_particulars.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form35_containing_particulars"
+			model="res.partner"
+			name="form35_containing_particulars"
+	        string="form35_containing_particulars"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form35_containing_particulars.odt"/>
+	        
+        <record id="form36_particulars" model="ir.actions.report.xml">
+	        <field name="name">form36_particulars</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form36_particulars</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form36_particulars.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form36_particulars"
+			model="res.partner"
+			name="form36_particulars"
+	        string="form36_particulars"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form36_particulars.odt"/>
+	        
+        <record id="form37_affidavit" model="ir.actions.report.xml">
+	        <field name="name">form37_affidavit</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form37_affidavit</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form37_affidavit.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form37_affidavit"
+			model="res.partner"
+			name="form37_affidavit"
+	        string="form37_affidavit"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form37_affidavit.odt"/>
+	        
+        <record id="form38a_affidavit" model="ir.actions.report.xml">
+	        <field name="name">form38a_affidavit</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form38a_affidavit</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form38a_affidavit.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form38a_affidavit"
+			model="res.partner"
+			name="form38a_affidavit"
+	        string="form38a_affidavit"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form38a_affidavit.odt"/>
+	        
+        <record id="form38_affidavit" model="ir.actions.report.xml">
+	        <field name="name">form38_affidavit</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form38_affidavit</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_03/form38_affidavit.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form38_affidavit"
+			model="res.partner"
+			name="form38_affidavit"
+	        string="form38_affidavit"
+	        rml="tgb_crm_customized/report/resolution_form/page_03/form38_affidavit.odt"/>
+        
+	</data>
+</openerp>

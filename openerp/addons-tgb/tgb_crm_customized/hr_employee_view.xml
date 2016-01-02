@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            	<!--<xpath expr="//form/sheet/notebook/page[@string='HR Settings']" position="after">
+            		<page string="Payroll Details">
+                        <group>
+                        	<group>
+                            	<field name="partner_id"/>
+                            	<field name="uen"/>
+                            	<field name="chinese_name"/>
+                            	<field name="incorporation_date"/>
+                            	<field name="director_appt_date"/>
+                            	<field name="secretary_appt_date"/>
+                            	<field name="employment"/>
+                            	<field name="paid_up_capital"/>
+                            </group>
+                            <group>
+                            	<field name="c_status"/>
+                            	<field name="race"/>
+                            	<field name="country_id"/>
+                            	<field name="block_house_no"/>
+                            	<field name="street_name"/>
+                            	<field name="level_no"/>
+                            	<field name="unit_no"/>
+                            	<field name="postal_code"/>
+                            </group>
+                        </group>
+                        <group>
+                        	<group>
+                            	<field name="period_year"/>
+                            	<field name="fs_start_date"/>
+                            	<field name="fs_end_date"/>
+                            	<field name="axp_report"/>
+                            	<field name="estimate_chargable_income_date"/>
+                            	<field name="annual_general_meeting_date"/>
+                            	<field name="annual_return_date"/>
+                            	<field name="financial_month"/>
+                            </group>
+                            <group>
+                            	<field name="next_annual_general_meeting_due_date"/>
+                            	<field name="sole_proprietary_partnership"/>
+                            	<field name="last_financiall_year_end"/>
+                            	<field name="sole_proprietary_partnership_date"/>
+                            	<field name="tax_form_cs"/>
+                            	<field name="submit_monthly_cpf"/>
+                            	<field name="compute_submit_yearly_staff_salary"/>
+                            	<field name="remarks_1"/>
+                            </group>
+                        </group>
+                    </page>
+            	</xpath>-->
+            	<xpath expr="//field[@name='user_id']" position="after">
+                	<field name="partner_id"/>
+            	</xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

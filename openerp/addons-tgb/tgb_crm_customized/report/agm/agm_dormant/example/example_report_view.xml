@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- EXAMPLE -->    
+		<record id="servicegowhere_ar_filing_as_dormant_company_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_ar_filing_as_dormant_company_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_ar_filing_as_dormant_company_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_ar_filing_as_dormant_company_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_ar_filing_as_dormant_company_jun_2015"
+			model="res.partner"
+			name="servicegowhere_ar_filing_as_dormant_company_jun_2015"
+	        string="servicegowhere_ar_filing_as_dormant_company_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_ar_filing_as_dormant_company_jun_2015.odt"/>
+        
+        <record id="servicegowhere_attendance_list_agm_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_attendance_list_agm_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_attendance_list_agm_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_attendance_list_agm_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_attendance_list_agm_jun_2015"
+			model="res.partner"
+			name="servicegowhere_attendance_list_agm_jun_2015"
+	        string="servicegowhere_attendance_list_agm_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_attendance_list_agm_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_confirmation_for_ye_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_confirmation_for_ye_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_confirmation_for_ye_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_confirmation_for_ye_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_confirmation_for_ye_jun_2015"
+			model="res.partner"
+			name="servicegowhere_confirmation_for_ye_jun_2015"
+	        string="servicegowhere_confirmation_for_ye_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_confirmation_for_ye_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_directors_resolution_agm_ye_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_directors_resolution_agm_ye_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_directors_resolution_agm_ye_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_directors_resolution_agm_ye_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_directors_resolution_agm_ye_jun_2015"
+			model="res.partner"
+			name="servicegowhere_directors_resolution_agm_ye_jun_2015"
+	        string="servicegowhere_directors_resolution_agm_ye_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_directors_resolution_agm_ye_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_dormant_company_confirmation_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_dormant_company_confirmation_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_dormant_company_confirmation_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_dormant_company_confirmation_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_dormant_company_confirmation_jun_2015"
+			model="res.partner"
+			name="servicegowhere_dormant_company_confirmation_jun_2015"
+	        string="servicegowhere_dormant_company_confirmation_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_dormant_company_confirmation_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_engement_letter_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_engement_letter_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_engement_letter_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_engement_letter_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_engement_letter_jun_2015"
+			model="res.partner"
+			name="servicegowhere_engement_letter_jun_2015"
+	        string="servicegowhere_engement_letter_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_engement_letter_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_minutes_of_meeting_agm_ye_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_minutes_of_meeting_agm_ye_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_minutes_of_meeting_agm_ye_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_minutes_of_meeting_agm_ye_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_minutes_of_meeting_agm_ye_jun_2015"
+			model="res.partner"
+			name="servicegowhere_minutes_of_meeting_agm_ye_jun_2015"
+	        string="servicegowhere_minutes_of_meeting_agm_ye_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_minutes_of_meeting_agm_ye_jun_2015.odt"/>
+	        
+        <record id="servicegowhere_notice_of_meeting_agm_ye_jun_2015" model="ir.actions.report.xml">
+	        <field name="name">servicegowhere_notice_of_meeting_agm_ye_jun_2015</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">servicegowhere_notice_of_meeting_agm_ye_jun_2015</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_notice_of_meeting_agm_ye_jun_2015.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="servicegowhere_notice_of_meeting_agm_ye_jun_2015"
+			model="res.partner"
+			name="servicegowhere_notice_of_meeting_agm_ye_jun_2015"
+	        string="servicegowhere_notice_of_meeting_agm_ye_jun_2015"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/example/servicegowhere_notice_of_meeting_agm_ye_jun_2015.odt"/>    
+
+	</data>
+</openerp>

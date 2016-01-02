@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Change of Company Name -->
+        <record id="format_change_co_name_attendance_list" model="ir.actions.report.xml">
+	        <field name="name">format_change_co_name_attendance_list</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_change_co_name_attendance_list</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/change_of_company_name/format_change_co_name_attendance_list.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_change_co_name_attendance_list"
+			model="res.partner"
+			name="format_change_co_name_attendance_list"
+	        string="format_change_co_name_attendance_list"
+	        rml="tgb_crm_customized/report/change_of_company_name/format_change_co_name_attendance_list.odt"/>
+	        
+        <record id="format_change_co_name_minutes" model="ir.actions.report.xml">
+	        <field name="name">format_change_co_name_minutes</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_change_co_name_minutes</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/change_of_company_name/format_change_co_name_minutes.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_change_co_name_minutes"
+			model="res.partner"
+			name="format_change_co_name_minutes"
+	        string="format_change_co_name_minutes"
+	        rml="tgb_crm_customized/report/change_of_company_name/format_change_co_name_minutes.odt"/>
+	        
+        <record id="format_change_co_name_notice_of_egm" model="ir.actions.report.xml">
+	        <field name="name">format_change_co_name_notice_of_egm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_change_co_name_notice_of_egm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/change_of_company_name/format_change_co_name_notice_of_egm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_change_co_name_notice_of_egm"
+			model="res.partner"
+			name="format_change_co_name_notice_of_egm"
+	        string="format_change_co_name_notice_of_egm"
+	        rml="tgb_crm_customized/report/change_of_company_name/format_change_co_name_notice_of_egm.odt"/>
+	        
+        <record id="format_change_co_name_resolution" model="ir.actions.report.xml">
+	        <field name="name">format_change_co_name_resolution</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_change_co_name_resolution</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/change_of_company_name/format_change_co_name_resolution.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_change_co_name_resolution"
+			model="res.partner"
+			name="format_change_co_name_resolution"
+	        string="format_change_co_name_resolution"
+	        rml="tgb_crm_customized/report/change_of_company_name/format_change_co_name_resolution.odt"/>
+	        
+        <record id="format_form_11_change_of_co_name_notice_of_resolution" model="ir.actions.report.xml">
+	        <field name="name">format_form_11_change_of_co_name_notice_of_resolution</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">format_form_11_change_of_co_name_notice_of_resolution</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/change_of_company_name/format_form_11_change_of_co_name_notice_of_resolution.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="format_form_11_change_of_co_name_notice_of_resolution"
+			model="res.partner"
+			name="format_form_11_change_of_co_name_notice_of_resolution"
+	        string="format_form_11_change_of_co_name_notice_of_resolution"
+	        rml="tgb_crm_customized/report/change_of_company_name/format_form_11_change_of_co_name_notice_of_resolution.odt"/>
+	        
+	</data>
+</openerp>

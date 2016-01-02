@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Share Certificates_Two Director_Format -->
+		<record id="share_cert_1_xx_shares_format01" model="ir.actions.report.xml">
+	        <field name="name">share_cert_1_xx_shares_format01</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">share_cert_1_xx_shares_format01</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/share_certificates_two_director_format/share_cert_1_xx_shares_format01.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="share_cert_1_xx_shares_format01"
+			model="res.partner"
+			name="share_cert_1_xx_shares_format01"
+	        string="share_cert_1_xx_shares_format01"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/share_certificates_two_director_format/share_cert_1_xx_shares_format01.odt"/>
+        
+        <record id="share_cert_1_xx_shares_format02_our_reg_office" model="ir.actions.report.xml">
+	        <field name="name">share_cert_1_xx_shares_format02_our_reg_office</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">share_cert_1_xx_shares_format02_our_reg_office</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/incorporation_1st_resolution_two_directors/share_certificates_two_director_format/share_cert_1_xx_shares_format02_our_reg_office.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="share_cert_1_xx_shares_format02_our_reg_office"
+			model="res.partner"
+			name="share_cert_1_xx_shares_format02_our_reg_office"
+	        string="share_cert_1_xx_shares_format02_our_reg_office"
+	        rml="tgb_crm_customized/report/incorporation_1st_resolution_two_directors/share_certificates_two_director_format/share_cert_1_xx_shares_format02_our_reg_office.odt"/>
+        
+	</data>
+</openerp>

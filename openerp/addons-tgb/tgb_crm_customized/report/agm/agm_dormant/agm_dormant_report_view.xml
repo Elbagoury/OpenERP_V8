@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- AGM_Dormant -->
+	    <record id="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">ar_filing_as_dormant_company_ye_dec_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">ar_filing_as_dormant_company_ye_dec_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/ar_filing_as_dormant_company_ye_dec_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple"
+			model="res.partner"
+			name="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple"
+	        string="ar_filing_as_dormant_company_ye_dec_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/ar_filing_as_dormant_company_ye_dec_2015_flavors_apple.odt"/>
+        
+        <record id="attendance_list_agm_ye_dec_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">attendance_list_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">attendance_list_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/attendance_list_agm_ye_dec_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="attendance_list_agm_ye_dec_2015_flavors_apple"
+			model="res.partner"
+			name="attendance_list_agm_ye_dec_2015_flavors_apple"
+	        string="attendance_list_agm_ye_dec_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/attendance_list_agm_ye_dec_2015_flavors_apple.odt"/>
+        
+        <record id="confirmation_for_ye_31_december_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">confirmation_for_ye_31_december_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">confirmation_for_ye_31_december_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/confirmation_for_ye_31_december_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="confirmation_for_ye_31_december_2015_flavors_apple"
+			model="res.partner"
+			name="confirmation_for_ye_31_december_2015_flavors_apple"
+	        string="confirmation_for_ye_31_december_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/confirmation_for_ye_31_december_2015_flavors_apple.odt"/>
+	        
+        <record id="directors_resolution_agm_ye_dec_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">directors_resolution_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">directors_resolution_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/directors_resolution_agm_ye_dec_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="directors_resolution_agm_ye_dec_2015_flavors_apple"
+			model="res.partner"
+			name="directors_resolution_agm_ye_dec_2015_flavors_apple"
+	        string="directors_resolution_agm_ye_dec_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/directors_resolution_agm_ye_dec_2015_flavors_apple.odt"/>
+	        
+        <record id="dormant_company_confirmation_ye_31122015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">dormant_company_confirmation_ye_31122015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">dormant_company_confirmation_ye_31122015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/dormant_company_confirmation_ye_31122015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="dormant_company_confirmation_ye_31122015_flavors_apple"
+			model="res.partner"
+			name="dormant_company_confirmation_ye_31122015_flavors_apple"
+	        string="dormant_company_confirmation_ye_31122015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/dormant_company_confirmation_ye_31122015_flavors_apple.odt"/>
+	        
+        <record id="engement_letter" model="ir.actions.report.xml">
+	        <field name="name">engement_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">engement_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/engement_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="engement_letter"
+			model="res.partner"
+			name="engement_letter"
+	        string="engement_letter"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/engement_letter.odt"/>
+	        
+        <record id="minutes_of_meeting_agm_ye_dec_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">minutes_of_meeting_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">minutes_of_meeting_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/minutes_of_meeting_agm_ye_dec_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="minutes_of_meeting_agm_ye_dec_2015_flavors_apple"
+			model="res.partner"
+			name="minutes_of_meeting_agm_ye_dec_2015_flavors_apple"
+	        string="minutes_of_meeting_agm_ye_dec_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/minutes_of_meeting_agm_ye_dec_2015_flavors_apple.odt"/>
+	        
+        <record id="notice_of_meeting_agm_ye_dec_2015_flavors_apple" model="ir.actions.report.xml">
+	        <field name="name">notice_of_meeting_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">notice_of_meeting_agm_ye_dec_2015_flavors_apple</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_dormant/notice_of_meeting_agm_ye_dec_2015_flavors_apple.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="notice_of_meeting_agm_ye_dec_2015_flavors_apple"
+			model="res.partner"
+			name="notice_of_meeting_agm_ye_dec_2015_flavors_apple"
+	        string="notice_of_meeting_agm_ye_dec_2015_flavors_apple"
+	        rml="tgb_crm_customized/report/agm/agm_dormant/notice_of_meeting_agm_ye_dec_2015_flavors_apple.odt"/>
+
+	</data>
+</openerp>

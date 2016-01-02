@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- AGM_Strike off_Templates -->
+        <record id="company_info_20150627" model="ir.actions.report.xml">
+	        <field name="name">company_info_20150627</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">company_info_20150627</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/company_info_20150627.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="company_info_20150627"
+			model="res.partner"
+			name="company_info_20150627"
+	        string="company_info_20150627"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/company_info_20150627.ods"/>
+	        
+        <record id="strike_off_acra_resolution" model="ir.actions.report.xml">
+	        <field name="name">strike_off_acra_resolution</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_acra_resolution</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_acra_resolution.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_acra_resolution"
+			model="res.partner"
+			name="strike_off_acra_resolution"
+	        string="strike_off_acra_resolution"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_acra_resolution.odt"/>
+	        
+        <record id="strike_off_agreement_letter" model="ir.actions.report.xml">
+	        <field name="name">strike_off_agreement_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_agreement_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_agreement_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_agreement_letter"
+			model="res.partner"
+			name="strike_off_agreement_letter"
+	        string="strike_off_agreement_letter"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_agreement_letter.odt"/>
+	        
+        <record id="strike_off_appointment_letter" model="ir.actions.report.xml">
+	        <field name="name">strike_off_appointment_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_appointment_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_appointment_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_appointment_letter"
+			model="res.partner"
+			name="strike_off_appointment_letter"
+	        string="strike_off_appointment_letter"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_appointment_letter.odt"/>
+	        
+        <record id="strike_off_letter" model="ir.actions.report.xml">
+	        <field name="name">strike_off_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_letter"
+			model="res.partner"
+			name="strike_off_letter"
+	        string="strike_off_letter"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_letter.odt"/>
+	        
+        <record id="strike_off_letter_to_iras" model="ir.actions.report.xml">
+	        <field name="name">strike_off_letter_to_iras</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_letter_to_iras</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_letter_to_iras.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_letter_to_iras"
+			model="res.partner"
+			name="strike_off_letter_to_iras"
+	        string="strike_off_letter_to_iras"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_letter_to_iras.odt"/>
+	        
+        <record id="strike_off_minutes" model="ir.actions.report.xml">
+	        <field name="name">strike_off_minutes</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_minutes</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_minutes.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_minutes"
+			model="res.partner"
+			name="strike_off_minutes"
+	        string="strike_off_minutes"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_minutes.odt"/>
+	        
+        <record id="strike_off_notice" model="ir.actions.report.xml">
+	        <field name="name">strike_off_notice</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_notice</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_notice.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_notice"
+			model="res.partner"
+			name="strike_off_notice"
+	        string="strike_off_notice"
+	        rml="tgb_crm_customized/report/agm/agm_strike_off_templates/strike_off_notice.odt"/>
+	        
+	</data>
+</openerp>

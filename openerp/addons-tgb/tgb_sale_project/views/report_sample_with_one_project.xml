@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="report_sample_with_one_project_document">
+    <t t-call="report.external_layout">
+        <div class="page">
+	        <div class="row">
+	        	<div class="col-xs-10">
+	        		<strong><span t-field="o.company_id.name"/></strong>
+	        		<span>(Co. Reg. No. / GST Reg. No. :)</span><br/>
+	                <span t-field="o.company_id.street"/><span> </span>
+	                <span t-field="o.company_id.street2"/><span>, </span>
+	                <span t-field="o.company_id.city"/><span> </span>
+	                <span t-field="o.company_id.zip"/><br/>
+	                <span>Tel: </span><span t-field="o.company_id.phone"/>
+	                <span>   Email: </span><span t-field="o.company_id.email"/>
+	                <span>   Website: </span><span t-field="o.company_id.website"/>
+	            </div>
+	            <div class="col-xs-2">
+	                <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 45px;"/>
+	            </div>
+	        </div>
+	        <br/>
+            <div class="row">
+	        	<div class="col-xs-6">
+	        		<h3><strong><span>QUOTATION</span></strong></h3>
+	            </div>
+	            <div class="col-xs-6">
+	                <table class="table table-bordered">
+	                    <tr>
+	                        <td>
+	                        	QUOTATION DATE:<br/>
+	                        	<span t-field="o.date_order"/>
+	                        </td>
+	                        <td>
+	                        	QUOTATION NO:<br/>
+	                        	<span t-field="o.name"/>
+                        	</td>
+	                    </tr>
+		            </table>
+	            </div>
+	        </div>
+            <br/>
+            <div class="row">
+	        	<div class="col-xs-6">
+	        		<table class="table table-bordered">
+	                    <tr>
+	                        <td>
+	                        	QUOTE TO:<br/>
+	                        	<span t-field="o.partner_id.name"/><br/>
+	                        	<span t-field="o.partner_id.street"/><span> </span>
+	                        	<span t-field="o.partner_id.street2"/><span>, </span>
+	                        	<span t-field="o.partner_id.city"/><span> </span>
+	                        	<span t-field="o.partner_id.zip"/><br/>
+	                        	<span>Tel: </span><span t-field="o.partner_id.phone"/><br/>
+	                        	<span>Attn: </span><span t-esc="get_contact(o.partner_id)['name']"/><br/>
+	                        	<span>Email: </span><span t-esc="get_contact(o.partner_id)['email']"/>
+	                        </td>
+	                    </tr>
+		            </table>
+	            </div>
+	            <div class="col-xs-6">
+	                <table class="table table-bordered">
+	                	<tbody class="sale_tbody">
+		                    <tr>
+		                        <td>
+		                        	VALIDITY:<br/>
+		                        	<span t-field="o.payment_term.name"/>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td>
+		                        	PRICE:<br/>
+		                        	Quoted in SGD exclude GST, ex-works Singapore
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td>
+		                        	TERMS:<br/>
+		                        	To be discussed
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>
+	            </div>
+	        </div>
+            <br/>
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="border-black">
+                        <th class="text-center">ITEM#</th>
+                        <th class="text-center">DESCRIPTION</th>
+                        <th class="text-center">QTY#</th>
+                        <th class="text-center">U/PRICE</th>
+                        <th class="text-center">T/PRICE</th>
+                    </tr>
+               </thead>
+               <tbody class="sale_tbody">
+                    <tr t-foreach="o.list_project_line" t-as="l">
+                        <td class="text-center">
+                        	<span t-esc="l_index+1"/>
+                        </td>
+                        <td>
+                        	<span t-field="l.name"/><br/>
+                        	<span t-foreach="l.project_line" t-as="p">
+                        		<span t-if="not p.assembly_cost">
+	                        		<span t-field="p.quantity"/>
+	                        		<span> </span>
+	                        		<span>, </span>
+	                        		<span t-field="p.product_id.name"/>
+	                        		<span t-field="p.product_id.description"/>
+	                        		<br/>
+	                        	</span>
+                        	</span>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="l.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.total_amount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.total_price"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <div class="row">
+	        	<div class="col-xs-pull-12 text-right">
+	        		<span>GRAND TOTAL</span><span> (</span><span t-field="o.currency_id.name"/><span>) </span><span t-esc="get_total(o.list_project_line)"/>
+	            </div>
+	        </div>
+	        <br/>
+	        <div class="row">
+	        	<div class="col-xs-pull-12">
+	        		<span>NOTE:</span><br/>
+	        		<span>1. Buyer shall bear his/her own bank remittance lee and correspondent (intermediary) bank charges - OUR.</span><br/>
+	        		<span>2. Please inquire the type of certificates, drawings and other documents required prior placing order as it might be subjected to an adder cost</span><br/>
+	        		<span>3. Please indicate our QUOTATION NO. inside your Purchase Order and no cancellation is allow upon receipt of order.</span><br/>
+	        		<br/>
+	        		<span>PREPARED BY: </span><span t-field="o.user_id.name"/><span> (</span><span t-field="o.user_id.partner_id.email"/><span>) </span>
+	            </div>
+	        </div>
+        </div>
+    </t>
+</template>
+
+<template id="report_sample_with_one_project">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'tgb_sale_project.report_sample_with_one_project_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

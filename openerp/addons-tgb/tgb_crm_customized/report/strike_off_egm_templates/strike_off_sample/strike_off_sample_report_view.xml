@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Strike off Sample -->
+		<record id="agreement_strike_off" model="ir.actions.report.xml">
+	        <field name="name">agreement_strike_off</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">agreement_strike_off</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/agreement_strike_off.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="agreement_strike_off"
+			model="res.partner"
+			name="agreement_strike_off"
+	        string="agreement_strike_off"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/agreement_strike_off.odt"/>
+	        
+        <record id="appointment_letter_flavors_whisky" model="ir.actions.report.xml">
+	        <field name="name">appointment_letter_flavors_whisky</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">appointment_letter_flavors_whisky</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/appointment_letter_flavors_whisky.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="appointment_letter_flavors_whisky"
+			model="res.partner"
+			name="appointment_letter_flavors_whisky"
+	        string="appointment_letter_flavors_whisky"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/appointment_letter_flavors_whisky.odt"/>
+	        
+        <record id="egm_notice_strike_off" model="ir.actions.report.xml">
+	        <field name="name">egm_notice_strike_off</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">egm_notice_strike_off</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/egm_notice_strike_off.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="egm_notice_strike_off"
+			model="res.partner"
+			name="egm_notice_strike_off"
+	        string="egm_notice_strike_off"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/egm_notice_strike_off.odt"/>
+	        
+        <record id="flavors_whisky_strike_off_letter" model="ir.actions.report.xml">
+	        <field name="name">flavors_whisky_strike_off_letter</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">flavors_whisky_strike_off_letter</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/flavors_whisky_strike_off_letter.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="flavors_whisky_strike_off_letter"
+			model="res.partner"
+			name="flavors_whisky_strike_off_letter"
+	        string="flavors_whisky_strike_off_letter"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/flavors_whisky_strike_off_letter.odt"/>
+	        
+        <record id="letter_to_irsa" model="ir.actions.report.xml">
+	        <field name="name">letter_to_irsa</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">letter_to_irsa</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/letter_to_irsa.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="letter_to_irsa"
+			model="res.partner"
+			name="letter_to_irsa"
+	        string="letter_to_irsa"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/letter_to_irsa.odt"/>
+	        
+        <record id="minutes" model="ir.actions.report.xml">
+	        <field name="name">minutes</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">minutes</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/minutes.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="minutes"
+			model="res.partner"
+			name="minutes"
+	        string="minutes"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/minutes.odt"/>
+	        
+        <record id="request_handover_secretary_doc_flavors_whisky" model="ir.actions.report.xml">
+	        <field name="name">request_handover_secretary_doc_flavors_whisky</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">request_handover_secretary_doc_flavors_whisky</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/request_handover_secretary_doc_flavors_whisky.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="request_handover_secretary_doc_flavors_whisky"
+			model="res.partner"
+			name="request_handover_secretary_doc_flavors_whisky"
+	        string="request_handover_secretary_doc_flavors_whisky"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/request_handover_secretary_doc_flavors_whisky.odt"/>
+	        
+        <record id="resolution_strike_off_egm" model="ir.actions.report.xml">
+	        <field name="name">resolution_strike_off_egm</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">resolution_strike_off_egm</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/resolution_strike_off_egm.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="resolution_strike_off_egm"
+			model="res.partner"
+			name="resolution_strike_off_egm"
+	        string="resolution_strike_off_egm"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/resolution_strike_off_egm.odt"/>
+	        
+        <record id="strike_off_declaration_flavors_apple_goh_hock_leong" model="ir.actions.report.xml">
+	        <field name="name">strike_off_declaration_flavors_apple_goh_hock_leong</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">strike_off_declaration_flavors_apple_goh_hock_leong</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/strike_off_declaration_flavors_apple_goh_hock_leong.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="strike_off_declaration_flavors_apple_goh_hock_leong"
+			model="res.partner"
+			name="strike_off_declaration_flavors_apple_goh_hock_leong"
+	        string="strike_off_declaration_flavors_apple_goh_hock_leong"
+	        rml="tgb_crm_customized/report/strike_off_egm_templates/strike_off_sample/strike_off_declaration_flavors_apple_goh_hock_leong.odt"/>
+	        
+	</data>
+</openerp>

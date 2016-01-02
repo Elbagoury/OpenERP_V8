@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='child_ids']/form/sheet/group/field[@name='mobile']" position="after">
+            		<field name="nric"/>
+            		<field name="chairman"/>
+            	</xpath>
+            	<xpath expr="//form/sheet/notebook/page[@name='sales_purchases']" position="before">
+            		<page string="Payroll Details">
+                        <group>
+                        	<group>
+                            	<field name="uen"/>
+                            	<field name="chinese_name"/>
+                            	<field name="incorporation_date"/>
+                            	<field name="director_appt_date"/>
+                            	<field name="secretary_appt_date"/>
+                            	<field name="employment"/>
+                            	<field name="paid_up_capital"/>
+                            </group>
+                            <group>
+                            	<field name="c_status"/>
+                            	<field name="race"/>
+                            	<field name="country_id"/>
+                            	<field name="block_house_no"/>
+                            	<field name="street_name"/>
+                            	<field name="level_no"/>
+                            	<field name="unit_no"/>
+                            	<field name="postal_code"/>
+                            </group>
+                        </group>
+                        <group>
+                        	<group>
+                            	<field name="period_year"/>
+                            	<field name="fs_start_date"/>
+                            	<field name="fs_end_date"/>
+                            	<field name="axp_report"/>
+                            	<field name="estimate_chargable_income_date"/>
+                            	<field name="annual_general_meeting_date"/>
+                            	<field name="annual_return_date"/>
+                            	<field name="financial_month"/>
+                            </group>
+                            <group>
+                            	<field name="next_annual_general_meeting_due_date"/>
+                            	<field name="sole_proprietary_partnership"/>
+                            	<field name="last_financiall_year_end"/>
+                            	<field name="sole_proprietary_partnership_date"/>
+                            	<field name="tax_form_cs"/>
+                            	<field name="submit_monthly_cpf"/>
+                            	<field name="compute_submit_yearly_staff_salary"/>
+                            	<field name="remarks_1"/>
+                            </group>
+                        </group>
+                    </page>
+            		<page name='crm_detail' string="CRM Details">
+                        <group>
+                            <group>
+                            	<label for="street_personal" string="Personal Address"/>
+	                            <div>
+	                                <field name="street_personal" placeholder="Street..." />
+	                                <field name="street2_personal"/>
+	                                <div class="address_format">
+	                                    <field name="city_personal" placeholder="City" style="width: 40%%"/>
+	                                    <field name="state_personal_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' />
+	                                    <field name="zip_personal" placeholder="ZIP" style="width: 20%%" />
+	                                </div>
+	                                <field name="country_personal_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}' />
+	                            </div>
+                            </group>
+                            <group>
+                            	<label for="street_secretary" string="Secretary Address"/>
+	                            <div>
+	                                <field name="street_secretary" placeholder="Street..." />
+	                                <field name="street2_secretary"/>
+	                                <div class="address_format">
+	                                    <field name="city_secretary" placeholder="City" style="width: 40%%"/>
+	                                    <field name="state_secretary_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' />
+	                                    <field name="zip_secretary" placeholder="ZIP" style="width: 20%%" />
+	                                </div>
+	                                <field name="country_secretary_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}' />
+	                            </div>
+                            </group>
+                        </group>
+                        <group>
+                        	<group>
+                            	<field name="company_roc"/>
+                            	<field name="nric"/>
+                            	<label for="signature_specimen"/>
+								<h2><field name="signature_specimen" widget="signature"/></h2>
+                            </group>
+                            <group>
+                            	<field name="hp"/>
+                            	<field name="office_no"/>
+                            	<field name="period_of_year"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Document Collection">
+                    	<field name='document_collection_ids'>
+                    		<form string="Document Collection" >
+                    			<field name="name" />
+			                    <group>
+				                    <group>
+				                    	<field name="alert_date" />
+					                    <field name="document_sales_invoice"/>
+					                    <field name="document_receipt"/>
+					                    <field name="document_payment_voucher"/>
+					                    <field name="document_bank_statement"/>
+					                    <field name="document_rental_contract"/>
+					                    <field name="document_petty_cash"/>
+				                    </group>
+				                    <group>
+					                    <field name="tracking_sales_invoice"/>
+					                    <field name="tracking_receipt"/>
+					                    <field name="tracking_payment_voucher"/>
+					                    <field name="tracking_bank_statement"/>
+					                    <field name="tracking_rental_contract"/>
+					                    <field name="tracking_petty_cash"/>
+				                    </group>
+			                    </group>
+                    		</form>
+                    		<tree string="Document Collection" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="document_sales_invoice"/>
+			                    <field name="document_receipt"/>
+			                    <field name="document_payment_voucher"/>
+			                    <field name="document_bank_statement"/>
+			                    <field name="document_rental_contract"/>
+			                    <field name="document_petty_cash"/>
+			                </tree>
+		                </field>
+                    </page>
+                    <page string="Tracking Collection">
+                    	<field name='tracking_collection_ids'>
+                    		<tree string="Tracking Collection" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="tracking_sales_invoice"/>
+			                    <field name="tracking_receipt"/>
+			                    <field name="tracking_payment_voucher"/>
+			                    <field name="tracking_bank_statement"/>
+			                    <field name="tracking_rental_contract"/>
+			                    <field name="tracking_petty_cash"/>
+			                </tree>
+		                </field>
+                    </page>
+                    <page string="Account Adjustment">
+                    	<field name='account_adjustment_ids'>
+                    		<tree string="Account Adjustment" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="account_adjustment"/>
+			                </tree>
+		                </field>
+                    </page>
+                    <page string="Account Finalization">
+                    	<field name='account_finalization_ids'>
+                    		<tree string="Account Finalization" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="account_finalization"/>
+			                </tree>
+		                </field>
+                    </page>
+                    <page string="Estimate Chargeable Income">
+                    	<field name='estimate_chargeable_income_ids'>
+                    		<tree string="Estimate Chargeable Income" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="document_collection"/>
+			                </tree>
+		                </field>
+                    </page>
+                    <page string="Annual Report Preparation">
+                    	<field name='annual_report_preparation_ids'>
+                    		<tree string="Annual Report Preparation" editable='top'>
+			                    <field name="name" />
+			                    <field name="alert_date" />
+			                    <field name="document_collection"/>
+			                </tree>
+		                </field>
+                    </page>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">AGM</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_agm'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_eci_template">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">ECI Template</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_eci_template'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+
+		<record model="ir.values" id="wizard_report_partner_appointment_letters">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Appointment Letters</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_appointment_letters'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_appointment_of_secretary">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Appointment of Secretary</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_appointment_of_secretary'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_change_of_company_name">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Change of Company Name</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_change_of_company_name'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+
+		<record model="ir.values" id="wizard_report_partner_incorporation_1st_resolution_two_directors">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Incorporation_1st Resolution_Two Directors</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_incorporation_1st_resolution_two_directors'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+
+		<record model="ir.values" id="wizard_report_partner_issue_shares">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Issue shares</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_issue_shares'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_resignation_director_secretary">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Resignation of Director and Secretary</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_resignation_director_secretary'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_resolution_form">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">resolution form</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_resolution_form'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+        
+        <record model="ir.values" id="wizard_report_partner_share_transfer">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">share transfer</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_share_transfer'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+		
+		<record model="ir.values" id="wizard_report_partner_strike_off_egm_templates">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Strike off_EGM_Templates</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard_report_strike_off_egm_templates'))" />
+            <field name="key">action</field>
+            <field name="model">res.partner</field>
+        </record>
+		
+    </data>
+</openerp>
