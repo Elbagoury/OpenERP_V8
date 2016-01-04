@@ -29,6 +29,7 @@ class Parser(report_sxw.rml_parse):
             'get_ship_to_zip': self.get_ship_to_zip,
             'get_contact': self.get_contact,
             'get_customer_po_no': self.get_customer_po_no,
+            'get_quotation_no': self.get_quotation_no,
         })
         
     def get_datenow(self):
@@ -86,6 +87,17 @@ class Parser(report_sxw.rml_parse):
         if do_name:
             sql = '''
                 select customer_po_no from sale_order where name in (select origin from stock_picking where name='%s')
+            '''%(do_name)
+            self.cr.execute(sql)
+            sale = self.cr.fetchone()
+            return sale and sale[0] or ''
+        return customer_po_no
+    
+    def get_quotation_no(self, do_name):
+        customer_po_no = ''
+        if do_name:
+            sql = '''
+                select name from sale_order where name in (select origin from stock_picking where name='%s')
             '''%(do_name)
             self.cr.execute(sql)
             sale = self.cr.fetchone()

@@ -5,3 +5,4 @@ import sale
 import stock
 import invoice
 import purchase
+import product

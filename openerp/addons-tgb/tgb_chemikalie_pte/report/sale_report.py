@@ -28,6 +28,7 @@ class Parser(report_sxw.rml_parse):
             'get_ship_to_country': self.get_ship_to_country,
             'get_ship_to_zip': self.get_ship_to_zip,
             'get_contact': self.get_contact,
+            'get_invoice_no': self.get_invoice_no,
         })
         
     def get_datenow(self):
@@ -79,5 +80,16 @@ class Parser(report_sxw.rml_parse):
         if partner and partner.child_ids:
             contact = partner.child_ids[0].name
         return contact
+    
+    def get_invoice_no(self, name):
+        invoice_no = ''
+        if name:
+            sql = '''
+                select number from account_invoice where origin in (select name from stock_picking where origin='%s')
+            '''%(name)
+            self.cr.execute(sql)
+            invoice = self.cr.fetchone()
+            return invoice and invoice[0] or ''
+        return invoice_no
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

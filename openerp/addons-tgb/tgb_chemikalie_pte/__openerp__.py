@@ -24,7 +24,7 @@
     'version': '1.0',
     'category': 'TGB',
     'sequence': 1,
-    'depends': ['sale','stock','sale_stock','stock_account','account','purchase','report_aeroo','report_aeroo_ooo'],
+    'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo','report_aeroo_ooo'],
     'data': [
         'report/partner_report_view.xml',
         'report/sale_report_view.xml',
@@ -36,6 +36,7 @@
         'stock_view.xml',
         'invoice_view.xml',
         'purchase_view.xml',
+        'product_view.xml',
         'report_view.xml',
     ],
     'css' : [
