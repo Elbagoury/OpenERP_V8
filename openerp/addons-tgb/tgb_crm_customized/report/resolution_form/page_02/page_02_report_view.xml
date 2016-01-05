@@ -210,16 +210,16 @@
 	        string="form29a"
 	        rml="tgb_crm_customized/report/resolution_form/page_02/form29a.odt"/>
 	        
-        <record id="form29a_propose_special_resolution_in_company" model="ir.actions.report.xml">
-	        <field name="name">form29a_propose_special_resolution_in_company</field>
+        <record id="form25_allotment_not_cash" model="ir.actions.report.xml">
+	        <field name="name">form25_allotment_not_cash</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">form29a_propose_special_resolution_in_company</field>
+	        <field name="report_name">form25_allotment_not_cash</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form29a_propose_special_resolution_in_company.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form25_allotment_not_cash.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -227,11 +227,11 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="form29a_propose_special_resolution_in_company"
+			id="form25_allotment_not_cash"
 			model="res.partner"
-			name="form29a_propose_special_resolution_in_company"
-	        string="form29a_propose_special_resolution_in_company"
-	        rml="tgb_crm_customized/report/resolution_form/page_02/form29a_propose_special_resolution_in_company.odt"/>
+			name="form25_allotment_not_cash"
+	        string="form25_allotment_not_cash"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form25_allotment_not_cash.odt"/>
 	        
 	</data>
 </openerp>

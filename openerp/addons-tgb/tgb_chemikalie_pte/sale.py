@@ -77,6 +77,13 @@ class sale_order_line(osv.osv):
             })
         return result
     
+    def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
+        res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id, context)
+        res.update({
+                'brand': line.brand,
+            })
+        return res
+    
 sale_order_line()
 
 class procurement_order(osv.osv):

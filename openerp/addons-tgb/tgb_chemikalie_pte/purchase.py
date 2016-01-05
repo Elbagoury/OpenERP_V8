@@ -41,6 +41,19 @@ class purchase_order_line(osv.osv):
         'brand': fields.char('Brand', size=1024),
     }
     
+    def onchange_product_id(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,
+            partner_id, date_order=False, fiscal_position_id=False, date_planned=False,
+            name=False, price_unit=False, state='draft', context=None):
+        res = super(purchase_order_line, self).onchange_product_id(cr, uid, ids, pricelist_id, product_id, qty, uom_id,
+            partner_id, date_order, fiscal_position_id, date_planned,
+            name, price_unit, state, context)
+        if product_id:
+            product_obj = self.pool.get('product.product').browse(cr, uid, product_id)
+            res['value'].update({
+                'brand': product_obj.brand,
+            })
+        return res
+    
 purchase_order_line()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

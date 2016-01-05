@@ -48,5 +48,12 @@ class res_partner(osv.osv):
         'delivery_country_id': fields.many2one('res.country', 'Country', ondelete='restrict'),
     }
     
+    def onchange_delivery_state(self, cr, uid, ids, state_id=False, context=None):
+        vals = {}
+        if state_id:
+            state = self.pool.get('res.country.state').browse(cr, uid, state_id)
+            vals = {'delivery_country_id': state.country_id.id}
+        return {'value': vals}
+    
 res_partner()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

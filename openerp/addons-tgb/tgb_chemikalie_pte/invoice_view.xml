@@ -11,7 +11,7 @@
             		<field name="part_no"/>
             		<field name="brand"/>
             	</xpath>
-            	<xpath expr="//button[@name='invoice_print']" position="after">
+            	<xpath expr="//button[@name='invoice_print']" position="replace">
             	</xpath>
             </field>
         </record>

@@ -21,7 +21,7 @@
                         <field name="delivery_street2"/>
                         <div class="address_format">
                             <field name="delivery_city" placeholder="City" style="width: 40%"/>
-                            <field name="delivery_state_id" class="oe_no_button" placeholder="State" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>
+                            <field name="delivery_state_id" class="oe_no_button" placeholder="State" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_delivery_state(delivery_state_id)"/>
                             <field name="delivery_zip" placeholder="ZIP" style="width: 20%" attrs="{'readonly': [('use_parent_address','=',True)]}"/>
                         </div>
                         <field name="delivery_country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>

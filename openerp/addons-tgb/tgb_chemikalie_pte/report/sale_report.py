@@ -89,6 +89,12 @@ class Parser(report_sxw.rml_parse):
             '''%(name)
             self.cr.execute(sql)
             invoice = self.cr.fetchone()
+            if not invoice:
+                sql = '''
+                    select number from account_invoice where origin='%s'
+                '''%(name)
+                self.cr.execute(sql)
+                invoice = self.cr.fetchone()
             return invoice and invoice[0] or ''
         return invoice_no
 

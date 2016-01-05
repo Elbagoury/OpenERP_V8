@@ -30,6 +30,7 @@ class Parser(report_sxw.rml_parse):
             'get_contact': self.get_contact,
             'get_customer_po_no': self.get_customer_po_no,
             'get_quotation_no': self.get_quotation_no,
+            'get_do_no': self.get_do_no,
         })
         
     def get_datenow(self):
@@ -82,26 +83,61 @@ class Parser(report_sxw.rml_parse):
             contact = partner.child_ids[0].name
         return contact
 
-    def get_customer_po_no(self, do_name):
+    def get_customer_po_no(self, origin):
         customer_po_no = ''
-        if do_name:
+        if origin:
             sql = '''
                 select customer_po_no from sale_order where name in (select origin from stock_picking where name='%s')
-            '''%(do_name)
+            '''%(origin)
             self.cr.execute(sql)
             sale = self.cr.fetchone()
-            return sale and sale[0] or ''
+            if not sale:
+                sql = '''
+                    select customer_po_no from sale_order where name='%s'
+                '''%(origin)
+                self.cr.execute(sql)
+                sale = self.cr.fetchone()
+                return sale and sale[0] or ''
+            else:
+                return sale[0]
         return customer_po_no
     
-    def get_quotation_no(self, do_name):
-        customer_po_no = ''
-        if do_name:
+    def get_quotation_no(self, origin):
+        quotation_no = ''
+        if origin:
             sql = '''
                 select name from sale_order where name in (select origin from stock_picking where name='%s')
-            '''%(do_name)
+            '''%(origin)
             self.cr.execute(sql)
             sale = self.cr.fetchone()
-            return sale and sale[0] or ''
-        return customer_po_no
+            if not sale:
+                sql = '''
+                    select name from sale_order where name='%s'
+                '''%(origin)
+                self.cr.execute(sql)
+                sale = self.cr.fetchone()
+                return sale and sale[0] or ''
+            else:
+                return sale[0]
+        return quotation_no
+    
+    def get_do_no(self, origin):
+        do_no = ''
+        if origin:
+            sql = '''
+                select name from stock_picking where name='%s'
+            '''%(origin)
+            self.cr.execute(sql)
+            do = self.cr.fetchone()
+            if not do:
+                sql = '''
+                    select name from stock_picking where origin='%s'
+                '''%(origin)
+                self.cr.execute(sql)
+                do = self.cr.fetchone()
+                return do and do[0] or ''
+            else:
+                return do[0]
+        return do_no
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

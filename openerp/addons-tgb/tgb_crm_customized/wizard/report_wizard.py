@@ -2072,12 +2072,12 @@ class report_wizard_resolution_form_page02(osv.osv_memory):
             res.update({'form29a_fname': report_val['datas_fname'],
                         'form29a_datas': report_val['db_datas']})
             
-            report_filename='form29a_Propose special resolution to give financial Assistance for Acquistion of Shares or units in company'
+            report_filename='form25 (allotment NOT cash)'
             report_extention='.doc'
-            report_name='form29a_propose_special_resolution_in_company'
+            report_name='form25_allotment_not_cash'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form29a_propose_special_resolution_in_company_fname': report_val['datas_fname'],
-                        'form29a_propose_special_resolution_in_company_datas': report_val['db_datas']})
+            res.update({'form25_allotment_not_cash_fname': report_val['datas_fname'],
+                        'form25_allotment_not_cash_datas': report_val['db_datas']})
             
         return res
     
@@ -2109,8 +2109,8 @@ class report_wizard_resolution_form_page02(osv.osv_memory):
         'form29a_fname': fields.char('File Name',size=256),
         'form29a_datas': fields.binary('Database Data'),
         
-        'form29a_propose_special_resolution_in_company_fname': fields.char('File Name',size=256),
-        'form29a_propose_special_resolution_in_company_datas': fields.binary('Database Data'),
+        'form25_allotment_not_cash_fname': fields.char('File Name',size=256),
+        'form25_allotment_not_cash_datas': fields.binary('Database Data'),
         
         'form26_statement_of_amount_or_rate_fname': fields.char('File Name',size=256),
         'form26_statement_of_amount_or_rate_datas': fields.binary('Database Data'),
