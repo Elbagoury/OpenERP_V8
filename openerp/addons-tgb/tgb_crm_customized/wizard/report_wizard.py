@@ -1138,12 +1138,12 @@ class report_wizard_appointment_of_secretary(osv.osv_memory):
         res.update({'request_handover_secretary_doc_han_dian_fname': report_val['datas_fname'],
                     'request_handover_secretary_doc_han_dian_datas': report_val['db_datas']})
         
-        report_filename='Termination Letter of Corp Sec with Amicorp_Aquavina Investment'
-        report_extention='.doc'
-        report_name='termination_letter_of_corp_amicorp_aquavina_investment'
-        report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-        res.update({'termination_letter_of_corp_amicorp_aquavina_investment_fname': report_val['datas_fname'],
-                    'termination_letter_of_corp_amicorp_aquavina_investment_datas': report_val['db_datas']})
+#         report_filename='Termination Letter of Corp Sec with Amicorp_Aquavina Investment'
+#         report_extention='.doc'
+#         report_name='termination_letter_of_corp_amicorp_aquavina_investment'
+#         report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+#         res.update({'termination_letter_of_corp_amicorp_aquavina_investment_fname': report_val['datas_fname'],
+#                     'termination_letter_of_corp_amicorp_aquavina_investment_datas': report_val['db_datas']})
         
         report_filename='resigned letter'
         report_extention='.doc'
@@ -2065,12 +2065,12 @@ class report_wizard_resolution_form_page02(osv.osv_memory):
             res.update({'form28_increase_share_capital_fname': report_val['datas_fname'],
                         'form28_increase_share_capital_datas': report_val['db_datas']})
             
-            report_filename='form29a'
+            report_filename='form28a_Increase share capital in Foreign currency'
             report_extention='.doc'
-            report_name='form29a'
+            report_name='form28a_increase_share_capital_in_foreign_currency'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form29a_fname': report_val['datas_fname'],
-                        'form29a_datas': report_val['db_datas']})
+            res.update({'form28a_increase_share_capital_in_foreign_currency_fname': report_val['datas_fname'],
+                        'form28a_increase_share_capital_in_foreign_currency_datas': report_val['db_datas']})
             
             report_filename='form25 (allotment NOT cash)'
             report_extention='.doc'
@@ -2106,8 +2106,8 @@ class report_wizard_resolution_form_page02(osv.osv_memory):
         'form28_increase_share_capital_fname': fields.char('File Name',size=256),
         'form28_increase_share_capital_datas': fields.binary('Database Data'),
         
-        'form29a_fname': fields.char('File Name',size=256),
-        'form29a_datas': fields.binary('Database Data'),
+        'form28a_increase_share_capital_in_foreign_currency_fname': fields.char('File Name',size=256),
+        'form28a_increase_share_capital_in_foreign_currency_datas': fields.binary('Database Data'),
         
         'form25_allotment_not_cash_fname': fields.char('File Name',size=256),
         'form25_allotment_not_cash_datas': fields.binary('Database Data'),
@@ -2207,26 +2207,26 @@ class report_wizard_resolution_form_page03(osv.osv_memory):
             res.update({'form36_particulars_fname': report_val['datas_fname'],
                         'form36_particulars_datas': report_val['db_datas']})
             
-            report_filename='form37_Affidavit in respect of property acquired by company or foreign company while property is subject to a charge'
+            report_filename='form29a'
             report_extention='.doc'
-            report_name='form37_affidavit'
+            report_name='form29a'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form37_affidavit_fname': report_val['datas_fname'],
-                        'form37_affidavit_datas': report_val['db_datas']})
+            res.update({'form29a_fname': report_val['datas_fname'],
+                        'form29a_datas': report_val['db_datas']})
             
-            report_filename='form38a_Affidavit in respect of property acquired by foreign company while property is subject to a change before registration of Foreign company in singapore'
+            report_filename='form29a_Propose special resolution to give financial Assistance for Acquistion of Shares or units in company'
             report_extention='.doc'
-            report_name='form38a_affidavit'
+            report_name='form29a_propose_special_resolution_in_company'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form38a_affidavit_fname': report_val['datas_fname'],
-                        'form38a_affidavit_datas': report_val['db_datas']})
+            res.update({'form29a_propose_special_resolution_in_company_fname': report_val['datas_fname'],
+                        'form29a_propose_special_resolution_in_company_datas': report_val['db_datas']})
             
-            report_filename='form38_Affidavit in respect of charge created by foreign comapny before registration of foreign company in singapore'
+            report_filename='form29c_notice of purchase or acquisition of ordinary share_stocks'
             report_extention='.doc'
-            report_name='form38_affidavit'
+            report_name='form29c_notice'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form38_affidavit_fname': report_val['datas_fname'],
-                        'form38_affidavit_datas': report_val['db_datas']})
+            res.update({'form29c_notice_fname': report_val['datas_fname'],
+                        'form29c_notice_datas': report_val['db_datas']})
             
         return res
     
@@ -2255,14 +2255,14 @@ class report_wizard_resolution_form_page03(osv.osv_memory):
         'form36_particulars_fname': fields.char('File Name',size=256),
         'form36_particulars_datas': fields.binary('Database Data'),
         
-        'form37_affidavit_fname': fields.char('File Name',size=256),
-        'form37_affidavit_datas': fields.binary('Database Data'),
+        'form29a_fname': fields.char('File Name',size=256),
+        'form29a_datas': fields.binary('Database Data'),
         
-        'form38a_affidavit_fname': fields.char('File Name',size=256),
-        'form38a_affidavit_datas': fields.binary('Database Data'),
+        'form29a_propose_special_resolution_in_company_fname': fields.char('File Name',size=256),
+        'form29a_propose_special_resolution_in_company_datas': fields.binary('Database Data'),
         
-        'form38_affidavit_fname': fields.char('File Name',size=256),
-        'form38_affidavit_datas': fields.binary('Database Data'),
+        'form29c_notice_fname': fields.char('File Name',size=256),
+        'form29c_notice_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):
@@ -2356,26 +2356,26 @@ class report_wizard_resolution_form_page04(osv.osv_memory):
             res.update({'form45b_secretary_fname': report_val['datas_fname'],
                         'form45b_secretary_datas': report_val['db_datas']})
             
-            report_filename='form46_Undertaking by director to take and pay for qualification shares'
+            report_filename='form37_Affidavit in respect of property acquired by company or foreign company while property is subject to a charge'
             report_extention='.doc'
-            report_name='form46_undertaking'
+            report_name='form37_affidavit'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form46_undertaking_fname': report_val['datas_fname'],
-                        'form46_undertaking_datas': report_val['db_datas']})
+            res.update({'form37_affidavit_fname': report_val['datas_fname'],
+                        'form37_affidavit_datas': report_val['db_datas']})
             
-            report_filename='form47_declaration by directores of registration of qualification shares (1)'
+            report_filename='form38_Affidavit in respect of charge created by foreign comapny before registration of foreign company in singapore'
             report_extention='.doc'
-            report_name='form47_declaration'
+            report_name='form38_affidavit'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form47_declaration_fname': report_val['datas_fname'],
-                        'form47_declaration_datas': report_val['db_datas']})
+            res.update({'form38_affidavit_fname': report_val['datas_fname'],
+                        'form38_affidavit_datas': report_val['db_datas']})
             
-            report_filename='form48B'
+            report_filename='form38a_Affidavit in respect of property acquired by foreign company while property is subject to a change before registration of Foreign company in singapore'
             report_extention='.doc'
-            report_name='form48b'
+            report_name='form38a_affidavit'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form48b_fname': report_val['datas_fname'],
-                        'form48b_datas': report_val['db_datas']})
+            res.update({'form38a_affidavit_fname': report_val['datas_fname'],
+                        'form38a_affidavit_datas': report_val['db_datas']})
             
         return res
     
@@ -2404,14 +2404,14 @@ class report_wizard_resolution_form_page04(osv.osv_memory):
         'form45b_secretary_fname': fields.char('File Name',size=256),
         'form45b_secretary_datas': fields.binary('Database Data'),
         
-        'form46_undertaking_fname': fields.char('File Name',size=256),
-        'form46_undertaking_datas': fields.binary('Database Data'),
+        'form37_affidavit_fname': fields.char('File Name',size=256),
+        'form37_affidavit_datas': fields.binary('Database Data'),
         
-        'form47_declaration_fname': fields.char('File Name',size=256),
-        'form47_declaration_datas': fields.binary('Database Data'),
+        'form38_affidavit_fname': fields.char('File Name',size=256),
+        'form38_affidavit_datas': fields.binary('Database Data'),
         
-        'form48b_fname': fields.char('File Name',size=256),
-        'form48b_datas': fields.binary('Database Data'),
+        'form38a_affidavit_fname': fields.char('File Name',size=256),
+        'form38a_affidavit_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):

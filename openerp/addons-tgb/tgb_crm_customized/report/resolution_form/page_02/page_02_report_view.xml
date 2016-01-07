@@ -187,16 +187,16 @@
 	        string="form28_increase_share_capital"
 	        rml="tgb_crm_customized/report/resolution_form/page_02/form28_increase_share_capital.odt"/>
 	        
-        <record id="form29a" model="ir.actions.report.xml">
-	        <field name="name">form29a</field>
+        <record id="form28a_increase_share_capital_in_foreign_currency" model="ir.actions.report.xml">
+	        <field name="name">form28a_increase_share_capital_in_foreign_currency</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">form29a</field>
+	        <field name="report_name">form28a_increase_share_capital_in_foreign_currency</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form29a.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_02/form28a_increase_share_capital_in_foreign_currency.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -204,11 +204,11 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="form29a"
+			id="form28a_increase_share_capital_in_foreign_currency"
 			model="res.partner"
-			name="form29a"
-	        string="form29a"
-	        rml="tgb_crm_customized/report/resolution_form/page_02/form29a.odt"/>
+			name="form28a_increase_share_capital_in_foreign_currency"
+	        string="form28a_increase_share_capital_in_foreign_currency"
+	        rml="tgb_crm_customized/report/resolution_form/page_02/form28a_increase_share_capital_in_foreign_currency.odt"/>
 	        
         <record id="form25_allotment_not_cash" model="ir.actions.report.xml">
 	        <field name="name">form25_allotment_not_cash</field>

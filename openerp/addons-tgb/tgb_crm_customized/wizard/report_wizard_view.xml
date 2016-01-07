@@ -961,7 +961,7 @@
                 	<field name="form27_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form27_redemption_of_redeemable_preference_shares_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form28_increase_share_capital_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form29a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form28a_increase_share_capital_in_foreign_currency_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form25_allotment_not_cash_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
@@ -975,8 +975,8 @@
 	                		<field name="form26_statement_of_amount_or_rate_datas" filename="form26_statement_of_amount_or_rate_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form27_datas" filename="form27_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form27_redemption_of_redeemable_preference_shares_datas" filename="form27_redemption_of_redeemable_preference_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+							<field name="form28a_increase_share_capital_in_foreign_currency_datas" filename="form28a_increase_share_capital_in_foreign_currency_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form28_increase_share_capital_datas" filename="form28_increase_share_capital_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form29a_datas" filename="form29a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1008,23 +1008,24 @@
                 	<field name="form34_particualars_in_respect_of_charge_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form35_containing_particulars_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form36_particulars_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form37_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form38a_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form38_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29a_propose_special_resolution_in_company_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form29c_notice_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
+	                		<field name="form29a_datas" filename="form29a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form29a_propose_special_resolution_in_company_datas" filename="form29a_propose_special_resolution_in_company_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form29b_non_resident_shares_of_company_datas" filename="form29b_non_resident_shares_of_company_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form29c_notice_datas" filename="form29c_notice_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form29d_purchase_or_acquisition_preference_shares_datas" filename="form29d_purchase_or_acquisition_preference_shares_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
 	                		<field name="form30_notice_of_place_datas" filename="form30_notice_of_place_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form33_affidavit_verifying_datas" filename="form33_affidavit_verifying_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form34_particualars_in_respect_of_charge_datas" filename="form34_particualars_in_respect_of_charge_fname" nolabel='1' readonly='1' colspan='2'/>
-	                	</group>
-	                	<group>
 	                		<field name="form35_containing_particulars_datas" filename="form35_containing_particulars_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form36_particulars_datas" filename="form36_particulars_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form37_affidavit_datas" filename="form37_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form38a_affidavit_datas" filename="form38a_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form38_affidavit_datas" filename="form38_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		
 	                	</group>
 	                </group>
 	                <footer>
@@ -1056,23 +1057,23 @@
                 	<field name="form45a_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form45_appt_director_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form45b_secretary_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form46_undertaking_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form47_declaration_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form48b_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form37_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form38_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form38a_affidavit_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
+	                		<field name="form37_affidavit_datas" filename="form37_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form38_affidavit_datas" filename="form38_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form38a_affidavit_datas" filename="form38a_affidavit_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form41_memorandum_datas" filename="form41_memorandum_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form42_memorandum_datas" filename="form42_memorandum_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form44a_change_of_situation_datas" filename="form44a_change_of_situation_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form44_change_address_datas" filename="form44_change_address_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form45a_datas" filename="form45a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
 	                		<field name="form45_appt_director_datas" filename="form45_appt_director_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form45b_secretary_datas" filename="form45b_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form46_undertaking_datas" filename="form46_undertaking_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form47_declaration_datas" filename="form47_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form48b_datas" filename="form48b_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form44a_change_of_situation_datas" filename="form44a_change_of_situation_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form44_change_address_datas" filename="form44_change_address_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45a_datas" filename="form45a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
