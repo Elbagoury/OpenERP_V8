@@ -29,6 +29,7 @@ class Parser(report_sxw.rml_parse):
             'get_ship_to_zip': self.get_ship_to_zip,
             'get_contact': self.get_contact,
             'get_invoice_no': self.get_invoice_no,
+            'get_bank': self.get_bank,
         })
         
     def get_datenow(self):
@@ -97,5 +98,18 @@ class Parser(report_sxw.rml_parse):
                 invoice = self.cr.fetchone()
             return invoice and invoice[0] or ''
         return invoice_no
-
+    
+    def get_bank(self, o):
+        res = []
+        if o.partner_id.bank_ids:
+            bank = o.partner_id.bank_ids[0]
+            res = [{
+                'name': bank.bank_name,
+                'address': (bank.street or '')+' '+(bank.street2 or '')+' '+(bank.country_id and bank.country_id.name or '')+' '+(bank.zip or ''),
+                'swift_code': bank.swift_code,
+                'acc_number': bank.acc_number,
+                'usd_acc_number': bank.usd_acc_number,
+            }]
+        return res
+    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

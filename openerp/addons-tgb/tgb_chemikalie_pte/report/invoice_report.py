@@ -31,6 +31,7 @@ class Parser(report_sxw.rml_parse):
             'get_customer_po_no': self.get_customer_po_no,
             'get_quotation_no': self.get_quotation_no,
             'get_do_no': self.get_do_no,
+            'get_bank': self.get_bank,
         })
         
     def get_datenow(self):
@@ -139,5 +140,18 @@ class Parser(report_sxw.rml_parse):
             else:
                 return do[0]
         return do_no
-
+    
+    def get_bank(self, o):
+        res = []
+        if o.partner_id.bank_ids:
+            bank = o.partner_id.bank_ids[0]
+            res = [{
+                'name': bank.bank_name,
+                'address': (bank.street or '')+' '+(bank.street2 or '')+' '+(bank.country_id and bank.country_id.name or '')+' '+(bank.zip or ''),
+                'swift_code': bank.swift_code,
+                'acc_number': bank.acc_number,
+                'usd_acc_number': bank.usd_acc_number,
+            }]
+        return res
+    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -37,6 +37,7 @@
         'invoice_view.xml',
         'purchase_view.xml',
         'product_view.xml',
+        'res_bank_view.xml',
         'report_view.xml',
     ],
     'css' : [

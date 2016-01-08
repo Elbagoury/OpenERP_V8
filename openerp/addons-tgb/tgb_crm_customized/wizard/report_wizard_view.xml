@@ -1069,11 +1069,11 @@
 	                		<field name="form42_memorandum_datas" filename="form42_memorandum_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="form45_appt_director_datas" filename="form45_appt_director_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form45b_secretary_datas" filename="form45b_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form44a_change_of_situation_datas" filename="form44a_change_of_situation_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form44_change_address_datas" filename="form44_change_address_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form45a_datas" filename="form45a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45_appt_director_datas" filename="form45_appt_director_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form45b_secretary_datas" filename="form45b_secretary_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>

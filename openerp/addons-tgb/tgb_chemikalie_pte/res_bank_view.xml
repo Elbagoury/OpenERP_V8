@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="view_partner_bank_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.bank.form.inherit</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='street']" position="after">
+            		<field name="street2"/>
+            	</xpath>
+            	<xpath expr="//field[@name='acc_number']" position="replace">
+            		<newline/>
+            		<field name="acc_number" placeholder="SGD Account No" string="SGD Account No"/>
+            		<field name="usd_acc_number" placeholder="USD Account No" string="USD Account No"/>
+            	</xpath>
+            	<xpath expr="//field[@name='bank_bic']" position="after">
+            		<field name="swift_code"/>
+            	</xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
