@@ -13,6 +13,10 @@
             	</xpath>
             	<xpath expr="//button[@name='invoice_print']" position="replace">
             	</xpath>
+            	<xpath expr="//field[@name='date_invoice']" position="after">
+            		<field name="sgd_acc_number"/>
+            		<field name="usd_acc_number"/>
+            	</xpath>
             </field>
         </record>
     

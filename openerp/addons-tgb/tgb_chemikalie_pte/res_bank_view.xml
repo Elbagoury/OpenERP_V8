@@ -19,5 +19,17 @@
             	</xpath>
             </field>
         </record>
+        
+        <record id="view_partner_property_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='bank_ids']/tree/field[@name='acc_number']" position="replace">
+            		<field name="acc_number" string="SGD Account No"/>
+            		<field name="usd_acc_number" string="USD Account No"/>
+            	</xpath>
+            </field>
+        </record>
     </data>
 </openerp>

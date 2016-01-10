@@ -33,6 +33,30 @@ import datetime
 import time
 import calendar
 
+class stock_picking(osv.osv):
+    _inherit = "stock.picking"
+    
+    def _get_invoice_vals(self, cr, uid, key, inv_type, journal_id, move, context=None):
+        if context is None:
+            context = {}
+        vals = super(stock_picking, self)._get_invoice_vals(cr, uid, key, inv_type, journal_id, move, context)
+        sale_obj = self.pool.get('sale.order')
+        sale_ids = sale_obj.search(cr, uid, [('name','=',move.picking_id.origin)])
+        sgd_acc_number = False
+        usd_acc_number = False
+        if sale_ids:
+            sale = sale_obj.browse(cr, uid, sale_ids[0])
+            sgd_acc_number =  sale.sgd_acc_number
+            usd_acc_number =  sale.usd_acc_number
+        vals.update({
+            'sgd_acc_number': sgd_acc_number,
+            'usd_acc_number': usd_acc_number,  
+        })
+        
+        return vals
+
+stock_picking()
+
 class stock_move(osv.osv):
     _inherit = "stock.move"
     

@@ -43,4 +43,14 @@ class account_invoice_line(osv.osv):
     
 account_invoice_line()
 
+class account_invoice(osv.osv):
+    _inherit = "account.invoice"
+    
+    _columns = {
+        'sgd_acc_number': fields.boolean('SGD Account No'),
+        'usd_acc_number': fields.boolean('USD Account No'),
+    }
+    
+account_invoice()
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

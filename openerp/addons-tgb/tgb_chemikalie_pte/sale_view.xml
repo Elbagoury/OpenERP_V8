@@ -14,6 +14,8 @@
             	</xpath>
             	<xpath expr="//field[@name='partner_id']" position="after">
             		<field name="customer_po_no"/>
+            		<field name="sgd_acc_number"/>
+            		<field name="usd_acc_number"/>
             	</xpath>
             </field>
         </record>

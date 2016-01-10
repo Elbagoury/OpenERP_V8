@@ -39,6 +39,8 @@ class sale_order(osv.osv):
     
     _columns = {
         'customer_po_no': fields.char("Customer's PO No.", size=1024),
+        'sgd_acc_number': fields.boolean('SGD Account No'),
+        'usd_acc_number': fields.boolean('USD Account No'),
     }
     
     def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
@@ -52,6 +54,17 @@ class sale_order(osv.osv):
         vals['part_no'] = line.part_no
         vals['brand'] = line.brand
         return vals
+    
+    def _prepare_invoice(self, cr, uid, order, lines, context=None):
+        if context is None:
+            context = {}
+            
+        invoice_vals = super(sale_order, self)._prepare_invoice(cr, uid, order, lines, context)
+        invoice_vals.update({
+            'sgd_acc_number': order.sgd_acc_number,
+            'usd_acc_number': order.usd_acc_number,
+        })
+        return invoice_vals
     
 sale_order()
 
