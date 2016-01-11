@@ -1108,8 +1108,14 @@
                 	<field name="form55_annual_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form56_certification_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form57_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form46_undertaking_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form47_declaration_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form48b_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
+	                		<field name="form46_undertaking_datas" filename="form46_undertaking_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form47_declaration_datas" filename="form47_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form48b_datas" filename="form48b_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form48c_report_on_conduct_datas" filename="form48c_report_on_conduct_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form48_statutory_datas" filename="form48_statutory_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form49_appt_co_officier_datas" filename="form49_appt_co_officier_fname" nolabel='1' readonly='1' colspan='2'/>

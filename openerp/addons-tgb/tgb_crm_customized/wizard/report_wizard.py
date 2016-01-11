@@ -2526,6 +2526,27 @@ class report_wizard_resolution_form_page05(osv.osv_memory):
             res.update({'form57_fname': report_val['datas_fname'],
                         'form57_datas': report_val['db_datas']})
             
+            report_filename='form46_Undertaking by director to take and pay for qualification shares'
+            report_extention='.doc'
+            report_name='form46_undertaking'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form46_undertaking_fname': report_val['datas_fname'],
+                        'form46_undertaking_datas': report_val['db_datas']})
+            
+            report_filename='form47_declaration by directores of registration of qualification shares'
+            report_extention='.doc'
+            report_name='form47_declaration'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form47_declaration_fname': report_val['datas_fname'],
+                        'form47_declaration_datas': report_val['db_datas']})
+            
+            report_filename='form48B'
+            report_extention='.doc'
+            report_name='form48b'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form48b_fname': report_val['datas_fname'],
+                        'form48b_datas': report_val['db_datas']})
+            
         return res
     
     _columns = {
@@ -2561,6 +2582,15 @@ class report_wizard_resolution_form_page05(osv.osv_memory):
         
         'form57_fname': fields.char('File Name',size=256),
         'form57_datas': fields.binary('Database Data'),
+        
+        'form46_undertaking_fname': fields.char('File Name',size=256),
+        'form46_undertaking_datas': fields.binary('Database Data'),
+        
+        'form47_declaration_fname': fields.char('File Name',size=256),
+        'form47_declaration_datas': fields.binary('Database Data'),
+        
+        'form48b_fname': fields.char('File Name',size=256),
+        'form48b_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):

@@ -145,7 +145,10 @@ class Parser(report_sxw.rml_parse):
             select id,name,nric from res_partner where upper(function)='DIRECTOR' and parent_id=%s order by id limit 1
         '''%(partner_id)
         self.cr.execute(sql)
-        return self.cr.dictfetchone()
+        partner = self.cr.dictfetchone()
+        if partner:
+            return partner
+        return {'id':False,'name':'','nric':''} 
     
     def get_director2(self, partner_id):
         res = {
