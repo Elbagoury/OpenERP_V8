@@ -2817,57 +2817,12 @@ class report_wizard_resolution_form_page07(osv.osv_memory):
             res.update({'form63e_fname': report_val['datas_fname'],
                         'form63e_datas': report_val['db_datas']})
             
-            report_filename='form63f' 
+            report_filename='form63_account of receipts and payments by receiver or receiver and manager' 
             report_extention='.doc'
-            report_name='form63f'
+            report_name='form63_account'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63f_fname': report_val['datas_fname'],
-                        'form63f_datas': report_val['db_datas']})
-            
-            
-            
-            report_filename='form63g' 
-            report_extention='.doc'
-            report_name='form63g'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63g_fname': report_val['datas_fname'],
-                        'form63g_datas': report_val['db_datas']})
-            
-            report_filename='form63h' 
-            report_extention='.doc'
-            report_name='form63h'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63h_fname': report_val['datas_fname'],
-                        'form63h_datas': report_val['db_datas']})
-            
-            report_filename='form63i' 
-            report_extention='.doc'
-            report_name='form63i'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63i_fname': report_val['datas_fname'],
-                        'form63i_datas': report_val['db_datas']})
-            
-            report_filename='form63j' 
-            report_extention='.doc'
-            report_name='form63j'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63j_fname': report_val['datas_fname'],
-                        'form63j_datas': report_val['db_datas']})
-            
-            report_filename='form63k' 
-            report_extention='.doc'
-            report_name='form63k'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63k_fname': report_val['datas_fname'],
-                        'form63k_datas': report_val['db_datas']})
-            
-            report_filename='form63l' 
-            report_extention='.doc'
-            report_name='form63l'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63l_fname': report_val['datas_fname'],
-                        'form63l_datas': report_val['db_datas']})
-            
+            res.update({'form63_account_fname': report_val['datas_fname'],
+                        'form63_account_datas': report_val['db_datas']})
         return res
     
     _columns = {
@@ -2901,28 +2856,9 @@ class report_wizard_resolution_form_page07(osv.osv_memory):
         'form63e_fname': fields.char('File Name',size=256),
         'form63e_datas': fields.binary('Database Data'),
         
-        'form63f_fname': fields.char('File Name',size=256),
-        'form63f_datas': fields.binary('Database Data'),
+        'form63_account_fname': fields.char('File Name',size=256),
+        'form63_account_datas': fields.binary('Database Data'),
         
-        
-        
-        'form63g_fname': fields.char('File Name',size=256),
-        'form63g_datas': fields.binary('Database Data'),
-        
-        'form63h_fname': fields.char('File Name',size=256),
-        'form63h_datas': fields.binary('Database Data'),
-        
-        'form63i_fname': fields.char('File Name',size=256),
-        'form63i_datas': fields.binary('Database Data'),
-        
-        'form63j_fname': fields.char('File Name',size=256),
-        'form63j_datas': fields.binary('Database Data'),
-        
-        'form63k_fname': fields.char('File Name',size=256),
-        'form63k_datas': fields.binary('Database Data'),
-        
-        'form63l_fname': fields.char('File Name',size=256),
-        'form63l_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):
@@ -2966,7 +2902,56 @@ class report_wizard_resolution_form_page08(osv.osv_memory):
             partner_id = res['partner_id']
         if context.get('resolution_form_page08',False) and context['resolution_form_page08']:
             partner = self.pool.get('res.partner').browse(cr, uid, partner_id)
-    
+            
+            report_filename='form63f' 
+            report_extention='.doc'
+            report_name='form63f'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63f_fname': report_val['datas_fname'],
+                        'form63f_datas': report_val['db_datas']})
+            
+            report_filename='form63g' 
+            report_extention='.doc'
+            report_name='form63g'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63g_fname': report_val['datas_fname'],
+                        'form63g_datas': report_val['db_datas']})
+            
+            report_filename='form63h' 
+            report_extention='.doc'
+            report_name='form63h'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63h_fname': report_val['datas_fname'],
+                        'form63h_datas': report_val['db_datas']})
+            
+            report_filename='form63i' 
+            report_extention='.doc'
+            report_name='form63i'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63i_fname': report_val['datas_fname'],
+                        'form63i_datas': report_val['db_datas']})
+            
+            report_filename='form63j' 
+            report_extention='.doc'
+            report_name='form63j'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63j_fname': report_val['datas_fname'],
+                        'form63j_datas': report_val['db_datas']})
+            
+            report_filename='form63k' 
+            report_extention='.doc'
+            report_name='form63k'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63k_fname': report_val['datas_fname'],
+                        'form63k_datas': report_val['db_datas']})
+            
+            report_filename='form63l' 
+            report_extention='.doc'
+            report_name='form63l'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63l_fname': report_val['datas_fname'],
+                        'form63l_datas': report_val['db_datas']})
+            
             report_filename='form63m'
             report_extention='.doc'
             report_name='form63m'
@@ -2988,6 +2973,85 @@ class report_wizard_resolution_form_page08(osv.osv_memory):
             res.update({'form63o_fname': report_val['datas_fname'],
                         'form63o_datas': report_val['db_datas']})
             
+        return res
+    
+    _columns = {
+        'name': fields.char('Name',size=1024),
+        'partner_id': fields.many2one('res.partner','Partner'),
+        
+        'form63f_fname': fields.char('File Name',size=256),
+        'form63f_datas': fields.binary('Database Data'),
+        
+        'form63g_fname': fields.char('File Name',size=256),
+        'form63g_datas': fields.binary('Database Data'),
+        
+        'form63h_fname': fields.char('File Name',size=256),
+        'form63h_datas': fields.binary('Database Data'),
+        
+        'form63i_fname': fields.char('File Name',size=256),
+        'form63i_datas': fields.binary('Database Data'),
+        
+        'form63j_fname': fields.char('File Name',size=256),
+        'form63j_datas': fields.binary('Database Data'),
+        
+        'form63k_fname': fields.char('File Name',size=256),
+        'form63k_datas': fields.binary('Database Data'),
+        
+        'form63l_fname': fields.char('File Name',size=256),
+        'form63l_datas': fields.binary('Database Data'),
+        
+        'form63m_fname': fields.char('File Name',size=256),
+        'form63m_datas': fields.binary('Database Data'),
+        
+        'form63n_fname': fields.char('File Name',size=256),
+        'form63n_datas': fields.binary('Database Data'),
+        
+        'form63o_fname': fields.char('File Name',size=256),
+        'form63o_datas': fields.binary('Database Data'),
+    }
+    
+    def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):
+        ir_actions_report = self.pool.get('ir.actions.report.xml')
+        matching_reports = ir_actions_report.search(cr, uid, [('name','=',report_name)])
+        if matching_reports:
+            report = ir_actions_report.browse(cr, uid, matching_reports[0])
+            report_service = 'report.' + report.report_name
+            service = netsvc.LocalService(report_service)
+            result = False
+            try:
+                (result, format) = service.create(cr, uid, [record.id], {'model': model}, context=context)
+            except:
+                pass
+            if result:
+                eval_context = {'time': time, 'object': record}
+                if not report.attachment or not eval(report.attachment, eval_context):
+                    result = base64.b64encode(result)
+                    file_name = re.sub(r'[^a-zA-Z0-9_-]', ' ', report_filename)
+                    file_name += report_extention
+                    return {
+                        'db_datas': result,
+                        'datas_fname': file_name,
+                    }
+        return {'db_datas': False,
+                'datas_fname': False}
+    
+report_wizard_resolution_form_page08()
+
+class report_wizard_resolution_form_page09(osv.osv_memory):
+    _name = 'report.wizard.resolution.form.page09'
+    def default_get(self, cr, uid, fields, context=None):
+        if context is None:
+            context = {}
+        res = super(report_wizard_resolution_form_page09, self).default_get(cr, uid, fields, context=context)
+        partner_id = False
+        if not res.get('partner_id', False) and context.get('active_id',False):
+            res.update({'partner_id':context['active_id']})
+            partner_id = context['active_id']
+        if not partner_id:
+            partner_id = res['partner_id']
+        if context.get('resolution_form_page09',False) and context['resolution_form_page09']:
+            partner = self.pool.get('res.partner').browse(cr, uid, partner_id)
+    
             report_filename='form63p'
             report_extention='.doc'
             report_name='form63p'
@@ -3036,21 +3100,33 @@ class report_wizard_resolution_form_page08(osv.osv_memory):
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
             res.update({'form63v_fname': report_val['datas_fname'],
                         'form63v_datas': report_val['db_datas']})
+    
+            report_filename='form63w'
+            report_extention='.doc'
+            report_name='form63w'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form63w_fname': report_val['datas_fname'],
+                        'form63w_datas': report_val['db_datas']})
+            
+            report_filename='form64'
+            report_extention='.doc'
+            report_name='form64'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form64_fname': report_val['datas_fname'],
+                        'form64_datas': report_val['db_datas']})
+            
+            report_filename='form65'
+            report_extention='.doc'
+            report_name='form65'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form65_fname': report_val['datas_fname'],
+                        'form65_datas': report_val['db_datas']})
             
         return res
     
     _columns = {
         'name': fields.char('Name',size=1024),
         'partner_id': fields.many2one('res.partner','Partner'),
-        
-        'form63m_fname': fields.char('File Name',size=256),
-        'form63m_datas': fields.binary('Database Data'),
-        
-        'form63n_fname': fields.char('File Name',size=256),
-        'form63n_datas': fields.binary('Database Data'),
-        
-        'form63o_fname': fields.char('File Name',size=256),
-        'form63o_datas': fields.binary('Database Data'),
         
         'form63p_fname': fields.char('File Name',size=256),
         'form63p_datas': fields.binary('Database Data'),
@@ -3072,6 +3148,15 @@ class report_wizard_resolution_form_page08(osv.osv_memory):
         
         'form63v_fname': fields.char('File Name',size=256),
         'form63v_datas': fields.binary('Database Data'),
+        
+        'form63w_fname': fields.char('File Name',size=256),
+        'form63w_datas': fields.binary('Database Data'),
+        
+        'form64_fname': fields.char('File Name',size=256),
+        'form64_datas': fields.binary('Database Data'),
+        
+        'form65_fname': fields.char('File Name',size=256),
+        'form65_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):
@@ -3099,43 +3184,22 @@ class report_wizard_resolution_form_page08(osv.osv_memory):
         return {'db_datas': False,
                 'datas_fname': False}
     
-report_wizard_resolution_form_page08()
+report_wizard_resolution_form_page09()
 
-class report_wizard_resolution_form_page09(osv.osv_memory):
-    _name = 'report.wizard.resolution.form.page09'
+class report_wizard_resolution_form_page10(osv.osv_memory):
+    _name = 'report.wizard.resolution.form.page10'
     def default_get(self, cr, uid, fields, context=None):
         if context is None:
             context = {}
-        res = super(report_wizard_resolution_form_page09, self).default_get(cr, uid, fields, context=context)
+        res = super(report_wizard_resolution_form_page10, self).default_get(cr, uid, fields, context=context)
         partner_id = False
         if not res.get('partner_id', False) and context.get('active_id',False):
             res.update({'partner_id':context['active_id']})
             partner_id = context['active_id']
         if not partner_id:
             partner_id = res['partner_id']
-        if context.get('resolution_form_page09',False) and context['resolution_form_page09']:
+        if context.get('resolution_form_page10',False) and context['resolution_form_page10']:
             partner = self.pool.get('res.partner').browse(cr, uid, partner_id)
-    
-            report_filename='form63w'
-            report_extention='.doc'
-            report_name='form63w'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form63w_fname': report_val['datas_fname'],
-                        'form63w_datas': report_val['db_datas']})
-            
-            report_filename='form64'
-            report_extention='.doc'
-            report_name='form64'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form64_fname': report_val['datas_fname'],
-                        'form64_datas': report_val['db_datas']})
-            
-            report_filename='form65'
-            report_extention='.doc'
-            report_name='form65'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form65_fname': report_val['datas_fname'],
-                        'form65_datas': report_val['db_datas']})
             
             report_filename='form65A'
             report_extention='.doc'
@@ -3186,20 +3250,32 @@ class report_wizard_resolution_form_page09(osv.osv_memory):
             res.update({'form72_fname': report_val['datas_fname'],
                         'form72_datas': report_val['db_datas']})
             
+            report_filename='form73'
+            report_extention='.doc'
+            report_name='form73'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form73_fname': report_val['datas_fname'],
+                        'form73_datas': report_val['db_datas']})
+            
+            report_filename='form74'
+            report_extention='.doc'
+            report_name='form74'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form74_fname': report_val['datas_fname'],
+                        'form74_datas': report_val['db_datas']})
+            
+            report_filename='Form58_notice to non-assenting shareholder'
+            report_extention='.doc'
+            report_name='form58_notice_to_non_assenting_shareholder'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form58_notice_to_non_assenting_shareholder_fname': report_val['datas_fname'],
+                        'form58_notice_to_non_assenting_shareholder_datas': report_val['db_datas']})
+            
         return res
     
     _columns = {
         'name': fields.char('Name',size=1024),
         'partner_id': fields.many2one('res.partner','Partner'),
-        
-        'form63w_fname': fields.char('File Name',size=256),
-        'form63w_datas': fields.binary('Database Data'),
-        
-        'form64_fname': fields.char('File Name',size=256),
-        'form64_datas': fields.binary('Database Data'),
-        
-        'form65_fname': fields.char('File Name',size=256),
-        'form65_datas': fields.binary('Database Data'),
         
         'form65a_fname': fields.char('File Name',size=256),
         'form65a_datas': fields.binary('Database Data'),
@@ -3221,93 +3297,13 @@ class report_wizard_resolution_form_page09(osv.osv_memory):
         
         'form72_fname': fields.char('File Name',size=256),
         'form72_datas': fields.binary('Database Data'),
-    }
-    
-    def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):
-        ir_actions_report = self.pool.get('ir.actions.report.xml')
-        matching_reports = ir_actions_report.search(cr, uid, [('name','=',report_name)])
-        if matching_reports:
-            report = ir_actions_report.browse(cr, uid, matching_reports[0])
-            report_service = 'report.' + report.report_name
-            service = netsvc.LocalService(report_service)
-            result = False
-            try:
-                (result, format) = service.create(cr, uid, [record.id], {'model': model}, context=context)
-            except:
-                pass
-            if result:
-                eval_context = {'time': time, 'object': record}
-                if not report.attachment or not eval(report.attachment, eval_context):
-                    result = base64.b64encode(result)
-                    file_name = re.sub(r'[^a-zA-Z0-9_-]', ' ', report_filename)
-                    file_name += report_extention
-                    return {
-                        'db_datas': result,
-                        'datas_fname': file_name,
-                    }
-        return {'db_datas': False,
-                'datas_fname': False}
-    
-report_wizard_resolution_form_page09()
-
-class report_wizard_resolution_form_page10(osv.osv_memory):
-    _name = 'report.wizard.resolution.form.page10'
-    def default_get(self, cr, uid, fields, context=None):
-        if context is None:
-            context = {}
-        res = super(report_wizard_resolution_form_page10, self).default_get(cr, uid, fields, context=context)
-        partner_id = False
-        if not res.get('partner_id', False) and context.get('active_id',False):
-            res.update({'partner_id':context['active_id']})
-            partner_id = context['active_id']
-        if not partner_id:
-            partner_id = res['partner_id']
-        if context.get('resolution_form_page10',False) and context['resolution_form_page10']:
-            partner = self.pool.get('res.partner').browse(cr, uid, partner_id)
-    
-            report_filename='form73'
-            report_extention='.doc'
-            report_name='form73'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form73_fname': report_val['datas_fname'],
-                        'form73_datas': report_val['db_datas']})
-            
-            report_filename='form74'
-            report_extention='.doc'
-            report_name='form74'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form74_fname': report_val['datas_fname'],
-                        'form74_datas': report_val['db_datas']})
-            
-            report_filename='form 25(allotment NOT cash)'
-            report_extention='.doc'
-            report_name='form_25_allotment_not_cash'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form_25_allotment_not_cash_fname': report_val['datas_fname'],
-                        'form_25_allotment_not_cash_datas': report_val['db_datas']})
-            
-            report_filename='Form58_notice to non-assenting shareholder'
-            report_extention='.doc'
-            report_name='form58_notice_to_non_assenting_shareholder'
-            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'form58_notice_to_non_assenting_shareholder_fname': report_val['datas_fname'],
-                        'form58_notice_to_non_assenting_shareholder_datas': report_val['db_datas']})
-            
-        return res
-    
-    _columns = {
-        'name': fields.char('Name',size=1024),
-        'partner_id': fields.many2one('res.partner','Partner'),
         
         'form73_fname': fields.char('File Name',size=256),
         'form73_datas': fields.binary('Database Data'),
         
         'form74_fname': fields.char('File Name',size=256),
         'form74_datas': fields.binary('Database Data'),
-        
-        'form_25_allotment_not_cash_fname': fields.char('File Name',size=256),
-        'form_25_allotment_not_cash_datas': fields.binary('Database Data'),
-        
+
         'form58_notice_to_non_assenting_shareholder_fname': fields.char('File Name',size=256),
         'form58_notice_to_non_assenting_shareholder_datas': fields.binary('Database Data'),
     }

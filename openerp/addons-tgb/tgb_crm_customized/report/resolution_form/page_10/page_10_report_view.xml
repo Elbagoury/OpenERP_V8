@@ -49,29 +49,6 @@
 	        string="form74"
 	        rml="tgb_crm_customized/report/resolution_form/page_10/form74.odt"/>
 	        
-        <record id="form_25_allotment_not_cash" model="ir.actions.report.xml">
-	        <field name="name">form_25_allotment_not_cash</field>
-	        <field name="type">ir.actions.report.xml</field>
-	        <field name="model">res.partner</field>
-	        <field name="report_name">form_25_allotment_not_cash</field>
-	        <field name="report_type">aeroo</field>
-	        <field name="in_format">oo-odt</field>
-	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
-	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_10/form_25_allotment_not_cash.odt</field>
-	        <field name="parser_state">loc</field>
-	        <field name="tml_source">file</field>
-	        <field name="attachment_use" eval="0"/>
-    	</record>		    
-		<report 
-			auto="False" 
-			menu="False"
-			id="form_25_allotment_not_cash"
-			model="res.partner"
-			name="form_25_allotment_not_cash"
-	        string="form_25_allotment_not_cash"
-	        rml="tgb_crm_customized/report/resolution_form/page_10/form_25_allotment_not_cash.odt"/>
-	        
         <record id="form58_notice_to_non_assenting_shareholder" model="ir.actions.report.xml">
 	        <field name="name">form58_notice_to_non_assenting_shareholder</field>
 	        <field name="type">ir.actions.report.xml</field>

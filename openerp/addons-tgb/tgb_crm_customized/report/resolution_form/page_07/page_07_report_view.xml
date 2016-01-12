@@ -233,5 +233,28 @@
 	        string="form63l"
 	        rml="tgb_crm_customized/report/resolution_form/page_07/form63l.odt"/>
 	        
+	    <record id="form63_account" model="ir.actions.report.xml">
+	        <field name="name">form63_account</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form63_account</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_07/form63_account.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form63_account"
+			model="res.partner"
+			name="form63_account"
+	        string="form63_account"
+	        rml="tgb_crm_customized/report/resolution_form/page_07/form63_account.odt"/>    
+        
 	</data>
 </openerp>
