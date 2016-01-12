@@ -1105,9 +1105,6 @@
                 	<field name="form52_copy_of_minute_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form53_change_registered_add_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form54_notice_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form55_annual_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form56_certification_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form57_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form46_undertaking_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form47_declaration_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form48b_fname" invisible="1" class="oe_inline oe_right"/>
@@ -1118,16 +1115,13 @@
 	                		<field name="form48b_datas" filename="form48b_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form48c_report_on_conduct_datas" filename="form48c_report_on_conduct_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form48_statutory_datas" filename="form48_statutory_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
 	                		<field name="form49_appt_co_officier_datas" filename="form49_appt_co_officier_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form51_statutory_report_of_a_public_company_datas" filename="form51_statutory_report_of_a_public_company_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form52_copy_of_minute_datas" filename="form52_copy_of_minute_fname" nolabel='1' readonly='1' colspan='2'/>
-	                	</group>
-	                	<group>
 	                		<field name="form53_change_registered_add_datas" filename="form53_change_registered_add_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form54_notice_datas" filename="form54_notice_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form55_annual_datas" filename="form55_annual_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form56_certification_datas" filename="form56_certification_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form57_datas" filename="form57_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1152,30 +1146,30 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 06" version="7.0">
                 	<field name="partner_id" invisible='1'/>
+                	<field name="form55_annual_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form56_certification_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form57_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form57_notice_to_dissenting_shareholder_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form59_notice_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form60_notice_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form61_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form61a_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form61a_stm_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form62_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form62a_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form62_affidavit_verifying_statement_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form63a_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form63b_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="form63b_notice_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form61_statement_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
+	                		<field name="form55_annual_datas" filename="form55_annual_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form56_certification_datas" filename="form56_certification_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form57_datas" filename="form57_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form57_notice_to_dissenting_shareholder_datas" filename="form57_notice_to_dissenting_shareholder_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form59_notice_datas" filename="form59_notice_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form60_notice_datas" filename="form60_notice_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form61_datas" filename="form61_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form61a_stm_of_affairs_datas" filename="form61a_stm_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form62_datas" filename="form62_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="form62a_datas" filename="form62a_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form62_affidavit_verifying_statement_of_affairs_datas" filename="form62_affidavit_verifying_statement_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form63a_datas" filename="form63a_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form63b_datas" filename="form63b_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form63b_notice_datas" filename="form63b_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form60_notice_datas" filename="form60_notice_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61_datas" filename="form61_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61a_datas" filename="form61a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61a_stm_of_affairs_datas" filename="form61a_stm_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form61_statement_of_affairs_datas" filename="form61_statement_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1200,6 +1194,12 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 07" version="7.0">
                 	<field name="partner_id" invisible='1'/>
+                	<field name="form62_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form62a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form62_affidavit_verifying_statement_of_affairs_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63b_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form63b_notice_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form63c_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form63d_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form63e_fname" invisible="1" class="oe_inline oe_right"/>
@@ -1212,13 +1212,20 @@
                 	<field name="form63l_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
+	                		<field name="form62_datas" filename="form62_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form62a_datas" filename="form62a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form62_affidavit_verifying_statement_of_affairs_datas" filename="form62_affidavit_verifying_statement_of_affairs_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63a_datas" filename="form63a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form63b_datas" filename="form63b_fname" nolabel='1' readonly='1' colspan='2'/>
+	                	</group>
+	                	<group>
+	                		<field name="form63b_notice_datas" filename="form63b_notice_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63c_datas" filename="form63c_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63d_datas" filename="form63d_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63e_datas" filename="form63e_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63f_datas" filename="form63f_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		
 	                		<field name="form63g_datas" filename="form63g_fname" nolabel='1' readonly='1' colspan='2'/>
-	                	</group>
-	                	<group>
 	                		<field name="form63h_datas" filename="form63h_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63i_datas" filename="form63i_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form63j_datas" filename="form63j_fname" nolabel='1' readonly='1' colspan='2'/>

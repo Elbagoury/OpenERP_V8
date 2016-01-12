@@ -72,6 +72,29 @@
 	        string="form61"
 	        rml="tgb_crm_customized/report/resolution_form/page_06/form61.odt"/>
 	        
+        <record id="form61a" model="ir.actions.report.xml">
+	        <field name="name">form61a</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form61a</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_06/form61a.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form61a"
+			model="res.partner"
+			name="form61a"
+	        string="form61a"
+	        rml="tgb_crm_customized/report/resolution_form/page_06/form61a.odt"/>
+	        
         <record id="form61a_stm_of_affairs" model="ir.actions.report.xml">
 	        <field name="name">form61a_stm_of_affairs</field>
 	        <field name="type">ir.actions.report.xml</field>
@@ -94,6 +117,29 @@
 			name="form61a_stm_of_affairs"
 	        string="form61a_stm_of_affairs"
 	        rml="tgb_crm_customized/report/resolution_form/page_06/form61a_stm_of_affairs.odt"/>
+	        
+        <record id="form61_statement_of_affairs" model="ir.actions.report.xml">
+	        <field name="name">form61_statement_of_affairs</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form61_statement_of_affairs</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_06/form61_statement_of_affairs.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form61_statement_of_affairs"
+			model="res.partner"
+			name="form61_statement_of_affairs"
+	        string="form61_statement_of_affairs"
+	        rml="tgb_crm_customized/report/resolution_form/page_06/form61_statement_of_affairs.odt"/>
 	        
         <record id="form62" model="ir.actions.report.xml">
 	        <field name="name">form62</field>
@@ -232,6 +278,29 @@
 			name="form63b_notice"
 	        string="form63b_notice"
 	        rml="tgb_crm_customized/report/resolution_form/page_06/form63b_notice.odt"/>
+        
+        <record id="form57_notice_to_dissenting_shareholder" model="ir.actions.report.xml">
+	        <field name="name">form57_notice_to_dissenting_shareholder</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form57_notice_to_dissenting_shareholder</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_06/form57_notice_to_dissenting_shareholder.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form57_notice_to_dissenting_shareholder"
+			model="res.partner"
+			name="form57_notice_to_dissenting_shareholder"
+	        string="form57_notice_to_dissenting_shareholder"
+	        rml="tgb_crm_customized/report/resolution_form/page_06/form57_notice_to_dissenting_shareholder.odt"/>
         
 	</data>
 </openerp>
