@@ -3208,6 +3208,13 @@ class report_wizard_resolution_form_page10(osv.osv_memory):
             res.update({'form65a_fname': report_val['datas_fname'],
                         'form65a_datas': report_val['db_datas']})
             
+            report_filename='form66(solvency declaration)'
+            report_extention='.doc'
+            report_name='form66_solvency_declaration'
+            report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
+            res.update({'form66_solvency_declaration_fname': report_val['datas_fname'],
+                        'form66_solvency_declaration_datas': report_val['db_datas']})
+            
             report_filename='form67'
             report_extention='.doc'
             report_name='form67'
@@ -3279,6 +3286,9 @@ class report_wizard_resolution_form_page10(osv.osv_memory):
         
         'form65a_fname': fields.char('File Name',size=256),
         'form65a_datas': fields.binary('Database Data'),
+        
+        'form66_solvency_declaration_fname': fields.char('File Name',size=256),
+        'form66_solvency_declaration_datas': fields.binary('Database Data'),
         
         'form67_fname': fields.char('File Name',size=256),
         'form67_datas': fields.binary('Database Data'),

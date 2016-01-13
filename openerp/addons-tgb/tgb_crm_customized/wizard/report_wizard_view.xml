@@ -1339,6 +1339,7 @@
                 <form string="resolution form page 10" version="7.0">
                 	<field name="partner_id" invisible='1'/>
                 	<field name="form65a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form66_solvency_declaration_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form67_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form68_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form69_fname" invisible="1" class="oe_inline oe_right"/>
@@ -1347,20 +1348,23 @@
                 	<field name="form72_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form73_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form74_fname" invisible="1" class="oe_inline oe_right"/>
+                	
                 	<field name="form58_notice_to_non_assenting_shareholder_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
 	                		<field name="form65a_datas" filename="form65a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form66_solvency_declaration_datas" filename="form66_solvency_declaration_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form67_datas" filename="form67_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form68_datas" filename="form68_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form69_datas" filename="form69_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		<field name="form70_datas" filename="form70_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
+	                		<field name="form70_datas" filename="form70_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form71_datas" filename="form71_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form72_datas" filename="form72_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form73_datas" filename="form73_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form74_datas" filename="form74_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		
 	                		<field name="form58_notice_to_non_assenting_shareholder_datas" filename="form58_notice_to_non_assenting_shareholder_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
