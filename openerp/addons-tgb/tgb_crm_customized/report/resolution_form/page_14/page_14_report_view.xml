@@ -3,16 +3,16 @@
 	<data>
 	
 <!-- resolution form page14-->
-		<record id="resolution_form1" model="ir.actions.report.xml">
-	        <field name="name">resolution_form1</field>
+		<record id="form117" model="ir.actions.report.xml">
+	        <field name="name">form117</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">resolution_form1</field>
+	        <field name="report_name">form117</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/resolution_form1.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/form117.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -20,22 +20,22 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="resolution_form1"
+			id="form117"
 			model="res.partner"
-			name="resolution_form1"
-	        string="resolution_form1"
-	        rml="tgb_crm_customized/report/resolution_form/page_14/resolution_form1.odt"/>
+			name="form117"
+	        string="form117"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/form117.odt"/>
 	        
-        <record id="resolution_form2" model="ir.actions.report.xml">
-	        <field name="name">resolution_form2</field>
+        <record id="form118" model="ir.actions.report.xml">
+	        <field name="name">form118</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">resolution_form2</field>
+	        <field name="report_name">form118</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/resolution_form2.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/form118.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -43,11 +43,103 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="resolution_form2"
+			id="form118"
 			model="res.partner"
-			name="resolution_form2"
-	        string="resolution_form2"
-	        rml="tgb_crm_customized/report/resolution_form/page_14/resolution_form2.odt"/>
+			name="form118"
+	        string="form118"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/form118.odt"/>
+	        
+        <record id="form58_notice_to_non_assenting_shareholder" model="ir.actions.report.xml">
+	        <field name="name">form58_notice_to_non_assenting_shareholder</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form58_notice_to_non_assenting_shareholder</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/form58_notice_to_non_assenting_shareholder.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form58_notice_to_non_assenting_shareholder"
+			model="res.partner"
+			name="form58_notice_to_non_assenting_shareholder"
+	        string="form58_notice_to_non_assenting_shareholder"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/form58_notice_to_non_assenting_shareholder.odt"/>
+	       
+       <record id="form112" model="ir.actions.report.xml">
+	        <field name="name">form112</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form112</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/form112.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form112"
+			model="res.partner"
+			name="form112"
+	        string="form112"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/form112.odt"/>
+	        
+        <record id="formar_agm_share_capital" model="ir.actions.report.xml">
+	        <field name="name">formar_agm_share_capital</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">formar_agm_share_capital</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/formar_agm_share_capital.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="formar_agm_share_capital"
+			model="res.partner"
+			name="formar_agm_share_capital"
+	        string="formar_agm_share_capital"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/formar_agm_share_capital.odt"/>
+	        
+        <record id="schedulejform61a" model="ir.actions.report.xml">
+	        <field name="name">schedulejform61a</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">schedulejform61a</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_14/schedulejform61a.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="schedulejform61a"
+			model="res.partner"
+			name="schedulejform61a"
+	        string="schedulejform61a"
+	        rml="tgb_crm_customized/report/resolution_form/page_14/schedulejform61a.odt"/>
 	        
 	</data>
 </openerp>

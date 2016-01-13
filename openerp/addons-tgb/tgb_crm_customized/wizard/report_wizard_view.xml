@@ -1348,8 +1348,6 @@
                 	<field name="form72_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form73_fname" invisible="1" class="oe_inline oe_right"/>
                 	<field name="form74_fname" invisible="1" class="oe_inline oe_right"/>
-                	
-                	<field name="form58_notice_to_non_assenting_shareholder_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
 	                		<field name="form65a_datas" filename="form65a_fname" nolabel='1' readonly='1' colspan='2'/>
@@ -1364,8 +1362,6 @@
 	                		<field name="form72_datas" filename="form72_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form73_datas" filename="form73_fname" nolabel='1' readonly='1' colspan='2'/>
 	                		<field name="form74_datas" filename="form74_fname" nolabel='1' readonly='1' colspan='2'/>
-	                		
-	                		<field name="form58_notice_to_non_assenting_shareholder_datas" filename="form58_notice_to_non_assenting_shareholder_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1390,14 +1386,30 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 11" version="7.0">
                 	<field name="partner_id" invisible='1'/>
-                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form75_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form76_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form77_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form79_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form80_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form81_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form82_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form84_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form85_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form85a_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
-	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form75_datas" filename="form75_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form76_datas" filename="form76_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form77_datas" filename="form77_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form79_datas" filename="form79_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form80_datas" filename="form80_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form81_datas" filename="form81_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form82_datas" filename="form82_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form84_datas" filename="form84_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form85_datas" filename="form85_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form85a_datas" filename="form85a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1422,14 +1434,30 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 12" version="7.0">
                 	<field name="partner_id" invisible='1'/>
-                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form86_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form87_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form87a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form88_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form89_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form93_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form90_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form91_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form92_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form94_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
-	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form86_datas" filename="form86_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form87_datas" filename="form87_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form87a_datas" filename="form87a_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form88_datas" filename="form88_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form89_datas" filename="form89_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form90_datas" filename="form90_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form91_datas" filename="form91_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form92_datas" filename="form92_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form93_datas" filename="form93_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form94_datas" filename="form94_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1454,14 +1482,30 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 13" version="7.0">
                 	<field name="partner_id" invisible='1'/>
-                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form101_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form106_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form107_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form108_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form109_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form110_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form111_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form113_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form115_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form116_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
-	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form101_datas" filename="form101_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form106_datas" filename="form106_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form107_datas" filename="form107_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form108_datas" filename="form108_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form109_datas" filename="form109_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form110_datas" filename="form110_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form111_datas" filename="form111_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form113_datas" filename="form113_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form115_datas" filename="form115_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form116_datas" filename="form116_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
@@ -1486,14 +1530,22 @@
             <field name="arch" type="xml">
                 <form string="resolution form page 14" version="7.0">
                 	<field name="partner_id" invisible='1'/>
-                	<field name="resolution_form1_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="resolution_form2_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form117_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form118_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="formar_agm_share_capital_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form58_notice_to_non_assenting_shareholder_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form112_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="schedulejform61a_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
-	                		<field name="resolution_form1_datas" filename="resolution_form1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form117_datas" filename="form117_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form118_datas" filename="form118_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form58_notice_to_non_assenting_shareholder_datas" filename="form58_notice_to_non_assenting_shareholder_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="resolution_form2_datas" filename="resolution_form2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form112_datas" filename="form112_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="formar_agm_share_capital_datas" filename="formar_agm_share_capital_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="schedulejform61a_datas" filename="schedulejform61a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>

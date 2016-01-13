@@ -3,16 +3,16 @@
 	<data>
 	
 <!-- resolution form page12-->
-		<record id="resolution_form12" model="ir.actions.report.xml">
-	        <field name="name">resolution_form12</field>
+		<record id="form86" model="ir.actions.report.xml">
+	        <field name="name">form86</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">resolution_form12</field>
+	        <field name="report_name">form86</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/resolution_form1.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form86.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -20,22 +20,22 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="resolution_form12"
+			id="form86"
 			model="res.partner"
-			name="resolution_form12"
-	        string="resolution_form12"
-	        rml="tgb_crm_customized/report/resolution_form/page_12/resolution_form1.odt"/>
+			name="form86"
+	        string="form86"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form86.odt"/>
 	        
-        <record id="resolution_form22" model="ir.actions.report.xml">
-	        <field name="name">resolution_form22</field>
+        <record id="form87" model="ir.actions.report.xml">
+	        <field name="name">form87</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">resolution_form22</field>
+	        <field name="report_name">form87</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/resolution_form2.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form87.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -43,11 +43,195 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="resolution_form22"
+			id="form87"
 			model="res.partner"
-			name="resolution_form22"
-	        string="resolution_form22"
-	        rml="tgb_crm_customized/report/resolution_form/page_12/resolution_form2.odt"/>
+			name="form87"
+	        string="form87"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form87.odt"/>
+	        
+        <record id="form87a" model="ir.actions.report.xml">
+	        <field name="name">form87a</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form87a</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form87a.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form87a"
+			model="res.partner"
+			name="form87a"
+	        string="form87a"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form87a.odt"/>
+	        
+        <record id="form88" model="ir.actions.report.xml">
+	        <field name="name">form88</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form88</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form88.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form88"
+			model="res.partner"
+			name="form88"
+	        string="form88"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form88.odt"/>
+	        
+        <record id="form89" model="ir.actions.report.xml">
+	        <field name="name">form89</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form89</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form89.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form89"
+			model="res.partner"
+			name="form89"
+	        string="form89"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form89.odt"/>
+	        
+        <record id="form90" model="ir.actions.report.xml">
+	        <field name="name">form90</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form90</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form90.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form90"
+			model="res.partner"
+			name="form90"
+	        string="form90"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form90.odt"/>
+	        
+        <record id="form91" model="ir.actions.report.xml">
+	        <field name="name">form91</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form91</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form91.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form91"
+			model="res.partner"
+			name="form91"
+	        string="form91"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form91.odt"/>
+	        
+        <record id="form92" model="ir.actions.report.xml">
+	        <field name="name">form92</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form92</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form92.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form92"
+			model="res.partner"
+			name="form92"
+	        string="form92"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form92.odt"/>
+	        
+        <record id="form93" model="ir.actions.report.xml">
+	        <field name="name">form93</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form93</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form93.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form93"
+			model="res.partner"
+			name="form93"
+	        string="form93"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form93.odt"/>
+	        
+        <record id="form94" model="ir.actions.report.xml">
+	        <field name="name">form94</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">res.partner</field>
+	        <field name="report_name">form94</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
+	        <field name="report_rml">tgb_crm_customized/report/resolution_form/page_12/form94.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="False"
+			id="form94"
+			model="res.partner"
+			name="form94"
+	        string="form94"
+	        rml="tgb_crm_customized/report/resolution_form/page_12/form94.odt"/>
 	        
 	</data>
 </openerp>
