@@ -3908,19 +3908,19 @@ class report_wizard_share_transfer(osv.osv_memory):
         if context.get('share_transfer',False) and context['share_transfer']:
             partner = self.pool.get('res.partner').browse(cr, uid, partner_id)
 
-            report_filename='share_transfer1'
+            report_filename='Form E4A_Transfer of Shares (Ad Valorem Duty)'
             report_extention='.doc'
-            report_name='share_transfer1'
+            report_name='form_e4a'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'share_transfer1_fname': report_val['datas_fname'],
-                        'share_transfer1_datas': report_val['db_datas']})
+            res.update({'form_e4a_fname': report_val['datas_fname'],
+                        'form_e4a_datas': report_val['db_datas']})
             
-            report_filename='share_transfer2'
+            report_filename='Working Sheet D for Transfer of Shares'
             report_extention='.doc'
-            report_name='share_transfer2'
+            report_name='working_sheet_d'
             report_val = self.cover_print(cr, uid, 'res.partner', partner, report_name, report_filename, report_extention,context)
-            res.update({'share_transfer2_fname': report_val['datas_fname'],
-                        'share_transfer2_datas': report_val['db_datas']})
+            res.update({'working_sheet_d_fname': report_val['datas_fname'],
+                        'working_sheet_d_datas': report_val['db_datas']})
             
         return res
     
@@ -3928,11 +3928,11 @@ class report_wizard_share_transfer(osv.osv_memory):
         'name': fields.char('Name',size=1024),
         'partner_id': fields.many2one('res.partner','Partner'),
         
-        'share_transfer1_fname': fields.char('File Name',size=256),
-        'share_transfer1_datas': fields.binary('Database Data'),
+        'form_e4a_fname': fields.char('File Name',size=256),
+        'form_e4a_datas': fields.binary('Database Data'),
         
-        'share_transfer2_fname': fields.char('File Name',size=256),
-        'share_transfer2_datas': fields.binary('Database Data'),
+        'working_sheet_d_fname': fields.char('File Name',size=256),
+        'working_sheet_d_datas': fields.binary('Database Data'),
     }
     
     def cover_print(self, cr, uid, model, record, report_name, report_filename, report_extention, context=None):

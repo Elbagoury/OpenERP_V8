@@ -3,16 +3,16 @@
 	<data>
 	
 <!-- share transfer -->
-		<record id="share_transfer1" model="ir.actions.report.xml">
-	        <field name="name">share_transfer1</field>
+		<record id="form_e4a" model="ir.actions.report.xml">
+	        <field name="name">form_e4a</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">share_transfer1</field>
+	        <field name="report_name">form_e4a</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/share_transfer/share_transfer1.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/form_e4a.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -20,22 +20,22 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="share_transfer1"
+			id="form_e4a"
 			model="res.partner"
-			name="share_transfer1"
-	        string="share_transfer1"
-	        rml="tgb_crm_customized/report/share_transfer/share_transfer1.odt"/>
+			name="form_e4a"
+	        string="form_e4a"
+	        rml="tgb_crm_customized/report/share_transfer/form_e4a.odt"/>
 	        
-        <record id="share_transfer2" model="ir.actions.report.xml">
-	        <field name="name">share_transfer2</field>
+        <record id="working_sheet_d" model="ir.actions.report.xml">
+	        <field name="name">working_sheet_d</field>
 	        <field name="type">ir.actions.report.xml</field>
 	        <field name="model">res.partner</field>
-	        <field name="report_name">share_transfer2</field>
+	        <field name="report_name">working_sheet_d</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
 	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_crm_customized/report/partner_report.py</field>
-	        <field name="report_rml">tgb_crm_customized/report/share_transfer/share_transfer2.odt</field>
+	        <field name="report_rml">tgb_crm_customized/report/share_transfer/working_sheet_d.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -43,11 +43,11 @@
 		<report 
 			auto="False" 
 			menu="False"
-			id="share_transfer2"
+			id="working_sheet_d"
 			model="res.partner"
-			name="share_transfer2"
-	        string="share_transfer2"
-	        rml="tgb_crm_customized/report/share_transfer/share_transfer2.odt"/>
+			name="working_sheet_d"
+	        string="working_sheet_d"
+	        rml="tgb_crm_customized/report/share_transfer/working_sheet_d.odt"/>
 	        
 	</data>
 </openerp>

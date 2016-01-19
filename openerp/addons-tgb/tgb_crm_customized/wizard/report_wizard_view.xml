@@ -1826,14 +1826,14 @@
                 		<button string="Format_EGM dated xxxx" type="action" name="%(action_wizard_report_format_egm_dated_xxxx)d" context="{'default_partner_id':partner_id,'format_egm_dated_xxxx':1}"/>
                 		<button string="Format_Share Transfer Form" type="action" name="%(action_wizard_report_format_share_transfer_form)d" context="{'default_partner_id':partner_id,'format_share_transfer_form':1}"/>
 	                </group>
-                	<field name="share_transfer1_fname" invisible="1" class="oe_inline oe_right"/>
-                	<field name="share_transfer2_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="form_e4a_fname" invisible="1" class="oe_inline oe_right"/>
+                	<field name="working_sheet_d_fname" invisible="1" class="oe_inline oe_right"/>
 	                <group col='4' colspan='2'>
 	                	<group>
-	                		<field name="share_transfer1_datas" filename="share_transfer1_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="form_e4a_datas" filename="form_e4a_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                	<group>
-	                		<field name="share_transfer2_datas" filename="share_transfer2_fname" nolabel='1' readonly='1' colspan='2'/>
+	                		<field name="working_sheet_d_datas" filename="working_sheet_d_fname" nolabel='1' readonly='1' colspan='2'/>
 	                	</group>
 	                </group>
 	                <footer>
