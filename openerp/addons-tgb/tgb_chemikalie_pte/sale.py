@@ -38,9 +38,18 @@ class sale_order(osv.osv):
     _inherit = "sale.order"
     
     _columns = {
-        'customer_po_no': fields.char("Customer's PO No.", size=1024),
-        'sgd_acc_number': fields.boolean('SGD Account No'),
-        'usd_acc_number': fields.boolean('USD Account No'),
+        'customer_po_no': fields.char("Customer's PO No.", size=1024,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'sgd_acc_number': fields.boolean('SGD Account No',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'usd_acc_number': fields.boolean('USD Account No',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'client_order_ref': fields.char('Reference/Description', copy=False,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'note': fields.text('Terms and conditions',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'payment_term': fields.many2one('account.payment.term', 'Payment Term',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'fiscal_position': fields.many2one('account.fiscal.position', 'Fiscal Position',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'user_id': fields.many2one('res.users', 'Salesperson',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, select=True, track_visibility='onchange'),
+        'incoterm': fields.many2one('stock.incoterms', 'Incoterm', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.",readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'warehouse_id': fields.many2one('stock.warehouse', 'Warehouse', required=True,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'origin': fields.char('Source Document', help="Reference of the document that generated this sales order request.",readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'parent_id': fields.many2one('sale.order', 'Parent'),
     }
     
     def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
@@ -65,6 +74,37 @@ class sale_order(osv.osv):
             'usd_acc_number': order.usd_acc_number,
         })
         return invoice_vals
+    
+    def write(self, cr, uid, ids, vals, context=None):
+        for sale in self.browse(cr, uid, ids):
+            if sale.state in ['draft','sent'] and 'state' not in vals and 'message_last_post' not in vals and 'name' not in vals:
+                if not sale.parent_id:
+                    sql = '''
+                        select count(id) from sale_order where parent_id=%s
+                    '''%(sale.id)
+                    cr.execute(sql)
+                    num_of_sale = cr.fetchone()[0]
+                    new_name = sale.name +'_R'+str(num_of_sale+1)
+                    parent_id = False
+                else:
+                    sql = '''
+                        select count(id) from sale_order where parent_id=%s
+                    '''%(sale.parent_id.id)
+                    cr.execute(sql)
+                    num_of_sale = cr.fetchone()[0]
+                    new_name = sale.parent_id.name +'_R'+str(num_of_sale+1)
+                    parent_id = sale.parent_id.id
+                old_name = sale.name
+                super(sale_order,self).write(cr, uid, [sale.id], {'name':new_name}, context)
+                default = {'parent_id': parent_id,'name': old_name}
+                new_id = self.copy(cr, uid, sale.id, default)
+                if not sale.parent_id:
+                    sql = '''
+                        update sale_order set parent_id=%s where id=%s;
+                        update sale_order set parent_id=%s where parent_id=%s;
+                    '''%(new_id,sale.id,new_id,sale.id)
+                    cr.execute(sql)
+        return super(sale_order,self).write(cr, uid, ids, vals, context)
     
 sale_order()
 

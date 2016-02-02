@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<menuitem id="menu_action_job_order"
+    		name="Job Order"
+    		action="action_job_order"
+    		parent="base.menu_sales" sequence="10"/>
+    		
+		<menuitem id="menu_action_valve_failure_report"
+    		name="Valve Failure"
+    		action="action_valve_failure_report"
+    		parent="base.menu_sales" sequence="20"/>
+    		
+		<menuitem id="sale.menu_report_product_all"
+    		action="sale.action_order_report_all"
+    		parent="base.menu_sales" sequence="30"/>
+    
+	</data>
+</openerp>

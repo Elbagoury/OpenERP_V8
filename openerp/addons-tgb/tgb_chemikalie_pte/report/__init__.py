@@ -4,3 +4,4 @@ import sale_report
 import stock_report
 import invoice_report
 import purchase_report
+import service_report

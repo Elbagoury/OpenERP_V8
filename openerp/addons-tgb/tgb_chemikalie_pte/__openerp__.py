@@ -26,11 +26,13 @@
     'sequence': 1,
     'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo','report_aeroo_ooo'],
     'data': [
+        'security/ir.model.access.csv',
         'report/partner_report_view.xml',
         'report/sale_report_view.xml',
         'report/stock_report_view.xml',
         'report/invoice_report_view.xml',
         'report/purchase_report_view.xml',
+        'report/service_report_view.xml',
         'res_partner_view.xml',
         'sale_view.xml',
         'stock_view.xml',
@@ -39,6 +41,8 @@
         'product_view.xml',
         'res_bank_view.xml',
         'report_view.xml',
+        'job_view.xml',
+        'menu.xml',
     ],
     'css' : [
     ],

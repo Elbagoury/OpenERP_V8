@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<record id="view_valve_failure_report_filter" model="ir.ui.view">
+            <field name="name">valve.failure.report.select</field>
+            <field name="model">valve.failure.report</field>
+            <field name="arch" type="xml">
+                <search string="Valve Failure">
+                	<field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="job_id"/>
+                    <group expand="0" string="Group By">
+                    	<filter name="group_by_date" string="Date" context="{'group_by':'date'}"/>
+                    	<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>
+                    	<filter name="group_by_job_id" string="Job Order" context="{'group_by':'job_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_valve_failure_report_tree" model="ir.ui.view">
+            <field name="name">valve.failure.report.tree</field>
+            <field name="model">valve.failure.report</field>
+            <field name="arch" type="xml">
+                <tree string="Valve Failure">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="model"/>
+                    <field name="contact"/>
+                    <field name="fab_no"/>
+                    <field name="s_no"/>
+                    <field name="job_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_valve_failure_report_form" model="ir.ui.view">
+            <field name="name">valve.failure.report.form</field>
+            <field name="model">valve.failure.report</field>
+            <field name="arch" type="xml">
+                <form string="Valve Failure" version='7.0'>
+					<header>
+					</header>
+                	<sheet>
+	                    <group col="4" colspan="2">
+	                    	<field name="name" required='1'/>
+		                    <field name="user_id" required='1'/>
+		                    <field name="partner_id" required='1'/>
+		                    <field name="date" required='1'/>
+		                    <field name="model" required='1'/>
+		                    <field name="contact" required='1'/>
+		                    <field name="fab_no" required='1'/>
+		                    <field name="s_no" required='1'/>
+		                    <field name="job_id" required='1'/>
+		                    <newline/>
+		                    <field name="service_contract"/>
+		                    <field name="warranty"/>
+		                    <field name="new_units"/>
+		                    <field name="chargeable"/>
+		                    <field name="urgent_level" required='1'/>
+		                    <field name="completion_date_by"/>
+	                    </group>
+	                    <group string="FAILURE ANALYSIS:">
+	                    	<field name="failure_analysis" nolabel='1'/>
+	                    </group>
+	                    <group string="ASSEMBLY:" col="4" colspan="2">
+	                    	<field name="alignment_of_gate_plate"/>
+	                    	<field name="applied_lock_tight"/>
+	                    	<field name="medium_strength"/>
+	                    	<field name="high_strength"/>
+	                    </group>
+	                    <h3>
+	                    	Grease Application:
+	                    </h3>
+	                    <group col="4" colspan="2">
+	                    	<field name="pneumatic_smc"/>
+	                    	<field name="pneumatic_vat_black"/>
+	                    	<field name="vacuum_grease"/>
+	                    	<field name="pneumatic_vat_white"/>
+	                    	<field name="gear_grease"/>
+	                    	<field name="paste"/>
+	                    	<field name="krytox_240ac"/>
+	                    	<field name="smc_lead_screw"/>
+	                    </group>
+	                    <group string="POST-TEST DATA:" col="4" colspan="2">
+	                    </group>
+                    	<h3>
+	                    	Grease Application:
+	                    </h3>
+	                    <group>
+	                    	<field name="low_speed"/>
+	                    	<field name="high_speed"/>
+	                    </group>
+	                    <group>
+	                    	<field name="post_remarks"/>
+	                    </group>
+	                    <group string="DETAILS:">
+	                    	<field name="details_remarks"/>
+	                    </group>
+	                    <group string="FINAL INSPECTION BEFORE DELIVERY:">
+	                    	<field name="all_procedure_completed"/>
+	                    	<field name="sn_vs_customer"/>
+	                    	<field name="cleaning_package_status"/>
+	                    	<field name="valve_fully_closed_after_controlled"/>
+	                    	<field name="cylinder_pressure_check_70psi"/>
+	                    	<field name="bellow_gate_not_expose"/>
+	                    	<field name="series_number_engraved"/>
+	                    </group>
+	                    <group col="4" colspan="2">
+	                    	<field name="serviced_and_inspected"/>
+	                    	<field name="final_date"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_valve_failure_report" model="ir.actions.act_window">
+            <field name="name">Valve Failure</field>
+            <field name="res_model">valve.failure.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_valve_failure_report_tree"/>
+            <field name="search_view_id" ref="view_valve_failure_report_filter"/>
+            <field name="context">{}</field>
+        </record>
+    
+    	<record id="view_job_order_filter" model="ir.ui.view">
+            <field name="name">job.order.select</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+                <search string="Job Order">
+                	<field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="serial_no"/>
+                    <field name="state"/>
+                    <field name="gate_pass"/>
+                    <group expand="0" string="Group By">
+                    	<filter name="group_by_date" string="Date" context="{'group_by':'date'}"/>
+                    	<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>
+                    	<filter name="group_by_state" string="Status" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_job_order_tree" model="ir.ui.view">
+            <field name="name">job.order.tree</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+                <tree string="Job Order">
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="name"/>
+                    <field name="serial_no"/>
+                    <field name="gate_pass"/>
+                    <field name="priority"/>
+                    <field name="count"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_job_order_form" model="ir.ui.view">
+            <field name="name">job.order.form</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+                <form string="Job Order" version='7.0'>
+					<header>
+						<button name="bt_confirm" string="Confirm" type="object" states="draft" class="oe_highlight"/>
+						<button name="bt_done" string="Done" type="object" states="confirmed" class="oe_highlight"/>
+						<button name="%(action_valve_failure_report)d" string="Generate Service" type="action" states="done" class="oe_highlight"
+							context="{
+								'default_job_id': active_id,
+								'default_partner_id': partner_id,
+								'default_date': date,
+								'default_urgent_level': priority,
+								'tgb_search_for_job':active_id,
+							}"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+					</header>
+                	<sheet>
+	                    <group col="4" colspan="2">
+	                    	<field name="name" required='1'/>
+	                    	<field name="date" required='1'/>
+		                    <field name="partner_id" required='1' domain="[('customer','=',True)]"/>
+		                    <field name="serial_no" required='1'/>
+		                    <field name="priority" required='1'/>
+		                    <field name="gate_pass"/>
+		                    <field name="count"/>
+		                    <newline/>
+		                    <field name="description" colspan="4"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_job_order" model="ir.actions.act_window">
+            <field name="name">Job Order</field>
+            <field name="res_model">job.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_job_order_tree"/>
+            <field name="search_view_id" ref="view_job_order_filter"/>
+            <field name="context">{}</field>
+        </record>
+        
+    </data>
+</openerp>
