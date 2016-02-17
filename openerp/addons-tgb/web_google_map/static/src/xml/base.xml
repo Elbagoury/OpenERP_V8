@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+
+  <t t-name="GoogleMap">
+    <div class="oe_gmap">
+      <p class="msg_empty oe_edit_only">Please, click the &#147;Get coordinates&#148; button to geocode the address and draw the map.</p>
+      <div class="oe_web_google_map map"></div>
+      <button type="button" class="oe_edit_only btn_get_coordinate">Get coordinates</button>
+      <button type="button" class="oe_edit_only btn_refresh">Refresh</button>
+    </div>
+  </t>
+
+  <t t-name="FieldO2MGoogleMap">
+    <div class="oe_gmap">
+      <div class="oe_web_google_map map"></div>
+      <p class="msg_empty">No records to display on map.</p>
+    </div>
+  </t>
+
+  <t t-name="GoogleMapInfoContent">
+    <div class='google-info-content'>
+      <t t-esc="record.name" />
+    </div>
+  </t>
+
+</templates>

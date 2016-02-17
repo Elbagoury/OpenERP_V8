@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_partner_form_inherit_gmap">
+            <field name="name">res.partner.form.inherit_gmap</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@string='Contacts']" position="after">
+                  <page string="Map">
+                    <group colspan="4" col="4">
+                        <separator string="Map" colspan="4" />
+                        <field name="lat" colspan="1" />
+                        <field name="lng" colspan="1" />
+                        <field name="map" nolabel="1"
+                               widget="gmap" colspan="4" />
+                    </group>
+                  </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

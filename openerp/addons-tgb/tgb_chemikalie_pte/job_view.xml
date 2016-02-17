@@ -6,7 +6,7 @@
             <field name="name">valve.failure.report.select</field>
             <field name="model">valve.failure.report</field>
             <field name="arch" type="xml">
-                <search string="Valve Failure">
+                <search string="Service Report">
                 	<field name="name"/>
                     <field name="date"/>
                     <field name="partner_id"/>
@@ -24,7 +24,7 @@
             <field name="name">valve.failure.report.tree</field>
             <field name="model">valve.failure.report</field>
             <field name="arch" type="xml">
-                <tree string="Valve Failure">
+                <tree string="Service Report">
                     <field name="name"/>
                     <field name="user_id"/>
                     <field name="partner_id"/>
@@ -41,7 +41,7 @@
             <field name="name">valve.failure.report.form</field>
             <field name="model">valve.failure.report</field>
             <field name="arch" type="xml">
-                <form string="Valve Failure" version='7.0'>
+                <form string="Service Report" version='7.0'>
 					<header>
 					</header>
                 	<sheet>
@@ -118,7 +118,7 @@
             </field>
         </record>
         <record id="action_valve_failure_report" model="ir.actions.act_window">
-            <field name="name">Valve Failure</field>
+            <field name="name">Service Report</field>
             <field name="res_model">valve.failure.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
