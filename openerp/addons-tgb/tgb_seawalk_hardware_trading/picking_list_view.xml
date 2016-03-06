@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<record id="view_picking_list_filter" model="ir.ui.view">
+            <field name="name">picking.list.select</field>
+            <field name="model">picking.list</field>
+            <field name="arch" type="xml">
+                <search string="Picking List">
+                	<field name="name"/>
+                	<field name="state"/>
+                    <group expand="0" string="Group By">
+                    	<filter name="group_by_date" string="Date" context="{'group_by':'name'}"/>
+                    	<filter name="group_by_state" string="State" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_picking_list_tree" model="ir.ui.view">
+            <field name="name">picking.list.tree</field>
+            <field name="model">picking.list</field>
+            <field name="arch" type="xml">
+                <tree string="Picking List">
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_picking_list_form" model="ir.ui.view">
+            <field name="name">picking.list.form</field>
+            <field name="model">picking.list</field>
+            <field name="arch" type="xml">
+                <form string="Picking List" version='7.0'>
+					<header>
+						<button name="bt_confirm" states="draft" string="Confirm" type='object' class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+					</header>
+                	<sheet>
+	                    <group col="4" colspan="2">
+	                    	<field name="name" required='1'/>
+	                    </group>
+	                    <group string="Picking List">
+	                    	<field name="invoice_line_ids" readonly='1' nolabel='1'>
+	                    		<tree>
+	                    			<field name="product_id" string="Item Code"/>
+	                    			<field name="name" string="Item Description"/>
+	                    			<field name="quantity" string="Qty"/>
+	                    			<field name="uos_id" string="UOM"/>
+	                    			<field name="partner_id" string="Customer"/>
+	                    			<field name="invoice_id" string="INV No."/>
+	                    		</tree>
+	                    	</field>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_picking_list" model="ir.actions.act_window">
+            <field name="name">Picking List</field>
+            <field name="res_model">picking.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_picking_list_tree"/>
+            <field name="search_view_id" ref="view_picking_list_filter"/>
+            <field name="context">{}</field>
+        </record>
+    </data>
+</openerp>

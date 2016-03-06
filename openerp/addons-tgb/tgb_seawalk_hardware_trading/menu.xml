@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+		<menuitem id="menu_action_picking_list"
+    		name="Picking List"
+    		action="action_picking_list"
+    		parent="base.menu_sales" sequence="10"/>
+    
+	</data>
+</openerp>

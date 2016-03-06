@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<record id="view_test_web_tree" model="ir.ui.view">
+            <field name="name">test.web.tree</field>
+            <field name="model">test.web</field>
+            <field name="arch" type="xml">
+                <tree string="Test Web">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_test_web_form" model="ir.ui.view">
+            <field name="name">test.web.form</field>
+            <field name="model">test.web</field>
+            <field name="arch" type="xml">
+                <form string="Test Web" version='7.0'>
+                	<sheet>
+	                    <group>
+	                    	<field name="name" widget="bootstrap_markdown"/>
+	                    	<field name="number"/>
+	                    	<field name="test_web_line" widget="x2many_2d_matrix" show_row_totals='1' show_column_totals='1'>
+	                    		<tree editable='top'>
+	                    			<field name="x"/>
+	                    			<field name="y"/>
+	                    			<field name="value"/>
+	                    		</tree>
+	                    	</field>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_test_web" model="ir.actions.act_window">
+            <field name="name">Test Web</field>
+            <field name="res_model">test.web</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_test_web_tree"/>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem id="menu_action_test_web"
+    		action="action_test_web"
+    		parent="base.menu_sales" sequence="30"/>
+        
+    </data>
+</openerp>

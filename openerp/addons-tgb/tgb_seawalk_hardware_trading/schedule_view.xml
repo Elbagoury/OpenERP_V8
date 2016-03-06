@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    
+		<record model="ir.cron" id="done_create_picking_list_auto_1030_cron">
+            <field name="name">Done and Create new Picking List Auto 10h30</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="nextcall" eval="time.strftime('%Y-%m-%d 03:30:00')"/>
+            <field name="model" eval="'picking.list'"/>
+            <field name="function" eval="'done_create_picking_list_auto'"/>
+            <field name="args" eval="'()'" />
+        </record>
+        
+        <record model="ir.cron" id="done_create_picking_list_auto_1130_cron">
+            <field name="name">Done and Create new Picking List Auto 11h30</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="nextcall" eval="time.strftime('%Y-%m-%d 04:30:00')"/>
+            <field name="model" eval="'picking.list'"/>
+            <field name="function" eval="'done_create_picking_list_auto'"/>
+            <field name="args" eval="'()'" />
+        </record>
+        
+        <record model="ir.cron" id="done_create_picking_list_auto_1430_cron">
+            <field name="name">Done and Create new Picking List Auto 14h30</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="nextcall" eval="time.strftime('%Y-%m-%d 07:30:00')"/>
+            <field name="model" eval="'picking.list'"/>
+            <field name="function" eval="'done_create_picking_list_auto'"/>
+            <field name="args" eval="'()'" />
+        </record>
+        
+        <record model="ir.cron" id="done_create_picking_list_auto_1530_cron">
+            <field name="name">Done and Create new Picking List Auto 15h30</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="nextcall" eval="time.strftime('%Y-%m-%d 08:30:00')"/>
+            <field name="model" eval="'picking.list'"/>
+            <field name="function" eval="'done_create_picking_list_auto'"/>
+            <field name="args" eval="'()'" />
+        </record>
+
+	</data>
+</openerp>
