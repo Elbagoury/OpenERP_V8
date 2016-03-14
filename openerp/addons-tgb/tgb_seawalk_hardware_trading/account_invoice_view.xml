@@ -15,6 +15,15 @@
 				<xpath expr="//field[@name='invoice_line']/tree/field[@name='product_id']" position="attributes">
 					<attribute name="required">1</attribute>
 				</xpath>
+				<xpath expr="//button[@name='invoice_print']" position="replace">
+            	</xpath>
+            	<xpath expr="//field[@name='invoice_line']/tree/field[@name='invoice_line_tax_id']" position="after">
+					<field name="shelf"/>
+				</xpath>
+				<xpath expr="//field[@name='date_invoice']" position="after">
+					<field name="your_ref_no"/>
+					<field name="terms"/>
+				</xpath>
             </field>
         </record>
 

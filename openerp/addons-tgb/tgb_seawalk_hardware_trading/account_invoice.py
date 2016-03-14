@@ -91,6 +91,20 @@ class account_invoice(osv.osv):
                     
         return super(account_invoice, self).write(cr, uid, ids, vals, context)
     
+    _columns = {
+        'your_ref_no': fields.char('Your Ref. No', size=1024),
+        'terms': fields.char('Terms', size=1024),
+    }
+    
 account_invoice()
+
+class account_invoice_line(osv.osv):
+    _inherit = "account.invoice.line"
+    
+    _columns = {
+        'shelf': fields.char('Shelf', size=1024),
+    }
+    
+account_invoice_line()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
