@@ -23,6 +23,7 @@
 				<xpath expr="//field[@name='date_invoice']" position="after">
 					<field name="your_ref_no"/>
 					<field name="terms"/>
+					<field name="our_do_no"/>
 				</xpath>
             </field>
         </record>
