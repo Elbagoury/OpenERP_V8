@@ -53,6 +53,8 @@ class account_invoice(osv.osv):
              " * The 'Paid' status is set automatically when the invoice is paid. Its related journal entries may or may not be reconciled.\n"
              " * The 'Cancelled' status is used when user cancel invoice."),
         'our_do_no': fields.char('Our D/O No.'),
+        'your_ref_no': fields.char('Your Ref. No', size=1024),
+        'terms': fields.char('Terms', size=1024),
     }
     
     def bt_confirm(self, cr, uid, ids, context=None):
@@ -91,11 +93,6 @@ class account_invoice(osv.osv):
                     picking_list_obj.write(cr, uid, [picking_list_ids[0]], {'invoice_line_ids': [(4, invoice_line)],})
                     
         return super(account_invoice, self).write(cr, uid, ids, vals, context)
-    
-    _columns = {
-        'your_ref_no': fields.char('Your Ref. No', size=1024),
-        'terms': fields.char('Terms', size=1024),
-    }
     
 account_invoice()
 
