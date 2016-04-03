@@ -24,7 +24,7 @@
     'version': '1.0',
     'category': 'TGB',
     'sequence': 1,
-    'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo','report_aeroo_ooo'],
+    'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo'],
     'data': [
         'security/ir.model.access.csv',
         'report/partner_report_view.xml',

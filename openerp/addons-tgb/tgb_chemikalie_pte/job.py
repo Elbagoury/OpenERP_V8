@@ -36,6 +36,7 @@ from dateutil.relativedelta import relativedelta
 
 class job_order(osv.osv):
     _name = "job.order"
+    _inherit = "mail.thread"
     
     def _get_count(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
@@ -72,7 +73,7 @@ class job_order(osv.osv):
         'date_confirmed': fields.datetime('Date Confirmed'),
         'date_done': fields.datetime('Date Done'),
         'count': fields.function(_get_count,type='float',string='Count (Hours)',digits=(16,0)),
-        'state': fields.selection([('draft','Draft'),('confirmed','Confirmed'),('done','Done')], 'Status'),
+        'state': fields.selection([('draft','Draft'),('confirmed','Done'),('done','Delivered')], 'Status'),
     }
     
     _defaults = {
@@ -99,6 +100,7 @@ class valve_failure_report(osv.osv):
         'model': fields.char('Model', size=1024),
         'contact': fields.char('Contact', size=1024),
         'fab_no': fields.char('FAB No', size=1024),
+        'gate_pass': fields.char('Gate Pass', size=1024),
         's_no': fields.char('S/No', size=1024),
         'job_id': fields.many2one('job.order', 'Job Order'),
         

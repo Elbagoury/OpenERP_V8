@@ -54,8 +54,8 @@
 		                    <field name="contact" required='1'/>
 		                    <field name="fab_no" required='1'/>
 		                    <field name="s_no" required='1'/>
+		                    <field name="gate_pass"/>
 		                    <field name="job_id" required='1'/>
-		                    <newline/>
 		                    <field name="service_contract"/>
 		                    <field name="warranty"/>
 		                    <field name="new_units"/>
@@ -150,7 +150,7 @@
             <field name="name">job.order.tree</field>
             <field name="model">job.order</field>
             <field name="arch" type="xml">
-                <tree string="Job Order">
+                <tree string="Job Order" colors="red:state=='confirmed' and count &lt;= 24">
                     <field name="date"/>
                     <field name="partner_id"/>
                     <field name="name"/>
@@ -176,6 +176,7 @@
 								'default_partner_id': partner_id,
 								'default_date': date,
 								'default_urgent_level': priority,
+								'default_gate_pass': gate_pass,
 								'tgb_search_for_job':active_id,
 							}"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>

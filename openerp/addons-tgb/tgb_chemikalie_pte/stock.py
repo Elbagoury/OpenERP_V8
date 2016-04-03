@@ -54,7 +54,12 @@ class stock_picking(osv.osv):
         })
         
         return vals
-
+    
+    _columns = {
+        'delivery_address_id': fields.many2one('res.partner', 'Delivery Address'),
+        'picking_type': fields.related('picking_type_id', 'code', type='char', string='Picking Type'),
+    }
+    
 stock_picking()
 
 class stock_move(osv.osv):
