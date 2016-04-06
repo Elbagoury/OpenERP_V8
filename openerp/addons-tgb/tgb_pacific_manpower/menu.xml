@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<record model="ir.ui.menu" id="hr.menu_hr_root">
+			<field name="name">Man Power</field>
+			<field name="sequence">21</field>
+		</record>
+		
+		<record model="ir.ui.menu" id="hr.menu_hr_main">
+			<field name="name">Employees</field>
+		</record>
+		
+	</data>
+</openerp>
