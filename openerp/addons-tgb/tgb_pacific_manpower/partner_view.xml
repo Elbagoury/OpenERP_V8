@@ -26,6 +26,21 @@
 				</xpath>
             </field>
         </record>
+        
+        <record id="view_employee_filter_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.filter.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name='partner_id'/>
+				</xpath>
+				<xpath expr="//field[@name='category_ids']" position="after">
+					<filter string="Assigned" name="assigned" domain="[('partner_id','!=',False)]"/>
+					<filter string="Unassigned" name="unassigned" domain="[('partner_id','=',False)]"/>
+				</xpath>
+            </field>
+        </record>
 
     </data>
 </openerp>
