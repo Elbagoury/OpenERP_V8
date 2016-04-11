@@ -2,7 +2,7 @@
 <openerp>
     <data>
 		<record model="ir.ui.menu" id="hr.menu_hr_root">
-			<field name="name">Man Power</field>
+			<field name="name">Manpower</field>
 			<field name="sequence">21</field>
 		</record>
 		
