@@ -134,6 +134,7 @@ class valve_failure_report(osv.osv):
         
         'post_remarks': fields.text('Remarks'),
         
+        'multi_images': fields.one2many('service.report.multi.images','service_report_id','Multi Images'),
         'details_remarks': fields.text('Remarks'),
         
         'all_procedure_completed': fields.boolean('All procedure completed?'),
@@ -163,4 +164,38 @@ class valve_failure_report(osv.osv):
     
 valve_failure_report()
 
+class service_report_multi_images(osv.osv):
+    _name = "service.report.multi.images"
+    
+    def _data_get(self, cr, uid, ids, name, arg, context=None):
+        if context is None:
+            context = {}
+        result = {}
+        bin_size = context.get('bin_size')
+        for attach in self.browse(cr, uid, ids, context=context):
+            result[attach.id] = attach.db_datas
+        return result
+
+    def _data_set(self, cr, uid, id, name, value, arg, context=None):
+        # We dont handle setting data to null
+        if not value:
+            return True
+        if context is None:
+            context = {}
+        file_size = len(value.decode('base64'))
+        super(service_report_multi_images, self).write(cr, SUPERUSER_ID, [id], {'db_datas': value, 'file_size': file_size}, context=context)
+        return True
+    
+    _columns = {
+        'datas_fname': fields.char('File Name',size=256),
+        'image': fields.function(_data_get, fnct_inv=_data_set, string='Images', type="binary", nodrop=True),
+        'db_datas': fields.binary('Images'),
+        'file_size': fields.integer('File Size'),
+        
+        'description':fields.char('Description'),
+        'title':fields.char('title'),
+        'service_report_id' : fields.many2one('valve.failure.report','Service Report', ondelete='cascade'),
+    }
+
+service_report_multi_images()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

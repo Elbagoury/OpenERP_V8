@@ -19,6 +19,33 @@
             	</xpath>
             </field>
         </record>
-    
+    	
+    	<record id="invoice_form_nocreate" model="ir.ui.view">
+		    <field name="name">account.invoice.form.nocreate</field>
+		    <field name="model">account.invoice</field>
+		    <field name="inherit_id" ref="account.invoice_form"/>
+		    <field name="groups_id" eval="[(6, 0, [ref('tgb_chemikalie_pte.group_tgb_chemikalie_pte_user') ])]"/>
+		    <field name="arch" type="xml">
+		        <xpath expr="//field[@name='invoice_line']/tree" position="attributes">
+            		<attribute name="create">false</attribute>
+            	</xpath>
+		    </field>
+		</record>
+		
+		<record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='invoice_line']/tree/field[@name='price_unit']" position="before">
+            		<field name="tgb_price_unit"/>
+            	</xpath>
+            	<xpath expr="//field[@name='invoice_line']/tree/field[@name='price_unit']" position="attributes">
+            		<attribute name="string">Unit Price After Discount</attribute>
+            	</xpath>
+            </field>
+        </record>
+	    	
+    	
     </data>
 </openerp>

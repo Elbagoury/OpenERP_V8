@@ -32,6 +32,7 @@ from openerp import SUPERUSER_ID
 import datetime
 import time
 import calendar
+import openerp.addons.decimal_precision as dp
 
 class res_partner(osv.osv):
     _inherit = 'res.partner'
@@ -46,6 +47,7 @@ class res_partner(osv.osv):
         'delivery_city': fields.char('City'),
         'delivery_state_id': fields.many2one("res.country.state", 'State', ondelete='restrict'),
         'delivery_country_id': fields.many2one('res.country', 'Country', ondelete='restrict'),
+        'supplier_pricelist_line': fields.one2many('supplier.pricelist', 'partner_id', 'Pricelist'),
     }
     
     def onchange_delivery_state(self, cr, uid, ids, state_id=False, context=None):
@@ -56,4 +58,17 @@ class res_partner(osv.osv):
         return {'value': vals}
     
 res_partner()
+
+class supplier_pricelist(osv.osv):
+    _name = "supplier.pricelist"
+    
+    _columns = {
+        'partner_id': fields.many2one('res.partner', 'Partner', ondelete='cascade'),
+        'qty_from': fields.float('Qty From', digits_compute=dp.get_precision('Product Unit of Measure'), required=True),
+        'qty_to': fields.float('Qty To', digits_compute=dp.get_precision('Product Unit of Measure'), required=True),
+        'amount_discount': fields.float('Amount Discount', required=True, digits_compute= dp.get_precision('Product Price')),
+    }
+    
+supplier_pricelist()
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

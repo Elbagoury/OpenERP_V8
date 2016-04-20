@@ -98,6 +98,25 @@
 	                    	<field name="post_remarks"/>
 	                    </group>
 	                    <group string="DETAILS:">
+	                    	<field name="multi_images" nolabel='1' widget="image_multi" col='4' colspan='4'>
+	                    		<tree>
+	                    			<field name="db_datas" widget="image"/>
+	                    			<field name="image" filename="datas_fname" required='1'/>
+                        			<field name="datas_fname" invisible="1" class="oe_inline oe_right"/>
+	                                <field name="description"/>
+	                                <field name="title"/>
+	                    		</tree>
+	                    		<form version='7.0'>
+	                    			<sheet>
+		                    			<group>
+			                    			<field name="image" widget="image" filename="datas_fname" required='1'/>
+		                        			<field name="datas_fname" invisible="1" class="oe_inline oe_right"/>
+			                                <field name="description"/>
+			                                <field name="title"/>
+			                            </group>
+		                            </sheet>
+	                    		</form>
+	                    	</field>
 	                    	<field name="details_remarks"/>
 	                    </group>
 	                    <group string="FINAL INSPECTION BEFORE DELIVERY:">

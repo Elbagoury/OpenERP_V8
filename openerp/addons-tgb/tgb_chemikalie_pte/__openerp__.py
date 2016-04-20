@@ -24,8 +24,9 @@
     'version': '1.0',
     'category': 'TGB',
     'sequence': 1,
-    'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo'],
+    'depends': ['sale','stock','sale_stock','product','stock_account','account','purchase','report_aeroo','web_widget_multi_image','web_tree_image'],
     'data': [
+        'security/tgb_chemikalie_pte_security.xml',
         'security/ir.model.access.csv',
         'report/partner_report_view.xml',
         'report/sale_report_view.xml',

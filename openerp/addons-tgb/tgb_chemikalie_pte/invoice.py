@@ -32,6 +32,7 @@ from openerp import SUPERUSER_ID
 import datetime
 import time
 import calendar
+import openerp.addons.decimal_precision as dp
 
 class account_invoice_line(osv.osv):
     _inherit = "account.invoice.line"
@@ -39,6 +40,7 @@ class account_invoice_line(osv.osv):
     _columns = {
         'part_no': fields.char('Part No', size=1024),
         'brand': fields.char('Brand', size=1024),
+        'tgb_price_unit': fields.float('Unit Price', required=True, digits_compute= dp.get_precision('Product Price')),
     }
     
 account_invoice_line()

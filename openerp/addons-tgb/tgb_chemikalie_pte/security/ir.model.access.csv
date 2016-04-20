@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tgb_chemikalie_pte_1,job_order,tgb_chemikalie_pte.model_job_order,base.group_user,1,1,1,1
 access_tgb_chemikalie_pte_2,valve_failure_report,tgb_chemikalie_pte.model_valve_failure_report,base.group_user,1,1,1,1
+access_tgb_chemikalie_pte_3,service_report_multi_images,tgb_chemikalie_pte.model_service_report_multi_images,base.group_user,1,1,1,1
+access_tgb_chemikalie_pte_4,supplier_pricelist,tgb_chemikalie_pte.model_supplier_pricelist,base.group_user,1,1,1,1

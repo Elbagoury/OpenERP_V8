@@ -32,6 +32,7 @@ from openerp import SUPERUSER_ID
 import datetime
 import time
 import calendar
+import openerp.addons.decimal_precision as dp
 
 class stock_picking(osv.osv):
     _inherit = "stock.picking"
@@ -68,6 +69,7 @@ class stock_move(osv.osv):
     _columns = {
         'part_no': fields.char('Part No', size=1024),
         'brand': fields.char('Brand', size=1024),
+        'tgb_price_unit': fields.float('Unit Price', digits_compute= dp.get_precision('Product Price')),
     }
     
     def _get_invoice_line_vals(self, cr, uid, move, partner, inv_type, context=None):
@@ -105,6 +107,7 @@ class stock_move(osv.osv):
             'account_analytic_id': False,
             'part_no': move.part_no,
             'brand': move.brand,
+            'tgb_price_unit': move.tgb_price_unit,
         }
     
 stock_move()
