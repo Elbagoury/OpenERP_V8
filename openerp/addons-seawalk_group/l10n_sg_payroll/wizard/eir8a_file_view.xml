@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_ir8a_submission_of_employee" model="ir.ui.view">
+            <field name="name">ir8a.submission.form11</field>
+            <field name="model">ir8a.submission</field>
+            <field name="arch" type="xml">
+                <form string="IR8A Submission" version="7.0">
+                    <header>
+                        <button string="Apply" name="action_apply" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button string="Approve" name="action_approve" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft', 'approve'])]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <div class="oe_right oe_button_box" name="button_box">
+                        <button name="open_payslip_batches"
+                            string="Generate Batch Payslips"
+                            type="object"
+                            icon="fa-book"
+                            class="oe_stat_button"
+                            groups="base.group_hr_manager"/>
+                    </div>
+                    <group>
+                        <group>
+                        	<field name="assesment_period_id"/>
+                            <field name='file_date'/>
+                            <field name="batch_date"/>
+                            <field name="name"/>
+                            <field name="ir8a_file_id"/>
+                            <field name="batch_indicator_type"/>
+                        </group>
+                        <group>
+                            <field name='company_id'/>
+                            <field name="authorized_user_id"/>
+                            <field name="validate_id"/>
+                            <field name="user_id"/>
+                            <field name="date"/>
+                        </group>
+                        <field name='employee_ids' colspan="4"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ir8a_submission_of_employee_tree" model="ir.ui.view">
+            <field name="name">ir8a.submission.treee1</field>
+            <field name="model">ir8a.submission</field>
+            <field name="arch" type="xml">
+                <tree string="IR8A Submission">
+                    <field name='name'/>
+                    <field name='file_date'/>
+                    <field name='company_id'/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_ir8a_submission" model="ir.actions.act_window">
+            <field name="name">IR8A Submission</field>
+            <field name="res_model">ir8a.submission</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_ir8a_submission_of_employee_tree"/>
+        </record>
+
+    </data>
+</openerp>

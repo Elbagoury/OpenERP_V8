@@ -16,26 +16,32 @@
                             <newline/>
                             <field name="date_import" colspan="2"/>
                             <newline/>
-                            <button name="create_product_list"   string="Get Product List" class="oe_highlight"
-                                groups="base.group_user" type="object"/>
-                            <button name="get_weekly_item"   string="Get Weekly Items" class="oe_highlight"
-                                groups="base.group_user" type="object"/>
+                            <button name="create_product_list" string="Get Product List" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                            <button name="get_weekly_item" string="Get Monday Items" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                            <newline/>
+                            <button name="get_weekly_item2" string="Get Wednesday Items" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                            <button name="get_weekly_item3" string="Get Friday Items" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
                             <separator string="Product List" colspan="8"/>
-                            <field name = "price_detail_ids"  nolabel="1" colspan="8" context="{'default_form_id': active_id}">
+                            <field name="price_detail_ids" nolabel="1" colspan="8"
+                                   context="{'default_form_id': active_id}">
                                 <tree editable="1">
-                                    <field name="date"/>
+                                    <field name="date" readonly="1"/>
                                     <field name="product_id"/>
                                     <field name="price"/>
                                 </tree>
-                                <form >
+                                <form>
                                     <field name="date"/>
                                     <field name="product_id"/>
                                     <field name="price"/>
                                 </form>
                             </field>
                             <newline></newline>
-                            <button name="confirm_price"   string="Confirm Price" class="oe_highlight"
-                                groups="base.group_user" type="object"/>
+                            <button name="confirm_price" string="Confirm Price" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
                         </group>
                     </sheet>
                 </form>
@@ -46,13 +52,27 @@
             <field name="name">Product Daily Price</field>
             <field name="model">rat.daily.price</field>
             <field name="arch" type="xml">
-                <tree string="Multiple Quotation" version="7.0">
+                <tree string="Multiple Quotation" version="7.0" create="false">
                     <field name="name"/>
                     <field name="created_by"/>
                     <field name="date_import"/>
                 </tree>
             </field>
         </record>
+
+        <record model="ir.actions.act_window" id="tgb_rat_trading_new_daily_price_action">
+            <field name="name">Create Daily Price</field>
+            <field name="view_id" ref="tgb_rat_trading_daily_price_form_view"/>
+            <field name="res_model">rat.daily.price</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="rat_trading_create_daily_price_menu" action="tgb_rat_trading_new_daily_price_action" name="Create Daily Price"
+                  parent="base.menu_sales" sequence="10"/>
+
 
         <record model="ir.actions.act_window" id="tgb_rat_daily_price_action">
             <field name="name">Product Daily Price</field>
@@ -65,7 +85,7 @@
             <field name="target">current</field>
         </record>
 
-        <menuitem id="rat_trading_daily_price_menu" action="tgb_rat_daily_price_action" name="Product Daily Price"
+        <menuitem id="rat_trading_daily_price_menu" action="tgb_rat_daily_price_action" name="Product Daily Price History"
                   parent="base.menu_sales" sequence="11"/>
     </data>
 </openerp>

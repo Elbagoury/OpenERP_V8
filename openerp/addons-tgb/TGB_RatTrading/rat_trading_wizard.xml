@@ -5,11 +5,15 @@
             <field name="name">Rat Trading Multiple Quotation</field>
             <field name="model">rat.trading.wizard</field>
             <field name="arch" type="xml">
-                <form string="Multiple Quotation" version="7.0" context="{'default_form_id': active_id}">
+                <form string="Multiple Quotation" version="7.0" context="{'default_form_id': active_id}" create="false">
                     <header>
-                        <button name="confirm_quotation"   string="Confirm Quotations" class="oe_highlight"
+                        <button name="save_quotation" string="Save Quotations" class="oe_highlight"
                                 groups="base.group_user" type="object" states="draft"/>
-                        <button name="update_total_amount"   string="Update Total" class="oe_highlight"
+                        <button name="confirm_quotation" string="Confirm Quotations" class="oe_highlight"
+                                groups="base.group_user" type="object" states="draft"/>
+                        <button name="generate_excel" string="Generate Template" class="oe_highlight"
+                                groups="base.group_user" type="object"/>
+                        <button name="update_total_amount" string="Update Total" class="oe_highlight"
                                 groups="base.group_user" type="object" states="draft"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,done"
                                statusbar_colors='{"done":"red","draft":"blue"}'/>
@@ -21,11 +25,30 @@
                             <newline/>
                             <field name="date_import" colspan="2"/>
                             <newline/>
-                            <button name="create_customer_lines"   string="Get Customer Lines" class="oe_highlight"
-                                groups="base.group_user" type="object"/>
-                            <separator string="Quick Quotation Creation Detail" colspan="8"/>
-                            <field name = "trading_detail_ids" editable="1" nolabel="1" colspan="8" context="{'default_form_id': active_id}"/>
+                            <button name="create_customer_lines_monday" string="Get Customer (Monday)"
+                                    class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                            <button name="create_customer_lines_wednesday" string="Get Customer (Wednesday)"
+                                    class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                            <button name="create_customer_lines_friday" string="Get Customer (Friday)"
+                                    class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
                             <newline></newline>
+                        </group>
+                        <field name="report_generated" invisible="1"/>
+                        <group attrs="{'invisible':[('report_generated','!=',True)]}" col="4">
+                            <field name="template_name" invisible="1"/>
+                            <field name="template_data" filename="template_name"/>
+                            <field name="import_data" colspan="1"/>
+                            <button name="import_xls" string="Import" class="oe_highlight"
+                                    groups="base.group_user" type="object"/>
+                        </group>
+                        <separator string="Quick Quotation Creation Detail" colspan="8"/>
+                        <field name="trading_detail_ids" editable="1" nolabel="1" colspan="8"
+                               context="{'default_form_id': active_id}"/>
+                        <newline/>
+                        <group>
                             <field name="total_amount"/>
                         </group>
                     </sheet>
@@ -37,7 +60,7 @@
             <field name="name">Multiple Quotation</field>
             <field name="model">rat.trading.wizard</field>
             <field name="arch" type="xml">
-                <tree string="Multiple Quotation" version="7.0">
+                <tree string="Multiple Quotation" version="7.0" create="false">
                     <field name="name"/>
                     <field name="created_by"/>
                     <field name="date_import"/>
@@ -66,7 +89,8 @@
             <field name="target">inline</field>
         </record>
 
-        <menuitem id="rat_trading_multiple_quotation_menu" action="tgb_rat_trading_wizard_action" name="Create Multiple Quotation"
+        <menuitem id="rat_trading_multiple_quotation_menu" action="tgb_rat_trading_wizard_action"
+                  name="Create Multiple Quotation"
                   parent="base.menu_sales" sequence="10"/>
 
         <record model="ir.actions.act_window" id="tgb_rat_trading_wizard_detail_action">
@@ -79,11 +103,9 @@
             <field name="target">current</field>
         </record>
 
-
-
-        <menuitem id="rat_trading_multiple_quotation_detail_menu" action="tgb_rat_trading_wizard_detail_action" name="Multiple Quotation Detail"
+        <menuitem id="rat_trading_multiple_quotation_detail_menu" action="tgb_rat_trading_wizard_detail_action"
+                  name="Multiple Quotation Detail"
                   parent="base.menu_sales" sequence="10"/>
-
 
     </data>
 </openerp>

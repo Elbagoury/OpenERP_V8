@@ -37,11 +37,15 @@ class product(osv.osv):
     _columns = {
         'product_multi_active': fields.boolean('Use in Multi quotation'),
         'product_weekly_item': fields.boolean('Weekly Item'),
+        'product_weekly_item2': fields.boolean('Weekly Item2'),
+        'product_weekly_item3': fields.boolean('Weekly Item3'),
      }
 
     _defaults={
         'product_multi_active':False,
         'product_weekly_item':False,
+        'product_weekly_item2':False,
+        'product_weekly_item3':False,
     }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

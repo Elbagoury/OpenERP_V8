@@ -7,10 +7,11 @@
             <field name="arch" type="xml">
                 <field name ="list_price" position="after">
                     <field name ="product_multi_active"/>
-                    <field name ="product_weekly_item"/>
+                    <field name ="product_weekly_item" string ="Monday Item"/>
+                    <field name ="product_weekly_item2" string ="Wednesday Item"/>
+                    <field name ="product_weekly_item3" string ="Friday Item"/>
                 </field>
             </field>
         </record>
-
     </data>
 </openerp>

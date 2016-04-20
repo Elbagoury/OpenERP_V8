@@ -1,0 +1,44 @@
+name,employee_code,department_id,job_id,date_of_commencement,company_id,country_id,nric_fin_passport_id,gender
+Lee Kim Hock (M),CGN_001,Congin,Supervisor,7/20/1992,Congin Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Thiam Tow (M),CGN_002,Congin,Driver,3/26/2002,Congin Hardware Trading Pte Ltd,Singapore,0,Male
+Soo Bu Yau,SS_001,,Storekeeper,3/2/2016,Spaceweiss Solutions Pte Ltd,Singapore,0,Male
+Yap Yong Teck,SS_002,,Storekeeper,10/6/2015,Spaceweiss Solutions Pte Ltd,Singapore,0,Male
+Sim Eng Thai (M),STR_001,Sinterry,Manager,4/6/1985,Sinterry Hardware Trading Pte Ltd,Singapore,0,Male
+Neo Leong Peck (M),STR_002,Sinterry,Supervisor,10/25/1995,Sinterry Hardware Trading Pte Ltd,Singapore,0,Male
+Lee Tong Chua (M),STR_003,Sinterry,Shop Asst,2/15/2012,Sinterry Hardware Trading Pte Ltd,Singapore,0,Male
+Ng Soon Lock,STR_004,Sinterry,Driver,4/5/2016,Sinterry Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Hwey Yee (summer),STR_005,Sinterry,Clerk,9/22/2014,Sinterry Hardware Trading Pte Ltd,Singapore,0,Male
+Chau Yoke Teen,SW_001,HOD,Import & Export Manager,4/14/2009,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ho Woon Pin,SW_002,HOD,Logistic Manager,5/16/2008,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Say Lee,SW_003,HOD,Sales Manager,8/4/2003,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Yeo Chiu Nee,SW_004,HOD,Account Manager,5/31/2001,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Yeo Thian Soon,SW_005,HOD,Sales Manager,7/16/2001,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ng Li Moi,SW_006,HOD,Customer Service,7/6/2010,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Poh Chee Choon,SW_007,HOD,Storekeeper,3/17/2014,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ang Geok Lin,SW_008,,Assistant Imp & Exp Manager,7/1/2011,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ang Geok Ting,SW_009,,Graphic Designer,8/24/2009,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+"Ang Xin Ru, Bernice",SW_010,,Marketing Executive,1/4/2016,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+"Chang Lee Gee, Micheal",SW_011,,Warehouse Assistant,7/6/2015,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Chong Kian Ping,SW_012,,Sales Executive,11/1/2010,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Chong Kian Yap,SW_013,,Storekeeper,6/16/2014,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Kong Kar Wei,SW_014,,Storekeeper,6/2/2010,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Liau Bee Bee,SW_015,,Assist Account Manager,12/15/2010,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Liew Kar Boon,SW_016,,Technical Account Manager,8/1/2008,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Li ShuangLi,SW_017,,Lorry Driver,3/14/2014,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Liu Yi,SW_018,,Storekeeper,11/11/2013,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Pan Eng Meng,SW_019,,Storekeeper,7/31/1997,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Boon Hong,SW_020,,Import & Export Assistant,4/1/2016,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Cheang Tee,SW_021,,Lorry Driver,11/16/2004,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Kai Shien,SW_022,,Storekeeper,8/18/2009,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tan Kai Wen,SW_023,,Customer Service,5/21/2008,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Tee Yee Sin,SW_024,,Assistant Accounnt Manager,5/1/2013,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+"Tham Wai Sin, Sally",SW_025,,Purchaser,4/6/2015,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Wong Chit Siang,SW_026,,Storekeeper,2/22/2016,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Yaw Pei Pei,SW_027,,Customer Service,4/26/2011,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Yeo Kim Yong,SW_028,,Storekeeper,12/14/1994,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Yew Ken Nee,SW_029,,Customer Service,5/4/2015,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ho Seng,SW_030,Management,Managing Director,,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Pang Moy Hoon,SW_031,Management,Financial Controller,,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Hoe Xue Yi,SW_032,Management,Administration Manager,,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ho Thiam Chin,SW_033,Management,Executive Director,,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male
+Ho Thiam Hock,SW_034,Management,Busniess Development Manager,,Seawalk Hardware Trading Pte Ltd,Singapore,0,Male

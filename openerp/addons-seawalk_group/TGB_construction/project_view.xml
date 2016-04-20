@@ -1,0 +1,86 @@
+<openerp>
+    <data>
+
+        <record id="TGB_open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="context">{'search_default_Current': 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to start a new project.
+                </p>
+                <p>
+                    Projects are used to organize your activities; plan
+                    tasks, track issues, invoice timesheets. You can define
+                    internal projects (R&amp;D, Improve Sales Process),
+                    private projects (My Todos) or customer ones.
+                </p>
+                <p>
+                    You will be able collaborate with internal users on
+                    projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="TGB_open_view_project_all" id="TGB_menu_projects" name="Projects"
+                  parent="menu_construction_project_management_menu" sequence="1"/>
+
+        <record id="TGB_action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <record id="TGB_open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="TGB_action_view_task"/>
+        </record>
+        <record id="TGB_open_view_task_list_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="TGB_action_view_task"/>
+        </record>
+
+        <menuitem action="TGB_action_view_task" id="TGB_menu_action_view_task"
+                  parent="menu_construction_project_management_menu" sequence="5"/>
+
+        <record model="ir.ui.view" id="TGB_view_project">
+            <field name="name">TGB.view.project</field>
+            <field name="model">project.project</field>
+                <field name="inherit_id" ref="project.edit_project"></field>
+            <field name="arch" type="xml">
+                <xpath expr='//notebook' position='inside'>
+                    <page string="Project Order Details">
+                        <field name="sale_order_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="subject"/>
+                                <field name="total_grand"/>
+                                <field name="state" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <field name ="partner_id" position="after">
+                    <field name ="project_code"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

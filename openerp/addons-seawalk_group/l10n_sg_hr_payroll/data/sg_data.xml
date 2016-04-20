@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+
+		<!--State -->
+		<record id="sg" model="res.country.state">
+			<field name="name">Singapore</field>
+			<field name="code">sg</field>
+			<field name="country_id" ref="base.sg" />
+		</record>
+
+		<!-- admin -->
+		<record id="hr.employee" model="hr.employee">
+			<field name="emp_country_id" ref="base.sg" />
+			<field name="emp_state_id" ref="sg" />
+			<field name="birthday">1974-12-12</field>
+			<field name="identification_no">1</field>
+			<field name="cessation_provisions">Y</field>
+			<field name="address_type">N</field>
+		</record>
+
+	</data>
+</openerp>

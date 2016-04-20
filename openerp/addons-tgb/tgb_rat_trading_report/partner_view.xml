@@ -1,0 +1,27 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="tgb_view_partner_inherit">
+            <field name="name">TGB.view.partner</field>
+            <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="arch" type="xml">
+                <field name ="title" position="after">
+                    <field name ="customer_id"/>
+                    <field name ="hp_no"/>
+                </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_tgb_company_form_inherit">
+            <field name="name">res.company.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"></field>
+            <field name="arch" type="xml">
+                <field name ="company_registry" position="after">
+                    <field name ="hp_no"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

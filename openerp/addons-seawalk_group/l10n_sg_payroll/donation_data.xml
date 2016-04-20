@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="donation_mbmf_rule1" model="donation.type">
+            <field name="name">wage 0-1000</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">1000</field>
+            <field name="python_code">result = 2.0</field>
+        </record>
+        <record id="donation_mbmf_rule2" model="donation.type">
+            <field name="name">wage 1001-2000</field>
+            <field name="wage_start">1001</field>
+            <field name="wage_end">2000</field>
+            <field name="python_code">result = 3.50</field>
+        </record>
+        <record id="donation_mbmf_rule3" model="donation.type">
+            <field name="name">wage 2001-3000</field>
+            <field name="wage_start">2001</field>
+            <field name="wage_end">3000</field>
+            <field name="python_code">result = 5.0</field>
+        </record>
+        <record id="donation_mbmf_rule4" model="donation.type">
+            <field name="name">wage 3001-4000</field>
+            <field name="wage_start">3001</field>
+            <field name="wage_end">4000</field>
+            <field name="python_code">result = 12.50</field>
+        </record>
+        <record id="donation_mbmf_rule5" model="donation.type">
+            <field name="name">wage 4001 above</field>
+            <field name="wage_start">4001</field>
+            <field name="wage_end">10000000000</field>
+            <field name="python_code">result = 16.0</field>
+        </record>
+
+        <record id="donation_mbmf" model="employee.donation">
+            <field name="name">MBMF</field>
+            <field name="sequence">02</field>
+            <field name="code">MBMF</field>
+            <field name="type">fixed</field>
+            <field name="detail">Mosque Building and Mendaki Fund (MBMF)</field>
+            <field name="donation_rule_ids" eval="[(4,ref('donation_mbmf_rule1')),(4,ref('donation_mbmf_rule2')),(4,ref('donation_mbmf_rule3')),(4,ref('donation_mbmf_rule4')),(4,ref('donation_mbmf_rule5'))]"/>
+        </record>
+
+
+        <record id="donation_sinda_rule1" model="donation.type">
+            <field name="name">wage 0-1000</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">1000</field>
+            <field name="python_code">result = 1.0</field>
+        </record>
+        <record id="donation_sinda_rule2" model="donation.type">
+            <field name="name">wage 1001-1500</field>
+            <field name="wage_start">1001</field>
+            <field name="wage_end">1500</field>
+            <field name="python_code">result = 3.00</field>
+        </record>
+        <record id="donation_sinda_rule3" model="donation.type">
+            <field name="name">wage 1501-2500</field>
+            <field name="wage_start">1501</field>
+            <field name="wage_end">2500</field>
+            <field name="python_code">result = 5.0</field>
+        </record>
+        <record id="donation_sinda_rule4" model="donation.type">
+            <field name="name">wage 2501-4500</field>
+            <field name="wage_start">2501</field>
+            <field name="wage_end">4500</field>
+            <field name="python_code">result = 7.0</field>
+        </record>
+        <record id="donation_sinda_rule5" model="donation.type">
+            <field name="name">wage 4501-7500</field>
+            <field name="wage_start">4501</field>
+            <field name="wage_end">7500</field>
+            <field name="python_code">result = 9.0</field>
+        </record>
+        <record id="donation_sinda_rule6" model="donation.type">
+            <field name="name">wage 7501-10000</field>
+            <field name="wage_start">7501</field>
+            <field name="wage_end">10000</field>
+            <field name="python_code">result = 12.0</field>
+        </record>
+        <record id="donation_sinda_rule7" model="donation.type">
+            <field name="name">wage 10001-15000</field>
+            <field name="wage_start">10001</field>
+            <field name="wage_end">15000</field>
+            <field name="python_code">result = 18.0</field>
+        </record>
+        <record id="donation_sinda_rule8" model="donation.type">
+            <field name="name">wage 15000-above</field>
+            <field name="wage_start">15001</field>
+            <field name="wage_end">100000000000</field>
+            <field name="python_code">result = 30.0</field>
+        </record>
+
+        <record id="donation_sinda" model="employee.donation">
+            <field name="name">SINDA</field>
+            <field name="sequence">03</field>
+            <field name="code">SINDA</field>
+            <field name="type">fixed</field>
+            <field name="detail">Singapore Indian Development Association (SINDA) Fund</field>
+            <field name="donation_rule_ids" eval="[(4,ref('donation_sinda_rule1')),(4,ref('donation_sinda_rule2')),(4,ref('donation_sinda_rule3')),(4,ref('donation_sinda_rule4')),(4,ref('donation_sinda_rule5')),(4,ref('donation_sinda_rule6')),(4,ref('donation_sinda_rule7')),(4,ref('donation_sinda_rule8'))]"/>
+        </record>
+
+
+
+        <record id="donation_cdac_rule1" model="donation.type">
+            <field name="name">wage 0-2000</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">2000</field>
+            <field name="python_code">result = 0.50</field>
+        </record>
+        <record id="donation_cdac_rule2" model="donation.type">
+            <field name="name">wage 2001-3500</field>
+            <field name="wage_start">2001</field>
+            <field name="wage_end">3500</field>
+            <field name="python_code">result = 1.0</field>
+        </record>
+        <record id="donation_cdac_rule3" model="donation.type">
+            <field name="name">wage 3501-5000</field>
+            <field name="wage_start">3501</field>
+            <field name="wage_end">5000</field>
+            <field name="python_code">result = 1.50</field>
+        </record>
+        <record id="donation_cdac_rule4" model="donation.type">
+            <field name="name">wage 5001-7500</field>
+            <field name="wage_start">5001</field>
+            <field name="wage_end">7500</field>
+            <field name="python_code">result = 2.0</field>
+        </record>
+        <record id="donation_cdac_rule5" model="donation.type">
+            <field name="name">wage 7501 above</field>
+            <field name="wage_start">7501</field>
+            <field name="wage_end">10000000000</field>
+            <field name="python_code">result = 3.0</field>
+        </record>
+
+        <record id="donation_cdac" model="employee.donation">
+            <field name="name">CDAC</field>
+            <field name="sequence">04</field>
+            <field name="code">CDAC</field>
+            <field name="type">fixed</field>
+            <field name="detail">Chinese Development Assistance Council (CDAC) Fund</field>
+            <field name="donation_rule_ids" eval="[(4,ref('donation_cdac_rule1')),(4,ref('donation_cdac_rule2')),(4,ref('donation_cdac_rule3')),(4,ref('donation_cdac_rule4')),(4,ref('donation_cdac_rule5'))]"/>
+        </record>
+
+
+
+        <record id="donation_ecf_rule1" model="donation.type">
+            <field name="name">wage 0-1000</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">1000</field>
+            <field name="python_code">result = 2.0</field>
+        </record>
+        <record id="donation_ecf_rule2" model="donation.type">
+            <field name="name">wage 1001-1500</field>
+            <field name="wage_start">1001</field>
+            <field name="wage_end">1500</field>
+            <field name="python_code">result = 4.0</field>
+        </record>
+        <record id="donation_ecf_rule3" model="donation.type">
+            <field name="name">wage 1501-2500</field>
+            <field name="wage_start">1501</field>
+            <field name="wage_end">2500</field>
+            <field name="python_code">result = 6.0</field>
+        </record>
+        <record id="donation_ecf_rule4" model="donation.type">
+            <field name="name">wage 2501-4000</field>
+            <field name="wage_start">2501</field>
+            <field name="wage_end">4000</field>
+            <field name="python_code">result = 9.0</field>
+        </record>
+        <record id="donation_ecf_rule5" model="donation.type">
+            <field name="name">wage 4001-7000</field>
+            <field name="wage_start">4001</field>
+            <field name="wage_end">7000</field>
+            <field name="python_code">result = 12.0</field>
+        </record>
+        <record id="donation_ecf_rule6" model="donation.type">
+            <field name="name">wage 7001-10000</field>
+            <field name="wage_start">7001</field>
+            <field name="wage_end">10000</field>
+            <field name="python_code">result = 16.0</field>
+        </record>
+        <record id="donation_ecf_rule7" model="donation.type">
+            <field name="name">wage 10000 above</field>
+            <field name="wage_start">10001</field>
+            <field name="wage_end">100000000</field>
+            <field name="python_code">result = 20.0</field>
+        </record>
+
+        <record id="donation_ecf" model="employee.donation">
+            <field name="name">ECF</field>
+            <field name="sequence">05</field>
+            <field name="code">ECF</field>
+            <field name="type">fixed</field>
+            <field name="detail">Eurasian Community Fund (ECF)</field>
+            <field name="donation_rule_ids" eval="[(4,ref('donation_ecf_rule1')),(4,ref('donation_ecf_rule2')),(4,ref('donation_ecf_rule3')),(4,ref('donation_ecf_rule4')),(4,ref('donation_ecf_rule5')),(4,ref('donation_ecf_rule6')),(4,ref('donation_ecf_rule7'))]"/>
+        </record>
+
+
+        <record id="donation_fwl" model="employee.donation">
+            <field name="name">FWL</field>
+            <field name="sequence">08</field>
+            <field name="code">FWL</field>
+            <field name="type">fixed</field>
+            <field name="detail">Foreign Worker Levy (FWL)</field>
+        </record>
+
+
+        <record id="donation_sdl_rule1" model="donation.type">
+            <field name="name">wage 0-10000000</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">1000000000</field>
+            <field name="python_code">result = 0.0025*contract.wage>2.0 and 0.0025*contract.wage or 2.0</field>
+        </record>
+
+        <record id="donation_sdl" model="employee.donation">
+            <field name="name">SDL</field>
+            <field name="sequence">11</field>
+            <field name="code">SDL</field>
+            <field name="type">fixed</field>
+            <field name="detail">Skills Development Levy (SDL)</field>
+            <field name="donation_rule_ids" eval="[(4,ref('donation_sdl_rule1'))]"/>
+        </record>
+    </data>
+</openerp>

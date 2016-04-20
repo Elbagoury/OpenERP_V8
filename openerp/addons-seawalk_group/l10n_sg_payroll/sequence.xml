@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Sequences for CPF file advice code -->
+        <record id="seq_type_cpf_serial" model="ir.sequence.type">
+            <field name="name">CPF Advice Code</field>
+            <field name="code">cpf.serial</field>
+        </record>
+
+        <record id="seq_cpf_serial" model="ir.sequence">
+            <field name="name">CPF Advice Code</field>
+            <field name="code">cpf.serial</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</openerp>

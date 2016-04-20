@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem id="hr_payroll.menu_hr_root_payroll" parent="hr.menu_hr_root" name="Payroll" sequence="30" groups="base.group_user"/>
+        <menuitem action="hr_payroll.action_view_hr_payslip_form" id="hr_payroll.menu_department_tree" parent="hr_payroll.menu_hr_root_payroll" groups="base.group_user"/>
+
+
+    	<record id="salary_rule_categ_inherited" model="ir.ui.view">
+            <field name="name">salary.rule.categ.inherited</field>
+            <field name="model">hr.salary.rule.category</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_category_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="active"/>
+                    <!--field name="print"/-->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="singapore_company_inherited" model="ir.ui.view">
+            <field name="name">res.company.singapore.config</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="before">
+                    <field name="registration_number"/>
+                    <!-- <field name="cpf_number"/> -->
+                    <field name="nric_fin_passport_id"/>
+                    <field name="iras_tax_number"/>
+                </xpath>
+
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="company_sector" required="1"/>
+                    <field name="business_nature" placeholder="Business Nature" required="1"/>
+                    <field name="establishment" required="1"/>
+                    <field name="org_id_type" required="1"/>
+                    <field name="org_id_no" required="1"/>
+                </xpath>
+
+                <xpath expr="//group[@string='Accounting']" position="after">
+                    <group string="Payroll Details">
+                        <field name="payday" required="1"/>
+                        <field name="next_payday" required="1"/>
+                        <field name="enable_esubmission" required="1"/>
+                        <!-- <field name="payment_mode"/> -->
+                        <group string="What is the salary payment mode (s)?">
+	                        <field name="giro_pay"/>
+	                        <field name="cheque_pay"/>
+	                        <field name="cash_pay"/>
+                        </group>
+                    </group>
+                    <group string="IRAS Approval">
+                    	<field name="iras_approval"/>
+                    	<field name="iras_approval_date"/>
+                    </group>
+                </xpath>
+
+
+            </field>
+        </record>
+
+		<record id="singapore_employee_cpf_contribution_tree" model="ir.ui.view">
+            <field name="name">employee.cpf.detail.tree</field>
+            <field name="model">employee.cpf.detail</field>
+            <field name="arch" type="xml">
+				<tree string="CPF Contribution">
+					<field name="name"/>
+					<field name="date"/>
+					<field name="employee_cpf"/>
+					<field name="employer_cpf"/>
+				</tree>
+           	</field>
+       	</record>
+
+		<record id="singapore_employee_cpf_contribution_form" model="ir.ui.view">
+            <field name="name">employee.cpf.detail.form</field>
+            <field name="model">employee.cpf.detail</field>
+            <field name="arch" type="xml">
+				<form string="CPF Contribution">
+					<field name="name"/>
+					<field name="employee_id"/>
+					<field name="date"/>
+					<field name="employee_cpf"/>
+					<field name="employer_cpf"/>
+				</form>
+           	</field>
+       	</record>
+
+		<record id="singapore_employee_cpf_contribution_search" model="ir.ui.view">
+            <field name="name">employee.cpf.detail.search</field>
+            <field name="model">employee.cpf.detail</field>
+            <field name="arch" type="xml">
+				<search string="CPF Contribution">
+					<field name="employee_id"/>
+				</search>
+           	</field>
+       	</record>
+
+		<record id="act_employee_cpf_contribution" model="ir.actions.act_window">
+            <field name="name">CPF Employee Contribution</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cpf.submission</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('employee_ids', 'in', [active_id])]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+		<record id="act_hr_employee_2_hr_income_tax" model="ir.actions.act_window">
+			<field name="name">Income Tax</field>
+			<field name="res_model">income.tax.detail</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_employee_id': active_id, 'default_employee_id': active_id}</field>
+		</record>
+
+		<record id="income_tax_detail_search" model="ir.ui.view">
+			<field name="name">income.tax.detail.search</field>
+			<field name="model">income.tax.detail</field>
+			<field name="arch" type="xml">
+				<search string="Income Tax">
+					<field name="employee_id"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="income_tax_detail_tree" model="ir.ui.view">
+			<field name="name">income.tax.detail.tree</field>
+			<field name="model">income.tax.detail</field>
+			<field name="arch" type="xml">
+				<tree string="Income Tax">
+					<field name="assesment_year_id"/>
+					<field name="date_of_approval" string="Date of Approval"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="income_tax_detail_form" model="ir.ui.view">
+			<field name="name">income.tax.detail.form</field>
+			<field name="model">income.tax.detail</field>
+			<field name="arch" type="xml">
+				<form string="Income Tax">
+					<group cols="6" colspan="4">
+						<field name="assesment_year_id"/>
+					</group>
+					<notebook>
+						<page string="IR8A">
+							<separator string="Section A-C"/>
+							<group>
+								<group>
+									<field name="directories_fee" attrs="{'required': [('date_of_approval_director', '!=', False)]}"/>
+								</group>
+								<group>
+									<field name="date_of_approval_director" attrs="{'required': [('directories_fee', '&gt;', 0)]}"/>
+								</group>
+							</group>
+							<group>
+								<group>
+									<field name="gain_profit"/>
+									<field name="exempt_income" attrs="{'required': [('exempt_remission', '!=', 'N'), ('exempt_remission', '!=', False)]}"/>
+								</group>
+								<group>
+									<field name="exempt_remission" attrs="{'required': [('exempt_income', '&gt;', 0)]}"/>
+									<field name="from_ir8s"/>
+								</group>
+							</group>
+							<!-- <separator string="Section D4"/> -->
+							<group>
+								<group string="Section D4">
+									<field name="pension"/>
+									<field name="insurance"/>
+									<field name="gratuity_payment" attrs="{'required': [('gratuity_payment_amount', '&gt;', 0)]}"/>
+									<field name="wheather_compensation_loss_office" attrs="{'required': ['|', ('approve_obtain_from_ir8s', '=', 'Y'), ('compensation_loss_office', '&gt;', 0)]}"/>
+									<field name="approve_obtain_from_ir8s" attrs="{'required': ['|', ('wheather_compensation_loss_office', '=', 'Y'), ('date_of_approval', '!=', False)]}"/>
+									<field name="date_of_approval" attrs="{'required': [('approve_obtain_from_ir8s', '=', 'Y')]}"/>
+									<field name="compensation_loss_office" attrs="{'required': [('wheather_compensation_loss_office', '=', 'Y')]}"/>
+									<field name="gratuity_payment_amount" attrs="{'required': [('gratuity_payment', '=', 'Y')]}"/>
+								</group>
+								<group string="Section D5">
+									<field name="retirement_benefit_fund"/>
+									<field name="retirement_benefit_upto"/>
+									<field name="retirement_benefit_accured_from"/>
+								</group>
+							</group>
+							<separator string="Section D6-D9"/>
+							<group>
+								<group>
+									<field name="benefits_in_kind" attrs="{'required': [('value_benefits_in_kind', '&gt;', 0)]}"/>
+									<field name="section_applicable"/>
+									<field name="contribution_by_employer_pension_pf"/>
+									<field name="excess_volunatry_contribution_cpf_employer"/>
+									<field name="gain_profit_share_option"/>
+									<field name="value_benefits_in_kind" attrs="{'required': [('benefits_in_kind', '=', 'Y')]}"/>
+									<field name="employee_voluntary_contribution_cpf"/>
+								</group>
+							</group>
+							<separator string="Section E"/>
+							<group>
+								<field name="employement_income_for_tax_borne_by_employer" attrs="{'required': [('employee_income_tax', '=', 'P')]}"/>
+								<field name="fixed_income_tax_liability_borne_by_employer" attrs="{'required': [('employee_income_tax', '=', 'H')]}"/>
+								<field name="employee_income_tax" attrs="{'required': ['|', ('employement_income_for_tax_borne_by_employer', '&gt;', 0), ('fixed_income_tax_liability_borne_by_employer', '&gt;', 0)]}"/>
+							</group>
+							<separator string="Section F"/>
+							<group>
+								<group>
+									<field name="cessation_provision_applicable"/>
+									<field name="date_of_declaration_of_bonus"/>
+								</group>
+								<group>
+									<field name="date_of_commencement"/>
+									<field name="date_of_cessation_posted_overseas"/>
+								</group>
+							</group>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+
+        <record id="singapore_employee_inherited" model="ir.ui.view">
+            <field name="name">hr.employee.singapore.config</field>
+            <field name="model">hr.employee</field>
+            <field eval="20" name="priority"/>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet" position="before">
+            		<header>
+            			<field name="status" widget="statusbar" clickable="True"/>
+            		</header>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(act_hr_employee_2_hr_income_tax)d"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        type="action">
+                        <field name="income_tax_count" widget="statinfo" string="Income Taxes"/>
+                    </button>
+                </xpath>
+                <xpath expr="//field[@name='category_ids']" position="after">
+                    <label for="employee_code"/>
+                    <field name="employee_code"/>
+                </xpath>
+                <xpath expr="//group[@string='Citizenship &amp; Other Info']/field[@name='country_id']" position="after">
+                    <field name="is_pensionable"/>
+                    <field name="citizenship"/>
+                    <field name="pr_startdate" attrs="{'invisible': [('citizenship', '!=', 'singapore_pr')], 'required': [('citizenship', '=', 'singapore_pr')]}"/>
+                    <field name="work_pass_information" attrs="{'invisible': [('citizenship', '!=', 'foreigner')], 'required': [('citizenship', '=', 'foreigner')]}"/>
+                    <field name="nric_fin_passport_id"/>
+                </xpath>
+                <xpath expr="//field[@name='work_email']" position="replace">
+                </xpath>
+                <xpath expr="//label[@for='work_email']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='work_phone']" position="replace">
+                </xpath>
+                <xpath expr="//label[@for='work_phone']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='otherid']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='identification_id']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='passport_id']" position="replace">
+                </xpath>
+
+                <xpath expr="//field[@name='address_id']" position="after">
+                    <field name="work_email"/>
+                    <field name="work_phone"/>
+                </xpath>
+
+                <xpath expr="//page[@string='Public Information']/group/group[@string='Position']" position="after">
+                    <group string="Dates">
+                        <label string="Trial Period Duration"/>
+                        <div>
+                            <field name="job_start" class="oe_inline"/> - <field name="job_end" class="oe_inline"/>
+                        </div>
+                        <label string="Employment Duration"/>
+                        <div>
+                            <field name="confirm_date" class="oe_inline"/> - <field name="emp_end" class="oe_inline"/>
+                        </div>
+                    </group>
+
+                </xpath>
+                <xpath expr="//page[@string='Personal Information']/group/group[@string='Contact Information']" position="inside">
+                	<field name="mobile"/>
+                </xpath>
+			    <!--xpath expr="//page[@string='Personal Information']" position="after">
+			    	<page string="Contact Information">
+	                	<group>
+	                		<group>
+	                			<field name="local_address_id"
+			                        context="{'show_address': 1, 'default_customer': False}"
+			                        options='{"always_reload": True, "highlight_first_line": True}'/>
+			                    <field name="co_address_id"
+			                        context="{'show_address': 1, 'default_customer': False}"
+			                        options='{"always_reload": True, "highlight_first_line": True}'/>
+	                		</group>
+	                		<group>
+	                			<field name="foreign_address_id"
+			                        context="{'show_address': 1, 'default_customer': False}"
+			                        options='{"always_reload": True, "highlight_first_line": True}'/>
+			                    <field name="emergency_address_id"
+			                        context="{'show_address': 1, 'default_customer': False}"
+			                        options='{"always_reload": True, "highlight_first_line": True}'/>
+	                		</group>
+	                	</group>
+	                </page>
+                </xpath-->
+                <xpath expr="//field[@name='mobile']" position="after">
+                        <field name="local_address_id"
+                            context="{'show_address': 1, 'default_customer': False}"
+                            options='{"always_reload": True, "highlight_first_line": True}' domain="[('address_type', '=', 'L')]"/>
+                        <field name="co_address_id"
+                            context="{'show_address': 1, 'default_customer': False}"
+                            options='{"always_reload": True, "highlight_first_line": True}' domain="[('address_type', '=', 'C')]"/>
+                        <field name="foreign_address_id"
+                            context="{'show_address': 1, 'default_customer': False}"
+                            options='{"always_reload": True, "highlight_first_line": True}' domain="[('address_type', '=', 'F')]"/>
+                        <field name="emergency_address_id"
+                            context="{'show_address': 1, 'default_customer': False}"
+                            options='{"always_reload": True, "highlight_first_line": True}'/>
+                </xpath>
+                <xpath expr="//group[@string='Active']" position="after">
+                    <group string="Payroll Details">
+                        <field name="ir8a_submission"/>
+                        <field name="company_sector" invisible="1"/>
+                        <field name="spr_1and2_joint" string="Contribute Employee and Employer CPF" attrs="{'readonly': [('citizenship', '!=', 'singapore_pr')], 'invisible': [('company_sector', 'in', ['ministries', 'other'])]}"/>
+                    </group>
+                </xpath>
+                <xpath expr="//page[@string='Personal Information']" position="after">
+                    <page string="Document Details" groups="base.group_hr_user">
+                        <group string="Identification Details" colspan="4">
+                            <field name="permit_ids" string="Permit Details" nolabel="1">
+                                <tree string="Permit Details" editable="top">
+                                    <field name="name"/>
+                                    <field name="id_number"/>
+                                    <field name="permit_startdate"/>
+                                    <field name="permit_enddate"/>
+                                    <field name="attachment_id" filename="doc_name"/>
+                                    <field name="doc_name" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+                <!--xpath expr="//group[@string='Birth']" position="after">
+                	<group string="Identification Details" colspan="4">
+                		<field name="permit_ids" string="Permit Details" nolabel="1">
+                			<tree string="Permit Details" editable="top">
+                			    <field name="name"/>
+                				<field name="id_number"/>
+                				<field name="permit_startdate"/>
+                				<field name="permit_enddate"/>
+                                <field name="attachment_id"/>
+                			</tree>
+                		</field>
+                	</group>
+                </xpath-->
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                    <page string="Contribution" groups="base.group_hr_user">
+                        <group string="Contribution">
+                            <field name="donation_ids" widget="many2many_tags"/>
+                        </group>
+                    </page>
+                </xpath>
+                <!--
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                	<page string="Income Tax">
+                		<field name="income_tax_ids"/>
+                	</page>
+                </xpath>
+                -->
+                <xpath expr="//page[@string='HR Settings']" position="attributes">
+                    <attribute name="string">Settings</attribute>
+                </xpath>
+                <xpath expr="//group[@string='Contract']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+		<record id="singapore_hr_address_form" model="ir.ui.view">
+            <field name="name">hr.address.form</field>
+            <field name="model">hr.address</field>
+            <field name="arch" type="xml">
+				<form string="Address Details">
+					<group>
+						<group>
+							<field name="name"/>
+						</group>
+						<group>
+							<field name="address_type"/>
+						</group>
+					</group>
+					<group string="Formatted Address" name="formatted_address" attrs="{'invisible': [('address_type', 'in', ['F', 'C'])]}">
+						<field name="block_no" attrs="{'required': [('address_type', '=', 'L')]}"/>
+						<field name="street" attrs="{'required': [('address_type', '=', 'L')]}"/>
+						<field name="level_no" attrs="{'required': [('unit_no', '!=', False)]}"/>
+						<field name="unit_no" attrs="{'required': [('level_no', '!=', False)]}"/>
+						<field name="postal_code" attrs="{'required': [('address_type', '=', 'L')]}"/>
+					</group>
+					<group string="Unformatted Address" name="unformatted_address" attrs="{'invisible': [('address_type', '=', 'L')]}">
+						<field name="line1" attrs="{'required': [('address_type', 'in', ['F', 'C'])]}"/>
+						<field name="line2" attrs="{'readonly': [('line1', '=', False)]}"/>
+						<field name="line3" attrs="{'readonly': [('line2', '=', False)]}"/>
+						<field name="postal_code_unformatted" attrs="{'required': [('address_type', '=', 'C')]}"/>
+					</group>
+					<group cols="6" colspan="4">
+						<field name="country_id" attrs="{'required': [('address_type', '=', 'F')]}"/>
+					</group>
+				</form>
+           	</field>
+       	</record>
+
+        <record id="singapore_contract_inherited" model="ir.ui.view">
+            <field name="name">hr.contract.singapore.config</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                    <attribute name="required">False</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_start']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                    <attribute name="required">False</attribute>
+                </xpath>
+
+                <xpath expr="//group[@name='duration_group']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='advantages']" position="before">
+                    <field name="working_hours"/>
+                </xpath>
+
+                <xpath expr="//page[@string='Information']" position="after">
+                    <page string="Employees">
+                        <field name="employee_ids" nolabel="1"/>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='wage']" position="replace">
+                    <field name="wage" string="Basic Salary"/>
+                </xpath>
+                <xpath expr="//group[@name='salary_and_advantages']/field[@name='wage']" position="after">
+                    <field name="overtime_applicable"/>
+                    <field name="payment_mode"/>
+                </xpath>
+                <xpath expr="//label[@string='Trial Period Duration']" position="replace">
+                    <label for="trial_date_start" string="Probation Period Duration"/>
+                </xpath>
+                <xpath expr="//label[@string='Duration']" position="replace">
+                    <label for="date_start" string="Confirmed Date"/>
+                </xpath>
+                <xpath expr="//field[@name='working_hours']" position="replace">
+                    <field name="working_hours" string="Work Week"/>
+                </xpath>
+                <xpath expr="//page[@string='Work Permit']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+		<record id="hr_contract.act_hr_employee_2_hr_contract" model="ir.actions.act_window">
+			<field name="context">{'search_default_employee_ids': [active_id], 'default_employee_ids': [active_id]}</field>
+		</record>
+
+		<record id="singapore_hr_contract_search_view" model="ir.ui.view">
+            <field name="name">hr.contract.singapore.search</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='employee_id']" position="replace">
+            		<field name="employee_ids" />
+            	</xpath>
+            	<xpath expr="//filter[@string='Employee']" position="replace">
+            	</xpath>
+            </field>
+      </record>
+
+	  <record id="singapore_hr_contract_view_tree" model="ir.ui.view">
+        <field name="name">singapore.hr.contract.view.tree</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='employee_id']" position="replace">
+        		<field name="employee_ids"/>
+        	</xpath>
+       	</field>
+     </record>
+
+        <!-- Salary Rule -->
+        <record id="l10n_sg_salary_rule_inherited" model="ir.ui.view">
+            <field name="name">l10n.sg.salary.rule</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='appears_on_payslip']" position="after">
+                    <field name="wage_type_id" widget="selection"/>
+                    <field name="irab_code"/>
+                    <field name="employee_donation_id"/>
+                </xpath>
+                <xpath expr="//field[@name='input_ids']" position="before">
+                    <group>
+                        <field name="python_input_name" placeholder="result_name=inputs.code.name"/>
+                        <p colspan="2" class="oe_grey">
+                            Enter python expression to take salary rule name from Other Inputs on Payslip
+                        </p>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- payslip -->
+        <record id="l10n_sg_payslip_inherited" model="ir.ui.view">
+            <field name="name">l10n.sg.hr.payslip</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@string='Cancel Payslip']" position="before">
+                    <button name="done_sheet" states="verify" string="Approve" class="oe_highlight" groups="base.group_hr_user"/>
+                </xpath>
+
+                <xpath expr="//button[@name='hr_verify_sheet']" position="attributes">
+                    <attribute name="groups">base.group_hr_user</attribute>
+                </xpath>
+                <xpath expr="//button[@name='refund_sheet']" position="attributes">
+                    <attribute name="groups">base.group_hr_user</attribute>
+                </xpath>
+                <xpath expr="//button[@name='draft']" position="attributes">
+                    <attribute name="groups">base.group_hr_user</attribute>
+                </xpath>
+                <xpath expr="//button[@name='compute_sheet']" position="attributes">
+                    <attribute name="groups">base.group_hr_user</attribute>
+                </xpath>
+                <xpath expr="//button[@name='cancel_sheet']" position="attributes">
+                    <attribute name="groups">base.group_hr_user</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='line_ids']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='line_ids']" position="after">
+                    <group>
+	                    <field name="employee_cpf" readonly="1"/>
+	                    <!-- <field name="employee_cpf_rate" readonly="1"/> -->
+	                    <field name="employer_cpf" readonly="1"/>
+	                    <!-- <field name="employer_cpf_rate" readonly="1"/> -->
+	                </group>
+                </xpath>
+
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='quantity']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='code']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='category_id']" position="after">
+                    <field name="wage_code"/>
+                </xpath>
+                <xpath expr="//page[@string='Details By Salary Rule Category']" position="replace">
+                </xpath>
+
+                <xpath expr="//notebook/page[@string='Worked Days &amp; Inputs']/field[@name='input_line_ids']" position="after">
+                    <group string="Donations" colspan="4">
+                        <field name="input_donation_ids" string="Donations" nolabel="1">
+                            <tree string="Donations" editable="top">
+                                <field name="sequence" invisible="1"/>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="amount"/>
+                                <field name="payslip_id" invisible="1"/>
+                                <field name="contract_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='input_line_ids']" position="after">
+                    <group>
+                        <p colspan="2" class="oe_grey">
+                            Enter ad-hoc payslip items above in field Amount.
+                        </p>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_cpf_register_tree" model="ir.ui.view">
+            <field name="name">cpf.rule.tree</field>
+            <field name="model">cpf.rule</field>
+            <field name="arch" type="xml">
+                <tree string="CPF Rule Register">
+                    <field name="name"/>
+                    <field name="sector_ids"/>
+                    <field name="applicable_ids"/>
+                    <field name="age_rule_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_cpf_register_form" model="ir.ui.view">
+            <field name="name">cpf.rule.form</field>
+            <field name="model">cpf.rule</field>
+            <field name="arch" type="xml">
+                <form string="CPF Rule Register" version="7.0">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="sector_ids" widget="many2many_tags"/>
+                            <field name="applicable_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Employer &amp; Employee CPF Share" col="6" colspan="4">
+                        <field name="age_rule_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="name" required="1"/>
+                                <field name="age_start" required="1"/>
+                                <field name="age_end" required="1"/>
+                                <field name="wage_start" required="1"/>
+                                <field name="wage_end" required="1"/>
+                                <field name="employer_python_code" placeholder="You can user here employee, contract object..."/>
+                                <field name="employee_python_code" placeholder="You can user here employee, contract object..."/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <p colspan="2" class="oe_grey">
+                            In Employer/Employee python code you can use: employee, contract, object, you can also use wage_types.AW, wage_types.OW...
+                        </p>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Donation Type -->
+        <record id="view_employee_donation_tree" model="ir.ui.view">
+            <field name="name">donation.type.tree</field>
+            <field name="model">employee.donation</field>
+            <field name="arch" type="xml">
+                <tree string="Donation Type">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_employee_donation_form" model="ir.ui.view">
+            <field name="name">donation.type.form</field>
+            <field name="model">employee.donation</field>
+            <field name="arch" type="xml">
+                <form string="Donation Type">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <group colspan="4" cols="6" string="Donation Rules">
+                        <field name="donation_rule_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="name"/>
+                                <field name="wage_start"/>
+                                <field name="wage_end"/>
+                                <field name="python_code"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Employees" colspan="4" cols="6">
+                        <field name="employee_ids" nolabel="1"/>
+                    </group>
+                    <group string="Details">
+                        <field name="detail" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_employee_donation" model="ir.actions.act_window">
+            <field name="name">Employee Donation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.donation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Company Sector Type -->
+
+        <record id="view_company_sector_type_tree" model="ir.ui.view">
+            <field name="name">company.sector.type.tree</field>
+            <field name="model">company.sector.type</field>
+            <field name="arch" type="xml">
+                <tree string="Company Sector">
+                    <field name="name"/>
+                    <field name="company_sector" required="1"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_company_sector_type_form" model="ir.ui.view">
+            <field name="name">company.sector.type.form</field>
+            <field name="model">company.sector.type</field>
+            <field name="arch" type="xml">
+                <form string="Company Sector">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_sector" required="1"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Citizen Applicable -->
+
+        <record id="view_citizen_applicable_tree" model="ir.ui.view">
+            <field name="name">citizen.applicable.tree</field>
+            <field name="model">citizen.applicable</field>
+            <field name="arch" type="xml">
+                <tree string="Citizen Applicability">
+                    <field name="name"/>
+                    <field name="citizenship" required="1"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_citizen_applicable_form" model="ir.ui.view">
+            <field name="name">citizen.applicable.form</field>
+            <field name="model">citizen.applicable</field>
+            <field name="arch" type="xml">
+                <form string="Citizen Applicability">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="citizenship" required="1"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_cpf_register" model="ir.actions.act_window">
+            <field name="name">CPF Register</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cpf.rule</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_company_sector" model="ir.actions.act_window">
+            <field name="name">Company Sector</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">company.sector.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_citizen_applicable" model="ir.actions.act_window">
+            <field name="name">Citizen Applicable Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">citizen.applicable</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_payroll_configuration" name="Payroll Configuration" parent="hr.menu_hr_root" groups="base.group_hr_manager" sequence="49"/>
+        <menuitem id="menu_payroll_sub_salary" parent="menu_hr_payroll_configuration" name="Salary Rules" groups="base.group_hr_manager"/>
+        <menuitem id="menu_payroll_sub_structure" parent="menu_hr_payroll_configuration" name="Salary Structure" groups="base.group_hr_manager"/>
+        <menuitem id="menu_cpf_register_parent" parent="menu_hr_payroll_configuration" sequence="15" name="CPF Configuration" groups="base.group_hr_manager"/>
+
+        <!--menuitem id="menu_cpf_register_parent" parent="hr.menu_hr_configuration" sequence="15" name="CPF Configuration"/-->
+
+        <menuitem action="action_cpf_register" id="menu_cpf_register" parent="menu_cpf_register_parent" sequence="13" name="CPF Registers" groups="base.group_hr_manager"/>
+        <menuitem action="action_company_sector" id="menu_company_sector" parent="menu_cpf_register_parent" sequence="10" name="Company Sector" groups="base.group_hr_manager"/>
+        <menuitem action="action_citizen_applicable" id="menu_citizen_applicable" parent="menu_cpf_register_parent" sequence="11" name="Citizen Applicable Type" groups="base.group_hr_manager"/>
+        <menuitem id="menu_employee_donation" parent="menu_cpf_register_parent" action="action_employee_donation" sequence="12" name="Donation Types" groups="base.group_hr_manager"/>
+
+        <menuitem action="hr_payroll.action_hr_payslip_run_tree" id="hr_payroll.menu_hr_payslip_run" parent="hr_payroll.menu_hr_root_payroll" groups="base.group_hr_user"/>
+        <menuitem id="menu_cpf_submission_root" parent="hr_payroll.menu_hr_root_payroll" groups="base.group_hr_user" name="e-Submission"/>
+        <!-- CPF Wizard Menu -->
+        <menuitem action="action_cpf_submission" id="menu_cpf_submission" parent="menu_cpf_submission_root" groups="base.group_hr_user"/>
+        <!-- IR8A Wizard Menu -->
+        <menuitem action="action_ir8a_submission" id="menu_ir8a_submission" parent="menu_cpf_submission_root" groups="base.group_hr_user"/>
+
+        <!-- menu arragments -->
+        <!--menuitem id="menu_payroll_sub_structure" parent="hr_payroll.payroll_configure" name="Salary Structure"/-->
+        <menuitem
+            id="hr_payroll.menu_hr_payroll_structure_view"
+            action="hr_payroll.action_view_hr_payroll_structure_list_form"
+            parent="menu_payroll_sub_structure"
+            sequence="2"/>
+        <menuitem
+            id="hr_payroll.menu_hr_payroll_structure_tree"
+            action="hr_payroll.action_view_hr_payroll_structure_tree"
+            parent="menu_payroll_sub_structure"
+            sequence="2"
+            icon="STOCK_INDENT"
+        />
+
+        <!--menuitem id="menu_payroll_sub_salary" parent="hr_payroll.payroll_configure" name="Salary Rules"/-->
+        <menuitem
+            id="hr_payroll.menu_hr_salary_rule_category"
+            action="hr_payroll.action_hr_salary_rule_category"
+            parent="menu_payroll_sub_salary"
+            sequence="11"
+            groups="base.group_no_one"
+        />
+        <menuitem
+            id="hr_payroll.menu_hr_salary_rule_category_tree_view"
+            action="hr_payroll.action_hr_salary_rule_category_tree_view"
+            parent="menu_payroll_sub_salary"
+            sequence="12"
+            icon="STOCK_INDENT"
+            groups="base.group_no_one"
+        />
+
+        <menuitem id="hr_payroll.menu_action_hr_salary_rule_form" action="hr_payroll.action_salary_rule_form" parent="menu_payroll_sub_salary" sequence="12" groups="base.group_hr_manager"/>
+
+
+    </data>
+</openerp>

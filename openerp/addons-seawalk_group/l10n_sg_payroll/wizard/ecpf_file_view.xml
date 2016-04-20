@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="hr_payslip_batch_form" model="ir.ui.view">
+            <field name="name">hr.payslip.batch.form</field>
+            <field name="model">hr.payslip.employee.batches</field>
+            <field name="arch" type="xml">
+                <form string="Payslips Batches">
+                <header>
+                    <field name="state" widget="statusbar" invisible="1"/>
+                </header>
+                <sheet>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group col="4">
+                        <label for="date_start" string="Period"/>
+                         <div>
+                               <field name="date_start" class="oe_inline"/> - <field name="date_end" class="oe_inline"/>
+                         </div>
+                         <field name="credit_note"/>
+                    </group>
+                    <separator string="Employees"/>
+                    <field name="employee_ids"/>
+                </sheet>
+                <footer>
+                    <button icon="gtk-execute" string="Generate" name="compute_sheet" type="object" class="oe_highlight"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_cpf_submission_of_employee" model="ir.ui.view">
+            <field name="name">cpf.submission.form11</field>
+            <field name="model">cpf.submission</field>
+            <field name="arch" type="xml">
+                <form string="CPF Submission" version="7.0">
+                    <header>
+                        <button string="Apply" name="action_apply" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button string="Approve" name="action_approve" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft', 'approve'])]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <div class="oe_right oe_button_box" name="button_box">
+                        <button name="open_payslip_batches"
+                            string="Generate Batch Payslips"
+                            type="object"
+                            icon="fa-book"
+                            class="oe_stat_button"
+                            groups="base.group_hr_manager"/>
+                    </div>
+                	<group>
+                		<group>
+                			<field name='file_date'/>
+                			<field name="name"/>
+                			<field name="serial_no"/>
+                			<field name="cpf_file_id"/>
+	                	</group>
+	                	<group>
+	                		<field name='company_id'/>
+	                		<field name='payment_type'/>
+	                		<field name="validate_id"/>
+	                		<field name="user_id"/>
+	                		<field name="date"/>
+                		</group>
+                	</group>
+                	<group string="Employees">
+                        <field name='employee_ids' nolabel="1"/>
+                	</group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_cpf_submission_of_employee_tree" model="ir.ui.view">
+            <field name="name">cpf.submission.treee1</field>
+            <field name="model">cpf.submission</field>
+            <field name="arch" type="xml">
+                <tree string="CPF Submission">
+                    <field name='file_date'/>
+	                <field name='company_id'/>
+	                <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_cpf_submission" model="ir.actions.act_window">
+            <field name="name">CPF Submission</field>
+            <field name="res_model">cpf.submission</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_cpf_submission_of_employee_tree"/>
+        </record>
+
+	</data>
+</openerp>

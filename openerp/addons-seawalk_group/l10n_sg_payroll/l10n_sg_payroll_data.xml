@@ -1,0 +1,1973 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+<data noupdate="1">
+        <!-- <delete model="hr.salary.rule" id="hr_payroll.hr_rule_basic"/>
+        <delete model="hr.salary.rule" id="hr_payroll.hr_rule_taxable"/>
+        <delete model="hr.salary.rule" id="hr_payroll.hr_rule_net"/> -->
+
+        <!-- <delete model="hr.salary.rule.category" id="hr_payroll.BASIC"/> -->
+
+        <record model="hr.salary.rule.category" id="hr_payroll.ALW">
+            <field name="name">Addition</field>
+        </record>
+
+        <!-- <delete model="hr.salary.rule.category" id="hr_payroll.GROSS"/> -->
+        <!-- <delete model="hr.salary.rule.category" id="hr_payroll.NET"/> -->
+        <!-- <delete model="hr.salary.rule.category" id="hr_payroll.COMP"/> -->
+
+        <!-- Salary Rule Category -->
+
+        <record id="overtime" model="hr.salary.rule.category">
+            <field name="name">Overtime</field>
+            <field name="code">OVERTIME</field>
+        </record>
+
+        <record id="not_applicable" model="hr.salary.rule.category">
+            <field name="name">Not Applicable</field>
+            <field name="code">NA</field>
+        </record>
+
+        <record id="reimbursement" model="hr.salary.rule.category">
+            <field name="name">Reimbursement</field>
+            <field name="code">REIMBURSEMENT</field>
+        </record>
+
+        <!-- Wage Type -->
+        <record id="wage_ordinary" model="cpf.wage.type">
+            <field name="name">Ordinary Wage</field>
+            <field name="code">OW</field>
+        </record>
+
+        <record id="wage_additional" model="cpf.wage.type">
+            <field name="name">Additional Wage</field>
+            <field name="code">AW</field>
+        </record>
+
+        <record id="wage_na" model="cpf.wage.type">
+            <field name="name">No CPF</field>
+            <field name="code">NA</field>
+        </record>
+
+        <!-- Salary Rules -->
+
+        <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="name">Basic</field>
+            <field name="sequence">A1</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">BASIC</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence">Z100</field>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="not_applicable"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.ALW + categories.overtime + categories.reimbursement</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="name">Total Salary</field>
+            <field name="sequence">Z200</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">NET</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.ALW + categories.overtime + categories.reimbursement + categories.DED</field>
+            <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+        </record>
+
+        <record id="hr_salary_rule_houserentallowance1" model="hr.salary.rule">
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="amount_select">percentage</field>
+            <field eval="40.0" name="amount_percentage"/>
+            <field name="amount_percentage_base">contract.wage</field>
+            <field name="code">HRA</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <!-- <field name="register_id" ref="hr_payroll.hr_houserent_register"/> -->
+            <field name="name">House Rent Allowance</field>
+            <field name="sequence">A5</field>
+        </record>
+
+        <record id="hr_salary_rule_convanceallowance1" model="hr.salary.rule">
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="amount_select">fix</field>
+            <field eval="800.0" name="amount_fix"/>
+            <field name="code">CA</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="name">Conveyance Allowance</field>
+            <field name="sequence">A10</field>
+        </record>
+
+        <record id="hr_salary_rule_meal_voucher" model="hr.salary.rule">
+            <field name="wage_type_id" ref="wage_additional"/>
+            <field name="irab_code">d13</field>
+            <field name="amount_select">fix</field>
+            <field eval="10" name="amount_fix"/>
+            <field name="quantity">worked_days.WORK100 and worked_days.WORK100.number_of_days</field>
+            <field name="code">MA</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <!-- <field name="register_id" ref="hr_payroll.hr_meal_voucher_register"/> -->
+            <field name="name">Meal Voucher</field>
+            <field name="sequence">A16</field>
+        </record>
+
+        <record id="hr_salary_rule_sales_commission" model="hr.salary.rule">
+            <field name="wage_type_id" ref="wage_additional"/>
+            <field name="irab_code">d2</field>
+            <field name="amount_select">code</field>
+            <field name="code">SALE</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="name">Get 1% of sales</field>
+            <field name="sequence">A17</field>
+            <field name="active" eval="False"/>
+            <field name="amount_python_compute">result = ((inputs.SALEURO and inputs.SALEURO.amount) + (inputs.SALASIA and inputs.SALASIA.amount)) * 0.01</field>
+        </record>
+
+        <!-- Rule Inputs -->
+
+        <record id="hr_rule_input_sale_a_lf" model="hr.rule.input">
+            <field name="code">SALEURO</field>
+            <field name="name">Sales to Europe</field>
+            <field name="input_id" ref="hr_salary_rule_sales_commission"/>
+        </record>
+
+        <record id="hr_rule_input_sale_b_lf" model="hr.rule.input">
+            <field name="code">SALASIA</field>
+            <field name="name">Sales to Asia</field>
+            <field name="input_id" ref="hr_salary_rule_sales_commission"/>
+        </record>
+
+        <record id="hr_rule_annual" model="hr.salary.rule">
+            <field name="name">Annual Leave Encashment</field>
+            <field name="sequence">A201</field>
+            <field name="irab_code">d13</field>
+            <field name="code">ALE</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_additional"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ALE and inputs.ALE.amount</field>
+            <field name="python_input_name">result_name = inputs.ALE.name</field>
+        </record>
+
+        <!-- Rule Inputs ALE -->
+
+        <record id="hr_rule_input_ale_lf" model="hr.rule.input">
+            <field name="code">ALE</field>
+            <field name="name">Annual Leave Encashment</field>
+            <field name="input_id" ref="hr_rule_annual"/>
+        </record>
+
+        <record id="hr_rule_aws" model="hr.salary.rule">
+            <field name="name">AWS</field>
+            <field name="sequence">A202</field>
+            <field name="irab_code">b_bonus</field>
+            <field name="code">AWS</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.AWS and inputs.AWS.amount</field>
+            <field name="python_input_name">result_name = inputs.AWS.name</field>
+        </record>
+
+        <!-- Rule Inputs AWS -->
+
+        <record id="hr_rule_input_aws_lf" model="hr.rule.input">
+            <field name="code">AWS</field>
+            <field name="name">AWS</field>
+            <field name="input_id" ref="hr_rule_aws"/>
+        </record>
+
+
+        <record id="hr_rule_backpay" model="hr.salary.rule">
+            <field name="name">Back Pay</field>
+            <field name="sequence">A203</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">BP</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.BP and inputs.BP.amount</field>
+            <field name="python_input_name">result_name = inputs.BP.name</field>
+        </record>
+
+        <!-- Rule Inputs BP -->
+
+        <record id="hr_rule_input_bp_lf" model="hr.rule.input">
+            <field name="code">BP</field>
+            <field name="name">Back Pay</field>
+            <field name="input_id" ref="hr_rule_backpay"/>
+        </record>
+
+        <record id="hr_rule_commission" model="hr.salary.rule">
+            <field name="name">Commission</field>
+            <field name="sequence">A203</field>
+            <field name="irab_code">d2</field>
+            <field name="code">COMMISSION</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_additional"/>
+            <field name="irab_code">d2</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.COMMISSION and inputs.COMMISSION.amount</field>
+            <field name="python_input_name">result_name = inputs.COMMISSION.name</field>
+        </record>
+
+        <!-- Rule Inputs Commission -->
+
+        <record id="hr_rule_input_commission_lf" model="hr.rule.input">
+            <field name="code">COMMISSION</field>
+            <field name="name">COMMISSION</field>
+            <field name="input_id" ref="hr_rule_commission"/>
+        </record>
+
+        <record id="hr_rule_variable_bonus" model="hr.salary.rule">
+            <field name="name">Bonus</field>
+            <field name="sequence">A203</field>
+            <field name="irab_code">b_bonus</field>
+            <field name="code">Bonus</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_additional"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.Bonus and inputs.Bonus.amount</field>
+            <field name="python_input_name">result_name = inputs.Bonus.name</field>
+        </record>
+
+        <!-- Rule Inputs Bonus -->
+
+        <record id="hr_rule_input_bonus_lf" model="hr.rule.input">
+            <field name="code">Bonus</field>
+            <field name="name">Bonus</field>
+            <field name="input_id" ref="hr_rule_variable_bonus"/>
+        </record>
+
+        <record id="hr_rule_mobile_allowance" model="hr.salary.rule">
+            <field name="name">Mobile Allowance</field>
+            <field name="sequence">A203</field>
+            <field name="irab_code">d13</field>
+            <field name="code">MOBILE ALLOWANCE</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_transport_allowance" model="hr.salary.rule">
+            <field name="name">Transport Allowance</field>
+            <field name="sequence">A203</field>
+            <field name="irab_code">d11</field>
+            <field name="code">TA</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d11</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_dental_claim" model="hr.salary.rule">
+            <field name="name">Dental Claim</field>
+            <field name="sequence">B203</field>
+            <field name="cpf_applicability">no_cpf</field>
+            <field name="code">DC</field>
+            <field name="category_id" ref="l10n_sg_payroll.reimbursement"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_meal_claim" model="hr.salary.rule">
+            <field name="name">Meal Claim</field>
+            <field name="sequence">B203</field>
+            <field name="cpf_applicability">no_cpf</field>
+            <field name="code">MEAL CLAIM</field>
+            <field name="category_id" ref="l10n_sg_payroll.reimbursement"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_medical_claim" model="hr.salary.rule">
+            <field name="name">Medical Claim</field>
+            <field name="sequence">B203</field>
+            <field name="cpf_applicability">no_cpf</field>
+            <field name="code">MEDICAL CLAIM</field>
+            <field name="category_id" ref="l10n_sg_payroll.reimbursement"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_transport_claim" model="hr.salary.rule">
+            <field name="name">Transport Claim</field>
+            <field name="sequence">B203</field>
+            <field name="code">TC</field>
+            <field name="category_id" ref="l10n_sg_payroll.reimbursement"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_overtime_1" model="hr.salary.rule">
+            <field name="name">Overtime@1.00</field>
+            <field name="sequence">C203</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">OVERTIME1</field>
+            <field name="category_id" ref="l10n_sg_payroll.overtime"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.OVERTIME1 and inputs.OVERTIME1.amount</field>
+            <field name="python_input_name">result_name = inputs.OVERTIME1.name</field>
+        </record>
+
+
+        <!-- Rule Inputs OVERTIME@1 -->
+
+        <record id="hr_rule_input_ot1_lf" model="hr.rule.input">
+            <field name="code">OVERTIME1</field>
+            <field name="name">Overtime@1.00</field>
+            <field name="input_id" ref="hr_rule_overtime_1"/>
+        </record>
+
+        <record id="hr_rule_overtime_15" model="hr.salary.rule">
+            <field name="name">Overtime@1.50</field>
+            <field name="sequence">C203</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">OVERTIME15</field>
+            <field name="category_id" ref="l10n_sg_payroll.overtime"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.OVERTIME15 and inputs.OVERTIME15.amount</field>
+            <field name="python_input_name">result_name = inputs.OVERTIME15.name</field>
+        </record>
+
+
+        <!-- Rule Inputs OVERTIME@15 -->
+
+        <record id="hr_rule_input_ot15_lf" model="hr.rule.input">
+            <field name="code">OVERTIME15</field>
+            <field name="name">Overtime@1.50</field>
+            <field name="input_id" ref="hr_rule_overtime_15"/>
+        </record>
+
+        <record id="hr_rule_overtime_2" model="hr.salary.rule">
+            <field name="name">Overtime@2.00</field>
+            <field name="sequence">C203</field>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="code">OVERTIME2</field>
+            <field name="category_id" ref="l10n_sg_payroll.overtime"/>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">d13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.OVERTIME2 and inputs.OVERTIME2.amount</field>
+            <field name="python_input_name">result_name = inputs.OVERTIME2.name</field>
+        </record>
+
+
+        <!-- Rule Inputs OVERTIME@2 -->
+
+        <record id="hr_rule_input_ot2_lf" model="hr.rule.input">
+            <field name="code">OVERTIME2</field>
+            <field name="name">Overtime@2.00</field>
+            <field name="input_id" ref="hr_rule_overtime_2"/>
+        </record>
+
+
+        <record id="hr_salary_rule_professionaltax1" model="hr.salary.rule">
+            <field name="sequence">D11</field>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="amount_select">fix</field>
+            <field eval="-200.0" name="amount_fix"/>
+            <field name="code">PT</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <!-- <field name="register_id" ref="hr_payroll.hr_professional_tax_register"/> -->
+            <field name="name">Professional Tax</field>
+        </record>
+
+        <record id="hr_salary_rule_providentfund1" model="hr.salary.rule">
+            <field name="sequence">D12</field>
+            <field name="wage_type_id" ref="wage_ordinary"/>
+            <field name="irab_code">a_gross_salary</field>
+            <field name="amount_select">percentage</field>
+            <field eval="-12.5" name="amount_percentage"/>
+            <field name="amount_percentage_base">contract.wage</field>
+            <field name="code">PF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <!-- <field name="register_id" ref="hr_payroll.hr_provident_fund_register"/> -->
+            <field name="name">Provident Fund</field>
+        </record>
+
+        <record id="hr_rule_ns_make_up_pay_claim" model="hr.salary.rule">
+            <field name="name">NS Make-up Pay Claim</field>
+            <field name="sequence">D203</field>
+            <field name="code">NSPC</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">na</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+        </record>
+
+        <record id="hr_rule_employee_cpf" model="hr.salary.rule">
+            <field name="name">Employee CPF Contribution</field>
+            <field name="sequence">D204</field>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="irab_code">e2</field>
+            <field name="code">CPF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -payslip.employee_cpf</field>
+        </record>
+
+		<record id="hr_payroll.hr_rule_mbmf" model="hr.salary.rule">
+            <field name="name">MBMF</field>
+            <field name="sequence">D205</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e5</field>
+            <field name="code">MBMF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_mbmf"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.MBMF and donations.MBMF.amount)</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_sinda" model="hr.salary.rule">
+            <field name="name">SINDA</field>
+            <field name="sequence">D206</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e3</field>
+            <field name="code">SINDA</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_sinda"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.SINDA and donations.SINDA.amount)</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_cdac" model="hr.salary.rule">
+            <field name="name">CDAC</field>
+            <field name="sequence">D207</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e3</field>
+            <field name="code">CDAC</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_cdac"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.CDAC and donations.CDAC.amount)</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_ecf" model="hr.salary.rule">
+            <field name="name">ECF</field>
+            <field name="sequence">D208</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e3</field>
+            <field name="code">ECF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_ecf"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.ECF and donations.ECF.amount)</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_fwl" model="hr.salary.rule">
+            <field name="name">FWL</field>
+            <field name="sequence">D209</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e3</field>
+            <field name="code">FWL</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_fwl"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.FWL and donations.FWL.amount)</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_sdl" model="hr.salary.rule">
+            <field name="name">SDL</field>
+            <field name="sequence">D210</field>
+            <field name="cpf_applicability">additional_wages</field>
+            <field name="irab_code">e3</field>
+            <field name="code">SDL</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="wage_type_id" ref="wage_na"/>
+            <field name="employee_donation_id" ref="l10n_sg_payroll.donation_sdl"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(donations.SDL and donations.SDL.amount)</field>
+        </record>
+
+</data>
+<data>
+        <!-- Citizenship -->
+        <record id="citizenship_singaporean" model="citizen.applicable">
+            <field name="name">Singaporean</field>
+            <field name="citizenship">singaporean</field>
+            <field name="description">Singaporean Citizen</field>
+        </record>
+
+		<record id="citizenship_singaporean_pr1" model="citizen.applicable">
+            <field name="name">Singapore PR 1st Year</field>
+            <field name="citizenship">singapore_pr1</field>
+            <field name="description">Singaporean PR 1st year Citizen</field>
+        </record>
+
+		<record id="citizenship_singaporean_pr2" model="citizen.applicable">
+            <field name="name">Singapore PR 2nd Year</field>
+            <field name="citizenship">singapore_pr2</field>
+            <field name="description">Singapore PR 2nd Year Citizen</field>
+        </record>
+
+		<record id="citizenship_singaporean_pr3" model="citizen.applicable">
+            <field name="name">Singapore PR 3rd Year and onwards</field>
+            <field name="citizenship">singapore_pr3_and_on</field>
+            <field name="description">Singapore PR 3rd Year and onwards Citizen</field>
+        </record>
+
+		<record id="citizenship_singaporean_pr1st_2nd" model="citizen.applicable">
+            <field name="name">Singapore PR 1st Year/2nd Year Jointly applied on full rate</field>
+            <field name="citizenship">singapore_pr1st_2nd_joint</field>
+            <field name="description">SPR in the 1st and 2nd year of obtaining SPR status but who has jointly applied with employer to contribute at full employer and employee rates</field>
+        </record>
+
+		<!-- <record id="citizenship_foreigner" model="citizen.applicable">
+            <field name="name">Foreigner</field>
+            <field name="citizenship">foreigner</field>
+            <field name="description">Foreigner Citizen</field>
+        </record> -->
+
+        <!-- Company Sector -->
+        <record id="company_sector_private" model="company.sector.type">
+            <field name="name">Private</field>
+            <field name="company_sector">private</field>
+            <field name="description">Private Sector</field>
+        </record>
+
+        <record id="company_sector_non_pensionable_sb_as" model="company.sector.type">
+            <field name="name">Non-Pensionable Employees (Statutory Bodies &amp; Aided Schools)</field>
+            <field name="company_sector">non_pens_sbas</field>
+            <field name="description">Non-Pensionable Employees (Statutory Bodies &amp; Aided Schools)</field>
+        </record>
+
+        <record id="company_sector_non_pensionable_mini" model="company.sector.type">
+            <field name="name">Non-Pensionable Employees (Ministries)</field>
+            <field name="company_sector">non_pens_min</field>
+            <field name="description">Non-Pensionable Employees (Ministries)</field>
+        </record>
+
+        <record id="company_sector_pensionable_employee_sta_body" model="company.sector.type">
+            <field name="name">Pensionable Employees (Statutory Bodies)</field>
+            <field name="company_sector">pen_sb</field>
+            <field name="description">Pensionable Employees (Statutory Bodies)</field>
+        </record>
+
+        <record id="company_sector_pensionable_employee_mini" model="company.sector.type">
+            <field name="name">Pensionable Employees (Ministries)</field>
+            <field name="company_sector">pen_min</field>
+            <field name="description">Pensionable Employees (Ministries)</field>
+        </record>
+
+        <record id="company_sector_non_pen_sbas_full" model="company.sector.type">
+            <field name="name">Non-Pensionable Employees (Statutory Bodies &amp; Aided Schools) on full employer rates</field>
+            <field name="company_sector">non_pen_sbas_full</field>
+            <field name="description">Non-Pensionable Employees (Statutory Bodies &amp; Aided Schools) who have jointly applied with employer to contribute at full employer rates</field>
+        </record>
+
+        <record id="company_sector_pen_sb_full" model="company.sector.type">
+            <field name="name">Pensionable Employees (Statutory Bodies) on full employer rates</field>
+            <field name="company_sector">pen_sb_full</field>
+            <field name="description">Pensionable Employees (Statutory Bodies) who have jointly applied with employer to contribute at full employer rates</field>
+        </record>
+
+        <record id="company_sector_pri_full" model="company.sector.type">
+            <field name="name">Private Sector Employees on full employer rates</field>
+            <field name="company_sector">pri_full</field>
+            <field name="description">Private Sector Employees who have jointly applied with employer to contribute at full employer rates</field>
+        </record>
+
+		<!-- CPF Registers -->
+
+
+        <record id="arl_1" model="age.rule.line">
+            <field name="name">Age:0-50;salary:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_2" model="age.rule.line">
+            <field name="name">Age:0-50;salary:51-500</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.17*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_3" model="age.rule.line">
+            <field name="name">Age:0-50;salary:501-749</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = (0.17*(wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.6 * ((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_4" model="age.rule.line">
+            <field name="name">Age:0-50;salary:749 onwards</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.17*wage_types.OW) &lt;= 850 and (0.17*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.20*wage_types.OW) &lt;= 1000 and (0.20*wage_types.OW) or 1000) + (0.20*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_5" model="age.rule.line">
+            <field name="name">Age:50-55;salary:0-50</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_6" model="age.rule.line">
+            <field name="name">Age:50-55;salary:51-500</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_7" model="age.rule.line">
+            <field name="name">Age:50-55;salary:501-749</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.57*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_8" model="age.rule.line">
+            <field name="name">Age:50-55;salary:749 up</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">10000000</field>
+            <field name="employer_python_code">result = ((0.16*wage_types.OW) &lt;= 800 and (0.16*wage_types.OW) or 800) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.19*wage_types.OW) &lt;= 950 and (0.19*wage_types.OW) or 950) + (0.19*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_9" model="age.rule.line">
+            <field name="name">Age:55-60;salary:0-50</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_10" model="age.rule.line">
+            <field name="name">Age:55-60;salary:51-500</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_11" model="age.rule.line">
+            <field name="name">Age:55-60;salary:501-749</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.39*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_12" model="age.rule.line">
+            <field name="name">Age:55-60;salary:749 up</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 600 and (0.12*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.13*wage_types.OW) &lt;= 650 and (0.13*wage_types.OW) or 650) + (0.13*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_13" model="age.rule.line">
+            <field name="name">Age:60-65;salary:0-50</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_14" model="age.rule.line">
+            <field name="name">Age:60-65;salary:51-500</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.085*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_15" model="age.rule.line">
+            <field name="name">Age:60-65;salary:501-749</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.085*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.225*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_16" model="age.rule.line">
+            <field name="name">Age:60-65;salary:749 up</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.085*wage_types.OW) &lt;= 425 and (0.085*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.075*wage_types.OW) &lt;= 375 and (0.075*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_17" model="age.rule.line">
+            <field name="name">Age:65up;salary:0-50</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_18" model="age.rule.line">
+            <field name="name">Age:65up;salary:51-500</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_19" model="age.rule.line">
+            <field name="name">Age:65up;salary:501-749</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_20" model="age.rule.line">
+            <field name="name">Age:65up;salary:749up</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.075*wage_types.OW) &lt;= 375 and (0.075*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_a1" model="cpf.rule">
+            <field name="name">Table A1</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_private')),(4,ref('company_sector_non_pensionable_sb_as')),(4,ref('company_sector_non_pensionable_mini'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean')),(4,ref('citizenship_singaporean_pr3'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_1')),(4,ref('arl_2')),(4,ref('arl_3')),(4,ref('arl_4')),(4,ref('arl_5')),(4,ref('arl_6')),(4,ref('arl_7')),(4,ref('arl_8')),(4,ref('arl_9')),(4,ref('arl_10')),(4,ref('arl_11')),(4,ref('arl_12')),(4,ref('arl_13')),(4,ref('arl_14')),(4,ref('arl_15')),(4,ref('arl_16')),(4,ref('arl_17')),(4,ref('arl_18')),(4,ref('arl_19')),(4,ref('arl_20'))]"/>
+        </record>
+
+
+        <!-- A2.1 -->
+        <record id="arl_101" model="age.rule.line">
+            <field name="name">Age:0-50;salary:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_201" model="age.rule.line">
+            <field name="name">Age:0-50;salary:51-500</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.04*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_30" model="age.rule.line">
+            <field name="name">Age:0-50;salary:501-749</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.04*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_40" model="age.rule.line">
+            <field name="name">Age:0-50;salary:749 onwards</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.04*wage_types.OW) &lt;= 200 and (0.04*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_50" model="age.rule.line">
+            <field name="name">Age:50-55;salary:0-50</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_60" model="age.rule.line">
+            <field name="name">Age:50-55;salary:51-500</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.04*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_70" model="age.rule.line">
+            <field name="name">Age:50-55;salary:501-749</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.04*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_80" model="age.rule.line">
+            <field name="name">Age:50-55;salary:749 up</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">10000000</field>
+            <field name="employer_python_code">result = ((0.04*wage_types.OW) &lt;= 200 and (0.04*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_90" model="age.rule.line">
+            <field name="name">Age:55-60;salary:0-50</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_100" model="age.rule.line">
+            <field name="name">Age:55-60;salary:51-500</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.04*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_110" model="age.rule.line">
+            <field name="name">Age:55-60;salary:501-749</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.04*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_120" model="age.rule.line">
+            <field name="name">Age:55-60;salary:749 up</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.04*wage_types.OW) &lt;= 200 and (0.04*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_130" model="age.rule.line">
+            <field name="name">Age:60-65;salary:0-50</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_140" model="age.rule.line">
+            <field name="name">Age:60-65;salary:51-500</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.035*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_150" model="age.rule.line">
+            <field name="name">Age:60-65;salary:501-749</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.035*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_160" model="age.rule.line">
+            <field name="name">Age:60-65;salary:749 up</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.035*wage_types.OW) &lt;= 175 and (0.035*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_170" model="age.rule.line">
+            <field name="name">Age:65up;salary:0-50</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_180" model="age.rule.line">
+            <field name="name">Age:65up;salary:51-500</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.035*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_190" model="age.rule.line">
+            <field name="name">Age:65up;salary:501-749</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.035*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_200" model="age.rule.line">
+            <field name="name">Age:65up;salary:749up</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.035*wage_types.OW) &lt;= 175 and (0.035*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_a21" model="cpf.rule">
+            <field name="name">Table A2 Graduated Employer and Employee rates(1st year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_private')),(4,ref('company_sector_non_pensionable_sb_as'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr1'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_101')),(4,ref('arl_201')),(4,ref('arl_30')),(4,ref('arl_40')),(4,ref('arl_50')),(4,ref('arl_60')),(4,ref('arl_70')),(4,ref('arl_80')),(4,ref('arl_90')),(4,ref('arl_100')),(4,ref('arl_110')),(4,ref('arl_120')),(4,ref('arl_130')),(4,ref('arl_140')),(4,ref('arl_150')),(4,ref('arl_160')),(4,ref('arl_170')),(4,ref('arl_180')),(4,ref('arl_190')),(4,ref('arl_200'))]"/>
+        </record>
+
+
+        <!-- A2.2 -->
+        <record id="arl_a10" model="age.rule.line">
+            <field name="name">Age:0-50;salary:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a20" model="age.rule.line">
+            <field name="name">Age:0-50;salary:51-500</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.17*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a30" model="age.rule.line">
+            <field name="name">Age:0-50;salary:501-749</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = (0.17*(wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15 * ((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_a40" model="age.rule.line">
+            <field name="name">Age:0-50;salary:749 onwards</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.17*wage_types.OW) &lt;= 850 and (0.17*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_a50" model="age.rule.line">
+            <field name="name">Age:50-55;salary:0-50</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a60" model="age.rule.line">
+            <field name="name">Age:50-55;salary:51-500</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a70" model="age.rule.line">
+            <field name="name">Age:50-55;salary:501-749</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_a80" model="age.rule.line">
+            <field name="name">Age:50-55;salary:749 up</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">10000000</field>
+            <field name="employer_python_code">result = ((0.16*wage_types.OW) &lt;= 800 and (0.16*wage_types.OW) or 800) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_a90" model="age.rule.line">
+            <field name="name">Age:55-60;salary:0-50</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a100" model="age.rule.line">
+            <field name="name">Age:55-60;salary:51-500</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a110" model="age.rule.line">
+            <field name="name">Age:55-60;salary:501-749</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_a120" model="age.rule.line">
+            <field name="name">Age:55-60;salary:749 up</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 600 and (0.12*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_a130" model="age.rule.line">
+            <field name="name">Age:60-65;salary:0-50</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a140" model="age.rule.line">
+            <field name="name">Age:60-65;salary:51-500</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.085*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a150" model="age.rule.line">
+            <field name="name">Age:60-65;salary:501-749</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.085*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_a160" model="age.rule.line">
+            <field name="name">Age:60-65;salary:749 up</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.085*wage_types.OW) &lt;= 425 and (0.085*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_a170" model="age.rule.line">
+            <field name="name">Age:65up;salary:0-50</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a180" model="age.rule.line">
+            <field name="name">Age:65up;salary:51-500</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_a190" model="age.rule.line">
+            <field name="name">Age:65up;salary:501-749</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_a200" model="age.rule.line">
+            <field name="name">Age:65up;salary:749up</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.075*wage_types.OW) &lt;= 475 and (0.075*wage_types.OW) or 475) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_a22" model="cpf.rule">
+            <field name="name">Table A2 Full Employer and Graduated Employee rates(1st year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_non_pensionable_mini')),(4,ref('company_sector_non_pen_sbas_full')),(4,ref('company_sector_pri_full'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr1'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_a10')),(4,ref('arl_a20')),(4,ref('arl_a30')),(4,ref('arl_a40')),(4,ref('arl_a50')),(4,ref('arl_a60')),(4,ref('arl_a70')),(4,ref('arl_a80')),(4,ref('arl_a90')),(4,ref('arl_a100')),(4,ref('arl_a110')),(4,ref('arl_a120')),(4,ref('arl_a130')),(4,ref('arl_a140')),(4,ref('arl_a150')),(4,ref('arl_a160')),(4,ref('arl_a170')),(4,ref('arl_a180')),(4,ref('arl_a190')),(4,ref('arl_a200'))]"/>
+        </record>
+
+
+        <!-- A2.3 -->
+        <record id="arl_b10" model="age.rule.line">
+            <field name="name">Age:0-50;salary:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b20" model="age.rule.line">
+            <field name="name">Age:0-50;salary:51-500</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.09*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b30" model="age.rule.line">
+            <field name="name">Age:0-50;salary:501-749</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = (0.09*(wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.45*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_b40" model="age.rule.line">
+            <field name="name">Age:0-50;salary:749 onwards</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.09*wage_types.OW) &lt;= 450 and (0.09*wage_types.OW) or 450) + (0.09*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.15*wage_types.OW) &lt;= 750 and (0.15*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_b50" model="age.rule.line">
+            <field name="name">Age:50-55;salary:0-50</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b60" model="age.rule.line">
+            <field name="name">Age:50-55;salary:51-500</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.09*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b70" model="age.rule.line">
+            <field name="name">Age:50-55;salary:501-749</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.09*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.45*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_b80" model="age.rule.line">
+            <field name="name">Age:50-55;salary:749 up</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">10000000</field>
+            <field name="employer_python_code">result = ((0.09*wage_types.OW) &lt;= 450 and (0.09*wage_types.OW) or 450) + (0.09*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.15*wage_types.OW) &lt;= 750 and (0.15*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_b90" model="age.rule.line">
+            <field name="name">Age:55-60;salary:0-50</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b100" model="age.rule.line">
+            <field name="name">Age:55-60;salary:51-500</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.06*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b110" model="age.rule.line">
+            <field name="name">Age:55-60;salary:501-749</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.06*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.375*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_b120" model="age.rule.line">
+            <field name="name">Age:55-60;salary:749 up</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.06*wage_types.OW) &lt;= 300 and (0.06*wage_types.OW) or 300) + (0.06*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.125*wage_types.OW) &lt;= 625 and (0.125*wage_types.OW) or 625) + (0.125*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_b130" model="age.rule.line">
+            <field name="name">Age:60-65;salary:0-50</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b140" model="age.rule.line">
+            <field name="name">Age:60-65;salary:51-500</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.035*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b150" model="age.rule.line">
+            <field name="name">Age:60-65;salary:501-749</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.035*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.225*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_b160" model="age.rule.line">
+            <field name="name">Age:60-65;salary:749 up</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.035*wage_types.OW) &lt;= 175 and (0.035*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.075*wage_types.OW) &lt;= 375 and (0.075*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_b170" model="age.rule.line">
+            <field name="name">Age:65up;salary:0-50</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b180" model="age.rule.line">
+            <field name="name">Age:65up;salary:51-500</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.035*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_b190" model="age.rule.line">
+            <field name="name">Age:65up;salary:501-749</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.035*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_b200" model="age.rule.line">
+            <field name="name">Age:65up;salary:749up</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.035*wage_types.OW) &lt;= 175 and (0.035*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_a23" model="cpf.rule">
+            <field name="name">Table A2 Graduated Employer and Employee rates(2nd year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_private')),(4,ref('company_sector_non_pensionable_sb_as')),(4,ref('company_sector_pen_sb_full'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr2'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_b10')),(4,ref('arl_b20')),(4,ref('arl_b30')),(4,ref('arl_b40')),(4,ref('arl_b50')),(4,ref('arl_b60')),(4,ref('arl_b70')),(4,ref('arl_b80')),(4,ref('arl_b90')),(4,ref('arl_b100')),(4,ref('arl_b110')),(4,ref('arl_b120')),(4,ref('arl_b130')),(4,ref('arl_b140')),(4,ref('arl_b150')),(4,ref('arl_b160')),(4,ref('arl_b170')),(4,ref('arl_b180')),(4,ref('arl_b190')),(4,ref('arl_b200'))]"/>
+        </record>
+
+
+
+        <!-- A2.4 -->
+        <record id="arl_c10" model="age.rule.line">
+            <field name="name">Age:0-50;salary:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c20" model="age.rule.line">
+            <field name="name">Age:0-50;salary:51-500</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.17*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c30" model="age.rule.line">
+            <field name="name">Age:0-50;salary:501-749</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = (0.17*(wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.45*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_c40" model="age.rule.line">
+            <field name="name">Age:0-50;salary:749 onwards</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.17*wage_types.OW) &lt;= 850 and (0.17*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.15*wage_types.OW) &lt;= 750 and (0.15*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_c50" model="age.rule.line">
+            <field name="name">Age:50-55;salary:0-50</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c60" model="age.rule.line">
+            <field name="name">Age:50-55;salary:51-500</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c70" model="age.rule.line">
+            <field name="name">Age:50-55;salary:501-749</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.16*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.45*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_c80" model="age.rule.line">
+            <field name="name">Age:50-55;salary:749 up</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">10000000</field>
+            <field name="employer_python_code">result = ((0.16*wage_types.OW) &lt;= 800 and (0.16*wage_types.OW) or 800) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.15*wage_types.OW) &lt;= 750 and (0.15*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_c90" model="age.rule.line">
+            <field name="name">Age:55-60;salary:0-50</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c100" model="age.rule.line">
+            <field name="name">Age:55-60;salary:51-500</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c110" model="age.rule.line">
+            <field name="name">Age:55-60;salary:501-749</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.12*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.375*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_c120" model="age.rule.line">
+            <field name="name">Age:55-60;salary:749 up</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 600 and (0.12*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.125*wage_types.OW) &lt;= 625 and (0.125*wage_types.OW) or 625) + (0.125*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_c130" model="age.rule.line">
+            <field name="name">Age:60-65;salary:0-50</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c140" model="age.rule.line">
+            <field name="name">Age:60-65;salary:51-500</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.085*(wage_types.OW+wage_types.AW)</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c150" model="age.rule.line">
+            <field name="name">Age:60-65;salary:501-749</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.085*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.225*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_c160" model="age.rule.line">
+            <field name="name">Age:60-65;salary:749 up</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.085*wage_types.OW) &lt;= 425 and (0.085*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.075*wage_types.OW) &lt;= 375 and (0.075*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+
+        <record id="arl_c170" model="age.rule.line">
+            <field name="name">Age:65up;salary:0-50</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">50</field>
+            <field name="employer_python_code">result = 0.0</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c180" model="age.rule.line">
+            <field name="name">Age:65up;salary:51-500</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">50</field>
+            <field name="wage_end">500</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.0</field>
+        </record>
+
+        <record id="arl_c190" model="age.rule.line">
+            <field name="name">Age:65up;salary:501-749</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">500</field>
+            <field name="wage_end">749</field>
+            <field name="employer_python_code">result = 0.075*((wage_types.OW+wage_types.AW))</field>
+            <field name="employee_python_code">result = 0.15*((wage_types.OW+wage_types.AW)-500)</field>
+        </record>
+
+        <record id="arl_c200" model="age.rule.line">
+            <field name="name">Age:65up;salary:749up</field>
+            <field name="age_start">65</field>
+            <field name="age_end">150</field>
+            <field name="wage_start">749</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.075*wage_types.OW) &lt;= 375 and (0.075*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05*wage_types.OW) &lt;= 250 and (0.05*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_a24" model="cpf.rule">
+            <field name="name">Table A2 Full Employer and Graduated Employee rates(2nd year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_non_pensionable_mini')),(4,ref('company_sector_non_pen_sbas_full')),(4,ref('company_sector_pri_full'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr2'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_c10')),(4,ref('arl_c20')),(4,ref('arl_c30')),(4,ref('arl_c40')),(4,ref('arl_c50')),(4,ref('arl_c60')),(4,ref('arl_c70')),(4,ref('arl_c80')),(4,ref('arl_c90')),(4,ref('arl_c100')),(4,ref('arl_c110')),(4,ref('arl_c120')),(4,ref('arl_c130')),(4,ref('arl_c140')),(4,ref('arl_c150')),(4,ref('arl_c160')),(4,ref('arl_c170')),(4,ref('arl_c180')),(4,ref('arl_c190')),(4,ref('arl_c200'))]"/>
+        </record>
+
+
+        <!-- B1 -->
+        <record id="arl_e1" model="age.rule.line">
+            <field name="name">Age:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.1275*wage_types.OW) &lt;= 850 and (0.1275*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.15*wage_types.OW) &lt;= 1000 and (0.15*wage_types.OW) or 1000) + (0.20*wage_types.AW)</field>
+        </record>
+        <record id="arl_e2" model="age.rule.line">
+            <field name="name">Age:50-55</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 800 and (0.12*wage_types.OW) or 800) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.1425*wage_types.OW) &lt;= 950 and (0.1425*wage_types.OW) or 950) + (0.19*wage_types.AW)</field>
+        </record>
+        <record id="arl_e3" model="age.rule.line">
+            <field name="name">Age:55-60</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.09*wage_types.OW) &lt;= 600 and (0.09*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0975*wage_types.OW) &lt;= 650 and (0.0975*wage_types.OW) or 650) + (0.13*wage_types.AW)</field>
+        </record>
+        <record id="arl_e4" model="age.rule.line">
+            <field name="name">Age:60-65</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.06375*wage_types.OW) &lt;= 425 and (0.06375*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+        <record id="arl_e5" model="age.rule.line">
+            <field name="name">Age:65 above</field>
+            <field name="age_start">65</field>
+            <field name="age_end">100</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_b1" model="cpf.rule">
+            <field name="name">Table B1</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_pensionable_employee_sta_body')),(4,ref('company_sector_pensionable_employee_mini'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean')),(4,ref('citizenship_singaporean_pr3'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_e1')),(4,ref('arl_e2')),(4,ref('arl_e3')),(4,ref('arl_e4')),(4,ref('arl_e5'))]"/>
+        </record>
+
+
+        <!-- B2 -->
+        <record id="arl_f1" model="age.rule.line">
+            <field name="name">Age:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.03*wage_types.OW) &lt;= 200 and (0.03*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_f2" model="age.rule.line">
+            <field name="name">Age:50-55</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.03*wage_types.OW) &lt;= 200 and (0.03*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_f3" model="age.rule.line">
+            <field name="name">Age:55-60</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.03*wage_types.OW) &lt;= 200 and (0.03*wage_types.OW) or 200) + (0.04*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_f4" model="age.rule.line">
+            <field name="name">Age:60-65</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.02625*wage_types.OW) &lt;= 175 and (0.02625*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_f5" model="age.rule.line">
+            <field name="name">Age:65 above</field>
+            <field name="age_start">65</field>
+            <field name="age_end">100</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.02625*wage_types.OW) &lt;= 175 and (0.02625*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_b2" model="cpf.rule">
+            <field name="name">Table B2 Graduated Employer and Employee rates(1st year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_pensionable_employee_sta_body'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr1'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_f1')),(4,ref('arl_f2')),(4,ref('arl_f3')),(4,ref('arl_f4')),(4,ref('arl_f5'))]"/>
+        </record>
+
+        <!-- B3 -->
+        <record id="arl_g1" model="age.rule.line">
+            <field name="name">Age:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.1275*wage_types.OW) &lt;= 850 and (0.1275*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_g2" model="age.rule.line">
+            <field name="name">Age:50-55</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 850 and (0.12*wage_types.OW) or 850) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_g3" model="age.rule.line">
+            <field name="name">Age:55-60</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.09*wage_types.OW) &lt;= 600 and (0.09*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_g4" model="age.rule.line">
+            <field name="name">Age:60-65</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.06375*wage_types.OW) &lt;= 425 and (0.06375*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+        <record id="arl_g5" model="age.rule.line">
+            <field name="name">Age:65 above</field>
+            <field name="age_start">65</field>
+            <field name="age_end">100</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_b3" model="cpf.rule">
+            <field name="name">Table B2 Full Employer and Graduated Employee rates(1st year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_pensionable_employee_mini'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr1'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_g1')),(4,ref('arl_g2')),(4,ref('arl_g3')),(4,ref('arl_g4')),(4,ref('arl_g5'))]"/>
+        </record>
+
+        <!-- B4 -->
+        <record id="arl_h1" model="age.rule.line">
+            <field name="name">Age:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.0675*wage_types.OW) &lt;= 450 and (0.0675*wage_types.OW) or 450) + (0.09*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.1125*wage_types.OW) &lt;= 750 and (0.1125*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+        <record id="arl_h2" model="age.rule.line">
+            <field name="name">Age:50-55</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.0675*wage_types.OW) &lt;= 450 and (0.0675*wage_types.OW) or 450) + (0.09*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.1125*wage_types.OW) &lt;= 750 and (0.1125*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+        <record id="arl_h3" model="age.rule.line">
+            <field name="name">Age:55-60</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.045*wage_types.OW) &lt;= 300 and (0.045*wage_types.OW) or 300) + (0.06*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.09375*wage_types.OW) &lt;= 625 and (0.09375*wage_types.OW) or 625) + (0.125*wage_types.AW)</field>
+        </record>
+        <record id="arl_h4" model="age.rule.line">
+            <field name="name">Age:60-65</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.02625*wage_types.OW) &lt;= 175 and (0.02625*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+        <record id="arl_h5" model="age.rule.line">
+            <field name="name">Age:65above</field>
+            <field name="age_start">65</field>
+            <field name="age_end">100</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.02625*wage_types.OW) &lt;= 175 and (0.02625*wage_types.OW) or 175) + (0.035*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+		<record id="cpf_register_b4" model="cpf.rule">
+            <field name="name">Table B2 Graduated Employer and Employee rates (1st year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_pensionable_employee_sta_body'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr2'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_h1')),(4,ref('arl_h2')),(4,ref('arl_h3')),(4,ref('arl_h4')),(4,ref('arl_h5'))]"/>
+        </record>
+
+
+                <!-- B5 -->
+        <record id="arl_i1" model="age.rule.line">
+            <field name="name">Age:0-50</field>
+            <field name="age_start">0</field>
+            <field name="age_end">50</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.1275*wage_types.OW) &lt;= 850 and (0.1275*wage_types.OW) or 850) + (0.17*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.1125*wage_types.OW) &lt;= 750 and (0.1125*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+        <record id="arl_i2" model="age.rule.line">
+            <field name="name">Age:50-55</field>
+            <field name="age_start">50</field>
+            <field name="age_end">55</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.12*wage_types.OW) &lt;= 800 and (0.12*wage_types.OW) or 800) + (0.16*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.1125*wage_types.OW) &lt;= 750 and (0.1125*wage_types.OW) or 750) + (0.15*wage_types.AW)</field>
+        </record>
+        <record id="arl_i3" model="age.rule.line">
+            <field name="name">Age:55-60</field>
+            <field name="age_start">55</field>
+            <field name="age_end">60</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.09*wage_types.OW) &lt;= 600 and (0.09*wage_types.OW) or 600) + (0.12*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.09375*wage_types.OW) &lt;= 625 and (0.09375*wage_types.OW) or 625) + (0.125*wage_types.AW)</field>
+        </record>
+        <record id="arl_i4" model="age.rule.line">
+            <field name="name">Age:60-65</field>
+            <field name="age_start">60</field>
+            <field name="age_end">65</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.06375*wage_types.OW) &lt;= 425 and (0.06375*wage_types.OW) or 425) + (0.085*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+        </record>
+        <record id="arl_i5" model="age.rule.line">
+            <field name="name">Age:65 above</field>
+            <field name="age_start">65</field>
+            <field name="age_end">100</field>
+            <field name="wage_start">0</field>
+            <field name="wage_end">100000000</field>
+            <field name="employer_python_code">result = ((0.05625*wage_types.OW) &lt;= 375 and (0.05625*wage_types.OW) or 375) + (0.075*wage_types.AW)</field>
+            <field name="employee_python_code">result = ((0.0375*wage_types.OW) &lt;= 250 and (0.0375*wage_types.OW) or 250) + (0.05*wage_types.AW)</field>
+        </record>
+
+        <record id="cpf_register_b5" model="cpf.rule">
+            <field name="name">Table B2 Full Employer and Graduated Employee rates(2nd year)</field>
+            <field name="sector_ids" eval="[(4,ref('company_sector_pensionable_employee_mini')),(4,ref('company_sector_pen_sb_full'))]"/>
+            <field name="applicable_ids" eval="[(4,ref('citizenship_singaporean_pr2'))]"/>
+            <field name="age_rule_ids" eval="[(4,ref('arl_i1')),(4,ref('arl_i2')),(4,ref('arl_i3')),(4,ref('arl_i4')),(4,ref('arl_i5'))]"/>
+        </record>
+
+        <record id="hr.employee" model="hr.employee">
+            <field name="employee_code">000</field>
+            <field name="gender">male</field>
+            <field name="country_id" ref="base.sg"/>
+            <field name="nric_fin_passport_id">0</field>
+        </record>
+
+        <record id="base.main_company" model="res.company">
+            <field name="business_nature">Service</field>
+            <field name="company_sector">private</field>
+            <field name="org_id_type">I</field>
+            <field name="org_id_no">0</field>
+            <field name="registration_number">0</field>
+            <field name="iras_tax_number">0</field>
+            <field name="establishment" eval="time.strftime('%Y')+'-01-01'"/>
+            <field name="nric_fin_passport_id">0</field>
+            <field name="payday" eval="1"/>
+            <field name="next_payday">next_day</field>
+            <field name="enable_esubmission">yes</field>
+        </record>
+
+</data>
+</openerp>

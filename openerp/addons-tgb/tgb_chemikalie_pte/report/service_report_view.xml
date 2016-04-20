@@ -8,10 +8,10 @@
 	        <field name="model">valve.failure.report</field>
 	        <field name="report_name">service_report</field>
 	        <field name="report_type">aeroo</field>
-	        <field name="in_format">oo-ods</field>
-	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_chemikalie_pte/report/service_report.py</field>
-	        <field name="report_rml">tgb_chemikalie_pte/report/service_report.ods</field>
+	        <field name="report_rml">tgb_chemikalie_pte/report/service_report.odt</field>
 	        <field name="parser_state">loc</field>
 	        <field name="tml_source">file</field>
 	        <field name="attachment_use" eval="0"/>
@@ -23,7 +23,7 @@
 			model="valve.failure.report"
 			name="service_report"
 	        string="Service Report"
-	        rml="tgb_chemikalie_pte/report/service_report.ods"/>
+	        rml="tgb_chemikalie_pte/report/service_report.odt"/>
 
 	</data>
 </openerp>

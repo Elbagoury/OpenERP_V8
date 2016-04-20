@@ -15,7 +15,7 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 DATE_FORMAT = "%Y-%m-%d"
 from dateutil.tz import tzlocal
 from tzlocal import get_localzone
-from openerp.addons.TGB_RatTrading.report import amount_to_text_en
+from openerp.addons.TGB_RatTrading_with_report.report import amount_to_text_en
 
 class Parser(report_sxw.rml_parse):
         

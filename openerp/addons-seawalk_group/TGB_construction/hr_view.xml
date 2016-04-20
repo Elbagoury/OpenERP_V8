@@ -1,0 +1,82 @@
+<openerp>
+    <data>
+        <record id="TGB_hr_employee_view_form" model="ir.ui.view">
+            <field name="name">TGB.hr.employee.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+
+                    <field name="work_location" position="after">
+                        <field name="actatek_id"/>
+                    </field>
+                    <field name="passport_id" position="after">
+                        <field name="passport_exp"/>
+                        <field name="hourly_rate"/>
+                    </field>
+
+                    <field name="otherid" position="before">
+                        <field name="fin_no"/>
+                        <field name="work_permit_no"/>
+                        <field name="work_permit_exp"/>
+                        <field name="SOC_no"/>
+                        <field name="SOC_exp"/>
+                        <field name="safety_supervisor_course"/>
+                        <field name="other_cert"/>
+                        <field name="date_of_commencement"/>
+                        <field name="designation"/>
+                    </field>
+
+                </data>
+            </field>
+        </record>
+
+
+        <record id="TGB_hr_contract_view_form" model="ir.ui.view">
+            <field name="name">TGB.hr.contract.view.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="wage" position="after">
+                        <field name="is_hourly_contract"/>
+                        <field name="hourly_rate" attrs="{'invisible':[('is_hourly_contract','=',False)]}"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+
+        <record id="TGB_hr_timesheet_view_form" model="ir.ui.view">
+            <field name="name">TGB.hr.timesheet.view.form</field>
+            <field name="model">hr_timesheet_sheet.sheet</field>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="total_difference" position="after">
+                        <field name="TGB_contract_id"/>
+                        <field name="TGB_project_id"/>
+                        <field name ="costed" invisible="1"/>
+                    </field>
+                    <field name = "state" position="before">
+                        <button name="action_send_to_cost" states="done" string="Send to Project Cost" type="object" class="oe_highlight" attrs="{'invisible':[('costed','=',True)]}"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+
+        <record id="action_TGB_hr_contract" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_current':1}</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+        </record>
+
+        <menuitem action="action_TGB_hr_contract" id="hr_TGB_menu_contract" parent="menu_construction_human_resource_menu" name="Contracts" sequence="4" groups="base.group_hr_manager"/>
+
+    </data>
+</openerp>

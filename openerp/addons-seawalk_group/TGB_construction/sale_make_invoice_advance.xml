@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="sale.view_sale_advance_payment_inv" model="ir.ui.view">
+            <field name="name">Project Billing</field>
+            <field name="model">sale.advance.payment.inv</field>
+            <field name="arch" type="xml">
+                <form string="Create Project Billing" version="7.0">
+                    <p class="oe_grey">
+                        Select how you want to bill this order. This
+                        will create a draft project billing that can be modified
+                        before validation.
+                    </p>
+                    <group>
+                        <field name="advance_payment_method" class="oe_inline"
+                            on_change="onchange_method(advance_payment_method, product_id)"/>
+                        <field name="product_id"
+                            on_change="onchange_method(advance_payment_method, product_id)"
+                            context="{'search_default_services': 1}"
+                            attrs="{'invisible': [('advance_payment_method','!=','fixed')]}"/>
+                        <label for="amount" attrs="{'invisible': [('advance_payment_method', 'not in', ('fixed','percentage'))]}"/>
+                        <div attrs="{'invisible': [('advance_payment_method', 'not in', ('fixed','percentage'))]}">
+                            <field name="amount"
+                                attrs="{'required': [('advance_payment_method', 'in', ('fixed','percentage'))]}" class="oe_inline"/>
+                            <label string="%%"
+                                attrs="{'invisible': [('advance_payment_method', '!=', 'percentage')]}" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <div>
+                        <b><label string="After clicking 'Show Lines to Billing', select lines to billing and create the proj billing from the 'More' dropdown menu." attrs="{'invisible': [('advance_payment_method', '!=', 'lines')]}"/></b>
+                    </div>
+                    <footer>
+                        <button name="create_invoices" string="Create and View Project Billing" type="object"
+                            context="{'open_invoices': True}" class="oe_highlight"
+                            attrs="{'invisible': [('advance_payment_method', '=', 'lines')]}"/>
+                        <button name="create_invoices" string="Create Project Billing" type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('advance_payment_method', '=', 'lines')]}"/>
+                        <button name="create_invoices" string="Show Lines to create Project Billing" type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('advance_payment_method', '!=', 'lines')]}"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

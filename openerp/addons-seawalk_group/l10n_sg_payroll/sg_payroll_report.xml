@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report
+            id="sg_payslip_details_report"
+            model="hr.payslip"
+            string="Employee PaySlip"
+            report_type="qweb-pdf"
+            name="l10n_sg_payroll.report_sg_payslipdetails"
+            file="l10n_sg_payroll.report_sg_payslipdetails"
+        />
+
+    </data>
+</openerp>

@@ -1,0 +1,103 @@
+<openerp>
+    <data>
+
+        <record id="payroll_attendance_import_view" model="ir.ui.view">
+            <field name="name">Attendance Importer</field>
+            <field name="model">attendance.importer</field>
+            <field name="arch" type="xml">
+                <form string="Import" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="file"/>
+                            <button name="import_attendance" type="object" string="Import Attendance Report" />
+                        </group>
+                      </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="attendance_importer_record_action">
+            <field name="name">Import record</field>
+            <field name="view_id" ref="payroll_attendance_import_view"/>
+            <field name="res_model">attendance.importer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="attendance_importer_record_menu" action="attendance_importer_record_action" name="Attendance Importer"
+                  parent="hr_payroll.menu_hr_root_payroll" sequence="11"/>
+
+
+    <record id="payroll_hr_employee_view_form" model="ir.ui.view">
+            <field name="name">payroll.hr.employee.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+
+                    <field name="work_location" position="after">
+                        <field name="payroll_hourly_rate"/>
+                        <field name="payroll_ot_rate"/>
+                        <field name="payroll_ph_rate"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        <record id="l10n_sg_payslip_extended_inherited" model="ir.ui.view">
+            <field name="name">l10n.sg.hr.payslip</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='date_to']" position="replace">
+                    <field name="date_to" on_change="onchange_employee_id(date_from, date_to, employee_id, contract_id)" class="oe_inline"/>                
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_costing_form_inherited" model="ir.ui.view">
+            <field name="name">project.costing</field>
+            <field name="model">project.costing</field>
+            <field name="inherit_id" ref="TGB_construction.project_costing_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header[1]" position="inside">
+                    <button name="payslip_costing" type="object" string="Get Payslip Cost"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="payslip_inherited" model="ir.ui.view">
+            <field name="name">hr.payslip</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="payment_mode"/>
+                </xpath>
+            </field>
+        </record>
+
+        <template id="l10n_sg_payroll_extended.report_hr_payslip_document_new" inherit_id="l10n_sg_payroll.report_hr_payslip_document">
+            <xpath expr="//div[@class='page']" position="attributes">
+                <attribute name="style">padding-top: 90px;</attribute>
+            </xpath>
+            <xpath expr="//div[@class='row']/div[@class='row mt5 o_height_25']" position="inside">
+                <div class="col-xs-12">
+                <div class="col-xs-6 o_underline">
+                    <span class="col-xs-6 text-left">Mode of Payment</span>
+                    <span class="col-xs-6 text-left"><span t-field="o.payment_mode"></span></span>
+                </div>
+                </div>
+		<div class="col-xs-12">
+		<div class="col-xs-6 o_underline">
+		    <span class="col-xs-6 text-left">Period</span>
+                    <span class="col-xs-6 text-left"><span t-field="o.date_from"></span>-<span t-field="o.date_to"></span></span>
+		</div>
+		</div>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

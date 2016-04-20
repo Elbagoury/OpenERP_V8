@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+    <template pageSize="(612.0,792.0)" title="Test" author="Son Pham" allowSplitting="20">
+        <pageTemplate id="first">
+      <frame id="first" x1="1.8cm" y1="1.5cm" height="22.7cm" width="19.0cm"/>
+        <header>
+                <stylesheet>
+                    <paraStyle name='Normal' fontName="DejaVuSans"/>
+                    <paraStyle name="main_header" fontName="DejaVuSans-Bold" fontSize="16.0" leading="16"
+                               alignment="LEFT"
+                               spaceBefore="0.0" spaceAfter="0.0"/>
+                    <paraStyle name="address_header" fontName="DejaVuSans" fontSize="8.0" leading="10"
+                               alignment="LEFT"
+                               spaceBefore="0.0" spaceAfter="0.0"/>
+                    <paraStyle name="small_font" fontName="DejaVuSans" fontSize="6" leading="16" alignment="RIGHT"
+                               spaceBefore="0.0" spaceAfter="0.0"/>
+                    <blockTableStyle id="blocktablestyle1">
+                        <blockFont name="Helvetica-Bold" size="16.0"/>
+                        <blockTextColor colorName="green"/>
+                    </blockTableStyle>
+                </stylesheet>
+
+                <pageGraphics>
+                    <setFont name="DejaVuSans" size="8"/>
+                    <image x="1.4cm" y="24.5cm" width="3cm" height="3cm">[[ company.logo or removeParentNode('image') ]]
+                    </image>
+                    <place x="4.8cm" y="24.5cm" height="3cm" width="17cm">
+                        <para style="main_header">[[ company.partner_id.name ]]</para>
+                    </place>
+                    <place x="17.3cm" y="23.55cm" height="3cm" width="3cm">
+                        <para style="small_font">(199003785K)</para>
+                    </place>
+
+                    <place x="4.8cm" y="23cm" height="3cm" width="17cm">
+                        <para style="address_header">[[ company.partner_id.street or '' ]] [[ company.partner_id.street2 or '' ]][[ company.partner_id.city or '' ]] [[ company.partner_id.zip or '' ]]</para>
+                        <para style="address_header">Tel: [[ company.partner_id.phone or '' ]] <font color="white">....</font>Fax: [[company.partner_id.fax or '' ]]
+                        </para>
+                        <para style="address_header">GST Reg No.: [[ company.company_registry or '' ]] Email: [[company.partner_id.email or '' ]]
+                        </para>
+                    </place>
+
+                     <stroke color="black"/>
+                        <lines>4.8cm 26.2cm 20.5cm 26.2cm</lines>
+
+                    <place x="18cm" y="24.8cm" width="2.5cm" height="1.25cm">
+                        <illustration width="2.5cm" height="1.25cm">
+                            <rect x="0" y="0" width="2.5cm" height="1.25cm" fill="no" stroke="yes"/>
+                        </illustration>
+
+                    </place>
+
+                    <image  x="15.3cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/bizSAFE-Enterprise-Level-STAR-3.jpg"/>
+                    <image  x="16.7cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_OHSAS_18001_2007_TCL_HR.jpg"/>
+                    <image  x="18.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_ISO-9001_TCL_HR.jpg"/>
+                    <image  x="19.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/Capture.PNG"/>
+
+                </pageGraphics>
+            </header>
+    </pageTemplate>
+    </template>
+
+
+    <stylesheet>
+        <blockTableStyle id="Standard_Outline">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table1">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table1_underline2">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,0" stop="2,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,1" stop="2,1"/>
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockRightPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockBottomPadding length="2" start="0,0" stop="-1,-1"/>
+            <blockTopPadding length="2" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table1_underline4">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,0" stop="2,0"/>
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockRightPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockBottomPadding length="2" start="0,0" stop="-1,-1"/>
+            <blockTopPadding length="2" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table1_underline3">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockRightPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockBottomPadding length="2" start="0,0" stop="-1,-1"/>
+            <blockTopPadding length="2" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table5">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="table_round_1">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="0,0"/>
+        </blockTableStyle>
+        <blockTableStyle id="table_round_2">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="1,0" stop="1,0"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="table_round_3">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,0"/>
+            <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,0"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,0"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table2">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table3">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <blockTableStyle id="Table4">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table4_underline">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,3" stop="0,3"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="2,3" stop="2,3"/>
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="Table1_underline">
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#000000" start="0,2" stop="0,2"/>
+        </blockTableStyle>
+
+        <blockTableStyle id="TableNoSpace">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <blockLeftPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockRightPadding length="0" start="0,0" stop="-1,-1"/>
+            <blockBottomPadding length="2" start="0,0" stop="-1,-1"/>
+            <blockTopPadding length="2" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+
+
+        <blockTableStyle id="Table6">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <initialize>
+            <paraStyle name="all" alignment="justify"/>
+        </initialize>
+        <paraStyle name="P1" fontName="Helvetica" fontSize="9.0" leading="11"/>
+        <paraStyle name="P1_p2" fontName="Helvetica-Bold" fontSize="9.0" leading="11"/>
+        <paraStyle name="P2" fontName="Helvetica" fontSize="9.0" leading="15"/>
+        <paraStyle name="P2_p2" fontName="Helvetica-Bold" fontSize="9.0" leading="11"/>
+        <paraStyle name="P3" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0"
+                   spaceAfter="0.0"/>
+        <paraStyle name="P4" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0"
+                   spaceAfter="0.0"/>
+        <paraStyle name="P5" fontName="Helvetica" alignment="CENTER"/>
+        <paraStyle name="Standard" fontName="Helvetica"/>
+        <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0"
+                   spaceAfter="6.0"/>
+        <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+        <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+        <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+        <paraStyle name="Index" fontName="Helvetica"/>
+        <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT"
+                   spaceBefore="12.0" spaceAfter="6.0"/>
+        <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT"
+                   spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT"
+                   spaceBefore="0.0" spaceAfter="0.0"/>
+        <paraStyle name="Table Contents" fontName="Helvetica"/>
+        <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER"/>
+        <paraStyle name="P4_p3" fontName="Helvetica-Bold" fontSize="9.0" leading="15"/>
+        <paraStyle name="P1_right" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER"/>
+        <paraStyle name="P1_right2" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT"/>
+        <images/>
+    </stylesheet>
+    <story>
+        <para style="terp_default_8">[[repeatIn(objects,'o')]]</para>
+        <para style="terp_default_8">[[ setLang(o.partner_id.lang) ]]</para>
+
+    <blockTable colWidths="330.0,220" style="TableNoSpace">
+      <tr>
+        <td>
+            <blockTable colWidths="330" style="TableNoSpace">
+                <tr>
+                    <td>
+                        <para style="terp_default_9"><b>[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[ (o.partner_id and o.partner_id.name) or '' ]]</b></para>
+                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street)]]</para>
+                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street2)]]</para>
+                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.city)]] [[ (o.partner_id and o.partner_id.zip)]]</para>
+                    </td>
+                </tr>
+            </blockTable>
+        </td>
+          <td>
+              <blockTable colWidths="80,5,135" style="TableNoSpace">
+                  <tr>
+                        <td>
+                            <para style="terp_default_9">Tax Invoice No</para>
+                        </td>
+                        <td>
+                          <para style="terp_default_9">:</para>
+                        </td>
+                        <td>
+                            <para style="terp_default_9">[[o.number]]</para>
+                        </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <para style="terp_default_9">Terms</para>
+                      </td>
+                      <td>
+                          <para style="terp_default_9">:</para>
+                      </td>
+
+                      <td>
+                          <para style="terp_default_9">[[o.tgb_term ]]</para>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <para style="terp_default_9">Date</para>
+                          <para style="terp_default_9"> [[(not o.customer_po) and removeParentNode('para')  ]]Your PO</para>
+                          <para style="terp_default_9"> [[(not o.delivery_ref) and removeParentNode('para') ]]D.O Number</para>
+                          <para style="terp_default_9">Currency</para>
+                      </td>
+                      <td>
+                          <para style="terp_default_9">:</para>
+                          <para style="terp_default_9"> [[(not o.customer_po) and removeParentNode('para')  ]]:</para>
+                          <para style="terp_default_9"> [[(not o.delivery_ref) and removeParentNode('para') ]]:</para>
+                          <para style="terp_default_9">:</para>
+                      </td>
+                        <td>
+                            <para style="terp_default_9">
+                            [[formatLang(o.date_invoice,date=True) or '   ']]<font color="white"> </font>
+                          </para>
+
+                            <para style="terp_default_9">
+                            [[(not o.customer_po) and removeParentNode('para') or o.customer_po]]
+                          </para>
+                            <para style="terp_default_9">
+                            [[(not o.delivery_ref) and removeParentNode('para') or o.delivery_ref]]
+                          </para>
+                            <para style="terp_default_9">
+                            [[o.sale_order_id.currency_id.name]]
+                          </para>
+                        </td>
+                  </tr>
+              </blockTable>
+        </td>
+      </tr>
+        <tr>
+            <td>
+              <para style="P3"><b>Attn:</b> [[  o.sale_order_id.attn_id and o.sale_order_id.attn_id.name]]</para>
+            </td>
+        <td>
+            <para style="terp_default_8">
+            <font color="white"> </font>
+          </para>
+        </td>
+
+        </tr>
+    </blockTable>
+
+        <blockTable colWidths="20,530" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="P1_p2">
+                        <u>RE:</u>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1_p2">
+                        <u>[[o.sale_order_id.subject]]</u>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <blockTable colWidths="20,530" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+
+                        <b> - [[get_time_claim(o)]] Claim</b>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <blockTable colWidths="20,530" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+                        We are pleased to submit herewith our <b>[[get_time_claim(o)]] Claim of [[formatLang( get_this_amount(o),currency_obj = company.currency_id) ]] </b> (inclusive 7% GST)
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <blockTable colWidths="20,300,230" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+                        Total Original Contract Sum
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        [[formatLang(o.sale_order_id and get_original_contract_sum(o),currency_obj = company.currency_id)]]
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <blockTable colWidths="20,300,80,150" style="Table1_underline2">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+                        Add / Omit Variation Work
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        [[formatLang(get_variation_amount(o),currency_obj = company.currency_id) ]]
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <section>
+            <para style="terp_default_8">[[repeatIn(get_additional_quotation(o),'add')]]</para>
+            <blockTable colWidths="20,300,80,150" style="TableNoSpace">
+                <tr>
+                    <td>
+                        <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            [[add[0] ]]
+                        </para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            [[formatLang(add[1],currency_obj = company.currency_id) ]]
+                        </para>
+                    </td>
+                    <td>
+                        <para style="terp_default_8">
+                            <font color="white">11</font>
+                        </para>
+                    </td>
+                </tr>
+            </blockTable>
+        </section>
+
+        <blockTable colWidths="20,300,80,150" style="Table1_underline2">
+            <tr>
+                <td>
+                    <para style="terp_default_8">
+                        [[ (not o.is_progressive) and removeParentNode('blockTable') ]]
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>Total Value To-date</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>[[formatLang(o.sale_order_id.amount_untaxed,currency_obj = company.currency_id)]]</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+
+        </blockTable>
+
+
+        <para style="terp_default_8">
+                        <font color="white">11</font>
+            </para>
+
+        <blockTable colWidths="20,300,230" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1"><b>[[get_being_work_todate(o)]]</b></para>
+                </td>
+                <td>
+                    <para style="P1"><b>[[formatLang(o.progressive_id and o.progressive_id.amount_claim_todate,currency_obj = company.currency_id)]]</b> </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <section>
+            <para style="terp_default_8">[[repeatIn(previous_claim(o),'line')]]</para>
+            <blockTable colWidths="20,300,230" style="TableNoSpace">
+
+                <tr>
+                    <td>
+                        <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            [[line[0] ]]
+                        </para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            [[ line[1] ]]
+                        </para>
+                    </td>
+                </tr>
+            </blockTable>
+        </section>
+
+        <blockTable colWidths="20,300,80,150" style="Table1_underline3">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (o.billing_time==1 or not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+                       <font color="white">11</font>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>[[formatLang(get_this_claim(),currency_obj = company.currency_id) ]]</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+
+        </blockTable>
+
+        <blockTable colWidths="20,300,80,150" style="Table1_underline4">
+                <tr>
+                    <td>
+                        <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            Add 7% GST
+                        </para>
+                    </td>
+                    <td>
+                        <para style="P1">
+                            [[ formatLang(get_gst_amount(),currency_obj = company.currency_id) ]]
+                        </para>
+                    </td>
+                    <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+                </tr>
+        </blockTable>
+
+        <blockTable colWidths="20,300,80,150" style="Table1_underline4">
+            <tr>
+                <td>
+                    <para style="terp_default_9">[[ (not o.is_progressive) and removeParentNode('blockTable') ]]</para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>Therefore our [[get_time_claim(o)]] Claim shall be</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>[[o.progressive_id and formatLang(get_this_amount(o),currency_obj = company.currency_id)]]</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="550" style="TableNoSpace">
+            <tr>
+                <td>
+                    [[ ( not o.is_progressive) and removeParentNode('blockTable') ]]
+                    <para style="P1">
+                        <b>(DLRS : [[amount_word(get_this_amount(o) )]])</b>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+        <blockTable colWidths="550" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="P1">
+                        [[ (o.is_progressive) and removeParentNode('blockTable') ]]
+                        We are pleased to submit here our invoice (inclusive 7% of GST)
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+
+        <blockTable colWidths="300,250" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="P1">
+                        [[ (o.is_progressive) and removeParentNode('blockTable') ]]
+                        <b>Total Price</b>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>:[[formatLang(o.amount_total,currency_obj = company.currency_id)]]</b>
+                    </para>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <para style="P1">
+                        <b>Add 7% GST </b>
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        <b>:[[formatLang(gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
+                    </para>
+                </td>
+            </tr>
+
+            </blockTable>
+
+        <blockTable colWidths="550" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="P1">
+                        [[ ( o.is_progressive) and removeParentNode('blockTable') ]]
+                        <b>(DLRS : [[amount_word(o.amount_total+gst_amount(o.amount_total))]])</b>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+
+        <blockTable colWidths="20,550" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+
+        <condPageBreak height="4cm"/>
+
+        <blockTable colWidths="550" style="TableNoSpace">
+            <tr>
+                <td>
+                    <para style="P2">
+                        <font face="Helvetica" size="9.0">Yours faithfully,</font>
+                    </para>
+                    <para style="P1">
+                        <b>Supersonic A/C &amp; Elect Engrg Pte Ltd</b>
+                    </para>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <image width="130" height="30">[[ o.sale_order_id.signature_image2 or removeParentNode('image') ]]
+                    </image>
+
+                    <image width="130" height="30">[[ o.sale_order_id.signature_image or removeParentNode('image') ]]
+                    </image>
+                </td>
+            </tr>
+            <tr>
+                <td><para style="P1"><b>[[o.user_id and get_user_title(o.user_id.id)]]</b></para>
+                    <para style="P1">
+                        <b>[[o.user_id and o.user_id.name]]</b>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
+    <para>
+          <seqReset id="L1"/>
+    </para>
+    </story>
+</document>

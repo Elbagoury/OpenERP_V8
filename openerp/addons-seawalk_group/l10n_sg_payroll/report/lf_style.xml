@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+<template id="report.style">
+    body {
+        color: #000 !important;
+    }
+    .border-black td {
+        border-top: 1px solid black !important;
+    }
+    .table-condensed &gt; thead &gt; tr &gt; th {
+        border-bottom: 1px solid black !important;
+    }
+    .zero_min_height {
+        min-height: 0px !important;
+    }
+	.table_bordered{
+	    font-size: 12px;
+	    border:1px solid black;
+	    margin-left: -3px;
+	}
+	.table_bordered td{
+	    padding:4px;
+	}
+	.border_bottom{
+	    border-bottom:1px solid black;
+	    border-collapse: collapse;
+	}
+	.border_right{
+	    border-right:1px solid black;
+	    border-collapse: collapse;
+	}
+	.custom_header{
+	    background:#D63083;
+	    color:white;
+	}
+	.c_grey{
+	    background:#ddd;
+	}
+	.table-responsive{
+	}
+   .border_left_hide{
+	    border-left:hidden;
+	   }
+   .border_right_hide{
+	    border-right:hidden;
+	}
+   .border_top_hide{
+    	border-top:hidden;
+   }
+   .border_bottom_hide{
+   		border-bottom:hidden;
+   }
+   .border_bottom{
+      border-bottom: 1px solid black;
+   }
+   .border_top{
+	border-top: 1px solid black;
+   }
+   .border_right{
+     border-right: 1px solid black;
+   }
+   .border_left_hide{
+    	border-left:hidden;
+   }
+   .main_table{
+       border:1px solid black;
+       padding: 8px;
+       border-collapse: collapse;
+       width:100%;
+   }
+   .main_table th tr td{
+      padding: 8px;
+   }
+   .border_bottom{
+      border-bottom: 1px solid black;
+   }
+   .border_top{
+      border-top: 1px solid black !important;
+   }
+   .border_right{
+     border-right: 1px solid black !important;
+   }
+   .border_left{
+     border-left: 1px solid black !important;
+   }
+   .border_left_hide{
+    	border-left:hidden;
+   }
+   .border_right_hide{
+    	border-right:hidden;
+   }
+   .border_top_hide{
+    	border-top:hidden;
+   }
+   .border_bottom_hide{
+    	border-bottom:hidden;
+   }
+   .font18 {
+       font-size:18px;
+   }
+   table td{
+       padding: 3px;
+       border-collapse: collapse;
+   }
+   .padding_left{
+     padding-left:20px;
+   }
+
+	.table_one{
+	   border:1px solid black;
+	   padding: 8px;
+	   border-collapse: collapse;
+	   width:30%;
+	}
+    .table_one th tr td{
+      padding: 8px;
+    }
+	.table_top{
+       border:1px solid black;
+       padding: 8px;
+       border-collapse: collapse;
+       width:100%;
+    }
+    .table_top th tr td{
+      padding: 8px;
+    }
+    .o_float_right {
+    	float: right;
+    }
+    .o_float_left {
+    	float: left;
+    }
+    .o_underline {
+    	border-bottom: solid 1px;
+    }
+    .o_earning_table tr td, .o_deduction_table tr td {
+    	border: solid 1px;
+    }
+    .o_height_25 {
+    	line-height: 2.5;
+    }
+</template>
+
+
+
+</data>
+</openerp>

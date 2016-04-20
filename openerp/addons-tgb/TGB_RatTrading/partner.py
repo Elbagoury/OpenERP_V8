@@ -36,15 +36,16 @@ class partner(osv.osv):
 
     _columns = {
         'customer_id': fields.char('Id', size=255),
-        'hp_no': fields.char('HP No', size=255),
+        'customer_monday': fields.boolean('Customer (Monday)'),
+        'customer_wednesday': fields.boolean('Customer (Wednesday)'),
+        'customer_friday': fields.boolean('Customer (Friday)'),
      }
 
-class res_company(osv.osv):
-    _inherit = "res.company"
+    _defaults = {
+        'customer_monday':False,
+        'customer_wednesday':False,
+        'customer_friday':False,
+    }
 
-    _columns = {
-        'hp_no': fields.char('HP No', size=255),
-     }
 
-res_company()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

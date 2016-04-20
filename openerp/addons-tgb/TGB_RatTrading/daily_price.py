@@ -57,6 +57,42 @@ class rat_daily_price(osv.osv):
                                                                                              })
         return True
 
+
+    def get_weekly_item2(self,cr,uid,ids,context=None):
+        for id in self.browse(cr,uid,ids):
+            current_products = self.pool.get('rat.daily.price.detail').search(cr,uid,[('parent_id','=',id.id)])
+            self.pool.get('rat.daily.price.detail').unlink(cr,uid,current_products)
+            product_ids = self.pool.get('product.product').search(cr,uid,[('product_weekly_item2','=',True)])
+            now = datetime.now()
+            if product_ids and len(product_ids)>0:
+                for id in ids:
+                    for product in product_ids:
+                        price = self.pool.get('product.product').browse(cr,uid,product).lst_price
+                        new_line = self.pool.get('rat.daily.price.detail').create(cr,uid,{'parent_id':id,
+                                                                                           'product_id':product,
+                                                                                            'date':now,
+                                                                                           'price':price
+                                                                                             })
+        return True
+
+    def get_weekly_item3(self,cr,uid,ids,context=None):
+        for id in self.browse(cr,uid,ids):
+            current_products = self.pool.get('rat.daily.price.detail').search(cr,uid,[('parent_id','=',id.id)])
+            self.pool.get('rat.daily.price.detail').unlink(cr,uid,current_products)
+            product_ids = self.pool.get('product.product').search(cr,uid,[('product_weekly_item3','=',True)])
+            now = datetime.now()
+            if product_ids and len(product_ids)>0:
+                for id in ids:
+                    for product in product_ids:
+                        price = self.pool.get('product.product').browse(cr,uid,product).lst_price
+                        new_line = self.pool.get('rat.daily.price.detail').create(cr,uid,{'parent_id':id,
+                                                                                           'product_id':product,
+                                                                                            'date':now,
+                                                                                           'price':price
+                                                                                             })
+        return True
+
+
     def confirm_price(self,cr,uid,ids,context=None):
         for work in self.browse(cr,uid,ids):
             all_product_ids = self.pool.get('product.template').search(cr,uid,[])

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="report_lump_sum" model="sale.order" name="lump.sum"
+                rml="TGB_construction/report/lump_sum_report.rml" string="Lump Sum Quotation"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_lump_sum2" model="sale.order" name="lump.sum2"
+                rml="TGB_construction/report/lump_sum_report2.rml" string="Lump Sum Quotation2"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_SOR" model="sale.order" name="sor.report"
+                rml="TGB_construction/report/SOR_report.rml" string="SOR Quotation"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_BQ" model="sale.order" name="bq.report"
+                rml="TGB_construction/report/BQ_report.rml" string="BQ Quotation"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_detail" model="sale.order" name="detail.report"
+                rml="TGB_construction/report/detail_report.rml" string="Big Project"
+                usage="default" header="False"/>
+
+
+        <report auto="False" id="report_progressive_billing" model="progressive.billing" name="progressive.billing"
+                rml="TGB_construction/report/progressive_billing.rml" string="Print Progressive Billing"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_account_invoice" model="account.invoice" name="TGB.account.invoice"
+                rml="TGB_construction/report/account_invoice.rml" string="Print Invoices"
+                usage="default" header="False"/>
+
+        <report auto="False" id="report_material_request" model="stock.issue" name="TGB.stock.issue"
+                rml="TGB_construction/report/material_request.rml" string="Print Material Request"
+                usage="default" header="False"/>
+
+
+    </data>
+</openerp>
