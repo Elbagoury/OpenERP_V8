@@ -9,6 +9,20 @@
             	<xpath expr="//field[@name='list_price']" position="after">
             		<field name="brand"/>
             	</xpath>
+            	<xpath expr="//page[@string='Sales']" position="after">
+            		<page string="Pricelist">
+            			<group>
+            				<field name="supplier_pricelist_line" nolabel='1'>
+            					<tree editable='bottom'>
+            						<field name="partner_id" required='1' domain="[('supplier','=', True)]"/>
+            						<field name="qty_from"/>
+            						<field name="qty_to"/>
+            						<field name="amount_discount"/>
+            					</tree>
+            				</field>
+            			</group>
+	                </page>
+            	</xpath>
             </field>
         </record>
     </data>

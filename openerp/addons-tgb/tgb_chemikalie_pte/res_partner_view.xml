@@ -27,19 +27,6 @@
                         <field name="delivery_country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                     </div>
             	</xpath>
-            	<xpath expr="//page[@name='sales_purchases']" position="after">
-            		<page string="Pricelist" attrs="{'invisible': [('supplier','=',False)]}">
-            			<group>
-            				<field name="supplier_pricelist_line" nolabel='1'>
-            					<tree editable='bottom'>
-            						<field name="qty_from"/>
-            						<field name="qty_to"/>
-            						<field name="amount_discount"/>
-            					</tree>
-            				</field>
-            			</group>
-	                </page>
-            	</xpath>
             </field>
         </record>
     </data>

@@ -13,13 +13,13 @@
             		<field name="brand"/>
             	</xpath>
             	<xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
-            		<field name="tgb_price_unit" on_change="onchange_tgb_price_unit(parent.partner_id,product_qty,tgb_price_unit)"/>
+            		<field name="tgb_price_unit" on_change="onchange_tgb_price_unit(parent.partner_id,product_id,product_qty,tgb_price_unit)"/>
             	</xpath>
             	<xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
             		<attribute name="string">Unit Price After Discount</attribute>
             	</xpath>
             	<xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="attributes">
-            		<attribute name="on_change">onchange_tgb_price_unit(parent.partner_id,product_qty,tgb_price_unit)</attribute>
+            		<attribute name="on_change">onchange_tgb_price_unit(parent.partner_id,product_id,product_qty,tgb_price_unit)</attribute>
             	</xpath>
             </field>
         </record>

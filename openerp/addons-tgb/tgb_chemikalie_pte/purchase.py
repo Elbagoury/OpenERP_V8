@@ -142,7 +142,7 @@ class purchase_order_line(osv.osv):
         if product_id:
             product_obj = self.pool.get('product.product').browse(cr, uid, product_id)
             tgb_price_unit = res['value'].get('price_unit',False) and res['value']['price_unit'] or 0
-            vals = self.onchange_tgb_price_unit(cr, uid, ids, partner_id, qty, tgb_price_unit, context)['value']
+            vals = self.onchange_tgb_price_unit(cr, uid, ids, partner_id, product_id, qty, tgb_price_unit, context)['value']
             res['value'].update({
                 'brand': product_obj.brand,
                 'tgb_price_unit': tgb_price_unit,
@@ -150,17 +150,18 @@ class purchase_order_line(osv.osv):
             })
         return res
     
-    def onchange_tgb_price_unit(self, cr, uid, ids, partner_id=False, product_qty=False, tgb_price_unit=False, context=None):
+    def onchange_tgb_price_unit(self, cr, uid, ids, partner_id=False, product_id=False, product_qty=0, tgb_price_unit=0, context=None):
         res = {}
-        if partner_id and product_qty and tgb_price_unit:
+        res['price_unit'] = tgb_price_unit
+        if partner_id and product_qty and tgb_price_unit and product_id:
             sql = '''
                 select case when amount_discount!=0 then amount_discount else 0 end amount_discount
-                    from supplier_pricelist where partner_id=%s and %s between qty_from and qty_to
+                    from supplier_pricelist where partner_id=%s and %s between qty_from and qty_to and product_id=%s
                     order by id desc limit 1
-            '''%(partner_id, product_qty)
+            '''%(partner_id, product_qty, product_id)
             cr.execute(sql)
             discount = cr.fetchone()
-            if discount:
+            if discount and tgb_price_unit - discount[0]>0:
                 res['price_unit'] = tgb_price_unit - discount[0]
         return {'value': res}
     

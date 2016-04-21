@@ -39,6 +39,7 @@ class product_template(osv.osv):
     
     _columns = {
         'brand': fields.char('Brand', size=1024),
+        'supplier_pricelist_line': fields.one2many('supplier.pricelist', 'product_id', 'Pricelist'),
     }
     
 product_template()
