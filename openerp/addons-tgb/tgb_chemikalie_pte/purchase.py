@@ -122,6 +122,19 @@ class purchase_order(osv.osv):
             'tgb_price_unit': order_line.tgb_price_unit,
         }
     
+    def write(self, cr, uid, ids, vals, context=None):
+        new_write = super(purchase_order, self).write(cr, uid, ids, vals, context)
+        if vals.get('state', False)=='approved':
+            currency_obj = self.pool.get('res.currency')
+            product_obj = self.pool.get('product.template')
+            for po in self.browse(cr, uid, ids):
+                for po_line in po.order_line:
+                    new_amount = po_line.price_unit
+                    if po.currency_id!=po.company_id.currency_id:
+                        new_amount = currency_obj.compute(cr, uid,po.currency_id.id,po.company_id.currency_id.id, po_line.price_unit)
+                    product_obj.write(cr, uid, [po_line.product_id.id], {'standard_price': new_amount})
+        return new_write
+    
 purchase_order()
 
 class purchase_order_line(osv.osv):

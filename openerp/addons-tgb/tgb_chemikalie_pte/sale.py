@@ -116,6 +116,16 @@ class sale_order_line(osv.osv):
         'brand': fields.char('Brand', size=1024),
     }
     
+    def _check_unit_price(self, cr, uid, ids, context=None):
+        for so_line in self.browse(cr, uid, ids, context=context):
+            if so_line.product_id and so_line.price_unit < so_line.product_id.standard_price:
+                return False
+        return True
+
+    _constraints = [
+        (_check_unit_price, 'The sale price much be greater than the cost price', ['product_id','price_unit']),
+    ]
+    
     def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,
             uom=False, qty_uos=0, uos=False, name='', partner_id=False,
             lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False, flag=False, context=None):
