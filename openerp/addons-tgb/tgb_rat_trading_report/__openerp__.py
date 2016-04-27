@@ -15,6 +15,7 @@
         'report/invoice_report_view.xml',
         'invoice_view.xml',
         'partner_view.xml',
+        'sale_view.xml',
         'report_view.xml',
     ],
     'installable': True,
