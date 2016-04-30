@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Invoice -->
+	    <record id="tax_invoice_report" model="ir.actions.report.xml">
+	        <field name="name">tax_invoice_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">account.invoice</field>
+	        <field name="report_name">tax_invoice_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">TGB_RatTrading/report/invoice_report.py</field>
+	        <field name="report_rml">TGB_RatTrading/report/tax_invoice_report.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="tax_invoice_report"
+			model="account.invoice"
+			name="tax_invoice_report"
+	        string="Invoice"
+	        rml="TGB_RatTrading/report/tax_invoice_report.odt"/>
+        
+	</data>
+</openerp>

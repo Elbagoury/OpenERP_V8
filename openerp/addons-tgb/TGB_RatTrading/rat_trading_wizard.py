@@ -173,19 +173,21 @@ class rat_trading_wizard(osv.osv):
             header = sheet.row_values(0)
             print header
             field_pos = {}
-            for i in range(2,len(header)):
+            for i in range(2,len(header),2):
                 for field in list_product:
                     if field.values()[0] == header[i]:
-                        field_pos.update({i:field.keys()[0]})
+                        field_pos.update({i:field.keys()[0], i+1: field.keys()[0]+'_price'})
             for r in range(1, sheet.nrows):
                 row = sheet.row_values(r)
                 partner_id = row[1]
                 detail_vals = {'customer_id':partner_id,
                                'parent_id':order.id}
                 print 'partner_id ', partner_id
-                for i in xrange(2,len(row)):
+                for i in xrange(2,len(row),2):
                     if field_pos.get(i):
                         detail_vals.update({field_pos[i]:row[i]})
+                    if field_pos.get(i+1):
+                        detail_vals.update({field_pos[i+1]:row[i+1]})
                 new_detail = self.pool.get('rat.trading.detail').create(cr,uid,detail_vals)
                 print 'create new detail', new_detail
         return True
