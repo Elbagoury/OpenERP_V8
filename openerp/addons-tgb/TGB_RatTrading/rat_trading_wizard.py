@@ -12,7 +12,7 @@ import xlsxwriter
 import base64
 import xlrd
 from base64 import b64decode
-
+import time
 class rat_trading_wizard(osv.osv):
     _name = 'rat.trading.wizard'
 
@@ -26,14 +26,15 @@ class rat_trading_wizard(osv.osv):
                 field = ''
                 for product_id in list_product:
                     field += str(product_id) + ','
-                field = field[:len(field) - 1]
-                sql = """ select %s from rat_trading_detail where id = %s
-                """ % (field, item.id)
-                cr.execute(sql)
-                result = cr.fetchall()
-                for sql_res in result[0]:
-                    if sql_res:
-                        total += sql_res
+                if field:
+                    field = field[:len(field) - 1]
+                    sql = """ select %s from rat_trading_detail where id = %s
+                    """ % (field, item.id)
+                    cr.execute(sql)
+                    result = cr.fetchall()
+                    for sql_res in result[0]:
+                        if sql_res:
+                            total += sql_res
             # for item in rat_trading_detail.read(cr, uid, detail_ids, []):
             # # for item in order.trading_detail_ids:
             #     for field in self.pool.get('ir.model.fields').browse(cr,uid,field_list_ids):
@@ -129,7 +130,38 @@ class rat_trading_wizard(osv.osv):
                                                                   'field_name': key,
                                                                   'product_name':rat_trading_detail._dynamic_fields_list[key]})
         return new_wizard
-
+    
+    def write(self, cr, uid, ids, vals, context=None):
+        new_write = super(rat_trading_wizard, self).write(cr, uid, ids, vals, context=context)
+        if vals.get('date_import', False):
+            if context is None:
+                context = {}
+            for line in self.browse(cr, uid, ids):
+                context.update({'date_import': line.date_import,'default_form_id': False})
+                rat_trading_detail._dynamic_fields_list = {}
+                self.pool.get('rat.trading.detail').fields_view_get(cr, uid, False, 'tree', context, False, False)
+                sql = '''
+                    delete from rat_trading_product where parent_id=%s
+                '''%(line.id)
+                cr.execute(sql)
+                for key in rat_trading_detail._dynamic_fields_list.keys():
+                    self.pool.get('rat.trading.product').create(cr, uid, {'parent_id': line.id,
+                                                                          'field_name': key,
+                                                                          'product_name':rat_trading_detail._dynamic_fields_list[key]})
+        return new_write
+    
+    def generate_template(self, cr, uid, ids, context=None):
+        date_now = time.strftime('%Y-%m-%d %H:%M:%S')
+        this = self.browse(cr, uid, ids[0])
+        if this.date_import and date_now[:10]==this.date_import[:10]:
+            return self.generate_excel(cr, uid, ids,context)
+        else:
+            self.generate_excel(cr, uid, ids,context)
+            return {
+                'type' : 'ir.actions.client',
+                'tag' : 'reload',
+            }
+    
     def generate_excel(self, cr, uid, ids, context=None):
         if isinstance(ids, (list)):
             ids = ids[0]
@@ -142,16 +174,22 @@ class rat_trading_wizard(osv.osv):
         worksheet = workbook.add_worksheet()
         worksheet.write(0, 0, 'Customer Name')
         worksheet.write(0, 1, 'Customer Id')
+        temp = 2
         for col in range(0, len(list_product)):
-            worksheet.write(0, col+2, list_product[col].values()[0])
+            worksheet.write(0, temp, list_product[col].values()[0])
+            worksheet.write(0, temp+1, 'Price')
+            temp+=2
         row = 0
         for detail in order.trading_detail_ids:
             row += 1
             if detail.parent_id:
                 worksheet.write(row, 0, detail.customer_id.name)
                 worksheet.write(row, 1, str(detail.customer_id.id))
+            temp = 2
             for col in range(0, len(list_product)):
-                worksheet.write(row, col+2, detail[list_product[col].keys()[0]])
+                worksheet.write(row, temp, detail[list_product[col].keys()[0]])
+                worksheet.write(row, temp+1, 'Price')
+                temp+=2
         workbook.close()
         with open(path, 'rb') as f:
             data = f.read()
@@ -227,7 +265,7 @@ class rat_trading_wizard(osv.osv):
                         order = self.pool.get('sale.order').browse(cr, uid, new_order)
                         val_new_line = self.pool.get('sale.order.line')._defaults
                         val_new_line['order_id'] = new_order
-                        val_new_line['product_uom'] = self.pool.get('sale.order.line')._get_uom_id(cr, uid)
+#                         val_new_line['product_uom'] = self.pool.get('sale.order.line')._get_uom_id(cr, uid)
                         val_new_line['product_id'] = product
                         val_new_line['product_uom_qty'] = item['product_' + str(product)]
                         val_new_line['price_unit'] = item['product_' + str(product) + '_price']
@@ -238,7 +276,7 @@ class rat_trading_wizard(osv.osv):
                                                                                product,
                                                                                qty=float(
                                                                                    item['product_' + str(product)]),
-                                                                               uom=val_new_line['product_uom'],
+                                                                               uom=False,
                                                                                qty_uos=0,
                                                                                uos=False,
                                                                                name='',
@@ -303,7 +341,7 @@ class rat_trading_detail(osv.osv):
                 res.update({'product_' + str(product.id) + '_price': product.lst_price})
         return res
 
-    def get_product_list(self, cr, uid, wizard_id, context=None):
+    def get_product_list(self, cr, uid, wizard_id,date_import=False, context=None):
         if not context:
             context = {}
         product_list_ids = []
@@ -317,6 +355,15 @@ class rat_trading_detail(osv.osv):
         template_ids = self.pool.get('product.template').search(cr, uid, [('product_multi_active', '=', True)])
         product_list_ids = self.pool.get('product.product').search(cr, uid,
                                                                    [('product_tmpl_id', 'in', template_ids)])
+        if date_import:
+#             raise osv.except_osv(_("Error"), _('Can not find Date Import'))
+            sql = '''
+                select product_id from rat_daily_price_detail where parent_id in (select id from rat_daily_price where date(timezone('UTC',date_import))=date('%s') order by date_import desc,id desc limit 1)
+            '''%(date_import)
+            cr.execute(sql)
+            product_list_ids = [r[0] for r in cr.fetchall()]
+            if not product_list_ids and wizard_id:
+                raise osv.except_osv(_("Error"), _('Can not find Product Daily Price'))
         return product_list_ids
 
     def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
@@ -329,7 +376,7 @@ class rat_trading_detail(osv.osv):
 
         # template_ids = self.pool.get('product.template').search(cr, uid, [('product_multi_active', '=', True)])
         # product_list_ids = self.pool.get('product.product').search(cr, uid, [('product_tmpl_id', 'in', template_ids)])
-        new_product_list_ids = self.get_product_list(cr, uid, context.get('default_form_id'))
+        new_product_list_ids = self.get_product_list(cr, uid, context.get('default_form_id'),context.get('date_import', False))
         self._temp_product_list_ids = new_product_list_ids
         cls = type(self)
 

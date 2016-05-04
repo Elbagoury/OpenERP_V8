@@ -11,7 +11,7 @@
                                 groups="base.group_user" type="object" states="draft"/>
                         <button name="confirm_quotation" string="Confirm Quotations" class="oe_highlight"
                                 groups="base.group_user" type="object" states="draft"/>
-                        <button name="generate_excel" string="Generate Template" class="oe_highlight"
+                        <button name="generate_template" string="Generate Template" class="oe_highlight"
                                 groups="base.group_user" type="object"/>
                         <button name="update_total_amount" string="Update Total" class="oe_highlight"
                                 groups="base.group_user" type="object" states="draft"/>
@@ -46,7 +46,7 @@
                         </group>
                         <separator string="Quick Quotation Creation Detail" colspan="8"/>
                         <field name="trading_detail_ids" editable="1" nolabel="1" colspan="8"
-                               context="{'default_form_id': active_id}"/>
+                               context="{'default_form_id': active_id,'date_import': date_import}" options="{'reload_on_button': true}"/>
                         <newline/>
                         <group>
                             <field name="total_amount"/>
