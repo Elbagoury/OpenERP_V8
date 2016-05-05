@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+        <record model="ir.ui.view" id="saicoms_sale_order_event_tree_view">
+            <field name="name">sale.order.event.tree</field>
+            <field name="model">sale.order.event</field>
+            <field name="arch" type="xml">
+                <tree string="Product Remark" editable="top">
+                    <field name="date"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

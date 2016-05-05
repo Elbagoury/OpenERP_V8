@@ -1,0 +1,67 @@
+<openerp>
+    <data>
+
+        <record id="project_budgeting_tree" model="ir.ui.view">
+            <field name="name">Project Budgeting</field>
+            <field name="model">project.budgeting</field>
+            <field name="arch" type="xml">
+                <tree string="Project Costing">
+                    <field name="si_voucher_no"/>
+                    <field name="project_id"/>
+                    <field name="res_user_id"/>
+                    <field name="total_budgeting"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="project_budgeting_form" model="ir.ui.view">
+            <field name="name">Project Budgeting Form</field>
+            <field name="model">project.budgeting</field>
+            <field name="arch" type="xml">
+                <form string="Project Budgeting Form" version="7.0">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,rejected,cancelled"
+                               statusbar_colors='{"rejected":"red","approved":"blue"}'/>
+                    </header>
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="si_voucher_no"/>
+                            <field name="res_user_id"/>
+                            <field name="project_id" colspan="4"/>
+                            <field name="total_budgeting"/>
+                            <field name="total_profit"/>
+                        </group>
+                        <notebook>
+                            <page string="Costing Involve">
+                                <field name="project_budgeting_detail_ids">
+                                    <tree editable="top">
+                                        <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="remark"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="project_budgeting_action" model="ir.actions.act_window">
+            <field name="name">Project Budgeting</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.budgeting</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem name="Project Budgeting" groups="TGB_construction.group_construction_manager"
+                  id="menu_project_budgeting" parent="menu_construction_project_cost_menu"
+                  action="project_budgeting_action"/>
+
+    </data>
+</openerp>

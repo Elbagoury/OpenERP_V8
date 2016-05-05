@@ -1,0 +1,52 @@
+<openerp>
+    <data>
+
+        <record id="saicoms_pos_product_template_view" model="ir.ui.view">
+            <field name="name">saicoms.pos.product.template.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="priority">36</field>
+            <field name="arch" type="xml">
+                <field name="sale_ok" position="before">
+                    <field name="is_group_product2"/>
+                    <label for="is_group_product2"/>
+                </field>
+                <notebook position="inside">
+                    <page string="Product Group" attrs="{'invisible':[('is_group_product2','=',False)]}">
+                        <separator string="Product Group"/>
+                        <field name="product_group_ids2" domain="[('is_group_product2','=',False)]"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="saicoms_product_child_tree">
+            <field name="name">product.child.tree</field>
+            <field name="model">product.child2</field>
+            <field name="arch" type="xml">
+                <tree string="product child" editable="top">
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="saicoms_product_child_form">
+            <field name="name">product.child.form</field>
+            <field name="model">product.child2</field>
+            <field name="arch" type="xml">
+                <form string="product child">
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+    </data>
+</openerp>

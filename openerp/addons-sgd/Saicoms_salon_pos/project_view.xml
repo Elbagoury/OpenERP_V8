@@ -1,0 +1,28 @@
+<openerp>
+    <data>
+        <record id="saicoms_CS_pos_package_action" model="ir.actions.act_window">
+            <field name="name">Spa Service Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.package</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="saicoms_CS_pos_package_action" id="menu_saicoms_pos_package_CS"
+                  parent="Saicoms_CS.menu_saicoms_customer_services"/>
+
+        <record id="saicoms_CS_service_redemption_action" model="ir.actions.act_window">
+            <field name="name">Service Done</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.package.redeem</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="saicoms_CS_service_redemption_action" id="menu_saicoms_service_redemption_CS"
+                  parent="saicoms_pos_service_package_root_menu"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_Saicoms_salon_pos_user_product_child,product.child2,model_product_child,Saicoms_salon_pos_user,1,1,1,11
+access_Saicoms_salon_pos_user_saicoms_customer_source,saicoms.customer.source,model_saicoms_customer_source,Saicoms_salon_pos_user,1,1,1,11
+access_Saicoms_salon_pos_user_saicoms_customer_type,saicoms.customer.type,model_saicoms_customer_type,Saicoms_salon_pos_user,1,1,1,11
+access_Saicoms_salon_pos_user_saicoms_occupation,saicoms.occupation,model_saicoms_occupation,Saicoms_salon_pos_user,1,1,1,11

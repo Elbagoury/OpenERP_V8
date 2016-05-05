@@ -1,0 +1,101 @@
+<openerp>
+    <data>
+
+        <record id="project_costing_tree" model="ir.ui.view">
+            <field name="name">Project Costing</field>
+            <field name="model">project.costing</field>
+            <field name="arch" type="xml">
+                <tree string="Project Costing">
+                    <field name="si_voucher_no"/>
+                    <field name="project_id"/>
+                    <field name="res_user_id"/>
+                    <field name="total_grand"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="project_costing_form" model="ir.ui.view">
+            <field name="name">Project Costing Form</field>
+            <field name="model">project.costing</field>
+            <field name="arch" type="xml">
+                <form string="Project Costing Form" version="7.0">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,rejected,cancelled"
+                               statusbar_colors='{"rejected":"red","approved":"blue"}'/>
+                    </header>
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="si_voucher_no"/>
+                            <field name="res_user_id"/>
+                            <field name="project_id"/>
+                            <field name="total_grand"/>
+                        </group>
+                        <notebook>
+                            <page string="Material Costs">
+                                <field name="stock_issue_ids"/>
+                                <group colspan="8" col="4">
+                                    <field name="total_material_cost"/>
+                                </group>
+                            </page>
+                            <page string="HRM Costs">
+                                <field name="hr_cost_ids">
+                                    <tree>
+                                        <field name="employee_id"/>
+                                        <field name="importer_id"/>
+                                        <field name="amount"/>
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="total_hr_cost"/>
+                                </group>
+                            </page>
+                            <page string="Others Costs">
+                                <field name="others_cost_ids">
+                                    <tree editable="1">
+                                            <field name="name"/>
+                                            <field name="amount"/>
+                                            <field name="date"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="total_others_cost"/>
+                                </group>
+                            </page>
+                            <page string="Sub-Contractor Claim">
+                                <field name="sub_contractor_ids">
+                                    <tree editable="1">
+                                            <field name="name"/>
+                                            <field name="amount"/>
+                                            <field name="date"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="total_sub_contractor"/>
+                                </group>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="project_costing_action" model="ir.actions.act_window">
+            <field name="name">Project Costing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.costing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem name="Project Costing" groups="TGB_construction.group_construction_manager"
+                  id="menu_project_costing" parent="menu_construction_project_cost_menu"
+                  action="project_costing_action"/>
+
+    </data>
+</openerp>

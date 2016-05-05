@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="saicoms_pos_package_redemption_form_view">
+            <field name="name">package.redemption.form</field>
+            <field name="model">package.redemption</field>
+            <field name="arch" type="xml">
+                <form string="Pos Package" version="7.0">
+                    <sheet>
+                        <group col="4">
+                            <field name="partner_id" context="{'show_email':True}"/>
+                            <field name="pos_reference"/>
+                            <field name="product_id" invisible="1"/>
+                            <button name="search_package" type="object" string="Search" class="oe_highlight"/>
+                            <separator string="Service Redemption" colspan="8"/>
+                            <field name="package_redeem_ids" nolabel="1" colspan="4"/>
+                            <button name="redeem" type="object" string="Redeem" class="oe_highlight"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="saicoms_pos_package_redemption_tree_view">
+            <field name="name">package.redemption.line.tree</field>
+            <field name="model">package.redemption.line</field>
+            <field name="arch" type="xml">
+                <tree string="Undone Service" version="7.0" editable="1">
+                    <field name="check" invisible="1"/>
+                    <field name="date"/>
+                    <field name="product_id"/>
+                    <field name="reference"/>
+                    <field name="used"/>
+                    <field name="remain"/>
+                    <field name="qty"/>
+                    <field name="perform_user_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="saicoms_pos_package_redemption_action" model="ir.actions.act_window">
+            <field name="name">Service Redemption</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">package.redemption</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="saicoms_pos_package_redemption_action" id="menu_saicoms_pos_package_redemption"
+                  parent="saicoms_pos_service_package_root_menu"
+                  groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SplitbillButton">
+        <span class="control-button order-split">
+            <i class="fa fa-copy"></i>
+            Add Information
+        </span>
+    </t>
+
+    <t t-name="SplitOrderline">
+
+        <li t-attf-class="orderline #{ selected ? 'selected' : ''} #{ quantity !== line.get_quantity() ? 'partially' : '' }"
+            t-att-data-id="id">
+            <span class="product-name">
+                <t t-esc="line.get_product().display_name"/>
+            </span>
+            <span class="price">
+                <t t-esc="widget.format_currency(line.get_display_price())"/>
+            </span>
+            <ul class="info-list">
+                <t t-if="line.get_quantity_str() !== '1'">
+                    <li class="info">
+                        <t t-if='selected and line.get_unit().groupable'>
+                            <em class='big'>
+                                <t t-esc='quantity' />
+                            </em>
+                            /
+                            <t t-esc="line.get_quantity_str()" />
+                        </t>
+                        <t t-if='!(selected and line.get_unit().groupable)'>
+                            <em>
+                                <t t-esc="line.get_quantity_str()" />
+                            </em>
+                        </t>
+                        <t t-esc="line.get_unit().name" />
+                        at
+                        <t t-esc="widget.format_currency(line.get_unit_price())" />
+                        /
+                        <t t-esc="line.get_unit().name" />
+                    </li>
+                </t>
+                <t t-if="line.get_discount_str() !== '0'">
+                    <li class="info">
+                        With a 
+                        <em>
+                            <t t-esc="line.get_discount_str()" />%
+                        </em>
+                        discount
+                    </li>
+                </t>
+            </ul>
+        </li>
+    </t>
+
+    <t t-name="SplitbillScreenWidget">
+        <div class='splitbill-screen screen'>
+            <div class='screen-content'>
+                <div class='top-content'>
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Back
+                    </span>
+                    <h1>Bill Splitting</h1>
+                </div>
+                <div class='left-content touch-scrollable scrollable-y'>
+                    <div class='order'>
+                        <ul class='orderlines'>
+                        </ul>
+                    </div>
+                </div>
+                <div class='right-content touch-scrollable scrollable-y'>
+                    <div class='order-info'>
+                        <span class='subtotal'><t t-esc='widget.format_currency(0.0)'/></span>
+                    </div>
+                    <div class='paymentmethods'>
+                        <t t-foreach="widget.pos.cashregisters" t-as="cashregister">
+                            <div class='button paymentmethod' t-att-data-id="cashregister.id">
+                                <t t-esc='cashregister.journal.name' />
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SaicomsAddInfo">
+        <div class='splitbill-screen screen'>
+            <div class='screen-content'>
+                <div class='top-content'>
+                    <h1>Saicoms Additional Information</h1>
+                </div>
+                <div class='left-content touch-scrollable scrollable-y'>
+                    <section class='client-details edit'>
+                        <div class='client-details-box clearfix'>
+                            <div class='client-details-left'>
+                                <div class='client-detail'>
+                                    <span class='label'>Nguồn:</span>
+                                    <select class='pos_source' name='pos_source'>
+                                        <option value=''></option>
+                                        <t t-foreach='widget.pos.pos_source' t-as='source'>
+                                            <option t-att-value="source.id">
+                                                <t t-esc='source.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class='client-detail'>
+                                    <span class='label'>Nhân viên thực hiện</span>
+                                    <select class='perform_user_id' name='perform_user'>
+                                        <option value=''></option>
+                                        <t t-foreach='widget.pos.users' t-as='user'>
+                                            <option t-att-value="user.id">
+                                                <t t-esc='user.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+
+                                <div class='client-detail'>
+                                    <span class='label'>Nhân viên tư vấn</span>
+                                    <select class='advisory_id' name='advisory_id'>
+                                        <option value=''></option>
+                                        <t t-foreach='widget.pos.users' t-as='user'>
+                                            <option t-att-value="user.id">
+                                                <t t-esc='user.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+
+                                <div class='client-detail'>
+                                    <span class='label'>Khách đi một mình hay đi với bạn</span>
+                                    <input class='has_friend' type="checkbox"   name='has_friend'          ></input>
+                                </div>
+
+                                <div class='client-detail'>
+                                    <span class='label'>Đánh giá của khách hàng về nhân viên</span>
+                                    <input class='customer_user_rating' name='customer_user_rating'     placeholder='Đánh giá của khách hàng về nhân viên...'></input>
+                                </div>
+
+                                <div class='client-detail'>
+                                    <span class='label'>Ý kiến khác của khách hàng</span>
+                                    <input class='customer_comment' name='customer_comment'     placeholder='Ý kiến khác của khách hàng...'></input>
+                                </div>
+
+                                <div class='client-detail'>
+                                    <span class='label'>Đánh giá của khách hàng về dịch vụ</span>
+                                    <input class='customer_rating' type="radio"   name='customer_rating'   style="width:10px;"       value="1">Rất hài lòng</input>
+                                    <input class='customer_rating' type="radio"   name='customer_rating'   style="width:10px;"       value="2">Hài lòng</input>
+                                    <input class='customer_rating' type="radio"   name='customer_rating'   style="width:10px;"       value="3">Bình thường</input>
+                                    <input class='customer_rating' type="radio"   name='customer_rating'   style="width:10px;"       value="4">Không hài lòng</input>
+                                    <input class='customer_rating' type="radio"   name='customer_rating'   style="width:10px;"       value="5">Quá tệ</input>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+
+
+</templates>

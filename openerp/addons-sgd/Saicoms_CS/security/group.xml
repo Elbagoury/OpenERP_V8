@@ -1,0 +1,8 @@
+<openerp>
+    <data noupdate="0">
+        <record id="saicoms_CS_user" model="res.groups">
+            <field name="name">Saicoms Customer Service Access</field>
+        </record>
+    </data>
+</openerp>
+                            

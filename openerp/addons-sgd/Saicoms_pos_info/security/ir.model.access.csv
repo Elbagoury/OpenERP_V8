@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saicoms_pos_info_user_pos_source,pos.source,model_pos_source,Saicoms_salon_pos.Saicoms_salon_pos_user,1,1,1,11

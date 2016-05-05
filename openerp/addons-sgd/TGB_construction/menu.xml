@@ -1,0 +1,70 @@
+<openerp>
+    <data>
+
+        <menuitem name="Construction Project"
+                  id="menu_construction_project"/>
+
+        <menuitem name="Project Construction"
+                  id="menu_construction_project_costing_menu" parent="menu_construction_project" sequence="1"/>
+
+        <menuitem name="Project Management"
+                  id="menu_construction_project_management_menu" parent="menu_construction_project" sequence="2"/>
+
+        <menuitem name="Project Billing"
+                  id="menu_construction_project_billing_menu" parent="menu_construction_project"/>
+
+        <menuitem name="Project Costing"
+                  id="menu_construction_project_cost_menu" parent="menu_construction_project"/>
+
+        <menuitem name="Human Resources"
+                  id="menu_construction_human_resource_menu" parent="menu_construction_project"/>
+
+        <record id="TGB_open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="hr.view_employee_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new employee.
+              </p><p>
+                With just a quick glance on the Odoo employee screen, you
+                can easily find all the information you need for each person;
+                contact data, job position, availability, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="TGB_open_view_employee_list_my" id="menuTGB__open_view_employee_list_my" sequence="3" parent="menu_construction_human_resource_menu"/>
+
+
+        <record id="TGB_ir_actions_server_timsheet_sheet" model="ir.actions.server">
+            <field name="sequence" eval="5"/>
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="hr_timesheet_sheet.model_hr_timesheet_current_open"/>
+            <field name="code">action = pool.get('hr.timesheet.current.open').open_timesheet(cr, uid, None, context)</field>
+            <field name="condition">True</field>
+            <field name="name">My Timesheet</field>
+        </record>
+
+        <menuitem name="My Current Timesheet" id="menu_TGB_act_hr_timesheet_sheet_form_my_current" parent="menu_construction_human_resource_menu" action="TGB_ir_actions_server_timsheet_sheet" sequence="1"/>
+
+        <record id="TGB_open_view_attendance" model="ir.actions.act_window">
+            <field name="name">Attendances</field>
+            <field name="res_model">hr.attendance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_today":1}</field>
+            <field name="search_view_id" ref="hr_attendance.view_hr_attendance_filter" />
+            <field name="help">The Time Tracking functionality aims to manage employee attendances from Sign in/Sign out actions. You can also link this feature to an attendance device using Odoo's web service features.</field>
+        </record>
+
+        <menuitem action="TGB_open_view_attendance" id="menu_TGB_open_view_attendance" parent="menu_construction_human_resource_menu" sequence="20" groups="base.group_hr_attendance"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PosWidget">
+        <div class="pos">
+            <div class="pos-topheader">
+                <div class="pos-branding">
+                    <img class="pos-logo" src="/Saicoms_salon_pos/static/src/img/company_logo.png" />
+                    <span class="placeholder-UsernameWidget"></span>
+                </div>
+                <div class="pos-rightheader">
+                    <div class="order-selector">
+                        <span class="orders"></span>
+                        <span class="order-button square neworder-button"><i class='fa fa-plus' /></span>
+                        <span class="order-button square deleteorder-button"><i class='fa fa-minus' /></span>
+                    </div>
+                    <!-- here goes header buttons -->
+                </div>
+            </div>
+
+            <div class="pos-content">
+
+                <div class="pos-leftpane">
+                    <div class='window'>
+                        <div class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix'>
+                                    <div class="placeholder-OrderWidget"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='subwindow collapsed'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix pads'>
+                                    <div class="control-buttons oe_hidden"></div>
+                                    <div class="placeholder-PaypadWidget"></div>
+                                    <div class="placeholder-NumpadWidget"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='subwindow collapsed'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix'>
+                                    <div class='placeholder-LeftActionBar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rightpane">
+                    <div class='window'>
+                        <div class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix screens'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='subwindow collapsed'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix'>
+                                    <div class='placeholder-RightActionBar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="placeholder-OnscreenKeyboardWidget"></div>
+            </div>
+
+            <div class="loader">
+                <div class='loader-feedback oe_hidden'>
+                    <h1 class='message'>Loading</h1>
+                    <div class='progressbar'>
+                        <div class='progress' width='50%'></div>
+                    </div>
+                    <div class='oe_hidden button skip'>
+                        Skip
+                    </div>
+                </div>
+            </div>
+
+            &lt;!--[if IE]&gt;
+            <div class='not-supported-browser'>
+                <div class='message'>
+                    <img src='/point_of_sale/static/src/img/pos_screenshot.jpg' />
+                    <p>
+                        The Point of Sale is not supported by Microsoft Internet Explorer. Please use
+                        a modern browser like <a href="http://www.mozilla.org/firefox/" target="_blank">Mozilla Firefox</a>
+                        or <a href="http://www.google.com/chrome" target="_blank">Google Chrome</a>.
+                    </p>
+                </div>
+            </div>
+            &lt;![endif]--&gt;
+        </div>
+    </t>
+
+    <t t-name="ClientDetailsEdit">
+        <section class='client-details edit'>
+            <div class='client-picture'>
+                <t t-if='!partner.id'>
+                    <i class='fa fa-camera'></i>
+                </t>
+                <t t-if='partner.id'>
+                    <img t-att-src='widget.partner_icon_url(partner.id)' />
+                </t>
+                <input type='file' class='image-uploader'></input>
+            </div>
+            <input class='detail client-name' name='name' t-att-value='partner.name' placeholder='Name'></input>
+            <div class='edit-buttons'>
+                <div class='button undo'><i class='fa fa-undo' /></div>
+                <div class='button save'><i class='fa fa-floppy-o' /></div>
+            </div>
+            <div class='client-details-box clearfix'>
+                <div class='client-details-left'>
+                    <div class='client-detail'>
+                        <span class='label'>Street</span>
+                        <input class='detail client-address-street' name='street'       t-att-value='partner.street' placeholder='Street'></input>
+                    </div>
+
+                    <div class='client-detail'>
+                        <span class='label'>District</span>
+                        <select class='detail client-address-district' name='vi_district_id'>
+                            <option value=''></option>
+                            <t t-foreach='widget.pos.districts' t-as='district'>
+                                <option t-att-value='district.id' t-att-selected="partner_vi_district_id ? ((district.id === partner.vi_district_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc='district.name'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class='client-detail'>
+                        <span class='label'>City</span>
+                        <select class='detail client-address-city' name='vi_city_id'>
+                            <option value=''></option>
+                            <t t-foreach='widget.pos.vi_cities' t-as='city'>
+                                <option t-att-value='city.id' t-att-selected="partner_vi_city_id ? ((district.id === partner.vi_city_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc='city.name'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"></link>
+                    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+                    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+                    <link rel="stylesheet" href="/resources/demos/style.css"></link>
+
+                    <script>
+                        $(function() {
+                        $( "#datepicker" ).datepicker();
+                        });
+                    </script>
+
+                    <div class='client-detail'>
+                        <span class='label'>DOB</span>
+                        <input class='detail client-dob'  name='saicoms_dob'  id="datepicker"  type='date'    t-att-value='partner.saicoms_dob || ""'></input>
+                    </div>
+
+                    <div class='client-detail'>
+                        <span class='label'>Occpuation</span>
+                        <select class='detail client-occupation' name='occupation_id'>
+                            <option value=''></option>
+                            <t t-foreach='widget.pos.occupation' t-as='occupation_id'>
+                                <option t-att-value='occupation_id.id' t-att-selected="partner_occupation_id ? ((occupation_id.id === occupation_id.occupation_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc='occupation_id.name'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                </div>
+                <div class='client-details-right'>
+
+                    <div class='client-detail'>
+                        <span class='label'>Email</span>
+                        <input class='detail client-email'  name='email'    type='email'    t-att-value='partner.email || ""'></input>
+                    </div>
+                    <div class='client-detail'>
+                        <span class='label'>Phone</span>
+                        <input class='detail client-phone'  name='phone'    type='tel'      t-att-value='partner.phone || ""'></input>
+                    </div>
+                    <div class='client-detail'>
+                        <span class='label'>Barcode</span>
+                        <input class='detail barcode'       name='ean13'    t-att-value='partner.ean13 || ""'></input>
+                    </div>
+
+                    <div class='client-detail'>
+                        <span class='label'>Type</span>
+                        <select class='detail client-customer-type' name='customer_type_id' widget="many2many_tags">
+                            <option value=''></option>
+                            <t t-foreach='widget.pos.customer_type' t-as='customer_type_id'>
+                                <option t-att-value='customer_type_id.id' t-att-selected="partner_customer_type_id ? ((customer_type_id.id === partner.customer_type_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc='customer_type_id.name'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class='client-detail'>
+                        <span class='label'>Source</span>
+                        <select class='detail client-customer-source' name='customer_source_id'>
+                            <option value=''></option>
+                            <t t-foreach='widget.pos.customer_source' t-as='customer_source_id'>
+                                <option t-att-value='customer_source_id.id' t-att-selected="partner_customer_source_id ? ((customer_source_id.id === partner.customer_source_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc='customer_source_id.name'/>
+                                </option>
+                            </t>
+                        </select>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </t>
+
+
+    <t t-name="Orderline">
+        <li t-attf-class="orderline #{ line.selected ? 'selected' : '' }">
+            <span class="product-name">
+                <t t-esc="line.get_product().display_name"/>
+            </span>
+            <span class="price">
+                <t t-esc="widget.format_currency(line.get_display_price())"/>
+            </span>
+            <ul class="info-list">
+                <li class="info">
+                    <em>
+                        <t t-esc="line.get_quantity_str()" />
+                    </em>
+                    <t t-esc="line.get_unit().name" />
+                    at
+                    <t t-esc="widget.format_currency(line.get_unit_price(),'Product Price')" />
+                    /
+                    <t t-esc="line.get_unit().name" />
+                </li>
+                <t t-if="line.get_discount_str() !== '0'">
+                    <li class="info">
+                        With a
+                        <em>
+                            <t t-esc="line.get_discount_str()" />%
+                        </em>
+                        discount
+                    </li>
+                </t>
+            </ul>
+        </li>
+    </t>
+
+
+    <t t-name="PosTicket">
+        <div class="pos-sale-ticket">
+            <div class="pos-left-align"><t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
+                Date.CultureInfo.formatPatterns.longTime)"/> <t t-esc="order.get('name')"/></div>
+            <br />
+            <t t-esc="widget.pos.company.name"/><br />
+            Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+            User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
+            Shop: <t t-esc="widget.pos.shop.name"/><br />
+            <br />
+            <t t-if="widget.pos.config.receipt_header">
+                <div style='text-align:center'>
+                    <t t-esc="widget.pos.config.receipt_header" />
+                </div>
+                <br />
+            </t>
+
+            <table>
+                <tr>
+                    <td>
+                        <div style='text-align:center;font-size: 150%;'>PHIẾU TÍNH TIỀN</div>
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            <table>
+                <colgroup>
+                    <col width='40%' />
+                    <col width='10%' />
+                    <col width='20%' />
+                    <col width='30%' />
+                </colgroup>
+                <tr>
+                    <td >
+                        Tên Hàng
+                    </td>
+                    <td class="pos-center-align">
+                        SL
+                    </td>
+
+                    <td class="pos-center-align">
+                        ĐG
+                    </td>
+
+                    <td class="pos-center-align">
+                        TT
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            <table class="table-header">
+                <colgroup>
+                    <col width='40%' />
+                    <col width='10%' />
+                    <col width='20%' />
+                    <col width='30%' />
+                </colgroup>
+                <tr t-foreach="orderlines" t-as="orderline">
+                    <td class="pos-report-name">
+                        <t t-esc="orderline.get_product().display_name"/>
+                         <t t-if="orderline.get_discount() > 0">
+                            <div class="pos-disc-font">
+                                With a <t t-esc="orderline.get_discount()"/>% discount
+                            </div>
+                        </t>
+                    </td>
+                    <td class="pos-center-align">
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency_non_currency(orderline.get_unit_price())"/>
+                    </td>
+
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency_non_currency(orderline.get_display_price())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>Subtotal:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getSubtotal())"/>
+                    </td>
+                </tr>
+                <t t-foreach="order.getTaxDetails()" t-as="taxdetail">
+                    <tr>
+                        <td><t t-esc="taxdetail.name" /></td>
+                        <td class="pos-right-align">
+                            <t t-esc="widget.format_currency(taxdetail.amount)" />
+                        </td>
+                    </tr>
+                </t>
+                <tr>
+                    <td>Discount:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getDiscountTotal())"/>
+                    </td>
+                </tr>
+                <tr class="emph">
+                    <td>Total:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr t-foreach="paymentlines" t-as="line">
+                    <td>
+                        <t t-esc="line.name"/>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(line.get_amount())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr><td>Change:</td><td class="pos-right-align">
+                    <t t-esc="widget.format_currency(order.getChange())"/>
+                    </td></tr>
+            </table>
+            <t t-if="widget.pos.config.receipt_footer">
+                <br />
+                <div style='text-align:center'>
+                    <t t-esc="widget.pos.config.receipt_footer" />
+                </div>
+            </t>
+        </div>
+    </t>
+
+
+
+
+
+
+</templates>

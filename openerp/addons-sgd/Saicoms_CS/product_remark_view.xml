@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+        <record model="ir.ui.view" id="saicoms_product_remark_tree_view">
+            <field name="name">product.remark.tree</field>
+            <field name="model">product.remark</field>
+            <field name="arch" type="xml">
+                <tree string="Product Remark" editable="top">
+                    <field name="time"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

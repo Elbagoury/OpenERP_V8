@@ -1,0 +1,82 @@
+<openerp>
+    <data>
+
+        <record id="saicoms_view_project" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('is_saicoms_cs','=',True)]</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="context">{'search_default_Current': 1}</field>
+        </record>
+
+        <menuitem action="saicoms_view_project" id="saicoms_open_project_menu" name="Customer Services" parent="menu_saicoms_CS_project" sequence="1"/>
+
+
+        <record id="saicoms_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('is_saicoms_cs','=',True)]</field>
+        </record>
+
+        <record id="saicoms_view_mail_task" model="ir.actions.act_window">
+            <field name="name">Mail Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('is_saicoms_cs','=',True),('is_mail_task','=',True)]</field>
+            <field name="context">{'is_mail_task':True}</field>
+        </record>
+
+        <record id="saicoms_view_sms_task" model="ir.actions.act_window">
+            <field name="name">SMS Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('is_saicoms_cs','=',True),('is_sms_task','=',True)]</field>
+            <field name="context">{'is_sms_task':True}</field>
+        </record>
+
+        <menuitem name="Saicoms Customer Services"
+                  id="menu_saicoms_customer_services" parent="Saicoms_CS.menu_saicoms_customer_service_root" sequence="1"/>
+
+        <record id="action_saicoms_partner_form" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"search_default_customer":1}</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer; discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="action_saicoms_partner_form" id="saicoms_open_customer_menu" name="Customers" parent="menu_saicoms_customer_services" sequence="1"/>
+
+
+        <menuitem action="saicoms_view_task" id="saicoms_open_task_menu" name="Tasks" parent="menu_saicoms_CS_project" sequence="1"/>
+
+        <menuitem action="saicoms_view_mail_task" id="saicoms_open_mail_task_menu" name="Email Tasks" parent="menu_saicoms_CS_project" sequence="1"/>
+
+        <menuitem action="saicoms_view_sms_task" id="saicoms_open_sms_task_menu" name="SMS Tasks" parent="menu_saicoms_CS_project" sequence="1"/>
+
+        <menuitem id="menu_saicoms_cs_project_config_project" name="Stages" parent="saicoms_CS_configuration_menu" sequence="1" groups="base.group_no_one"/>
+
+        <menuitem action="project.open_task_type_form" name="Task Stages" id="menu_saicoms_CS_task_types_view" parent="menu_saicoms_cs_project_config_project" sequence="2"/>
+
+        <menuitem action="project.project_category_action" id="menu_saicoms_CS_project_category_act" parent="saicoms_CS_configuration_menu" groups="base.group_no_one"/>
+
+    </data>
+</openerp>

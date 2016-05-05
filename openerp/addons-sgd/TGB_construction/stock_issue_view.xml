@@ -1,0 +1,150 @@
+<openerp>
+    <data>
+
+        <record id="stock_issue_tree" model="ir.ui.view">
+            <field name="name">Material Request</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Issue">
+                    <field name="si_voucher_no"/>
+                    <field name="si_date"/>
+                    <field name="res_user_id"/>
+                    <field name="reference_no"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="stock_issue_form" model="ir.ui.view">
+            <field name="name">Stock Issue Form</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <form string="Stock Issue Form" version="7.0">
+                    <header>
+                        <button name="submit_request2" states="draft" string="Submit Request"
+                                groups="base.group_user" type="object"/>
+                        <button name="cancel_request" string="Cancel Request"
+                                groups="base.group_user" type="object"/>
+                        <button name="approve_request2"  states="submitted" string="Approve Request"
+                                groups="base.group_user" type="object"/>
+                        <button name="reject_request"  states="submitted" string="Reject Request"
+                                groups="base.group_user" type="object"/>
+                        <button name="create_picking_out" states="approved" string="Create Picking Out"
+                                groups="base.group_user" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,rejected,cancelled"
+                               statusbar_colors='{"rejected":"red","approved":"blue"}'/>
+
+                    </header>
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="si_voucher_no"/>
+                            <field name="issue_type"/>
+                            <field name="si_date"/>
+                            <field name="stock_location"/>
+                            <field name="res_user_id"/>
+                            <field name="sale_order_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Request Detail">
+                                <field name="stock_issue_detail_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="stock_issue_action" model="ir.actions.act_window">
+            <field name="name">Material Requrest</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.issue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem name="Material Request"
+                  id="menu_stock_issue" parent="menu_construction_project_cost_menu"
+                  action="stock_issue_action"/>
+
+        <record id="stock_issue_emp_tree" model="ir.ui.view">
+            <field name="name">Stock Issue Employee Tree</field>
+            <field name="model">stock.issue.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Issue" editable="top">
+                    <field name="subject_type"/>
+                    <field name="sub_code"/>
+                    <field name="sub_des"/>
+                    <field name="product_id"/>
+                    <field name="product_code"/>
+                    <field name="qty_on_hand"/>
+                    <field name="qty_available"/>
+                    <field name="issue_qty"/>
+                    <field name="pack_size"/>
+                    <field name="no_of_pack"/>
+                    <field name="serial_no"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="stock_issue_detail_tree" model="ir.ui.view">
+            <field name="name">Stock Issue detail Tree</field>
+            <field name="model">stock.issue.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Issue" editable="top">
+                    <field name="product_id"/>
+                    <field name="product_code"/>
+                    <field name="qty_on_hand"/>
+                    <field name="qty_available"/>
+                    <field name="issue_qty"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="stock_issue_emp_form" model="ir.ui.view">
+            <field name="name">Stock Issue Employee form</field>
+            <field name="model">stock.issue.employee</field>
+            <field name="arch" type="xml">
+                <form string="Stock Issue">
+                    <field name="subject_type"/>
+                    <field name="sub_code"/>
+                    <field name="sub_des"/>
+                    <field name="product_id"/>
+                    <field name="product_code"/>
+                    <field name="qty_on_hand"/>
+                    <field name="qty_available"/>
+                    <field name="issue_qty"/>
+                    <field name="pack_size"/>
+                    <field name="no_of_pack"/>
+                    <field name="serial_no"/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tgb_action_picking_tree" model="ir.actions.act_window">
+            <field name="name">Transfers</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain"></field>
+            <field name="context">{
+                'contact_display': 'partner_address',
+                }
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+        </record>
+
+
+        <menuitem name="Stock Transfer"
+                  id="tgb_stock_picking" parent="menu_construction_project_cost_menu"
+                  action="tgb_action_picking_tree"/>
+
+
+    </data>
+</openerp>

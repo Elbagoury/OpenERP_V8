@@ -1,0 +1,21 @@
+<openerp>
+    <data>
+
+        <menuitem name="Saicoms Customer Services"
+                  id="menu_saicoms_customer_service_root"/>
+
+        <menuitem name="CS Project"
+                  id="menu_saicoms_CS_project" parent="menu_saicoms_customer_service_root" sequence="1"/>
+
+        <menuitem name="Saicoms Promotion"
+                  id="menu_Saicoms_promotion" parent="menu_saicoms_customer_service_root" sequence="1"/>
+
+        <menuitem name="Configuration"
+                  id="saicoms_CS_configuration_menu"
+                  parent="menu_saicoms_customer_service_root"
+                  groups="project.group_project_manager"
+                  sequence="60"/>
+
+
+    </data>
+</openerp>

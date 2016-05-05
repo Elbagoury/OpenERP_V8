@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record forcecreate="True" id="decimal_pos" model="decimal.precision">
+            <field name="name">Point Of Sale</field>
+            <field name="digits">0</field>
+        </record>
+    </data>
+</openerp>

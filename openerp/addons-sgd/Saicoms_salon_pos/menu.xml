@@ -1,0 +1,11 @@
+<openerp>
+    <data>
+
+        <menuitem name="Spa Service Packages"
+                  id="saicoms_pos_service_package_root_menu"
+                  parent="point_of_sale.menu_point_root"
+                  groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user"
+                  sequence="60"/>
+
+    </data>
+</openerp>

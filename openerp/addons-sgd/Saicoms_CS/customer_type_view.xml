@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="saicoms_customer_type_tree">
+            <field name="name">saicoms.customer.type.tree</field>
+            <field name="model">saicoms.customer.type</field>
+            <field name="arch" type="xml">
+                <tree string="Saicoms Customer Type" editable="top">
+                    <field name="name"/>
+                    <field name="point_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="saicoms_customer_type_form">
+            <field name="name">saicoms.customer.type.form</field>
+            <field name="model">saicoms.customer.type</field>
+            <field name="arch" type="xml">
+                <form string="Saicoms Customer Type">
+                    <field name="name"/>
+                    <field name="point_type"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="saicoms_customer_type_tree">
+            <field name="name">saicoms.customer.point.type.tree</field>
+            <field name="model">saicoms.customer.point.type</field>
+            <field name="arch" type="xml">
+                <tree string="Saicoms Customer Point Type" editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="saicoms_customer_type_action3" model="ir.actions.act_window">
+            <field name="name">Customers Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">saicoms.customer.type</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{}</field>
+            <field name="view_id" ref="saicoms_customer_type_tree"/>
+        </record>
+
+         <menuitem action="saicoms_customer_type_action3" id="menu_saicoms_customer_type2"
+                  parent="menu_Saicoms_promotion"/>
+
+    </data>
+</openerp>

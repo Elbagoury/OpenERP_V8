@@ -1,0 +1,503 @@
+<openerp>
+    <data>
+
+        <record id="project_view_order_tree" model="ir.ui.view">
+            <field name="name">sale.order</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <tree string="Project Order">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="subject"/>
+                    <field name="state" invisible="1"/>
+                    <field name="total_grand"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="sale.view_sale_order_line_make_invoice" model="ir.ui.view">
+            <field name="name">Sales OrderLine Make Invoice</field>
+            <field name="model">sale.order.line.make.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Create invoices">
+                    <p class="oe_grey">
+                        All items in these order lines will be invoiced.
+                    </p>
+                    <footer>
+                        <button name="make_invoices" string="Create &amp; View Invoice" type="object"
+                                context="{'open_invoices': True}" class="oe_highlight"/>
+                        <button name="make_invoices" string="Create Invoices" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="sale.view_order_line_tree" model="ir.ui.view">
+            <field name="name">sale.order.line.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Order Lines" create="true" editable="1">
+
+                    <field name="product_id" invisible="1"/>
+                    <field name="order_id" readonly="1"/>
+                    <field name="order_partner_id" readonly="1"/>
+                    <field name="name" readonly="1"/>
+                    <field name="product_uom_qty" string="Qty" readonly="1"/>
+                    <field name="product_uom" string="Unit of Measure" groups="product.group_uom" readonly="1"/>
+                    <field name="salesman_id" readonly="1"/>
+                    <field name="price_subtotal" sum="Total" readonly="1"/>
+                    <field name="state" readonly="1"/>
+                    <field name="bill_percent" on_change="onchange_bill_percent(bill_percent)"/>
+                    <field name="billed_percent" readonly="1"/>
+                    <field name="invoiced" readonly="1" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <form string="Sales Order" version="7.0">
+                    <header>
+                        <button name="invoice_recreate" states="invoice_except" string="Recreate Project Billing"
+                                groups="base.group_user"/>
+                        <button name="invoice_corrected" states="invoice_except" string="Ignore Exception"
+                                groups="base.group_user"/>
+                        <button name="action_button_confirm" states="draft" string="Confirm Project" type="object"
+                                groups="base.group_user"/>
+                        <button name="action_button_confirm" states="sent" string="Confirm Project" class="oe_highlight"
+                                type="object" groups="base.group_user"/>
+                        <button name="action_view_invoice" string="View Project Billing" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"/>
+                        <button name="action_view_project" string="View Project Management" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('project_id', '=', False)]}" groups="base.group_user"/>
+                        <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Project Billing"
+                                type="action" states="manual" class="oe_highlight" groups="base.group_user"/>
+
+                        <button name="action_create_variation_quotation" string="Create Variation Quotation"
+                                type="object" states="manual" class="oe_highlight" groups="base.group_user"/>
+
+                        <button name="action_create_progressive_billing" string="Create Progressive Billing"
+                                type="object" states="manual" class="oe_highlight" groups="base.group_user"/>
+
+                        <button name="make_deposit" string="Make deposit" type="object" states="manual"/>
+
+                        <button name="action_create_hr_billing" string="Create HR Billing"
+                                type="action" states="manual" class="oe_highlight" groups="base.group_user"
+                                invisible="1"/>
+
+                        <button name="action_create_hr_additional_cost" string="Create Additional Billing"
+                                type="action" states="manual" class="oe_highlight" groups="base.group_user"
+                                invisible="1"/>
+
+                        <button name="cancel" states="draft,sent" string="Cancel Quotation" groups="base.group_user"/>
+                        <button name="action_cancel" states="manual,progress" string="Cancel Order" type="object"
+                                groups="base.group_user"/>
+                        <button name="invoice_cancel" states="invoice_except" string="Cancel Order"
+                                groups="base.group_user"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,progress,done"
+                               statusbar_colors='{"invoice_except":"red","waiting_date":"blue"}'/>
+                    </header>
+
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="date_order"/>
+                            <newline/>
+                            <field name="name" string="Our Quotation No."/>
+                            <field name="partner_id" on_change="onchange_partner_id(partner_id, context)"
+                                   domain="[('customer','=',True)]"
+                                   context="{'search_default_customer':1, 'show_address': 1}"
+                                   options='{"always_reload": True}'/>
+                            <field name="attn_id"/>
+                            <newline/>
+                            <field name="subject" colspan="4"/>
+                            <newline/>
+                            <field name="thankyou_text" nolabel="1" colspan="4"/>
+                            <newline/>
+                            <field name="retention_required"/>
+                            <field name="project_id"/>
+                            <field name="pricelist_id" invisible="1"/>
+                            <field name="currency_id" invisible="0" readonly="False"/>
+                        </group>
+                        <notebook>
+                            <page string="Lump Sum">
+                                <group colspan="8" col="4">
+                                    <field name="scope_of_work" colspan="4"/>
+                                    <field name="scope_amount" string="Total Amount" on_change="onchange_scope_amount(scope_amount)" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"/>
+                                    <field name="total_amount_word"/>
+                                    <newline/>
+                                </group>
+                            </page>
+                            <page string="Header" invisible="1">
+                                <group colspan="8" col="4">
+                                    <field name="invoiced"/>
+
+                                    <field name="fiscal_position" invisible="1" required="False"/>
+                                    <field name="partner_invoice_id" invisible="1"/>
+                                    <field name="partner_shipping_id" invisible="1"/>
+                                    <field name="invoice_exists" invisible="1"/>
+                                </group>
+                            </page>
+                            <page string="Project Detail">
+                                <field name="order_line" mode="tree">
+                                    <tree string="Sales Order Lines" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="state" invisible="1"/>
+                                        <field name="th_weight" invisible="1"/>
+                                        <field name="product_id"
+                                               context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id,  'uom':product_uom}"
+                                               groups="base.group_user"
+                                               on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"
+                                               required="False" invisible="1"/>
+                                        <field name="name"/>
+                                        <field name="product_uom_qty"
+                                               context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                               on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)"/>
+                                        <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                                        <field name="product_uom"
+                                               on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, context)"
+                                               groups="product.group_uom" options='{"no_open": True}' invisible="1"/>
+                                        <field name="product_uos" string="UoS" groups="product.group_uos"
+                                               invisible="1"/>
+                                        <field name="price_unit" string="Start Rate"/>
+                                        <field name="add_percent"/>
+                                        <field name="add_amount"/>
+                                        <field name="price_subtotal" string="Total Amount"/>
+                                        <field name="billed_percent"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="amount_untaxed" string="Total Amount" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_untaxed_word"/>
+                                </group>
+                            </page>
+
+                            <page string="SOR">
+                                <field name="sale_hr_ids" mode="tree">
+                                    <tree string="Sales Order Lines" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="name"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="price_unit" string="SOR Rate"/>
+                                        <field name="add_percent"/>
+                                        <field name="add_amount" invisible="1"/>
+                                        <field name="price_subtotal" string="Amount"/>
+                                        <field name="state" invisible="1"/>
+                                        <field name="remark"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="amount_hr_total" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_hr_total_word"/>
+                                </group>
+                            </page>
+
+                            <page string="BQ">
+                                <field name="sale_bq_ids" mode="tree">
+                                    <tree string="Sales Order Lines" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="name"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="price_unit" string="BQ Rate"/>
+                                        <field name="price_subtotal" string="Amount"/>
+                                        <field name="state" invisible="1"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="amount_bq_total" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_bq_total_word"/>
+                                </group>
+                            </page>
+
+                            <page string="Retention Project" attrs="{'invisible':[('retention_required','=',False)]}">
+                                <group colspan="8" col="4">
+                                    <field name="retention_type"></field>
+                                    <newline/>
+                                    <field name="retention_percent" attrs="{'invisible':[('retention_type','=','A')]}"/>
+                                    <field name="retention_amount" attrs="{'invisible':[('retention_type','=','P')]}"/>
+                                    <newline/>
+                                    <field name="retention_day"/>
+                                    <field name="retention_date"/>
+                                </group>
+                            </page>
+                            <page string="Total Amount" invisible="1">
+                                <group colspan="8" col="4">
+                                    <field name="total_scope_of_work"/>
+                                    <field name="total_detail"/>
+                                    <field name="total_hr"/>
+                                    <newline/>
+                                    <field name="total_grand"/>
+
+                                </group>
+                            </page>
+                            <page string="Team Members" invisible="1">
+                                <group colspan="8" col="4">
+                                    <field name="operation_manager"/>
+                                    <field name="project_manager"/>
+                                    <field name="claim_officer"/>
+                                    <field name="project_coordinator"/>
+                                    <field name="resident_technical_officer"/>
+                                    <field name="head_of_department"/>
+                                    <field name="user_ids">
+                                        <tree editable="top">
+                                            <field name="user_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                        <newline/>
+                        <group col="2">
+                            <field name="validity" colspan="2"/>
+                            <field name="term" colspan="2"/>
+                            <field name="exclusion" colspan="2"/>
+                            <newline/>
+                            <field name="thankyou_text2" nolabel="1" colspan="4"/>
+                            <newline/>
+                            <group col="4" colspan="4">
+                                <field name="signature_image2" widget="image" class="oe_left oe_avatar" colspan="1"/>
+                                <h2><field name="signature_image" widget="signature" colspan="1"/></h2>
+                            </group>
+                            <field name="user_id"/>
+                            <field name="user_id_title"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="project_order_act" model="ir.actions.act_window">
+            <field name="name">Project Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','not in',('draft','sent','cancel'))]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record id="action_project_construction_quotations" model="ir.actions.act_window">
+            <field name="name">Project Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="project_view_order_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel'))]</field>
+        </record>
+
+        <menuitem name="Project Quotations"
+                  id="menu_project_quotations_menu" parent="menu_construction_project_costing_menu"
+                  action="action_project_construction_quotations" sequence="1"/>
+
+        <record id="action_project_construction_quotations_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_order_tree"/>
+            <field name="act_window_id" ref="action_project_construction_quotations"/>
+        </record>
+        <record id="action_project_construction_quotations_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_order_form"/>
+            <field name="act_window_id" ref="action_project_construction_quotations"/>
+        </record>
+
+        <record id="project_order_act_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_order_tree"/>
+            <field name="act_window_id" ref="project_order_act"/>
+        </record>
+        <record id="project_order_act_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_order_form"/>
+            <field name="act_window_id" ref="project_order_act"/>
+        </record>
+
+        <menuitem name="Project Order"
+                  id="menu_project_order_menu" parent="menu_construction_project_costing_menu"
+                  action="project_order_act"/>
+
+
+        <record id="customer_purchase_order_tree" model="ir.ui.view">
+            <field name="name">Customer Purchase Order Tree</field>
+            <field name="model">customer.purchase.order</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Purchase Order">
+                    <field name="name"/>
+                    <field name="sequence"/>
+                    <field name="customer_po_date"/>
+                    <field name="customer_po_no"/>
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                    <field name="customer_job_no"/>
+                    <field name="material_source"/>
+                    <field name="currency_id"/>
+                    <field name="cumulative_amount"/>
+                    <field name="subject"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="customer_purchase_order_form" model="ir.ui.view">
+            <field name="name">Customer Purchase Order Form</field>
+            <field name="model">customer.purchase.order</field>
+            <field name="arch" type="xml">
+                <form string="Customer Purchase Order" version="7.0">
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                            <field name="currency_id"/>
+                            <field name="customer_job_no"/>
+                            <field name="subject" colspan="8"/>
+                            <field name="customer_po_date"/>
+                            <field name="customer_po_no"/>
+                            <field name="material_source" widget="selection"/>
+                            <field name="ref_no"/>
+                            <field name="cumulative_amount"/>
+                            <field name="current_po_amount"/>
+
+                        </group>
+                        <group>
+                            <field name="scr_ids">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tgb_purchase_form_action" model="ir.actions.act_window">
+            <field name="name">Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a quotation that will be converted into a purchase order.
+                </p>
+                <p>
+                    Use this menu to search within your purchase orders by
+                    references, supplier, products, etc. For each purchase order,
+                    you can track the related discussion with the supplier, control
+                    the products received and control the supplier invoices.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="tgb_purchase_form_action" id="menu_purchase_form_action"
+                  parent="menu_construction_project_cost_menu" sequence="6"/>
+
+
+        <record id="cost_allocation_tree" model="ir.ui.view">
+            <field name="name">Cost allocation tree</field>
+            <field name="model">project.cost.allocation</field>
+            <field name="arch" type="xml">
+                <tree string="Cost Allocation">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                    <field name="currency_id"/>
+                    <field name="exchange_rate"/>
+                    <field name="total_add_amount"/>
+                    <field name="total_add_amount_home"/>
+                    <field name="total_reduce_amount"/>
+                    <field name="total_reduce_amount_home"/>
+                    <field name="created_uid2"/>
+                    <field name="created_date2"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="cost_allocation_form" model="ir.ui.view">
+            <field name="name">Cost allocation tree</field>
+            <field name="model">project.cost.allocation</field>
+            <field name="arch" type="xml">
+                <form string="Customer Purchase Order" version="7.0">
+                    <sheet>
+                        <group colspan="8" col="4">
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                            <field name="default_type"/>
+                            <field name="ref_no"/>
+                            <field name="currency_id"/>
+                            <field name="exchange_rate"/>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="detail_ids">
+                                    <tree editable="top">
+                                        <field name="type"/>
+                                        <field name="item_type"/>
+                                        <field name="product_id"/>
+                                        <field name="uom_id"/>
+                                        <field name="total_amount"/>
+                                        <field name="total_amount_home"/>
+
+
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Remarks">
+                                <group>
+                                    <field name="internal_remark_code"/>
+                                    <field name="external_remark_code"/>
+                                    <field name="internal_remark"/>
+                                    <field name="external_remark"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="cost_allocation_action" model="ir.actions.act_window">
+            <field name="name">Cost Allocation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.cost.allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+
+        <!--<menuitem name="Cost Allocation"-->
+        <!--id="cost_allocation_menu2" parent="menu_construction_project_costing_menu"-->
+        <!--action="cost_allocation_action"/>-->
+
+    </data>
+</openerp>

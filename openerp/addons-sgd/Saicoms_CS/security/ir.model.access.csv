@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saicoms_CS_user_product_remark,product.remark,model_product_remark,saicoms_CS_user,1,1,1,1
+access_saicoms_CS_user_sale_order_event,sale.order.event,model_sale_order_event,saicoms_CS_user,1,1,1,1

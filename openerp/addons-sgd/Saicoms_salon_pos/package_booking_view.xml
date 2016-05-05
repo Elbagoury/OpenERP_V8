@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_package_booking_calendar" model="ir.ui.view">
+            <field name="name">Service Booking</field>
+            <field name="model">package.booking</field>
+            <field name="arch" type="xml">
+                <calendar string="Booking Service" date_start="date" color="partner_id">
+                    <field name="partner_id"/>
+                    <field name="package_id"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="saicoms_package_booking_form">
+            <field name="name">package.booking.form</field>
+            <field name="model">package.booking</field>
+            <field name="arch" type="xml">
+                <form string="Service Booking" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="partner_id"/>
+                            <field name="package_id" domain="[('partner_id','=',partner_id)]"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_package_booking" model="ir.actions.act_window">
+            <field name="name">Service Booking</field>
+            <field name="res_model">package.booking</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_package_booking_calendar"/>
+        </record>
+
+        <menuitem action="action_package_booking" id="menu_saicoms_pos_package_booking"
+                  parent="saicoms_pos_service_package_root_menu"
+                  groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user"/>
+
+
+    </data>
+</openerp>

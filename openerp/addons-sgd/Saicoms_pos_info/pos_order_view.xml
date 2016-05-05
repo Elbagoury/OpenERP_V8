@@ -1,0 +1,38 @@
+<openerp>
+    <data>
+        <record id="view_pos_order_form_saicoms_pos_info_inherit" model="ir.ui.view">
+            <field name="name">pos.order.form.saicoms.pos.info.inherit</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </xpath>
+                <notebook position="inside">
+                    <page string="Additional Information">
+                        <group col="4">
+                        <separator string="Order Additional Information" colspan="4"/>
+                            <field name="perform_user_id"/>
+                            <field name="advisory_id"/>
+                            <field name="has_friend"/>
+                            <field name="pos_source"/>
+                            <field name="customer_user_rating"/>
+                            <field name="customer_rating"/>
+                            <field name="customer_comment"/>
+                        </group>
+                    </page>
+
+                    <page string="Order Event">
+                        <separator string="Product Remarks"/>
+                        <field name="sale_order_event_ids"/>
+                    </page>
+                </notebook>
+
+            </field>
+        </record>
+    </data>
+</openerp>

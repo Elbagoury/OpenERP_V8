@@ -1,0 +1,38 @@
+<openerp>
+    <data>
+        <record id="view_order_form_saicoms_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.saicoms.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <button name="check_sale_order_event" string="Test Create Event" type="object"/>
+                </field>
+                <notebook position="inside">
+                    <page string="Order Event">
+                        <separator string="Product Remarks"/>
+                        <field name="sale_order_event_ids"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!--<record id="view_pos_order_form_saicoms_inherit" model="ir.ui.view">-->
+            <!--<field name="name">pos.order.form.saicoms.inherit</field>-->
+            <!--<field name="model">pos.order</field>-->
+            <!--<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>-->
+            <!--<field name="priority">1</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<notebook position="inside">-->
+                    <!--<page string="Order Event">-->
+                        <!--<separator string="Product Remarks"/>-->
+                        <!--<field name="sale_order_event_ids"/>-->
+                    <!--</page>-->
+                <!--</notebook>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+    </data>
+</openerp>

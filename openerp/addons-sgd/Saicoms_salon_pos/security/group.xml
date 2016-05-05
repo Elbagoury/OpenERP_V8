@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <openerp>
+        <data noupdate="0">
+            <record id="Saicoms_salon_pos_user" model="res.groups">
+                    <field name="name">Saicoms Salon User</field>
+             </record>
+    </data>
+    </openerp>
+                            
