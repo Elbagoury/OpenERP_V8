@@ -57,8 +57,9 @@ class TGB_account_invoice(report_sxw.rml_parse):
 #         if employee_id and len(employee_id)>0:
 #             return self.pool.get('hr.employee').browse(self.cr,self.uid,employee_id[0]).job_id.name
         if user_id:
-            user = self.pool.get('res.users').browse(cr, 1, user_id)
-            return user and user.partner_id and user.partner_id.title and user.partner_id.title.name or ''
+            user = self.pool.get('res.users').browse(self.cr, 1, user_id)
+            title = user and user.partner_id and user.partner_id.title and user.partner_id.title.name or ''
+            return title
         return ''
     
     def _get_being_work_todate(self,o):
