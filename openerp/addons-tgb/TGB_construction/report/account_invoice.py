@@ -52,11 +52,14 @@ class TGB_account_invoice(report_sxw.rml_parse):
 
     def _get_gst_amount(self):
         return self._this_gst_amount
-    def _get_user_title(self,user):
+    def _get_user_title(self,user_id):
 #         employee_id = self.pool.get('hr.employee').search(self.cr,self.uid,[('user_id','=',user)])
 #         if employee_id and len(employee_id)>0:
 #             return self.pool.get('hr.employee').browse(self.cr,self.uid,employee_id[0]).job_id.name
-        return user and user.partner_id and user.partner_id.title and user.partner_id.title.name or ''
+        if user_id:
+            user = self.pool.get('res.users').browse(cr, 1, user_id)
+            return user and user.partner_id and user.partner_id.title and user.partner_id.title.name or ''
+        return ''
     
     def _get_being_work_todate(self,o):
         if o.billing_time==1:
