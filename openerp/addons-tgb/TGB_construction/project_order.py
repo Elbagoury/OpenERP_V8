@@ -583,11 +583,11 @@ class sale_order(orm.Model):
     def _get_user_id_title(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for order in  self.browse(cr,uid,ids):
-            res[order.id]=""
-            if order.user_id:
-                employee_id = self.pool.get('hr.employee').search(cr,uid,[('user_id','=',order.user_id.id)])
-                if employee_id and len(employee_id)>0:
-                    res[order.id]=self.pool.get('hr.employee').browse(cr,uid,employee_id[0]).job_id.name
+            res[order.id]=order.user_id and order.user_id.partner_id and order.user_id.partner_id.title and order.user_id.partner_id.title.name or ''
+#             if order.user_id:
+#                 employee_id = self.pool.get('hr.employee').search(cr,uid,[('user_id','=',order.user_id.id)])
+#                 if employee_id and len(employee_id)>0:
+#                     res[order.id]=self.pool.get('hr.employee').browse(cr,uid,employee_id[0]).job_id.name
         return res
 
 
@@ -783,7 +783,7 @@ class sale_order(orm.Model):
                                           },
                                           multi='hr', help="The amount of HR", track_visibility='always'),
 
-        'tgb_remarks':fields.text('Remarks'),
+        'tgb_remarks':fields.char('Remarks', size=1024),
         
         'project_costing_id':fields.many2one('project.costing','Project Costing'),
 

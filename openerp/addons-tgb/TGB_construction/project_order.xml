@@ -291,10 +291,8 @@
                             </page>
                         </notebook>
                         <newline/>
-                        <group col="4">
-                            <field name="tgb_remarks" nolabel="1" colspan="4"/>
-                        </group>
                         <group col="2">
+                        	<field name="tgb_remarks" colspan="2"/>
                             <field name="validity" colspan="2"/>
                             <field name="term" colspan="2"/>
                             <field name="exclusion" colspan="2"/>
