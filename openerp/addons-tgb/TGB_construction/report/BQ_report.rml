@@ -439,7 +439,18 @@
                     </para>
                 </td>
             </tr>
-
+			<tr>
+                <td>
+                    <para style="P1">
+                        Remarks:
+                    </para>
+                </td>
+                <td>
+                    <para style="P1">
+                        [[o.tgb_remarks]]
+                    </para>
+                </td>
+            </tr>
       <tr>
           <td>
                 <para style="P1">
