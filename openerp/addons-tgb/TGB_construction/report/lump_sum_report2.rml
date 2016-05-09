@@ -364,12 +364,12 @@
 			<tr>
                 <td>
                     <para style="P1">
-                        Remarks:
+                        [[ o.tgb_remarks and 'Remarks:' or '' ]]
                     </para>
                 </td>
                 <td>
                     <para style="P1">
-                        [[o.tgb_remarks]]
+                        [[ o.tgb_remarks and o.tgb_remarks or '' ]]
                     </para>
                 </td>
             </tr>
