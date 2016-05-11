@@ -427,6 +427,13 @@
         <menuitem name="Project Billing"
                   id="project_billing_menu" parent="menu_construction_project_billing_menu"
                   action="tgb_construction_project_billing_action"/>
-
+		
+		<record id="account.action_invoice_tree1_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="tgb_invoice_form_new"/>
+            <field name="act_window_id" ref="account.action_invoice_tree1"/>
+        </record>
+		
     </data>
 </openerp>

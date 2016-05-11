@@ -28,11 +28,23 @@ class lump_sum_quotation(report_sxw.rml_parse):
         super(lump_sum_quotation, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'time': time,
+            'get_tgb_address': self.get_tgb_address,
         })
 
+    def get_tgb_address(self, partner):
+        add = ''
+        if partner:
+            if partner.street:
+                add += partner.street+'\n'
+            if partner.street2:
+                add += partner.street2+'\n'
+            if partner.country_id:
+                add += partner.country_id.name+' '
+            if partner.zip:
+                add += partner.zip
+        return add
 
-
-report_sxw.report_sxw('report.SOR', 'sale.order', 'addons/TGB_construction/report/lump_sum_report.rml', parser=lump_sum_quotation, header="external")
+report_sxw.report_sxw('report.lump.sum', 'sale.order', 'addons/TGB_construction/report/lump_sum_report.rml', parser=lump_sum_quotation, header="external")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

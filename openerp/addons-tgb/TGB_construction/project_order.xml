@@ -306,6 +306,9 @@
                             <field name="user_id"/>
                             <field name="user_id_title"/>
                         </group>
+                        <group col="2">
+                        	<field name="note" string="Additional Information"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -394,7 +397,18 @@
         <menuitem action="tgb_purchase_form_action" id="menu_purchase_form_action"
                   parent="menu_construction_project_cost_menu" sequence="6" groups="TGB_construction.group_construction_project_costing"/>
 
-
+	
+		<record id="view_sales_order_filter_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="after">
+            		<field name="project_code"/>
+            	</xpath>
+            </field>
+        </record>
+	
         <record id="sale.action_orders" model="ir.actions.act_window">
             <field name="name">Sales Orders</field>
             <field name="type">ir.actions.act_window</field>

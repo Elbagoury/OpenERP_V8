@@ -51,8 +51,7 @@
 
                     <image  x="15.3cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/bizSAFE-Enterprise-Level-STAR-3.jpg"/>
                     <image  x="16.7cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_OHSAS_18001_2007_TCL_HR.jpg"/>
-                    <image  x="18.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_ISO-9001_TCL_HR.jpg"/>
-                    <image  x="19.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/Capture.PNG"/>
+                    <image  x="18.5cm" y="24.9cm" height="1.1cm" width="2.4cm" file="TGB_construction/static/src/img/SGS_ISO 14001_with_UKAS_TCL_HR.jpg"/>
 
                 </pageGraphics>
             </header>
@@ -225,7 +224,7 @@
                     <para style="terp_default_9">
                         <b>[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[(o.partner_id and o.partner_id.name) or '' ]]</b>
                     </para>
-                    <para style="terp_default_9">[[ o.partner_id and display_address(o.partner_id) ]]</para>
+                    <para style="terp_default_9">[[ o.partner_id and get_tgb_address(o.partner_id) ]]</para>
                     <para style="terp_default_9"><b>Phone:</b> [[ o.partner_id and o.partner_id.phone ]]</para>
                     <para style="terp_default_9"><b>Fax:</b> [[ o.partner_id and o.partner_id.fax ]]</para>
                     <para style="P3"><b>Attn:</b> [[o.attn_id and o.attn_id.name]]
@@ -261,7 +260,7 @@
             <tr>
                 <td>
                     <para style="P2">
-                        <font face="Helvetica" size="9.0">[[o.thankyou_text]].</font>
+                        <font face="Helvetica" size="9.0">[[o.thankyou_text]]-</font>
                     </para>
                 </td>
             </tr>
@@ -364,7 +363,7 @@
 			<tr>
                 <td>
                     <para style="P1">
-                        [[ o.tgb_remarks and 'Remarks:' or '' ]]
+                        [[ o.tgb_remarks and 'Remarks:' or removeParentNode('tr') ]]
                     </para>
                 </td>
                 <td>
@@ -425,7 +424,7 @@
             <tr>
                 <td>
                     <para style="P2">
-                        <font face="Helvetica" size="9.0">[[o.thankyou_text2]]</font>
+                        <font face="Helvetica" size="9.0">[[o.thankyou_text2]].</font>
                     </para>
                 </td>
             </tr>
@@ -488,6 +487,15 @@
                     <para style="P1">Authorised Signature</para>
                     <para style="P1">
                         Company Stamp &amp; Date
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="550" style="Table1">
+            <tr>
+                <td>
+                    <para style="P1">
+                        [[ o.note and o.note or '' ]]
                     </para>
                 </td>
             </tr>
