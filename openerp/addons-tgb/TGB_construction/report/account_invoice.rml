@@ -418,7 +418,7 @@
                 </td>
                 <td>
                     <para style="P1">
-                        <b>[[formatLang(o.sale_order_id.amount_untaxed,currency_obj = company.currency_id)]]</b>
+                        <b>[[formatLang((o.sale_order_id and get_original_contract_sum(o) or 0)+get_variation_amount(o),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
                 <td>
@@ -606,7 +606,7 @@
             <tr>
                 <td>
                     <para style="P1">
-                        <font color="white"> </font>
+                        <font color="white">[[ (o.is_progressive) and removeParentNode('blockTable') ]]</font>
                     </para>
                 </td>
                 <td>
