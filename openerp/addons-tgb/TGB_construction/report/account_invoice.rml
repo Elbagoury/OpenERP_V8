@@ -183,6 +183,7 @@
             <paraStyle name="all" alignment="justify"/>
         </initialize>
         <paraStyle name="P1" fontName="Helvetica" fontSize="9.0" leading="11"/>
+        <paraStyle name="minimal" fontName="Helvetica" fontSize="2" leading="2"/>
         <paraStyle name="P1_p2" fontName="Helvetica-Bold" fontSize="9.0" leading="11"/>
         <paraStyle name="P2" fontName="Helvetica" fontSize="9.0" leading="15"/>
         <paraStyle name="P2_p2" fontName="Helvetica-Bold" fontSize="9.0" leading="11"/>
@@ -616,7 +617,7 @@
                 </td>
                 <td>
                     <para style="P1">
-                        <b> [[formatLang(o.amount_total+gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
+                        <b>[[formatLang(o.amount_total+gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
                 <td>
@@ -626,7 +627,29 @@
                 </td>
             </tr>
 
-            </blockTable>
+        </blockTable><blockTable colWidths="300,100,150" style="TableTotal">
+            <tr>
+                <td>
+ <para style="minimal">
+                        <font color="white"> </font>
+                    </para>
+
+                </td>
+                <td>
+ <para style="minimal">
+                        <font color="white"> </font>
+                    </para>
+
+                </td>
+                <td>
+                    <para style="minimal">
+                        <font color="white"> </font>
+                    </para>
+                </td>
+            </tr>
+
+        </blockTable>
+
 
         <blockTable colWidths="550" style="TableNoSpace">
             <tr>
