@@ -616,7 +616,7 @@
                 </td>
                 <td>
                     <para style="P1">
-                        <b>[[formatLang(o.amount_total+gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
+                        <b> [[formatLang(o.amount_total+gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
                 <td>
