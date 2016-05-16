@@ -444,9 +444,9 @@ class rat_trading_detail(osv.osv):
                                                                       'string': 'price'}
             product_name = 'product_' + str(product.id)
             self._dynamic_fields_list[product_name] = product.default_code
-        this_module = self.pool.get('ir.module.module').search(cr, uid, [('name', '=', 'TGB_RatTrading')])
-        if this_module and len(this_module) > 0:
-            self.pool.get('ir.module.module').button_immediate_upgrade(cr, uid, this_module[0])
+#         this_module = self.pool.get('ir.module.module').search(cr, uid, [('name', '=', 'TGB_RatTrading')])
+#         if this_module and len(this_module) > 0:
+#             self.pool.get('ir.module.module').button_immediate_upgrade(cr, uid, this_module[0])
         res['arch'] = etree.tostring(eview)
         return res
 
