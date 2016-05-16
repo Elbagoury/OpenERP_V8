@@ -15,7 +15,7 @@ from base64 import b64decode
 import time
 class rat_trading_wizard(osv.osv):
     _name = 'rat.trading.wizard'
-
+    _order = 'id desc'
     def _total_amount(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for order in self.browse(cr, uid, ids):
