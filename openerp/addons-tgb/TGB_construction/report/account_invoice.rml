@@ -582,36 +582,17 @@
                     </para>
                 </td>
             </tr>
-
+        </blockTable>
+		<blockTable colWidths="300,100,150" style="TableTotal">
             <tr>
                 <td>
                     <para style="P1">
-                        <b>Add 7% GST.................................................................. </b>
+                        <b>Add 7% GST...................................................................</b>
                     </para>
                 </td>
                 <td>
                     <para style="P1">
                         <b>:[[formatLang(gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
-                    </para>
-                </td>
-                <td>
-                    <para style="P1">
-                        <font color="white"> </font>
-                    </para>
-                </td>
-            </tr>
-
-            </blockTable>
-        <blockTable colWidths="300,100,150" style="TableTotal">
-            <tr>
-                <td>
-                    <para style="P1">
-                        <font color="white">[[ (o.is_progressive) and removeParentNode('blockTable') ]]</font>
-                    </para>
-                </td>
-                <td>
-                    <para style="P1">
-                        <font color="white"> </font>
                     </para>
                 </td>
                 <td>
