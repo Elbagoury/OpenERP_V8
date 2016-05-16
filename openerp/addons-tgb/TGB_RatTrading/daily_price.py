@@ -11,6 +11,7 @@ import openerp.addons.decimal_precision as dp
 
 class rat_daily_price(osv.osv):
     _name = 'rat.daily.price'
+    _order = 'id desc'
     _columns = {
         'name': fields.char(string='Name', size=255),
         'created_by': fields.many2one('res.users', string='Created By'),
