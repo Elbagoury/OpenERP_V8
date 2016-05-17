@@ -42,12 +42,6 @@
                      <stroke color="black"/>
                         <lines>4.8cm 26.2cm 20.5cm 26.2cm</lines>
 
-                    <place x="18cm" y="24.8cm" width="2.5cm" height="1.25cm">
-                        <illustration width="2.5cm" height="1.25cm">
-                            <rect x="0" y="0" width="2.5cm" height="1.25cm" fill="no" stroke="yes"/>
-                        </illustration>
-
-                    </place>
 
                     <image  x="15.3cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/bizSAFE-Enterprise-Level-STAR-3.jpg"/>
                     <image  x="16.7cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_OHSAS_18001_2007_TCL_HR.jpg"/>
