@@ -225,7 +225,7 @@
                         <para style="terp_default_9"><b>[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[ (o.partner_id and o.partner_id.name) or '' ]]</b></para>
                         <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street)]]</para>
                         <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street2)]]</para>
-                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.city)]] [[ (o.partner_id and o.partner_id.zip)]]</para>
+                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.country_id and o.partner_id.country_id.name)]] [[ (o.partner_id and o.partner_id.zip)]]</para>
                     </td>
                 </tr>
             </blockTable>
@@ -577,7 +577,7 @@
                     </para>
                 </td>
                 <td>
-                    <para style="P1">
+                    <para style="P1_right2">
                         <b>:[[formatLang(o.amount_total,currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
@@ -596,7 +596,7 @@
                     </para>
                 </td>
                 <td>
-                    <para style="P1">
+                    <para style="P1_right2">
                         <b>:[[formatLang(gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
@@ -616,7 +616,7 @@
                     </para>
                 </td>
                 <td>
-                    <para style="P1">
+                    <para style="P1_right2">
                         <b>[[formatLang(o.amount_total+gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
