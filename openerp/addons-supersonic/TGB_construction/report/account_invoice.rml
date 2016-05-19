@@ -42,17 +42,10 @@
                      <stroke color="black"/>
                         <lines>4.8cm 26.2cm 20.5cm 26.2cm</lines>
 
-                    <place x="18cm" y="24.8cm" width="2.5cm" height="1.25cm">
-                        <illustration width="2.5cm" height="1.25cm">
-                            <rect x="0" y="0" width="2.5cm" height="1.25cm" fill="no" stroke="yes"/>
-                        </illustration>
-
-                    </place>
 
                     <image  x="15.3cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/bizSAFE-Enterprise-Level-STAR-3.jpg"/>
                     <image  x="16.7cm" y="24.8cm" height="1.2cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_OHSAS_18001_2007_TCL_HR.jpg"/>
-                    <image  x="18.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/SGS_ISO-9001_TCL_HR.jpg"/>
-                    <image  x="19.5cm" y="24.9cm" height="1.1cm" width="1.2cm" file="TGB_construction/static/src/img/Capture.PNG"/>
+                    <image  x="18.0cm" y="24.8cm" height="1.2cm" width="2.9cm" file="TGB_construction/static/src/img/SGS_ISO 14001_with_UKAS_TCL_HR.jpg"/>
 
                 </pageGraphics>
             </header>
@@ -225,7 +218,7 @@
                         <para style="terp_default_9"><b>[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[ (o.partner_id and o.partner_id.name) or '' ]]</b></para>
                         <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street)]]</para>
                         <para style="terp_default_9">[[ (o.partner_id and o.partner_id.street2)]]</para>
-                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.city)]] [[ (o.partner_id and o.partner_id.zip)]]</para>
+                        <para style="terp_default_9">[[ (o.partner_id and o.partner_id.country_id and o.partner_id.country_id.name)]] [[ (o.partner_id and o.partner_id.zip)]]</para>
                     </td>
                 </tr>
             </blockTable>
@@ -304,12 +297,12 @@
             <tr>
                 <td>
                     <para style="P1_p2">
-                        <u>RE:</u>
+                        RE:
                     </para>
                 </td>
                 <td>
                     <para style="P1_p2">
-                        <u>[[o.sale_order_id.subject]]</u>
+                        [[o.sale_order_id.subject]]
                     </para>
                 </td>
             </tr>
@@ -578,7 +571,7 @@
                 </td>
                 <td>
                     <para style="P1">
-                        <b>:[[formatLang(o.amount_total,currency_obj = company.currency_id)]]</b>
+                        <b>[[formatLang(o.amount_total,currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
                 <td>
@@ -597,7 +590,7 @@
                 </td>
                 <td>
                     <para style="P1">
-                        <b>:[[formatLang(gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
+                        <b>[[formatLang(gst_amount(o.amount_total),currency_obj = company.currency_id)]]</b>
                     </para>
                 </td>
                 <td>
