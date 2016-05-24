@@ -13,8 +13,13 @@
             	<xpath expr="//field[@name='partner_ref']" position="after">
             		<field name="terms"/>
             	</xpath>
-            	<xpath expr="//field[@name='notes']" position="before">
-            		<field name="area_re" class="oe_inline" placeholder="RE..."/>
+            	<xpath expr="//field[@name='notes']" position="replace">
+            	</xpath>
+            	<xpath expr="//sheet/group" position="after">
+            		<group>
+            			<field name="area_re" nolabel='1' placeholder="RE..."/>
+            			<field name="notes" nolabel='1' placeholder="Terms and conditions..."/>
+            		</group>
             	</xpath>
             	<xpath expr="//field[@name='picking_type_id']" position="after">
             		<field name="delivery"/>
