@@ -16,9 +16,9 @@
             	<xpath expr="//field[@name='notes']" position="replace">
             	</xpath>
             	<xpath expr="//sheet/group" position="after">
-            		<group>
-            			<field name="area_re" nolabel='1' placeholder="RE..."/>
-            			<field name="notes" nolabel='1' placeholder="Terms and conditions..."/>
+            		<group col='4' colspan='4'>
+            			<field name="area_re" nolabel='1' placeholder="RE..." colspan='4'/>
+            			<field name="notes" nolabel='1' placeholder="Terms and conditions..." colspan='4'/>
             		</group>
             	</xpath>
             	<xpath expr="//field[@name='picking_type_id']" position="after">
