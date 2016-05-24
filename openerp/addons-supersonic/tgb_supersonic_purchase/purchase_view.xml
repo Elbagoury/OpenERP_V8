@@ -11,8 +11,10 @@
             	<xpath expr="//button[@name='print_quotation']" position="replace">
             	</xpath>
             	<xpath expr="//field[@name='partner_ref']" position="after">
-            		<field name="quotation_ref"/>
-            		<field name="quotation_dated"/>
+            		<field name="terms"/>
+            	</xpath>
+            	<xpath expr="//field[@name='notes']" position="before">
+            		<field name="area_re" class="oe_inline" placeholder="RE..."/>
             	</xpath>
             	<xpath expr="//field[@name='picking_type_id']" position="after">
             		<field name="delivery"/>
