@@ -13,6 +13,7 @@ import base64
 import xlrd
 from base64 import b64decode
 import time
+import openerp
 class rat_trading_wizard(osv.osv):
     _name = 'rat.trading.wizard'
     _order = 'id desc'
@@ -188,7 +189,7 @@ class rat_trading_wizard(osv.osv):
             temp = 2
             for col in range(0, len(list_product)):
                 worksheet.write(row, temp, detail[list_product[col].keys()[0]])
-                worksheet.write(row, temp+1, 'Price')
+                worksheet.write(row, temp+1, detail[list_product[col].keys()[0]+'_price'])
                 temp+=2
         workbook.close()
         with open(path, 'rb') as f:
@@ -447,6 +448,14 @@ class rat_trading_detail(osv.osv):
 #         this_module = self.pool.get('ir.module.module').search(cr, uid, [('name', '=', 'TGB_RatTrading')])
 #         if this_module and len(this_module) > 0:
 #             self.pool.get('ir.module.module').button_immediate_upgrade(cr, uid, this_module[0])
+        #PHUNG
+        registry = openerp.registry(cr.dbname)
+        registry.setup_models(cr)
+        Views = registry['ir.ui.view']
+        for model in registry.models.keys():
+            if not Views._validate_custom_views(cr, 1, model):
+                _logger.error('invalid custom view(s) for model %s', model)
+        #END PHUNG
         res['arch'] = etree.tostring(eview)
         return res
 

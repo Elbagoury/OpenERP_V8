@@ -28,7 +28,7 @@
 import sys
 evented = False
 if sys.modules.get("gevent") is not None:
-    evented = True
+    evented = False
 
 # Is the server running in pefork mode (e.g. behind Gunicorn).
 # If this is True, the processes have to communicate some events,
