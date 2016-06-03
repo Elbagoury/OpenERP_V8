@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<template id="report_hr_payslip_document" inherit_id="l10n_sg_payroll.report_hr_payslip_document">
+     <xpath expr="//div[@class='oe_structure'][2]/preceding-sibling::div[1]/div" position="after">
+<div class="row">
+<div class="col-xs-6" style="padding-left: 0px;">
+                    <table class="table table-responsive" style="border: 1px solid !important;">
+<thead></thead>
+                        <tbody>
+                            <tr>
+                                <td class="border_bottom border_top">
+                                    Unpaid Leave (days)
+                                </td>
+                                <td class="border_bottom border_top">
+                                    <span t-field="o.UNPAID_DAY"/> 
+                                </td>
+                            </tr>
+<tr>
+                                <td class="border_bottom border_top">
+                                    Timeoff (mins)
+                                </td>
+                                <td class="border_bottom border_top">
+                                    <span t-field="o.timeoff_min"/>
+                                </td>
+                            </tr>
+<tr>
+                                <td class="border_bottom border_top">
+                                    Latecomer (mins)
+                                </td>
+                                <td class="border_bottom border_top">
+                                    <span t-field="o.latecomer_min"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+</div>
+</div>
+</xpath>
+</template>
+        <record model="ir.ui.view" id="payslip_import_form">
+            <field name="name">hr.payslip.import</field>
+            <field name="model">hr.payslip.import</field>
+            <field name="arch" type="xml">
+                <form string="Payslip Import">
+                    <header>
+                        <button string="Confirm" states="draft" name="confirm_payslip" type="object" class="oe_highlight"/>
+                    </header>
+                    <field name="state" invisible="1"/>
+                    <group col="4">
+                        <label for="date_from" string="Period"/>
+                        <div>
+                            <field name="date_from" class="oe_inline"/> - <field name="date_to" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <separator string="Details"/>
+                    <field name="line_ids">
+                        <tree string="Details" editable="bottom">
+                            <field name="employee_id"/>
+                            <field name="BASIC" sum="Total BASIC"/>
+                            <field name="OT" sum="Total OT"/>	
+                            <field name="NS_OTHER" sum="Total NS_OTHER"/>
+                            
+                            <field name="UNPAID" sum="Total UNPAID"/>
+<field name="UNPAID_DAY" sum="Total UNPAID_DAY"/>
+                            <field name="latecomer" sum="Total latecomer"/>
+                            <field name="latecomer_min" sum="Total latecomer_min"/>
+                            <field name="timeoff" sum="Total timeoff"/>
+                            <field name="timeoff_min" sum="Total timeoff_min"/>
+                                                      
+                            <field name="SDL" sum="Total SDL"/>
+                            <field name="FWL" sum="Total FWL"/>
+                            <field name="CPF" sum="Total CPF"/>
+                            <field name="employer_CPF" sum="Total employer_CPF"/>
+                            <field name="total_CPF" sum="Total total_CPF"/>
+                            <field name="CDAC" sum="Total CDAC"/>
+  <field name="1st_half_salary" sum="Total 1st_half_salary"/>
+                            <field name="2nd_half_salary" sum="Total 2nd_half_salary"/>
+                            <field name="net_salary" sum="Total net_salary"/>
+                        </tree>
+                    </field>
+                    <separator string="Payslips"/>
+                    <field name="payslip_ids">
+                    </field>
+                </form>
+            </field>
+        </record>
+         <record model="ir.ui.view" id="payslip_import_tree">
+            <field name="name">hr.payslip.import</field>
+            <field name="model">hr.payslip.import</field>
+            <field name="arch" type="xml">
+                <tree string="Payslip Import">
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state"/>
+                        </tree>
+
+        </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="payslip_import_action">
+            <field name="name">Payslip Importer</field>
+            <field name="res_model">hr.payslip.import</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="payslip_import_action" id="payslip_import_menu" string="Payslip Report" parent="hr_payroll.menu_hr_root_payroll"
+                  sequence="6"/>
+
+
+    </data>
+</openerp>

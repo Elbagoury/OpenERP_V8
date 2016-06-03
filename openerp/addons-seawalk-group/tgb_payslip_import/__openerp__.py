@@ -11,6 +11,7 @@
     """,
     'data': [
         'report/letter_of_offer_report_view.xml',
+        'import_view.xml',
     ],
     'installable': True,
     'auto_install': False,
