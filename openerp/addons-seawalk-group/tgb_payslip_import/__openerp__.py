@@ -6,7 +6,7 @@
     "author" : "",
     "category": 'TGB',
     'sequence': 1,
-    'depends': ['hr','report_aeroo'],
+    'depends': ['hr','hr_payroll','report_aeroo'],
     "description": """
     """,
     'data': [
