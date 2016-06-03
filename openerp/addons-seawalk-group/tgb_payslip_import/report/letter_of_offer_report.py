@@ -15,7 +15,6 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 DATE_FORMAT = "%Y-%m-%d"
 from dateutil.tz import tzlocal
 from tzlocal import get_localzone
-from openerp.addons.tgb_supersonic_purchase.report import amount_to_text_en
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -56,8 +55,4 @@ class Parser(report_sxw.rml_parse):
         return_val = (amount_word+' ONLY').upper()
         return return_val
     
-#     def convert(self, amount):
-#         amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
-#         return amount_text.upper()
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

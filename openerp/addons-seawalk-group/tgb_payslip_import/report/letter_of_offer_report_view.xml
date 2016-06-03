@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	    <record id="letter_of_offer_report" model="ir.actions.report.xml">
+	        <field name="name">letter_of_offer_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">hr.employee</field>
+	        <field name="report_name">letter_of_offer_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">tgb_payslip_import/report/letter_of_offer_report.py</field>
+	        <field name="report_rml">tgb_payslip_import/report/letter_of_offer_report.odt</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="letter_of_offer_report"
+			model="hr.employee"
+			name="letter_of_offer_report"
+	        string="Letter of Offer"
+	        rml="tgb_payslip_import/report/letter_of_offer_report.odt"/>
+        
+	</data>
+</openerp>
