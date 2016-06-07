@@ -48,9 +48,12 @@
                             <field name="si_date"/>
                             <field name="stock_location"/>
                             <field name="res_user_id"/>
-                            <newline/>
-                            <field name="sale_order_id" on_change="on_change_quotation(sale_order_id)" invisible="1"/>
+                            <field name="date_required"/>
+                            <field name="site"/>
+                    		<field name="office"/>
                             <field name="project_id"/>
+                            <field name="wo_no"/>
+                            <field name="sale_order_id" on_change="on_change_quotation(sale_order_id)" invisible="1"/>
                         </group>
                         <notebook>
                             <page string="Request Detail">
@@ -139,11 +142,15 @@
             <field name="model">stock.issue.detail</field>
             <field name="arch" type="xml">
                 <tree string="Stock Issue" editable="top">
-                    <field name="product_id"/>
+                    <field name="product_id" on_change="onchange_product_id(product_id)"/>
                     <field name="product_code"/>
                     <field name="product_price"/>
                     <field name="qty_on_hand" invisible="1"/>
                     <field name="qty_available"/>
+                    <field name="product_uom_id"/>
+                    <field name="supplier_id" domain="[('supplier','=',True)]"/>
+                    <field name="po_no"/>
+                    <field name="location"/>
                     <field name="issue_qty" on_change="on_change_issue_qty(product_id,issue_qty)"/>
                     <field name="total_cost" groups="TGB_construction.group_construction_manager"/>
                     <field name="remark"/>

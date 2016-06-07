@@ -145,6 +145,11 @@ class stock_issue(osv.osv):
         'total_cost':fields.function(_get_total_cost, digits_compute=dp.get_precision('Account'),
                                           string='Total Cost',
                                            track_visibility='always'),
+        
+        'date_required':fields.date('Date Required'),
+        'wo_no':fields.char('W.O NO', size=1024),
+        'site':fields.boolean('Site'),
+        'office':fields.boolean('Office'),
     }
     _defaults = {
         'state':'draft',
@@ -231,13 +236,24 @@ class stock_issue_detail(osv.osv):
                                           string='Total Cost',
                                            track_visibility='always'),
         'remark':fields.char('Remark',size=255),
-
+        
+        'product_uom_id': fields.many2one('product.uom', 'Unit of Measure'),
+        'supplier_id': fields.many2one('res.partner', 'Supplier'),
+        'po_no':fields.char('P.O No.',size=255),
+        'location':fields.char('Location',size=255),
     }
+    
+    def onchange_product_id(self, cr, uid, ids, product_id=False, context=None):
+        vals = {}
+        if product_id:
+            product = self.pool.get('product.product').browse(cr, uid, product_id)
+            vals = {'product_uom_id': product.uom_id and product.uom_id.id or False}
+        return {'value': vals}
 
     _default = {
     }
 
-stock_issue_employee()
+stock_issue_detail()
 
 
 class project_location(osv.osv):

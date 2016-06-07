@@ -31,9 +31,28 @@
                 rml="TGB_construction/report/account_invoice.rml" string="Print Invoices"
                 usage="default" header="False"/>
 
-        <report auto="False" id="report_material_request" model="stock.issue" name="TGB.stock.issue"
-                rml="TGB_construction/report/material_request.rml" string="Print Material Request"
+		
+		<record id="report_material_request" model="ir.actions.report.xml">
+	        <field name="name">report_material_request</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">stock.issue</field>
+	        <field name="report_name">report_material_request</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-odt</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-odt')]"/>
+	        <field name="parser_loc">TGB_construction/report/material_request.py</field>
+	        <field name="report_rml">TGB_construction/report/material_request.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		
+		<report auto="False" id="report_material_request" model="stock.issue" name="report_material_request"
+                rml="TGB_construction/report/material_request.odt" string="Print Material Request"
                 usage="default" header="False"/>
+<!-- OLD -->
+<!--        <report auto="False" id="report_material_request" model="stock.issue" name="TGB.stock.issue"
+                rml="TGB_construction/report/material_request.rml" string="Print Material Request"
+                usage="default" header="False"/>-->
 
 
     </data>
