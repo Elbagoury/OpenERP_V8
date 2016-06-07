@@ -47,6 +47,7 @@ class account_invoice(osv.osv):
     
     _columns = {
         'terms': fields.char('Terms', size=1024),
+        'permit_no': fields.char('Permit No', size=1024),
     }
     
 account_invoice()

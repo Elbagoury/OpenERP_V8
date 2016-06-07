@@ -17,6 +17,82 @@
             	</xpath>
             </field>
         </record>
+        
+        <record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet[@string='Supplier Invoice']/group/group/div" position="after">
+            		<field name="permit_no"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record id="view_account_invoice_filter_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.filter.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='number']" position="after">
+            		<field name="permit_no"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record id="supplier_invoice_tree" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <tree colors="blue:state == 'draft';black:state in ('proforma','proforma2','open');gray:state == 'cancel'" string="Invoice">
+                    <field name="partner_id" groups="base.group_user"/>
+                    <field name="commercial_partner_id" invisible="1"/>
+                    <field name="date_invoice"/>
+                    <field name="number"/>
+                    <field name="reference" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="journal_id" invisible="1"/>
+                    <field name="period_id" invisible="1" groups="account.group_account_user"/>
+                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="user_id" string="Responsible"/>
+                    <field name="date_due"/>
+                    <field name="permit_no"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="residual" sum="Residual Amount"/>
+                    <field name="amount_untaxed" sum="Untaxed Amount"/>
+                    <field name="amount_total" sum="Total Amount"/>
+                    <field name="state"/>
+                    <field name="type" invisible="context.get('type',True)"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tgb_action_invoice_tree21" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="supplier_invoice_tree"/>
+            <field name="act_window_id" ref="account.action_invoice_tree2"/>
+        </record>
+    
+    	<record id="account.action_invoice_tree1_view1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="account.action_invoice_tree1"/>
+        </record>
+        
+        <record id="account.action_invoice_tree3_view1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="account.action_invoice_tree3"/>
+        </record>
+        
+        <record id="tgb_action_invoice_tree41" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="account.invoice_tree"/>
+            <field name="act_window_id" ref="account.action_invoice_tree4"/>
+        </record>
     
     </data>
 </openerp>
