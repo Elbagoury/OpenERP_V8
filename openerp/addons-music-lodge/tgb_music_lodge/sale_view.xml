@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+            		<field name="brand"/>
+            		<field name="model"/>
+            		<field name="serial_no"/>
+            		<field name="year_of_manufacture"/>
+            		<field name="color"/>
+            		<field name="dimension"/>
+            	</xpath>
+            </field>
+        </record>
+    
+		<record id="view_sale_rental_filter" model="ir.ui.view">
+            <field name="name">sale.rental.select</field>
+            <field name="model">sale.rental</field>
+            <field name="arch" type="xml">
+                <search string="Sale Rental">
+                	<field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                    	<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>
+                    	<filter name="group_by_state" string="Status" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_sale_rental_tree" model="ir.ui.view">
+            <field name="name">sale.rental.tree</field>
+            <field name="model">sale.rental</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Rental">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_sale_rental_form" model="ir.ui.view">
+            <field name="name">sale.rental.form</field>
+            <field name="model">sale.rental</field>
+            <field name="arch" type="xml">
+                <form string="Sale Rental" version='7.0'>
+					<header>
+						<button name="bt_confirm" string="Confirm" type="object" states="draft" class="oe_highlight"/>
+						<button name="bt_close" string="Close" type="object" states="confirmed" class="oe_highlight"/>
+						<button name="%(action_create_sale_order)d" string="Create Sales Order" type="action" states="confirmed,closed" class="oe_highlight"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,closed"/>
+					</header>
+                	<sheet>
+                		<h1>
+	                        <label string="Sale Rental"/>
+	                        <field name="name" class="oe_inline" readonly="1"/>
+	                    </h1>
+	                    <group col="4" colspan="2">
+		                    <field name="partner_id" required='1' domain="[('customer','=',True)]"/>
+		                    <field name="date" required='1'/>
+		                    <field name="rental_schedule" required='1'/>
+		                    <field name="next_run" invisible='1'/>
+	                    </group>
+	                    <notebook>
+	                    	<page string="Rental Lines">
+	                    		<group>
+		                    		<field name="rental_line" nolabel='1'>
+		                    			<tree editable='bottom'>
+		                    				<field name="product_id" on_change="onchange_product_id(product_id)" required='1'/>
+		                    				<field name="name" required='1'/>
+		                    				<field name="brand"/>
+						            		<field name="model"/>
+						            		<field name="serial_no"/>
+						            		<field name="year_of_manufacture"/>
+						            		<field name="color"/>
+						            		<field name="dimension"/>
+		                    				<field name="product_qty" required='1'/>
+		                    				<field name="price_unit" required='1'/>
+		                    				<field name="deposit" required='1'/>
+		                    				<field name="transport_charge" required='1'/>
+		                    				<field name="discount"/>
+		                    			</tree>
+		                    		</field>
+		                    	</group>
+	                    	</page>
+	                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_sale_rental" model="ir.actions.act_window">
+            <field name="name">Sale Rental</field>
+            <field name="res_model">sale.rental</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sale_rental_tree"/>
+            <field name="search_view_id" ref="view_sale_rental_filter"/>
+            <field name="context">{}</field>
+        </record>    	
+    </data>
+</openerp>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<record id="wizard_create_sale_order_form" model="ir.ui.view">
+            <field name="name">create.sale.order.form</field>
+            <field name="model">create.sale.order</field>
+            <field name="arch" type="xml">
+                <form string="Create Sales Order" version="7.0">
+                	<field name="partner_id" invisible='1'/>
+                	<group col='4' colspan='2'>
+                		<field name="create_so_line" nolabel='1'>
+                			<tree editable='bottom'>
+                				<field name="product_id" readonly='1'/>
+                				<field name="product_qty" readonly='1'/>
+                				<field name="price_unit" readonly='1'/>
+                				<field name="deposit" readonly='1'/>
+                				<field name="transport_charge" readonly='1'/>
+                				<field name="cost_price" readonly='1'/>
+                				<field name="sale_price" readonly='1'/>
+                				<field name="price" required='1'/>
+                				<field name="rental_line_id" invisible='1'/>
+                			</tree>
+                		</field>
+	                </group>
+	                <footer>
+	                	<button name="bt_create_so" string="Create Sales Order" type="object" class="oe_highlight"/>
+                        <button string="Close" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_create_sale_order" model="ir.actions.act_window">
+            <field name="name">Create Sales Order</field>
+            <field name="res_model">create.sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_create_sale_order_form"/>
+        </record>
+    </data>
+</openerp>
