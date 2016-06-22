@@ -94,7 +94,7 @@ class create_sale_order_line(osv.osv_memory):
         'rental_line_id': fields.many2one('sale.rental.line', 'Rental line'),
         'product_id': fields.many2one('product.product', 'Product'),
         'product_qty': fields.float('Quantity', digits_compute= dp.get_precision('Product UoS')),
-        'price_unit': fields.float('Unit Price', digits_compute= dp.get_precision('Product Price')),
+        'price_unit': fields.float('Rental Price', digits_compute= dp.get_precision('Product Price')),
         'deposit': fields.float('Deposit', digits_compute= dp.get_precision('Product Price')),
         'transport_charge': fields.float('Transport Charge', digits_compute= dp.get_precision('Product Price')),
         'cost_price': fields.float('Cost Price', digits_compute= dp.get_precision('Product Price')),

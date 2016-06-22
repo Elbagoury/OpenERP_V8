@@ -8,10 +8,10 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
             	<xpath expr="//field[@name='invoice_line']/tree/field[@name='name']" position="after">
-            		<field name="brand"/>
+            		<field name="brand" invisible="1"/>
             		<field name="model"/>
             		<field name="serial_no"/>
-            		<field name="year_of_manufacture"/>
+            		<field name="year_of_manufacture" invisible="1"/>
             		<field name="color"/>
             		<field name="dimension"/>
             	</xpath>

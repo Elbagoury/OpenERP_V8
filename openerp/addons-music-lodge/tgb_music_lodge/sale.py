@@ -37,7 +37,7 @@ class sale_rental(osv.osv):
         'date': fields.date('Date', readonly=True, states={'draft': [('readonly', False)]}),
         'rental_line': fields.one2many('sale.rental.line', 'rental_id', 'Rental Line', readonly=True, states={'draft': [('readonly', False)]}),
         'state': fields.selection([('draft','Draft'),('confirmed','Confirmed'),('closed','closed')], 'Status', readonly=True),
-        'rental_schedule': fields.selection([('monthly','Monthly'),('bi_monthly','bi Monthly'),('quarterly','Quarterly'),('half_yearly','Half Yearly'),('yearly','Yearly')], 'Rental Schedule', readonly=True, states={'draft': [('readonly', False)]}),
+        'rental_schedule': fields.selection([('monthly','Monthly'),('bi_monthly','Bi Monthly'),('quarterly','Quarterly'),('half_yearly','Half Yearly'),('yearly','Yearly')], 'Rental Schedule', readonly=True, states={'draft': [('readonly', False)]}),
         'next_run': fields.date('Next Run'),
     }
     
@@ -177,7 +177,7 @@ class sale_rental_line(osv.osv):
         'name': fields.text('Description'),
         'product_id': fields.many2one('product.product', 'Product'),
         'product_qty': fields.float('Quantity', digits_compute= dp.get_precision('Product UoS')),
-        'price_unit': fields.float('Unit Price', digits_compute= dp.get_precision('Product Price')),
+        'price_unit': fields.float('Rental Price', digits_compute= dp.get_precision('Product Price')),
         'deposit': fields.float('Deposit', digits_compute= dp.get_precision('Product Price')),
         'transport_charge': fields.float('Transport Charge', digits_compute= dp.get_precision('Product Price')),
         'brand': fields.char('Brand', size=1024),
