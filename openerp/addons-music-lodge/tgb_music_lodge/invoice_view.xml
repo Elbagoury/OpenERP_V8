@@ -12,8 +12,8 @@
             		<field name="model"/>
             		<field name="serial_no"/>
             		<field name="year_of_manufacture" invisible="1"/>
-            		<field name="color"/>
-            		<field name="dimension"/>
+            		<field name="color" invisible="1"/>
+            		<field name="dimension" invisible="1"/>
             	</xpath>
             </field>
         </record>
