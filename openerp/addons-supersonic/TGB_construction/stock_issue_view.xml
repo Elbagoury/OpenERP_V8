@@ -47,13 +47,16 @@
                             <field name="issue_type"/>
                             <field name="si_date"/>
                             <field name="stock_location"/>
-                            <field name="res_user_id"/>
+                            <field name="employee_id"/>
                             <field name="date_required"/>
                             <field name="site"/>
                     		<field name="office"/>
+                    		<field name="self_collection"/>
+                    		<newline/>
                             <field name="project_id"/>
                             <field name="wo_no"/>
                             <field name="sale_order_id" on_change="on_change_quotation(sale_order_id)" invisible="1"/>
+                            <field name="res_user_id" invisible='1'/>
                         </group>
                         <notebook>
                             <page string="Request Detail">

@@ -196,7 +196,7 @@
                                                groups="product.group_uom" options='{"no_open": True}' invisible="1"/>
                                         <field name="product_uos" string="UoS" groups="product.group_uos"
                                                invisible="1"/>
-                                        <field name="price_unit" string="Unit Rate"/>
+                                        <field name="price_unit" string="Unit Price"/>
                                         <field name="add_percent"/>
                                         <field name="add_amount"/>
                                         <field name="price_subtotal" string="Total Amount"/>
@@ -216,7 +216,7 @@
                                         <field name="sequence" widget="handle"/>
                                         <field name="name"/>
                                         <field name="product_uom_qty"/>
-                                        <field name="price_unit" string="Unit Rate"/>
+                                        <field name="price_unit" string="Unit Price"/>
                                         <field name="add_percent"/>
                                         <field name="add_amount" invisible="1"/>
                                         <field name="price_subtotal" string="Amount"/>
@@ -239,7 +239,7 @@
                                         <field name="name"/>
                                         <field name="product_uom_qty"/>
                                         <field name ="uom_id"/>
-                                        <field name="price_unit" string="Unit Rate"/>
+                                        <field name="price_unit" string="Unit Price"/>
                                         <field name="price_subtotal" string="Amount"/>
                                         <field name="state" invisible="1"/>
                                     </tree>

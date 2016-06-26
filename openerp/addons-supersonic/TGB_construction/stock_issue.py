@@ -128,6 +128,7 @@ class stock_issue(osv.osv):
         'customer_id':fields.many2one('res.partner','Customer'),
         'stock_location':fields.many2one('stock.warehouse','Stock Location', required=True),
         'res_user_id':fields.many2one('res.users','Request By'),
+        'employee_id':fields.many2one('hr.employee','Requested By'),
         'sale_order_id':fields.many2one('sale.order','Project Quotation', required=False),
         'request_location_id':fields.many2one('project.location','From Location'),
         'reference_no':fields.char('Reference No.',size=20),
@@ -150,6 +151,7 @@ class stock_issue(osv.osv):
         'wo_no':fields.char('W.O NO', size=1024),
         'site':fields.boolean('Site'),
         'office':fields.boolean('Office'),
+        'self_collection':fields.boolean('Self-collection'),
     }
     _defaults = {
         'state':'draft',

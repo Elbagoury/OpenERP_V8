@@ -3,7 +3,7 @@
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
-
+from datetime import datetime, timedelta
 class purchase_order(osv.osv):
     _inherit = "purchase.order"
 
@@ -23,6 +23,13 @@ class purchase_order(osv.osv):
         'warranty': 'To provide 12 months warranty from the date of our successful testing and commissioning.',
         'notes': '''Not withstanding any information and technical particulars submitted.  All materials / equipment offer shall comply fully to the standard code of practice, Consultants tender specification for this project. Any equipment not complied to specification shall be made fully compliance at your own cost.''',
     }
+    
+    def onchange_partner_ref_date(self, cr, uid, ids, partner_ref=False, date_order=False, context=None):
+        if date_order:
+            date_order = datetime.strptime(date_order, '%Y-%m-%d %H:%M:%S') + timedelta(hours=8)
+            date_order = date_order.strftime('%d/%m/%Y')
+        area_re = '''Reference to the above-mentioned project and your Quotation Ref %s: , dated: %s, we are pleased to confirm our order to you as follows:-'''%(partner_ref or '',date_order or '')
+        return {'value': {'area_re': area_re}}
     
 purchase_order()
 
