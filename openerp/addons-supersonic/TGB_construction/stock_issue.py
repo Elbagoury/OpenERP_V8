@@ -148,7 +148,8 @@ class stock_issue(osv.osv):
                                            track_visibility='always'),
         
         'date_required':fields.date('Date Required'),
-        'wo_no':fields.char('W.O NO', size=1024),
+#         'wo_no':fields.char('W.O NO', size=1024),
+        'wo_no':fields.related('project_id', 'project_code', string='W.O NO', type='char'),
         'site':fields.boolean('Site'),
         'office':fields.boolean('Office'),
         'self_collection':fields.boolean('Self-collection'),
