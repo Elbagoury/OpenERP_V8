@@ -26,6 +26,12 @@
             		<field name="year_guarantee"/>
             		<field name="free_tuning"/>
             	</xpath>
+            	<xpath expr="//label[@for='comment']" position="replace">
+            		<label string="Remarks"/>
+            	</xpath>
+            	<xpath expr="//field[@name='comment']" position="attributes">
+            		<attribute name="placeholder">Remarks...</attribute>
+            	</xpath>
             </field>
         </record>
     	
