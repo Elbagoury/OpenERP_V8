@@ -3,3 +3,5 @@ import invoice
 import sale
 import product
 import wizard
+import report
+import res_partner

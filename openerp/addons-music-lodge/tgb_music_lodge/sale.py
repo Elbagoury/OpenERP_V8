@@ -39,6 +39,7 @@ class sale_rental(osv.osv):
         'state': fields.selection([('draft','Draft'),('confirmed','Confirmed'),('closed','closed')], 'Status', readonly=True),
         'rental_schedule': fields.selection([('monthly','Monthly'),('bi_monthly','Bi Monthly'),('quarterly','Quarterly'),('half_yearly','Half Yearly'),('yearly','Yearly')], 'Rental Schedule', readonly=True, states={'draft': [('readonly', False)]}),
         'next_run': fields.date('Next Run'),
+        'note': fields.text('Note'),
     }
     
     _defaults = {
@@ -187,6 +188,10 @@ class sale_rental_line(osv.osv):
         'color': fields.char('Color', size=1024),
         'dimension': fields.char('Dimension', size=1024),
         'discount': fields.float('Discount (%)', digits_compute= dp.get_precision('Discount')),
+    }
+    
+    _defaults = {
+        'product_qty': 1,
     }
     
     def onchange_product_id(self, cr, uid, ids, product_id=False, context=None):

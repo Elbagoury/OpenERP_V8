@@ -20,41 +20,26 @@
 #
 ##############################################################################
 
+import base64
+import re
+import threading
+from openerp.tools.safe_eval import safe_eval as eval
+from openerp import tools
+import openerp.modules
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
 import datetime
 import time
-import openerp.addons.decimal_precision as dp
+import calendar
 
-class account_invoice(osv.osv):
-    _inherit = "account.invoice"
+class res_partner(osv.osv):
+    _inherit = 'res.partner'
     
     _columns = {
-        'stool': fields.boolean('Stool'),
-        'heater': fields.boolean('Heater'),
-        'delivery': fields.boolean('Delivery'),
-        'year_guarantee': fields.integer('Year Guarantee'),
-        'free_tuning': fields.boolean('Free Tuning (Weekday Only)'),
+        'nric': fields.char('NRIC',size=1024),
+        'hp': fields.char('HP',size=1024),
     }
-    
-    _defaults = {
-        'comment': 'Goods sold are not returnable & exchangeable\nDeposit is not refundable in any circumstance.',
-    }
-    
-account_invoice()
 
-class account_invoice_line(osv.osv):
-    _inherit = "account.invoice.line"
-    
-    _columns = {
-        'brand': fields.char('Brand', size=1024),
-        'model': fields.char('Model', size=1024),
-        'serial_no': fields.char('Serial No', size=1024),
-        'year_of_manufacture': fields.char('Year of Manufacture', size=1024),
-        'color': fields.char('Color', size=1024),
-        'dimension': fields.char('Dimension', size=1024),
-    }
-    
-account_invoice_line()
+res_partner()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
