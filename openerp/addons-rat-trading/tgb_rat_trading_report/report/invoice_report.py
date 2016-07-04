@@ -39,8 +39,19 @@ class Parser(report_sxw.rml_parse):
             return datetime.strptime(date,'%Y-%m-%d').strftime('%d/%m/%Y')
         return ''
     
-    def convert(self, amount):
-        amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
-        return amount_text.upper()
+    def convert(self,amount):
+        from num2words import num2words
+        amount = round(amount,2)
+        amount_decimal = round((amount-int(amount))*100,0)
+        amount_word = num2words(int(amount)).replace(' and','')
+        if amount_decimal>0:
+            amount_decimal_word = num2words(amount_decimal).replace(' and','')
+            amount_word = amount_word +' AND CENTS '+ amount_decimal_word
+        return_val = (amount_word+' ONLY').upper()
+        return return_val
+    
+#     def convert(self, amount):
+#         amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
+#         return amount_text.upper()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
