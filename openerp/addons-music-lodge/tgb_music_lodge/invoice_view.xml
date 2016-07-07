@@ -25,6 +25,7 @@
             	<xpath expr="//field[@name='date_invoice']" position="after">
             		<field name="year_guarantee"/>
             		<field name="free_tuning"/>
+            		<field name="tgb_type" invisible="1"/>
             	</xpath>
             	<xpath expr="//label[@for='comment']" position="replace">
             		<label string="Remarks"/>
@@ -32,6 +33,54 @@
             	<xpath expr="//field[@name='comment']" position="attributes">
             		<attribute name="placeholder">Remarks...</attribute>
             	</xpath>
+            </field>
+        </record>
+    	
+    	<record id="account.action_invoice_tree1" model="ir.actions.act_window">
+            <field name="name">Normal Sales Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','out_invoice'),'|',('tgb_type','!=','rental'),('tgb_type','=',False)]</field>
+            <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a customer invoice.
+              </p><p>
+                Odoo's electronic invoicing allows to ease and fasten the
+                collection of customer payments. Your customer receives the
+                invoice by email and he can pay online and/or import it
+                in his own system.
+              </p><p>
+                The discussions with your customer are automatically displayed at
+                the bottom of each invoice.
+              </p>
+            </field>
+        </record>
+        
+        <record id="action_rental_invoice" model="ir.actions.act_window">
+            <field name="name">Rental Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','out_invoice'),('tgb_type','=','rental')]</field>
+            <field name="context">{'default_type':'out_invoice','default_tgb_type':'rental', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a customer invoice.
+              </p><p>
+                Odoo's electronic invoicing allows to ease and fasten the
+                collection of customer payments. Your customer receives the
+                invoice by email and he can pay online and/or import it
+                in his own system.
+              </p><p>
+                The discussions with your customer are automatically displayed at
+                the bottom of each invoice.
+              </p>
             </field>
         </record>
     	

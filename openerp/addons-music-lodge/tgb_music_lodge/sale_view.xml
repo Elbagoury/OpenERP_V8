@@ -66,6 +66,7 @@
 		                    <field name="partner_id" required='1' domain="[('customer','=',True)]"/>
 		                    <field name="date" required='1'/>
 		                    <field name="rental_schedule" required='1'/>
+		                    <field name="prepay" invisible='0'/>
 		                    <field name="next_run" invisible='0'/>
 	                    </group>
 	                    <notebook>
@@ -81,7 +82,7 @@
 						            		<field name="year_of_manufacture" invisible="1"/>
 						            		<field name="color" invisible="1"/>
 						            		<field name="dimension" invisible="1"/>
-		                    				<field name="product_qty" required='1'/>
+		                    				<field name="product_qty" invisible='1'/>
 		                    				<field name="price_unit" required='1'/>
 		                    				<field name="deposit" required='1'/>
 		                    				<field name="transport_charge" required='1'/>

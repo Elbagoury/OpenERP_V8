@@ -10,5 +10,8 @@
 		    <field name="name">Normal Sales</field>
 		</record>
     	
+    	<menuitem action="action_rental_invoice" id="menu_action_rental_invoice" parent="account.menu_finance_receivables" sequence='0'/>
+    	<menuitem action="account.action_invoice_tree1" id="account.menu_action_invoice_tree1" parent="account.menu_finance_receivables" sequence='1'/>
+    	
 	</data>
 </openerp>

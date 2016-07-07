@@ -23,7 +23,7 @@
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import openerp.addons.decimal_precision as dp
 from dateutil.relativedelta import relativedelta
@@ -39,6 +39,7 @@ class sale_rental(osv.osv):
         'state': fields.selection([('draft','Draft'),('confirmed','Confirmed'),('closed','closed')], 'Status', readonly=True),
         'rental_schedule': fields.selection([('monthly','Monthly'),('bi_monthly','Bi Monthly'),('quarterly','Quarterly'),('half_yearly','Half Yearly'),('yearly','Yearly')], 'Rental Schedule', readonly=True, states={'draft': [('readonly', False)]}),
         'next_run': fields.date('Next Run'),
+        'prepay': fields.integer('Prepay'),
         'note': fields.text('Note'),
     }
     
@@ -46,6 +47,7 @@ class sale_rental(osv.osv):
         'state': 'draft',
         'date': lambda *a: time.strftime('%Y-%m-%d'),
         'rental_schedule': 'monthly',
+        'prepay': 0,
     }
     
     def create(self, cr, uid, vals, context=None):
@@ -73,17 +75,110 @@ class sale_rental(osv.osv):
                     'price_unit': (line.deposit or 0)+(line.transport_charge or 0)*(line.product_qty or 0),
                     'discount': line.discount,
                 }))
-            date_invoice = time.strftime('%Y-%m-%d')
+            date_invoice = rental.date
             invoice_vals = invoice_obj.onchange_partner_id(cr, uid, [], 'out_invoice', rental.partner_id.id, date_invoice)['value']
             invoice_vals.update({
                 'partner_id': rental.partner_id and rental.partner_id.id or False,
                 'date_invoice': date_invoice,
                 'invoice_line': invoice_line,
                 'type': 'out_invoice',
+                'tgb_type': 'rental',
+                'rental_id': rental.id,
+                'is_first': True,
             })
             invoice_obj.create(cr, uid, invoice_vals, context)
             
             rental_date = datetime.strptime(rental.date,'%Y-%m-%d')
+            next_run = ''
+            if rental.rental_schedule=='monthly':
+                month = 1
+                if rental.prepay:
+                    month = month*rental.prepay
+                next_run = rental_date+relativedelta(months=month)
+                next_run = next_run.strftime('%Y-%m-%d')
+                self.write(cr, uid, [rental.id], {'next_run': next_run})
+            if rental.rental_schedule=='bi_monthly':
+                month = 2
+                if rental.prepay:
+                    month = month*rental.prepay
+                next_run = rental_date+relativedelta(months=month)
+                next_run = next_run.strftime('%Y-%m-%d')
+                self.write(cr, uid, [rental.id], {'next_run': next_run})
+            if rental.rental_schedule=='quarterly':
+                month = 3
+                if rental.prepay:
+                    month = month*rental.prepay
+                next_run = rental_date+relativedelta(months=month)
+                next_run = next_run.strftime('%Y-%m-%d')
+                self.write(cr, uid, [rental.id], {'next_run': next_run})
+            if rental.rental_schedule=='half_yearly':
+                month = 6
+                if rental.prepay:
+                    month = month*rental.prepay
+                next_run = rental_date+relativedelta(months=month)
+                next_run = next_run.strftime('%Y-%m-%d')
+                self.write(cr, uid, [rental.id], {'next_run': next_run})
+            if rental.rental_schedule=='yearly':
+                month = 12
+                if rental.prepay:
+                    month = month*rental.prepay
+                next_run = rental_date+relativedelta(months=month)
+                next_run = next_run.strftime('%Y-%m-%d')
+                self.write(cr, uid, [rental.id], {'next_run': next_run})
+            
+            
+            if rental.prepay:
+                invoice_line = []
+                for line in rental.rental_line:
+                    invoice_line.append((0,0,{
+                        'product_id': line.product_id and line.product_id.id or False,
+                        'name': line.name,
+                        'brand': line.brand,
+                        'model': line.model,
+                        'serial_no': line.serial_no,
+                        'year_of_manufacture': line.year_of_manufacture,
+                        'color': line.color,
+                        'dimension': line.dimension,
+                        'quantity': line.product_qty,
+                        'price_unit': line.price_unit*rental.prepay,
+                        'discount': line.discount,
+                    }))
+                date_invoice = rental.date
+                invoice_vals = invoice_obj.onchange_partner_id(cr, uid, [], 'out_invoice', rental.partner_id.id, date_invoice)['value']
+                rental_for_month = 'Rental for the month of '+rental.date[8:10]+rental.date[5:7]+rental.date[2:4]+'-'
+                if next_run:
+                    next_run = datetime.strptime(next_run,'%Y-%m-%d')+timedelta(days=-1)
+                    rental_for_month += next_run.strftime('%d%m%y')
+                invoice_vals.update({
+                    'partner_id': rental.partner_id and rental.partner_id.id or False,
+                    'date_invoice': date_invoice,
+                    'invoice_line': invoice_line,
+                    'type': 'out_invoice',
+                    'tgb_type': 'rental',
+                    'rental_id': rental.id,
+                    'rental_for_month': rental_for_month
+                })
+                invoice_obj.create(cr, uid, invoice_vals, context)
+            
+            
+        return self.write(cr, uid, ids, {'state': 'confirmed'})
+    
+    def bt_close(self, cr, uid, ids, context=None):
+        return self.write(cr, uid, ids, {'state': 'closed'})
+    
+    def create_invoice_for_sale_rental(self, cr, uid, context=None):
+        date_now = time.strftime('%Y-%m-%d')
+        invoice_obj = self.pool.get('account.invoice')
+        sql = '''
+            select id from sale_rental where state='confirmed' and next_run is not null and next_run<='%s'
+        '''%(date_now)
+        cr.execute(sql)
+        rental_ids = [r[0] for r in cr.fetchall()]
+        for rental in self.pool.get('sale.rental').browse(cr, uid, rental_ids):
+            
+            pre_run = rental.next_run
+            rental_date = datetime.strptime(rental.next_run,'%Y-%m-%d')
+            next_run = ''
             if rental.rental_schedule=='monthly':
                 next_run = rental_date+relativedelta(months=1)
                 next_run = next_run.strftime('%Y-%m-%d')
@@ -105,20 +200,11 @@ class sale_rental(osv.osv):
                 next_run = next_run.strftime('%Y-%m-%d')
                 self.write(cr, uid, [rental.id], {'next_run': next_run})
             
-        return self.write(cr, uid, ids, {'state': 'confirmed'})
-    
-    def bt_close(self, cr, uid, ids, context=None):
-        return self.write(cr, uid, ids, {'state': 'closed'})
-    
-    def create_invoice_for_sale_rental(self, cr, uid, context=None):
-        date_now = time.strftime('%Y-%m-%d')
-        invoice_obj = self.pool.get('account.invoice')
-        sql = '''
-            select id from sale_rental where state='confirmed' and next_run is not null and next_run<='%s'
-        '''%(date_now)
-        cr.execute(sql)
-        rental_ids = [r[0] for r in cr.fetchall()]
-        for rental in self.pool.get('sale.rental').browse(cr, uid, rental_ids):
+            rental_for_month = 'Rental for the month of '+pre_run[8:10]+pre_run[5:7]+pre_run[2:4]+'-'
+            if next_run:
+                next_run = datetime.strptime(next_run,'%Y-%m-%d')+timedelta(days=-1)
+                rental_for_month += next_run.strftime('%d%m%y')
+            
             invoice_line = []
             for line in rental.rental_line:
                 invoice_line.append((0,0,{
@@ -141,30 +227,11 @@ class sale_rental(osv.osv):
                 'date_invoice': date_invoice,
                 'invoice_line': invoice_line,
                 'type': 'out_invoice',
+                'tgb_type': 'rental',
+                'rental_id': rental.id,
+                'rental_for_month': rental_for_month
             })
             invoice_obj.create(cr, uid, invoice_vals, context)
-            
-            rental_date = datetime.strptime(rental.next_run,'%Y-%m-%d')
-            if rental.rental_schedule=='monthly':
-                next_run = rental_date+relativedelta(months=1)
-                next_run = next_run.strftime('%Y-%m-%d')
-                self.write(cr, uid, [rental.id], {'next_run': next_run})
-            if rental.rental_schedule=='bi_monthly':
-                next_run = rental_date+relativedelta(months=2)
-                next_run = next_run.strftime('%Y-%m-%d')
-                self.write(cr, uid, [rental.id], {'next_run': next_run})
-            if rental.rental_schedule=='quarterly':
-                next_run = rental_date+relativedelta(months=3)
-                next_run = next_run.strftime('%Y-%m-%d')
-                self.write(cr, uid, [rental.id], {'next_run': next_run})
-            if rental.rental_schedule=='half_yearly':
-                next_run = rental_date+relativedelta(months=6)
-                next_run = next_run.strftime('%Y-%m-%d')
-                self.write(cr, uid, [rental.id], {'next_run': next_run})
-            if rental.rental_schedule=='yearly':
-                next_run = rental_date+relativedelta(months=12)
-                next_run = next_run.strftime('%Y-%m-%d')
-                self.write(cr, uid, [rental.id], {'next_run': next_run})
             
         return True
     

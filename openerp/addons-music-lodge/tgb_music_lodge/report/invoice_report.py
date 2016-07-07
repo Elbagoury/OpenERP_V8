@@ -29,6 +29,7 @@ class Parser(report_sxw.rml_parse):
             'get_datenow': self.get_datenow,
             'convert_date_d_m_Y': self.convert_date_d_m_Y,
             'convert': self.convert,
+            'get_total_amount_paid': self.get_total_amount_paid,
         })
         
     def get_datenow(self):
@@ -42,5 +43,18 @@ class Parser(report_sxw.rml_parse):
     def convert(self, amount):
         amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
         return amount_text.upper()
+    
+    def get_total_amount_paid(self, o):
+        total = 0
+        if o.rental_id:
+            sql = '''
+                select id from account_invoice where rental_id=%s and state in ('open','paid')
+            '''%(o.rental_id.id)
+            self.cr.execute(sql)
+            invoice_ids = [r[0] for r in self.cr.fetchall()]
+            for invoice in self.pool.get('account.invoice').browse(self.cr, self.uid, invoice_ids):
+                for pay in invoice.payment_ids:
+                    total+=pay.credit or pay.debit
+        return total
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
