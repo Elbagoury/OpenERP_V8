@@ -73,7 +73,7 @@ class create_sale_order(osv.osv_memory):
                     'dimension': line.rental_line_id.dimension,
                     'product_uom_qty': line.product_qty,
                     'price_unit': line.price,
-                    'discount': line.rental_line_id.discount,
+#                     'discount': line.rental_line_id.discount,
                 }))
             sale_vals = sale_obj.onchange_partner_id(cr, uid, [], create_so.partner_id.id, context)['value']
             sale_vals.update({

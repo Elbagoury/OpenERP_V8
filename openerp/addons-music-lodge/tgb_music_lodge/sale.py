@@ -31,21 +31,33 @@ from dateutil.relativedelta import relativedelta
 class sale_rental(osv.osv):
     _name = "sale.rental"
     
+    def _get_prepaid_total(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for rental in self.browse(cr, uid, ids, context=context):
+            total = 0
+            for line in rental.rental_line:
+                total += line.price_unit*rental.prepay
+            res[rental.id] = total
+        return res
+    
     _columns = {
         'name': fields.char('Name', size=1024, readonly=True, states={'draft': [('readonly', False)]}),
         'partner_id': fields.many2one('res.partner', 'Customer', readonly=True, states={'draft': [('readonly', False)]}),
         'date': fields.date('Date', readonly=True, states={'draft': [('readonly', False)]}),
+        'date_commencing': fields.date('Commencing on', readonly=True, states={'draft': [('readonly', False)]}),
         'rental_line': fields.one2many('sale.rental.line', 'rental_id', 'Rental Line', readonly=True, states={'draft': [('readonly', False)]}),
         'state': fields.selection([('draft','Draft'),('confirmed','Confirmed'),('closed','closed')], 'Status', readonly=True),
         'rental_schedule': fields.selection([('monthly','Monthly'),('bi_monthly','Bi Monthly'),('quarterly','Quarterly'),('half_yearly','Half Yearly'),('yearly','Yearly')], 'Rental Schedule', readonly=True, states={'draft': [('readonly', False)]}),
         'next_run': fields.date('Next Run'),
-        'prepay': fields.integer('Prepay'),
+        'prepay': fields.integer('Prepaid Month(s)'),
         'note': fields.text('Note'),
+        'prepaid_total': fields.function(_get_prepaid_total, digits_compute=dp.get_precision('Account'), string='Prepaid Total'),
     }
     
     _defaults = {
         'state': 'draft',
         'date': lambda *a: time.strftime('%Y-%m-%d'),
+        'date_commencing': lambda *a: time.strftime('%Y-%m-%d'),
         'rental_schedule': 'monthly',
         'prepay': 0,
     }
@@ -73,7 +85,7 @@ class sale_rental(osv.osv):
                     'dimension': line.dimension,
                     'quantity': 1,
                     'price_unit': (line.deposit or 0)+(line.transport_charge or 0)*(line.product_qty or 0),
-                    'discount': line.discount,
+                    'discount_amount': line.discount,
                 }))
             date_invoice = rental.date
             invoice_vals = invoice_obj.onchange_partner_id(cr, uid, [], 'out_invoice', rental.partner_id.id, date_invoice)['value']
@@ -141,7 +153,7 @@ class sale_rental(osv.osv):
                         'dimension': line.dimension,
                         'quantity': line.product_qty,
                         'price_unit': line.price_unit*rental.prepay,
-                        'discount': line.discount,
+                        'discount_amount': line.discount,
                     }))
                 date_invoice = rental.date
                 invoice_vals = invoice_obj.onchange_partner_id(cr, uid, [], 'out_invoice', rental.partner_id.id, date_invoice)['value']
@@ -156,7 +168,8 @@ class sale_rental(osv.osv):
                     'type': 'out_invoice',
                     'tgb_type': 'rental',
                     'rental_id': rental.id,
-                    'rental_for_month': rental_for_month
+                    'rental_for_month': rental_for_month,
+                    'is_first_prepay': True,
                 })
                 invoice_obj.create(cr, uid, invoice_vals, context)
             
@@ -218,7 +231,7 @@ class sale_rental(osv.osv):
                     'dimension': line.dimension,
                     'quantity': line.product_qty,
                     'price_unit': line.price_unit,
-                    'discount': line.discount,
+                    'discount_amount': line.discount,
                 }))
             date_invoice = time.strftime('%Y-%m-%d')
             invoice_vals = invoice_obj.onchange_partner_id(cr, uid, [], 'out_invoice', rental.partner_id.id, date_invoice)['value']
@@ -254,7 +267,7 @@ class sale_rental_line(osv.osv):
         'year_of_manufacture': fields.char('Year of Manufacture', size=1024),
         'color': fields.char('Color', size=1024),
         'dimension': fields.char('Dimension', size=1024),
-        'discount': fields.float('Discount (%)', digits_compute= dp.get_precision('Discount')),
+        'discount': fields.float('Discount', digits_compute= dp.get_precision('Discount')),
     }
     
     _defaults = {

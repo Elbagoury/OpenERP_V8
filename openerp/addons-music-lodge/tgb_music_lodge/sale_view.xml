@@ -65,6 +65,7 @@
 	                    <group col="4" colspan="2">
 		                    <field name="partner_id" required='1' domain="[('customer','=',True)]"/>
 		                    <field name="date" required='1'/>
+		                    <field name="date_commencing" required='1'/>
 		                    <field name="rental_schedule" required='1'/>
 		                    <field name="prepay" invisible='0'/>
 		                    <field name="next_run" invisible='0'/>
@@ -89,7 +90,11 @@
 		                    				<field name="discount"/>
 		                    			</tree>
 		                    		</field>
+		                    		<group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+		                                <field name="prepaid_total"/>
+		                            </group>
 		                    	</group>
+		                    	<div class="oe_clear"/>
 		                    	<field name="note" class="oe_inline" placeholder="Other Information..."/>
 	                    	</page>
 	                    </notebook>
@@ -105,6 +110,7 @@
             <field name="view_id" ref="view_sale_rental_tree"/>
             <field name="search_view_id" ref="view_sale_rental_filter"/>
             <field name="context">{}</field>
-        </record>    	
+        </record>
+        
     </data>
 </openerp>
