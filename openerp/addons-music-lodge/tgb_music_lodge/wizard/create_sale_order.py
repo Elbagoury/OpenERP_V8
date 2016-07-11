@@ -39,6 +39,14 @@ class create_sale_order(osv.osv_memory):
             rental = self.pool.get('sale.rental').browse(cr, uid, rental_id)
             create_so_line=[]
             for line in rental.rental_line:
+                sql = '''
+                    select case when sum(amount_total)!=0 then sum(amount_total) else 0 end total
+                        from account_invoice
+                        
+                        where state in ('open','paid') and rental_id=%s and tgb_type='rental'
+                '''%(rental.id)
+                cr.execute(sql)
+                rental_paid = cr.fetchone()
                 create_so_line.append((0,0,{
                     'rental_line_id': line.id,
                     'product_id': line.product_id and line.product_id.id or False,
@@ -48,6 +56,7 @@ class create_sale_order(osv.osv_memory):
                     'transport_charge': line.transport_charge,
                     'cost_price': line.product_id and line.product_id.standard_price or 0,
                     'sale_price': line.product_id and line.product_id.list_price or 0,
+                    'rental_paid': rental_paid and rental_paid[0] or 0,
                 }))
             res.update({'partner_id':rental.partner_id and rental.partner_id.id or fields,'create_so_line': create_so_line})
         return res
@@ -99,6 +108,7 @@ class create_sale_order_line(osv.osv_memory):
         'transport_charge': fields.float('Transport Charge', digits_compute= dp.get_precision('Product Price')),
         'cost_price': fields.float('Cost Price', digits_compute= dp.get_precision('Product Price')),
         'sale_price': fields.float('Sale Price', digits_compute= dp.get_precision('Product Price')),
+        'rental_paid': fields.float('Sale Price', digits_compute= dp.get_precision('Rental Paid')),
         'price': fields.float('PRICE', digits_compute= dp.get_precision('Product Price')),
     }
     

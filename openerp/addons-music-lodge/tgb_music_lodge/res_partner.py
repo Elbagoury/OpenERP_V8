@@ -39,6 +39,7 @@ class res_partner(osv.osv):
     _columns = {
         'nric': fields.char('NRIC',size=1024),
         'hp': fields.char('HP',size=1024),
+        'office_no': fields.char('Office NO',size=1024),
     }
 
 res_partner()

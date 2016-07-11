@@ -12,12 +12,13 @@
                 		<field name="create_so_line" nolabel='1'>
                 			<tree editable='bottom'>
                 				<field name="product_id" readonly='1'/>
-                				<field name="product_qty" readonly='1'/>
+                				<field name="product_qty" invisible='1'/>
                 				<field name="price_unit" readonly='1'/>
                 				<field name="deposit" readonly='1'/>
                 				<field name="transport_charge" readonly='1'/>
-                				<field name="cost_price" readonly='1'/>
+                				<field name="cost_price" invisible='1'/>
                 				<field name="sale_price" readonly='1'/>
+                				<field name="rental_paid" readonly='1'/>
                 				<field name="price" required='1'/>
                 				<field name="rental_line_id" invisible='1'/>
                 			</tree>

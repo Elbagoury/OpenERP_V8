@@ -8,7 +8,9 @@
             <field name="arch" type="xml">
             	<xpath expr="//field[@name='website']" position="after">
             		<field name="nric"/>
-            		<field name="hp"/>
+            	</xpath>
+            	<xpath expr="//field[@name='mobile']" position="after">
+            		<field name="office_no"/>
             	</xpath>
             </field>
         </record>
