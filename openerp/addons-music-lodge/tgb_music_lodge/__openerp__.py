@@ -24,7 +24,7 @@
     'version': '1.0',
     'category': 'TGB',
     'sequence': 1,
-    'depends': ['sale','account','report_aeroo'],
+    'depends': ['sale','account','account_accountant','account_voucher','report_aeroo'],
     'data': [
         'report/rental_agreement_report_view.xml',
         'report/invoice_report_view.xml',
