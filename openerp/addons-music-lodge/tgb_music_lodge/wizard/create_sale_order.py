@@ -108,7 +108,7 @@ class create_sale_order_line(osv.osv_memory):
         'transport_charge': fields.float('Transport Charge', digits_compute= dp.get_precision('Product Price')),
         'cost_price': fields.float('Cost Price', digits_compute= dp.get_precision('Product Price')),
         'sale_price': fields.float('Sale Price', digits_compute= dp.get_precision('Product Price')),
-        'rental_paid': fields.float('Sale Price', digits_compute= dp.get_precision('Rental Paid')),
+        'rental_paid': fields.float('Rental Paid', digits_compute= dp.get_precision('Product Price')),
         'price': fields.float('PRICE', digits_compute= dp.get_precision('Product Price')),
     }
     
