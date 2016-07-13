@@ -53,7 +53,7 @@
                     		<field name="office"/>
                     		<field name="self_collection"/>
                     		<newline/>
-                            <field name="project_id"/>
+                            <field name="project_id" on_change="onchange_project_id(project_id)"/>
                             <field name="wo_no"/>
                             <field name="sale_order_id" on_change="on_change_quotation(sale_order_id)" invisible="1"/>
                             <field name="res_user_id" invisible='1'/>

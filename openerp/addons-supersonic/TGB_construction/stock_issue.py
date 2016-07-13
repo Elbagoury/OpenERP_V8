@@ -110,7 +110,11 @@ class stock_issue(osv.osv):
     def on_change_quotation(self,cr,uid,ids,sale_order_id,context=None):
         return {'value':{'project_id':self.pool.get('sale.order').browse(cr,uid,sale_order_id).project_id.id}}
 
-
+    def onchange_project_id(self, cr, uid, ids, project_id=False, context=None):
+        vals = {}
+        if project_id:
+            vals['wo_no'] = self.pool.get('project.project').browse(cr,uid,project_id).project_code
+        return {'value': vals}
 
     _columns = {
         'project_id':fields.many2one('project.project','From Project', domain=[('state','=','open')], required = True,),
