@@ -69,6 +69,7 @@
                                 domain="[('customer', '=', True)]"/>
                             <field name="fiscal_position" options="{'no_create': True}" />
                             <field name="stool"/>
+                            <field name="com_stool"/>
 		            		<field name="heater"/>
 		            		<field name="delivery"/>
                         </group>
@@ -94,6 +95,10 @@
                                   groups="account.group_account_user"/>
                             </div>
                         </group>
+                    </group>
+                    <group col="4" colspan="2">
+	                    <label for="signature"/>
+						<h2><field name="signature" widget="signature"/></h2>
                     </group>
                     <field name="sent" invisible="1"/>
                     <notebook colspan="4">
@@ -263,5 +268,18 @@
             <field name="view_id" ref="rental_invoice_form"/>
             <field name="act_window_id" ref="action_rental_invoice"/>
         </record>
+        
+        <record id="view_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='fiscal_position']" position="after">
+            		<label for="signature"/>
+					<h2><field name="signature" widget="signature"/></h2>
+            	</xpath>
+            </field>
+        </record>
+        
     </data>
 </openerp>

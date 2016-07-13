@@ -52,6 +52,8 @@ class sale_rental(osv.osv):
         'prepay': fields.integer('Prepaid Month(s)'),
         'note': fields.text('Note'),
         'prepaid_total': fields.function(_get_prepaid_total, digits_compute=dp.get_precision('Account'), string='Prepaid Total'),
+        'event_rental': fields.boolean('Event Rental'),
+        'signature': fields.binary('Signature'),
     }
     
     _defaults = {
@@ -290,6 +292,15 @@ class sale_rental_line(osv.osv):
         return {'value': vals}
     
 sale_rental_line()
+
+class sale_order(osv.osv):
+    _inherit = "sale.order"
+    
+    _columns = {
+        'signature': fields.binary('Signature'),
+    }
+    
+sale_order()
 
 class sale_order_line(osv.osv):
     _inherit = "sale.order.line"

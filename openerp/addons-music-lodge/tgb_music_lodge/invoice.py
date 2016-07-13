@@ -32,7 +32,8 @@ class account_invoice(osv.osv):
     _inherit = "account.invoice"
     
     _columns = {
-        'stool': fields.boolean('Stool'),
+        'stool': fields.boolean('Adjst Stool'),
+        'com_stool': fields.boolean('Com Stool'),
         'heater': fields.boolean('Heater'),
         'delivery': fields.boolean('Delivery'),
         'year_guarantee': fields.integer('Year Guarantee'),
@@ -42,10 +43,12 @@ class account_invoice(osv.osv):
         'rental_for_month': fields.char('Rental for the month', size=1024),
         'is_first': fields.boolean('Is First'),
         'is_first_prepay': fields.boolean('Is First Prepay'),
+        'signature': fields.binary('Signature'),
     }
     
     _defaults = {
         'comment': 'Goods sold are not returnable & exchangeable\nDeposit is not refundable in any circumstance.',
+        'heater': True,
     }
     
 account_invoice()
