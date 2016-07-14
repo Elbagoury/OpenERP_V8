@@ -58,12 +58,13 @@ class create_sale_order(osv.osv_memory):
                     'sale_price': line.product_id and line.product_id.list_price or 0,
                     'rental_paid': rental_paid and rental_paid[0] or 0,
                 }))
-            res.update({'partner_id':rental.partner_id and rental.partner_id.id or fields,'create_so_line': create_so_line})
+            res.update({'partner_id':rental.partner_id and rental.partner_id.id or fields,'create_so_line': create_so_line,'rental_id': rental_id})
         return res
     
     _columns = {
         'partner_id': fields.many2one('res.partner', 'Customer'),
         'create_so_line': fields.one2many('create.sale.order.line', 'create_so_id','Line'),
+        'rental_id': fields.many2one('sale.rental', 'Rental'),
     }
     
     def bt_create_so(self, cr, uid, ids, context=None):
@@ -89,6 +90,7 @@ class create_sale_order(osv.osv_memory):
                 'partner_id': create_so.partner_id.id,
                 'order_line': sale_line,
                 'date_order': time.strftime('%Y-%m-%d %H:%M:%S'),
+                'rental_id': create_so.rental_id.id,
             })
             sale_obj.create(cr, uid, sale_vals)
         return True

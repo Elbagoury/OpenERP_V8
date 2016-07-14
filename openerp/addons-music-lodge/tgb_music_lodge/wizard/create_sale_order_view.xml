@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Create Sales Order" version="7.0">
                 	<field name="partner_id" invisible='1'/>
+                	<field name="rental_id" invisible='1'/>
                 	<group col='4' colspan='2'>
                 		<field name="create_so_line" nolabel='1'>
                 			<tree editable='bottom'>

@@ -298,7 +298,26 @@ class sale_order(osv.osv):
     
     _columns = {
         'signature': fields.binary('Signature'),
+        'rental_id': fields.many2one('sale.rental', 'Rental'),
     }
+    
+    def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
+        vals = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context=context)
+        if order.rental_id:
+            vals.update({
+                'rental_id': order.rental_id.id,
+                'tgb_type': 'piano_sale',
+            })
+        return vals
+    
+    def _prepare_invoice(self, cr, uid, order, lines, context=None):
+        res = super(sale_order, self)._prepare_invoice(cr, uid, order, lines, context)
+        if order.rental_id:
+            res.update({
+                'rental_id': order.rental_id.id,
+                'tgb_type': 'piano_sale',
+            })
+        return res
     
 sale_order()
 
@@ -315,5 +334,22 @@ class sale_order_line(osv.osv):
     }
     
 sale_order_line()
+
+class procurement_order(osv.osv):
+    _inherit = "procurement.order"
+    _columns = {
+        'rental_id': fields.many2one('sale.rental', 'Rental'),
+    }
+    
+    def _run_move_create(self, cr, uid, procurement, context=None):
+        res = super(procurement_order, self)._run_move_create(cr, uid, procurement, context=context)
+        if procurement.rental_id:
+            res.update({
+                'rental_id': procurement.rental_id.id,
+                'tgb_type': 'piano_sale',
+            })
+        return res
+
+procurement_order()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

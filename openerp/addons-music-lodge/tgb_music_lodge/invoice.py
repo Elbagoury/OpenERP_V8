@@ -38,7 +38,7 @@ class account_invoice(osv.osv):
         'delivery': fields.boolean('Delivery'),
         'year_guarantee': fields.integer('Year Guarantee'),
         'free_tuning': fields.boolean('Free Tuning (Weekday Only)'),
-        'tgb_type': fields.selection([('rental','Rental')],'TGB Type'),
+        'tgb_type': fields.selection([('rental','Rental'),('piano_sale','Piano Sale')],'TGB Type'),
         'rental_id': fields.many2one('sale.rental', 'Rental'),
         'rental_for_month': fields.char('Rental for the month', size=1024),
         'is_first': fields.boolean('Is First'),
