@@ -10,9 +10,10 @@
             	</xpath>
             	<xpath expr="//button[@name='print_quotation']" position="replace">
             	</xpath>
-            	<!--<xpath expr="//field[@name='partner_ref']" position="after">
-            		<field name="terms"/>
-            	</xpath>-->
+            	<xpath expr="//field[@name='partner_ref']" position="after">
+            		<field name="project_title"/>
+            		<field name="work_no"/>
+            	</xpath>
             	<xpath expr="//field[@name='notes']" position="replace">
             		<group>
             			<field name="terms"/>
@@ -22,6 +23,7 @@
             	</xpath>
             	<xpath expr="//sheet/group" position="after">
             		<group col='4' colspan='4'>
+            			<field name="tgb_re" nolabel='1' placeholder="RE..." colspan='4'/>
             			<field name="area_re" nolabel='1' placeholder="RE..." colspan='4'/>
             			<field name="notes" nolabel='1' placeholder="Terms and conditions..." colspan='4'/>
             		</group>

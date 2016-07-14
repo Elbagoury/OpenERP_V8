@@ -14,6 +14,9 @@ class purchase_order(osv.osv):
         'warranty':fields.char('Warranty', size=1024),
         'area_re':fields.text('area RE'),
         'terms':fields.char('Terms'),
+        'tgb_re':fields.char('RE', size=1024),
+        'project_title':fields.char('Project Title', size=1024),
+        'work_no':fields.char('Work No', size=1024),
     }
     
     _defaults = {
@@ -22,6 +25,7 @@ class purchase_order(osv.osv):
         'delivery': 'To follow strictly to our work schedule.',
         'warranty': 'To provide 12 months warranty from the date of our successful testing and commissioning.',
         'notes': '''Not withstanding any information and technical particulars submitted.  All materials / equipment offer shall comply fully to the standard code of practice, Consultants tender specification for this project. Any equipment not complied to specification shall be made fully compliance at your own cost.''',
+        'tgb_re': '''RE: MAINTENANCE OF CPA/EMS AT EMPRESS PLACE, SINGAPORE.'''
     }
     
     def onchange_partner_ref_date(self, cr, uid, ids, partner_ref=False, date_order=False, context=None):
