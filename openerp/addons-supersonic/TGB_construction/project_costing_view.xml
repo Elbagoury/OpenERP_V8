@@ -33,13 +33,13 @@
                             <field name="total_grand"/>
                         </group>
                         <notebook>
-                            <page string="Material Costs">
+                            <page string="Material">
                                 <field name="stock_issue_ids"/>
                                 <group colspan="8" col="4">
                                     <field name="total_material_cost"/>
                                 </group>
                             </page>
-                            <page string="HRM Costs">
+                            <page string="HR">
                                 <field name="hr_cost_ids">
                                     <tree>
                                         <field name="employee_id"/>
@@ -52,24 +52,36 @@
                                     <field name="total_hr_cost"/>
                                 </group>
                             </page>
-                            <page string="Others Costs">
+                            <page string="Equipment">
+                                <field name="equipment_ids">
+                                    <tree editable="1">
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="date"/>
+                                    </tree>
+                                </field>
+                                <group colspan="8" col="4">
+                                    <field name="total_equipment_cost"/>
+                                </group>
+                            </page>
+                            <page string="Miscellaneous">
                                 <field name="others_cost_ids">
                                     <tree editable="1">
-                                            <field name="name"/>
-                                            <field name="amount"/>
-                                            <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="date"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">
                                     <field name="total_others_cost"/>
                                 </group>
                             </page>
-                            <page string="Sub-Contractor Claim">
+                            <page string="Sub-Contractor">
                                 <field name="sub_contractor_ids">
                                     <tree editable="1">
-                                            <field name="name"/>
-                                            <field name="amount"/>
-                                            <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="date"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">

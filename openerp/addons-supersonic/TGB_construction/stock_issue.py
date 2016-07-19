@@ -140,6 +140,7 @@ class stock_issue(osv.osv):
         'stock_issue_detail_ids':fields.one2many('stock.issue.detail','stock_issue_id','Request Detail'),
         'require_stock_return':fields.selection([('yes','Yes'), ('no','No')], 'Require Stock Return',),
         'project_costing_id':fields.many2one('project.costing','Project Costing id'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
         'project_costing_id2':fields.many2one('project.costing','Project Costing id'),
         'state':fields.selection([
             ('draft','Draft'),

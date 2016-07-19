@@ -39,6 +39,7 @@ class project_costing(osv.osv):
             total_grand = 0
             total_hr_cost = 0
             total_sub_contractor=0
+            total_equipment_cost = 0
             for material in project.stock_issue_ids:
                 for detail in material.stock_issue_detail_ids:
                     if detail.product_id:
@@ -50,6 +51,8 @@ class project_costing(osv.osv):
 
             for sub in project.sub_contractor_ids:
                 total_sub_contractor+= sub.amount
+            for equipment in project.equipment_ids:
+                total_equipment_cost += equipment.amount
             total_grand = total_material_cost+total_others_cost+total_hr_cost+total_sub_contractor
             res[project.id] = {
                 'total_material_cost': total_material_cost,
@@ -57,6 +60,7 @@ class project_costing(osv.osv):
                 'total_hr_cost': total_hr_cost,
                 'total_grand': total_grand,
                 'total_sub_contractor':total_sub_contractor,
+                'total_equipment_cost': total_equipment_cost,
             }
         return res
 
@@ -69,6 +73,7 @@ class project_costing(osv.osv):
         'others_cost_ids':fields.one2many('project.other.cost','project_costing_id3', 'Other Costs'),
         'sub_contractor_ids':fields.one2many('project.sub.contractor','project_costing_id4', 'Sub Contractor'),
         'hr_cost_ids':fields.one2many('project.hr.cost','project_costing_id', 'HR Costs'),
+        'equipment_ids':fields.one2many('project.equipment','project_costing_id', 'Equipment'),
         'si_voucher_no':fields.char('Costing number',size=20),
         'res_user_id':fields.many2one('res.users','Manage By'),
         'reference_no':fields.char('Reference No.',size=20),
@@ -83,7 +88,7 @@ class project_costing(osv.osv):
                                           multi='grand', help="The amount of overview", track_visibility='always'),
 
         'total_others_cost':fields.function(_amount_grand_all, digits_compute=dp.get_precision('Account'),
-                                          string='Total Others Cost',
+                                          string='Total Miscellaneous Cost',
                                           multi='grand', help="The amount of overview", track_visibility='always'),
 
         'total_sub_contractor':fields.function(_amount_grand_all, digits_compute=dp.get_precision('Account'),
@@ -94,6 +99,9 @@ class project_costing(osv.osv):
                                           string='Total HR Cost',
                                           multi='grand', help="The amount of overview", track_visibility='always'),
 
+        'total_equipment_cost':fields.function(_amount_grand_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Equipment Cost',
+                                          multi='grand', help="The amount of overview", track_visibility='always'),
 
         'total_grand':fields.function(_amount_grand_all, digits_compute=dp.get_precision('Account'),
                                           string='Costing Total',
@@ -111,7 +119,8 @@ class project_other_costing(osv.osv):
     _columns = {
         'name':fields.char('Name',size=255),
         'amount':fields.float('Amount', digits_compute= dp.get_precision('Account'),),
-        'project_costing_id3':fields.many2one('project.costing','Project Costing id'),
+        'project_costing_id3':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
         'date':fields.date('Date'),
     }
     _defaults={
@@ -124,7 +133,8 @@ class project_sub_contractor(osv.osv):
     _columns = {
         'name':fields.char('Name',size=255),
         'amount':fields.float('Amount', digits_compute= dp.get_precision('Account'),),
-        'project_costing_id4':fields.many2one('project.costing','Project Costing id'),
+        'project_costing_id4':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
         'date':fields.date('Date'),
     }
     _defaults={
@@ -138,7 +148,8 @@ class project_hr_costing(osv.osv):
     _columns = {
         'name':fields.char('Name',size=255),
         'amount':fields.float('Amount',),
-        'project_costing_id':fields.many2one('project.costing','Project Costing id'),
+        'project_costing_id':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
         'employee_id':fields.many2one('hr.employee','Employee',required=True),
         'timesheet_id':fields.many2one('hr_timesheet_sheet.sheet','Timesheet'),
         'note':fields.char('Note',size=255),
@@ -146,7 +157,19 @@ class project_hr_costing(osv.osv):
 
     }
 
+class project_equipment(osv.osv):
+    _name = 'project.equipment'
 
+    _columns = {
+        'name':fields.char('Name',size=255),
+        'amount':fields.float('Amount', digits_compute= dp.get_precision('Account'),),
+        'project_costing_id':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
+        'date':fields.date('Date'),
+    }
+    _defaults={
+        'date':fields.datetime.now,
+    }
 
 
 

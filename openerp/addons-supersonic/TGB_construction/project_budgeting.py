@@ -48,12 +48,98 @@ class project_budgeting(osv.osv):
             }
         return res
 
+    def _amount_cost_all(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for project in self.browse(cr, uid, ids, context=context):
+            total_material_cost = 0
+            total_others_cost = 0
+            total_hr_cost = 0
+            total_sub_contractor=0
+            total_equipment_cost = 0
+            for material in project.stock_issue_ids:
+                for detail in material.stock_issue_detail_ids:
+                    if detail.product_id:
+                        total_material_cost+= detail.product_id.standard_price*detail.issue_qty
+            for hr_cost in project.hr_cost_ids:
+                total_hr_cost+= hr_cost.amount
+            for other in project.others_cost_ids:
+                total_others_cost+= other.amount
 
+            for sub in project.sub_contractor_ids:
+                total_sub_contractor+= sub.amount
+            for equipment in project.equipment_ids:
+                total_equipment_cost += equipment.amount
+            res[project.id] = {
+                'total_material_cost': total_material_cost,
+                'total_others_cost': total_others_cost,
+                'total_hr_cost': total_hr_cost,
+                'total_sub_contractor':total_sub_contractor,
+                'total_equipment_cost': total_equipment_cost,
+            }
+        return res
+    
+    def _amount_costing_all(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        costing_obj = self.pool.get('project.costing')
+        for project in self.browse(cr, uid, ids, context=context):
+            costing_stock_issue_ids = []
+            costing_total_material_cost = 0
+            costing_others_cost_ids = []
+            costing_total_others_cost = 0
+            costing_sub_contractor_ids = []
+            costing_total_sub_contractor = 0
+            costing_hr_cost_ids = []
+            costing_total_hr_cost = 0
+            costing_equipment_ids = []
+            costing_total_equipment_cost = 0
+            
+            costing_ids = costing_obj.search(cr, uid, [('project_id','=',project.project_id.id)], order='id desc', limit=1)
+            for costing in costing_obj.browse(cr, uid, costing_ids):
+                for material in costing.stock_issue_ids:
+                    costing_stock_issue_ids.append(material.id)
+                    for detail in material.stock_issue_detail_ids:
+                        if detail.product_id:
+                            costing_total_material_cost += detail.product_id.standard_price*detail.issue_qty
+                
+                for other in costing.others_cost_ids:
+                    costing_others_cost_ids.append(other.id)
+                    costing_total_others_cost += other.amount
+                
+                for sub in costing.sub_contractor_ids:
+                    costing_sub_contractor_ids.append(sub.id)
+                    costing_total_sub_contractor += sub.amount
+                
+                for hr_cost in costing.hr_cost_ids:
+                    costing_hr_cost_ids.append(hr_cost.id)
+                    costing_total_hr_cost += hr_cost.amount
+                
+                for equipment in costing.equipment_ids:
+                    costing_equipment_ids.append(equipment.id)
+                    costing_total_equipment_cost += equipment.amount
+                
+            res[project.id] = {
+                'costing_stock_issue_ids': costing_stock_issue_ids,
+                'costing_total_material_cost': costing_total_material_cost,
+                'costing_others_cost_ids': costing_others_cost_ids,
+                'costing_total_others_cost': costing_total_others_cost,
+                'costing_sub_contractor_ids': costing_sub_contractor_ids,
+                'costing_total_sub_contractor': costing_total_sub_contractor,
+                'costing_hr_cost_ids': costing_hr_cost_ids,
+                'costing_total_hr_cost': costing_total_hr_cost,
+                'costing_equipment_ids': costing_equipment_ids,
+                'costing_total_equipment_cost': costing_total_equipment_cost,
+            }
+        return res
 
     _columns = {
         'sale_order_id':fields.many2one('sale.order','Project'),
         'project_id':fields.many2one('project.project','Project'),
         'project_budgeting_detail_ids':fields.one2many('project.budgeting.detail','project_budgeting_id', 'Project Budgeting Detail'),
+        'stock_issue_ids':fields.one2many('stock.issue','project_budgeting_id', 'Material Costs'),
+        'others_cost_ids':fields.one2many('project.other.cost','project_budgeting_id', 'Other Costs'),
+        'sub_contractor_ids':fields.one2many('project.sub.contractor','project_budgeting_id', 'Sub Contractor'),
+        'hr_cost_ids':fields.one2many('project.hr.cost','project_budgeting_id', 'HR Costs'),
+        'equipment_ids':fields.one2many('project.equipment','project_budgeting_id', 'Equipment'),
         'si_voucher_no':fields.char('Number',size=20),
         'res_user_id':fields.many2one('res.users','Manage By'),
         'state':fields.selection([
@@ -69,11 +155,70 @@ class project_budgeting(osv.osv):
         'total_profit':fields.function(_amount_grand_all, digits_compute=dp.get_precision('Account'),
                                           string='Total Profit',
                                           multi='grand', help="The amount of overview", track_visibility='always'),
+                
+        'total_material_cost':fields.function(_amount_cost_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Material Cost',
+                                          multi='cost', help="The amount of overview", track_visibility='always'),
 
+        'total_others_cost':fields.function(_amount_cost_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Miscellaneous Cost',
+                                          multi='cost', help="The amount of overview", track_visibility='always'),
+
+        'total_sub_contractor':fields.function(_amount_cost_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Sub-Contractor',
+                                          multi='cost', help="The amount of overview", track_visibility='always'),
+
+        'total_hr_cost':fields.function(_amount_cost_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total HR Cost',
+                                          multi='cost', help="The amount of overview", track_visibility='always'),
+
+        'total_equipment_cost':fields.function(_amount_cost_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Equipment Cost',
+                                          multi='cost', help="The amount of overview", track_visibility='always'),
+        
+        'costing_stock_issue_ids': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Material Costs', type="many2many", relation="stock.issue",
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_total_material_cost': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Material Cost',
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_others_cost_ids': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Other Costs', type="many2many", relation="project.other.cost",
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_total_others_cost': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Miscellaneous Cost',
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_sub_contractor_ids': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Sub Contractor', type="many2many", relation="project.sub.contractor",
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_total_sub_contractor': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Sub-Contractor',
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_hr_cost_ids': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='HR Costs', type="many2many", relation="project.hr.cost",
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_total_hr_cost': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total HR Cost',
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_equipment_ids': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Equipment Costs', type="many2many", relation="project.equipment",
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
+        'costing_total_equipment_cost': fields.function(_amount_costing_all, digits_compute=dp.get_precision('Account'),
+                                          string='Total Equipment Cost',
+                                          multi='costing', help="The amount of overview", track_visibility='always'),
     }
     _defaults = {
         'state':'opening',
     }
+    
+    def onchange_project_id(self, cr, uid, ids, project_id=False, context=None):
+        vals = {}
+        if project_id:
+            project = self.pool.get('project.project').browse(cr, uid, project_id)
+            vals.update({
+                'si_voucher_no': project.project_code
+            })
+        return {'value': vals}
 
 project_budgeting()
 
