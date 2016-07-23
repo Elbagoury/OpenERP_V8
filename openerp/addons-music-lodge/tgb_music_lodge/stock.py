@@ -55,4 +55,22 @@ class stock_picking(osv.osv):
     
 stock_picking()
 
+class stock_move(osv.osv):
+    _inherit = "stock.move"
+    
+    _columns = {
+        'model': fields.char('Model', size=1024),
+        'serial_no': fields.char('Serial No', size=1024),
+    }
+    
+    def _get_invoice_line_vals(self, cr, uid, move, partner, inv_type, context=None):
+        res = super(stock_move, self)._get_invoice_line_vals(cr, uid, move, partner, inv_type, context)
+        res.update({
+            'model': move.model,
+            'serial_no': move.serial_no,
+        })
+        return res
+    
+stock_move()
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

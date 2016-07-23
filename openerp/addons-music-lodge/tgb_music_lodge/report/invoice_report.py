@@ -29,6 +29,7 @@ class Parser(report_sxw.rml_parse):
             'get_datenow': self.get_datenow,
             'convert_date_d_m_Y': self.convert_date_d_m_Y,
             'convert': self.convert,
+            'get_name_invoice': self.get_name_invoice,
             'get_total_amount_paid': self.get_total_amount_paid,
         })
         
@@ -43,6 +44,14 @@ class Parser(report_sxw.rml_parse):
     def convert(self, amount):
         amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
         return amount_text.upper()
+    
+    def get_name_invoice(self, o):
+        name = ''
+        if o.tgb_type=='rental':
+            name = 'RENTAL '
+        if o.tgb_type=='piano_sale':
+            name = 'PIANO SALE '
+        return name
     
     def get_total_amount_paid(self, o):
         total = 0

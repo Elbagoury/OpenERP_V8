@@ -43,7 +43,8 @@ class account_invoice(osv.osv):
         'rental_for_month': fields.char('Rental for the month', size=1024),
         'is_first': fields.boolean('Is First'),
         'is_first_prepay': fields.boolean('Is First Prepay'),
-        'signature': fields.binary('Signature'),
+        'signature': fields.binary('Customer Signature'),
+        'company_signature': fields.binary('Company Signature'),
     }
     
     _defaults = {
@@ -81,6 +82,19 @@ class account_invoice_line(osv.osv):
             self.price_subtotal = self.invoice_id.currency_id.round(self.price_subtotal)
     price_subtotal = fields.Float(string='Amount', digits= dp.get_precision('Account'),
         store=True, readonly=True, compute='_compute_price')
+    
+    @api.multi
+    def product_id_change(self, product, uom_id, qty=0, name='', type='out_invoice',
+            partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
+            company_id=None):
+        res = super(account_invoice_line, self).product_id_change(product, uom_id, qty, name, type,partner_id, fposition_id, price_unit, currency_id,company_id)
+        if product:
+            product = self.env['product.product'].browse(product)
+            res['value'].update({
+                'model': product.model,
+                'serial_no': product.serial_no,
+            })
+        return res
     
 account_invoice_line()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

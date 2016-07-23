@@ -36,6 +36,7 @@
                 <header>
                     <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" groups="base.group_user"/>
                     <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',False), ('state', '!=', 'open')]}" groups="base.group_user"/>
+                    <button name="invoice_print" string="Print Invoice" type="object" groups="base.group_user"/>
                     <button name="invoice_open" states="draft" string="Validate" class="oe_highlight" groups="base.group_user"/>
                     <button name="invoice_open" states="proforma2" string="Validate" groups="base.group_user"/>
                     <button name="invoice_pay_customer" type="object" string="Register Payment"
@@ -96,10 +97,6 @@
                             </div>
                         </group>
                     </group>
-                    <group col="4" colspan="2">
-	                    <label for="signature"/>
-						<h2><field name="signature" widget="signature"/></h2>
-                    </group>
                     <field name="sent" invisible="1"/>
                     <notebook colspan="4">
                         <page string="Invoice Lines">
@@ -152,6 +149,12 @@
                                 <label string="Remarks"/>
                             </div>
                             <field name="comment" class="oe_inline" placeholder="Remarks..."/>
+                            <group col="4" colspan="2">
+			                    <label for="signature"/>
+								<h2><field name="signature" widget="signature"/></h2>
+								<label for="company_signature"/>
+								<h2><field name="company_signature" widget="signature"/></h2>
+		                    </group>
                         </page>
                         <page string="Other Info">
                             <group col="4">
@@ -303,6 +306,7 @@
                 <header>
                     <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" groups="base.group_user"/>
                     <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',False), ('state', '!=', 'open')]}" groups="base.group_user"/>
+                    <button name="invoice_print" string="Print Invoice" type="object" groups="base.group_user"/>
                     <button name="invoice_open" states="draft" string="Validate" class="oe_highlight" groups="base.group_user"/>
                     <button name="invoice_open" states="proforma2" string="Validate" groups="base.group_user"/>
                     <button name="invoice_pay_customer" type="object" string="Register Payment"
@@ -363,10 +367,6 @@
                             </div>
                         </group>
                     </group>
-                    <group col="4" colspan="2">
-	                    <label for="signature"/>
-						<h2><field name="signature" widget="signature"/></h2>
-                    </group>
                     <field name="sent" invisible="1"/>
                     <notebook colspan="4">
                         <page string="Invoice Lines">
@@ -419,6 +419,12 @@
                                 <label string="Remarks"/>
                             </div>
                             <field name="comment" class="oe_inline" placeholder="Remarks..."/>
+                            <group col="4" colspan="2">
+			                    <label for="signature"/>
+								<h2><field name="signature" widget="signature"/></h2>
+								<label for="company_signature"/>
+								<h2><field name="company_signature" widget="signature"/></h2>
+		                    </group>
                         </page>
                         <page string="Other Info">
                             <group col="4">
@@ -516,9 +522,16 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-            	<xpath expr="//field[@name='fiscal_position']" position="after">
-            		<label for="signature"/>
-					<h2><field name="signature" widget="signature"/></h2>
+            	<xpath expr="//field[@name='comment']" position="after">
+            		<group col="4" colspan="2">
+	                    <label for="signature"/>
+						<h2><field name="signature" widget="signature"/></h2>
+						<label for="company_signature"/>
+						<h2><field name="company_signature" widget="signature"/></h2>
+                    </group>
+            	</xpath>
+            	<xpath expr="//button[@name='invoice_print']" position="replace">
+            		<button name="invoice_print" string="Print Invoice" type="object" groups="base.group_user"/>
             	</xpath>
             </field>
         </record>

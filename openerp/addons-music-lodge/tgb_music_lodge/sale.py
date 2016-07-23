@@ -307,6 +307,8 @@ class sale_order(osv.osv):
             vals.update({
                 'rental_id': order.rental_id.id,
                 'tgb_type': 'piano_sale',
+                'model': line.model,
+                'serial_no':line.serial_no,
             })
         return vals
     
@@ -333,12 +335,22 @@ class sale_order_line(osv.osv):
         'dimension': fields.char('Dimension', size=1024),
     }
     
+    def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
+        res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id, context)
+        res.update({
+            'model': line.model,
+            'serial_no': line.serial_no,
+        })
+        return res
+    
 sale_order_line()
 
 class procurement_order(osv.osv):
     _inherit = "procurement.order"
     _columns = {
         'rental_id': fields.many2one('sale.rental', 'Rental'),
+        'model': fields.char('Model', size=1024),
+        'serial_no': fields.char('Serial No', size=1024),
     }
     
     def _run_move_create(self, cr, uid, procurement, context=None):
@@ -347,6 +359,8 @@ class procurement_order(osv.osv):
             res.update({
                 'rental_id': procurement.rental_id.id,
                 'tgb_type': 'piano_sale',
+                'model': procurement.model,
+                'serial_no': procurement.serial_no,
             })
         return res
 
