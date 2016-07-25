@@ -13,8 +13,10 @@
     """,
     'data': [
         'report/invoice_report_view.xml',
+        'report/delivery_order_report_view.xml',
         'invoice_view.xml',
         'partner_view.xml',
+        'stock_view.xml',
         'report_view.xml',
     ],
     'installable': True,

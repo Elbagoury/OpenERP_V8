@@ -14,5 +14,15 @@
             attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
         />
         
+        <report 
+        	menu="False"
+            string="Picking" 
+            id="stock.action_report_picking" 
+            model="stock.picking" 
+            report_type="qweb-pdf"
+            name="stock.report_picking" 
+            file="stock.report_picking" 
+        />
+        
     </data>
 </openerp>
