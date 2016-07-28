@@ -11,6 +11,7 @@
             	</xpath>
             	<xpath expr="//field[@name='fiscal_position']" position="after">
             		<field name="terms"/>
+            		<field name="permit_no"/>
             	</xpath>
             	<xpath expr="//field[@name='invoice_line']/tree/field[@name='name']" position="after">
             		<field name="packing"/>
@@ -24,6 +25,17 @@
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
             	<xpath expr="//sheet[@string='Supplier Invoice']/group/group/div" position="after">
+            		<field name="permit_no"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record id="tgb_invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='number']" position="after">
             		<field name="permit_no"/>
             	</xpath>
             </field>
