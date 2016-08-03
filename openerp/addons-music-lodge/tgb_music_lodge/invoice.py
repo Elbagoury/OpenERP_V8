@@ -31,6 +31,12 @@ from openerp import api
 class account_invoice(osv.osv):
     _inherit = "account.invoice"
     
+    def _get_signature_customer(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for inv in self.browse(cr, uid, ids, context=context):
+            res[inv.id] = inv.signature
+        return res
+    
     _columns = {
         'stool': fields.boolean('Adjst Stool'),
         'com_stool': fields.boolean('Com Stool'),
@@ -44,6 +50,7 @@ class account_invoice(osv.osv):
         'is_first': fields.boolean('Is First'),
         'is_first_prepay': fields.boolean('Is First Prepay'),
         'signature': fields.binary('Customer Signature'),
+        'signature_customer': fields.function(_get_signature_customer, type='binary', string='Customer Signature'),
         'company_signature': fields.binary('Company Signature'),
     }
     
