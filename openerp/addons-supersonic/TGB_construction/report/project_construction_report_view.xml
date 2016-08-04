@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	    <record id="project_construction_lump_sum_report" model="ir.actions.report.xml">
+	        <field name="name">project_construction_lump_sum_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">project_construction_lump_sum_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">TGB_construction/report/project_construction_report.py</field>
+	        <field name="report_rml">TGB_construction/report/project_construction_lump_sum_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="project_construction_lump_sum_report"
+			model="sale.order"
+			name="project_construction_lump_sum_report"
+	        string="Lump Sum Quotation to Excel"
+	        rml="TGB_construction/report/project_construction_lump_sum_report.ods"/>
+	        
+        <record id="project_construction_lump_sum2_report" model="ir.actions.report.xml">
+	        <field name="name">project_construction_lump_sum2_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">project_construction_lump_sum2_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">TGB_construction/report/project_construction_report.py</field>
+	        <field name="report_rml">TGB_construction/report/project_construction_lump_sum2_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="project_construction_lump_sum2_report"
+			model="sale.order"
+			name="project_construction_lump_sum2_report"
+	        string="Lump Sum Quotation2 to Excel"
+	        rml="TGB_construction/report/project_construction_lump_sum2_report.ods"/>
+	        
+        <record id="project_construction_sor_report" model="ir.actions.report.xml">
+	        <field name="name">project_construction_sor_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">project_construction_sor_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">TGB_construction/report/project_construction_report.py</field>
+	        <field name="report_rml">TGB_construction/report/project_construction_sor_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="project_construction_sor_report"
+			model="sale.order"
+			name="project_construction_sor_report"
+	        string="SOR Quotation2 to Excel"
+	        rml="TGB_construction/report/project_construction_sor_report.ods"/>
+	        
+        <record id="project_construction_bq_report" model="ir.actions.report.xml">
+	        <field name="name">project_construction_bq_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">project_construction_bq_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">TGB_construction/report/project_construction_report.py</field>
+	        <field name="report_rml">TGB_construction/report/project_construction_bq_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="project_construction_bq_report"
+			model="sale.order"
+			name="project_construction_bq_report"
+	        string="BQ Quotation2 to Excel"
+	        rml="TGB_construction/report/project_construction_bq_report.ods"/>
+	        
+        <record id="project_construction_big_project_report" model="ir.actions.report.xml">
+	        <field name="name">project_construction_big_project_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">project_construction_big_project_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">TGB_construction/report/project_construction_report.py</field>
+	        <field name="report_rml">TGB_construction/report/project_construction_big_project_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="project_construction_big_project_report"
+			model="sale.order"
+			name="project_construction_big_project_report"
+	        string="Big Project to Excel"
+	        rml="TGB_construction/report/project_construction_big_project_report.ods"/>
+        
+	</data>
+</openerp>

@@ -22,6 +22,7 @@
         "security/construction_security.xml",
 
         "menu.xml",
+        'report/project_construction_report_view.xml',
         "project_order.xml",
         "project_billing.xml",
         "sale_make_invoice_advance.xml",
