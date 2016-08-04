@@ -556,7 +556,7 @@
   <blockTable colWidths="20,250,40,70,30,90,50" style="Table_product">
       <tr>
           <td>
-              <para style="terp_default_9"><seq id="L1"/> [[ (o.hr_add_show!='showboth') and removeParentNode('blockTable') ]]</para>
+              <para style="terp_default_9">[[ (o.hr_add_show!='showboth') and removeParentNode('blockTable') ]][[line.number]]</para>
           </td>
           <td>
                 <para style="P1">
@@ -570,7 +570,7 @@
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]][[ (line.price_unit==0) and removeParentNode('para') ]]
                 </para>
           </td>
           <td>
@@ -580,7 +580,7 @@
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]][[ (line.price_subtotal==0) and removeParentNode('para') ]]
                 </para>
           </td>
           <td>
@@ -597,7 +597,7 @@
   <blockTable colWidths="20,230,40,70,90,100" style="Table_product">
       <tr>
           <td>
-              <para style="terp_default_9"><seq id="L2"/> [[ (o.hr_add_show!='showremark') and removeParentNode('blockTable') ]]</para>
+              <para style="terp_default_9">[[ (o.hr_add_show!='showremark') and removeParentNode('blockTable') ]][[line.number]]</para>
           </td>
           <td>
                 <para style="P1">
@@ -611,12 +611,12 @@
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]][[ (line.price_unit==0) and removeParentNode('para') ]]
                 </para>
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]][[ (line.price_subtotal==0) and removeParentNode('para') ]]
                 </para>
           </td>
           <td>
@@ -634,7 +634,7 @@
   <blockTable colWidths="20,320,40,70,100" style="Table_product">
       <tr>
           <td>
-              <para style="terp_default_9"><seq id="L3"/>  [[ (o.hr_add_show!='noboth') and removeParentNode('blockTable') ]]</para>
+              <para style="terp_default_9">[[ (o.hr_add_show!='noboth') and removeParentNode('blockTable') ]][[line.number]]</para>
           </td>
           <td>
                 <para style="P1">
@@ -648,12 +648,12 @@
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_unit,currency_obj=company.currency_id) (line.price_unit==0) and removeParentNode('para')]]
                 </para>
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id) (line.price_subtotal==0) and removeParentNode('para')]]
                 </para>
           </td>
       </tr>
@@ -667,7 +667,7 @@
   <blockTable colWidths="20,270,40,70,50,100" style="Table_product">
       <tr>
           <td>
-              <para style="terp_default_9"><seq id="L4"/>  [[ (o.hr_add_show!='showadd') and removeParentNode('blockTable') ]]</para>
+              <para style="terp_default_9">[[ (o.hr_add_show!='showadd') and removeParentNode('blockTable') ]][[line.number]]</para>
           </td>
           <td>
                 <para style="P1">
@@ -681,7 +681,7 @@
           </td>
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_unit,currency_obj=company.currency_id)]][[ (line.price_unit==0) and removeParentNode('para') ]]
                 </para>
           </td>
 
@@ -693,7 +693,7 @@
 
           <td>
                 <para style="P1">
-                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]]
+                  [[formatLang(line.price_subtotal,currency_obj=company.currency_id)]][[ (line.price_subtotal==0) and removeParentNode('para') ]]
                 </para>
           </td>
 

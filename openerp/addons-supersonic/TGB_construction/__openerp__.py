@@ -15,6 +15,7 @@
                  'web_digital_sign',
                  'crm_helpdesk',
                  'crm_claim',
+                 'report_aeroo',
                  ],
     "description": "TGB Construction Modules",
     "data": [

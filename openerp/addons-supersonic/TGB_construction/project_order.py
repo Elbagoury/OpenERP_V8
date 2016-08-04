@@ -1179,6 +1179,8 @@ class sale_hr_line(osv.Model):
         'invoiced':fields.boolean('Invoiced'),
         'product_uom_qty': fields.float('Quantity', digits_compute= dp.get_precision('Product UoS'), required=True,),
         'name': fields.text('Description', required=True),
+        'number': fields.char('Number', size=1024),
+        'is_bold': fields.boolean('Is Bold'),
         'remark': fields.text('Remarks', required=False),
         'price_subtotal': fields.function(_amount_line, string='Subtotal', digits_compute=dp.get_precision('Account'),
                                           multi="total_line"),

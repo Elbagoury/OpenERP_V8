@@ -150,10 +150,11 @@ class project_hr_costing(osv.osv):
         'amount':fields.float('Amount',),
         'project_costing_id':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
         'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
-        'employee_id':fields.many2one('hr.employee','Employee',required=True),
+        'employee_id':fields.many2one('hr.employee','Employee',required=False),
         'timesheet_id':fields.many2one('hr_timesheet_sheet.sheet','Timesheet'),
         'note':fields.char('Note',size=255),
         'importer_id':fields.many2one('ftb.importer','From Import'),
+        'date':fields.date('Date'),
 
     }
 
@@ -164,6 +165,19 @@ class project_equipment(osv.osv):
         'name':fields.char('Name',size=255),
         'amount':fields.float('Amount', digits_compute= dp.get_precision('Account'),),
         'project_costing_id':fields.many2one('project.costing','Project Costing id',ondelete='cascade'),
+        'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
+        'date':fields.date('Date'),
+    }
+    _defaults={
+        'date':fields.datetime.now,
+    }
+
+class project_material(osv.osv):
+    _name = 'project.material'
+
+    _columns = {
+        'name':fields.char('Name',size=255),
+        'amount':fields.float('Amount', digits_compute= dp.get_precision('Account'),),
         'project_budgeting_id':fields.many2one('project.budgeting','Project Budgeting', ondelete='cascade'),
         'date':fields.date('Date'),
     }

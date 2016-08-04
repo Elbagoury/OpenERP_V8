@@ -56,10 +56,12 @@ class project_budgeting(osv.osv):
             total_hr_cost = 0
             total_sub_contractor=0
             total_equipment_cost = 0
-            for material in project.stock_issue_ids:
-                for detail in material.stock_issue_detail_ids:
-                    if detail.product_id:
-                        total_material_cost+= detail.product_id.standard_price*detail.issue_qty
+#             for material in project.stock_issue_ids:
+#                 for detail in material.stock_issue_detail_ids:
+#                     if detail.product_id:
+#                         total_material_cost+= detail.product_id.standard_price*detail.issue_qty
+            for material in project.material_ids:
+                total_material_cost+= material.amount
             for hr_cost in project.hr_cost_ids:
                 total_hr_cost+= hr_cost.amount
             for other in project.others_cost_ids:
@@ -136,6 +138,7 @@ class project_budgeting(osv.osv):
         'project_id':fields.many2one('project.project','Project'),
         'project_budgeting_detail_ids':fields.one2many('project.budgeting.detail','project_budgeting_id', 'Project Budgeting Detail'),
         'stock_issue_ids':fields.one2many('stock.issue','project_budgeting_id', 'Material Costs'),
+        'material_ids':fields.one2many('project.material','project_budgeting_id', 'Material Costs'),
         'others_cost_ids':fields.one2many('project.other.cost','project_budgeting_id', 'Other Costs'),
         'sub_contractor_ids':fields.one2many('project.sub.contractor','project_budgeting_id', 'Sub Contractor'),
         'hr_cost_ids':fields.one2many('project.hr.cost','project_budgeting_id', 'HR Costs'),

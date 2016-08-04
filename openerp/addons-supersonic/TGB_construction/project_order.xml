@@ -213,7 +213,7 @@
                             <page string="SOR" attrs="{'invisible':[('order_type','!=','sor')]}">
                                 <field name="sale_hr_ids" mode="tree">
                                     <tree string="Sales Order Lines" editable="bottom">
-                                        <field name="sequence" widget="handle"/>
+                                        <field name="number"/>
                                         <field name="name"/>
                                         <field name="product_uom_qty"/>
                                         <field name="price_unit" string="Unit Price"/>

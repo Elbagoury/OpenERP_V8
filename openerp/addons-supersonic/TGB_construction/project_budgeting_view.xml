@@ -45,7 +45,13 @@
                             </page> -->
                             <page string="Material">
                             	<group string="Project Budgeting"/>
-                                <field name="stock_issue_ids"/>
+                                <field name="material_ids">
+                                	<tree editable="1">
+                                        <field name="name" string="Description"/>
+                                        <field name="date"/>
+                                        <field name="amount" string="Value"/>
+                                    </tree>
+                                </field>
                                 <group colspan="8" col="4">
                                     <field name="total_material_cost"/>
                                 </group>
@@ -58,11 +64,10 @@
                             <page string="HR">
                             	<group string="Project Budgeting"/>
                                 <field name="hr_cost_ids">
-                                    <tree>
-                                        <field name="employee_id"/>
-                                        <field name="importer_id"/>
-                                        <field name="amount"/>
-                                        <field name="note"/>
+                                    <tree editable="1">
+                                    	<field name="name" string="Description"/>
+                                        <field name="date"/>
+                                        <field name="amount" string="Value"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">
@@ -85,9 +90,9 @@
                                 <group string="Project Budgeting"/>
                                 <field name="equipment_ids">
                                     <tree editable="1">
-                                        <field name="name"/>
-                                        <field name="amount"/>
+                                        <field name="name" string="Description"/>
                                         <field name="date"/>
+                                        <field name="amount" string="Value"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">
@@ -109,9 +114,9 @@
                                 <group string="Project Budgeting"/>
                                 <field name="others_cost_ids">
                                     <tree editable="1">
-                                        <field name="name"/>
-                                        <field name="amount"/>
+                                        <field name="name" string="Description"/>
                                         <field name="date"/>
+                                        <field name="amount" string="Value"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">
@@ -133,9 +138,9 @@
                                 <group string="Project Budgeting"/>
                                 <field name="sub_contractor_ids">
                                     <tree editable="1">
-                                        <field name="name"/>
-                                        <field name="amount"/>
+                                        <field name="name" string="Description"/>
                                         <field name="date"/>
+                                        <field name="amount" string="Value"/>
                                     </tree>
                                 </field>
                                 <group colspan="8" col="4">
