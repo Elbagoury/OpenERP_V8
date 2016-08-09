@@ -31,6 +31,7 @@ class Parser(report_sxw.rml_parse):
             'convert': self.convert,
             'get_name_invoice': self.get_name_invoice,
             'get_total_amount_paid': self.get_total_amount_paid,
+            'get_lines': self.get_lines,
         })
         
     def get_datenow(self):
@@ -65,5 +66,14 @@ class Parser(report_sxw.rml_parse):
                 for pay in invoice.payment_ids:
                     total+=pay.credit or pay.debit
         return total
-
+    
+    def get_lines(self, invoice_line):
+        res = []
+        num_of_line = len(invoice_line)
+        if num_of_line>3 and num_of_line<9:
+            for x in range(num_of_line,8):
+                res += [1,1]
+            res += [1]
+        return res
+    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
