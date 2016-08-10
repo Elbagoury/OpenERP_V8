@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_tree_inherit" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_quotation_tree_inherit" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="sequence_id"></field>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="customer_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_company_inherit" model="ir.ui.view">
+            <field name="name">res.company.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="currency_rate"></field>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term']" position="replace">
+                </xpath>
+                <xpath expr="//button[@name='action_button_confirm']" position="replace">
+                    <field name="is_start" invisible="1"/>
+                    <button name="start_order" attrs="{'invisible':['|', ('is_start','=',True), ('state','not in',['draft'])]}" string="Start Order" type="object"/>
+                    <button name="action_button_confirm" attrs="{'invisible':['|', ('is_start','=',False), ('state','not in',['draft'])]}" string="Confirm Sale" type="object" groups="base.group_user"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="type" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='client_order_ref']" position="after">
+                    <field name="requestor" domain="[('parent_id','=',partner_id)]"></field>
+                    <field name="currency_term"/>
+                    <field name="currency_rate" attrs="{'invisible':[('currency_term','!=','usd')]}"/>
+                    <field name="payment_term"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="email"></field>
+                    <field name="phone"></field>
+                    <field name="fax"></field>
+                    <field name="mobile"></field>
+                    <field name="sign_type"></field>
+                    <label for="signature_image"/>
+                    <field name="signature_image2" attrs="{'invisible':[('sign_type','=','sign')]}"
+                           class="oe_left oe_avatar" widget="image"></field>
+                    <h2>
+                        <field name="signature_image" attrs="{'invisible':[('sign_type','=','image')]}"
+                               widget="signature"/>
+                    </h2>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('customer','=',True),('customer_type','=','prototypes')]</attribute>
+                    <attribute name="context">{'default_customer_type': 'prototypes'}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_button_confirm']" position="after">
+                    <button name="set_done" states="progress,manual" string="Job Done" type="object"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']" position="replace">
+                    <div>
+                        <field name="file"/>
+                        <button name="import_lines" states="draft" string="Import lines" type="object"/>
+                    </div>
+                    <field attrs="{'readonly':[('state','not in',['draft','progress','manual', 'confirmed'])]}" name="order_line" view_mode="tree,form">
+                        <tree string="Sales Order Lines" attrs="{'editable':[('state','=','draft')]}">
+                            <field name="sequence" widget="handle"/>
+                            <field name="state" invisible="1"/>
+                            <field name="th_weight" invisible="1"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty"/>
+                            <field name="product_id_text"/>
+                            <field name="material"/>
+                            <field name="p_hour"/>
+                            <field name="p_min"/>
+                            <field name="m_hour"/>
+                            <field name="m_min"/>
+                            <field name="a_hour"/>
+                            <field name="a_min"/>
+                            <field name="j_hour"/>
+                            <field name="j_min"/>
+                            <field name="rate"/>
+                            <field name="total_time"/>
+                            <field name="price_unit"/>
+                            <field name="adjust"/>
+                            <field name="price_subtotal"/>
+                        </tree>
+                        <form string="Sales Order Lines">
+                            <group cols="6" colspan="6">
+                                <group colspan="1">
+                                     <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="th_weight" invisible="1"/>
+
+                                    <field name="product_uom_qty"/>
+
+                                    <field name="product_id_text"/>
+                                    <field name="material"/>
+                                </group>
+                                <group colspan="1">
+                                    <field name="p_hour"/>
+                                    <field name="p_min"/>
+                                    <field name="m_hour"/>
+                                    <field name="m_min"/>
+                                    <field name="a_hour"/>
+                                    <field name="a_min"/>
+                                    <field name="j_hour"/>
+                                    <field name="j_min"/>
+                                    <field name="rate"/>
+                                </group>
+                            </group>
+                            <group cols="6" colspan="6">
+                                <group colspan="1">
+                                    <field name="employee_ids" attrs="{'readonly': [('state','not in',['confirmed', 'manual'])]}" editable="top">
+                                        <tree name="Assign To" editable="top">
+                                            <field name="employee_id"/>
+                                            <field name="percentage"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group colspan="1">
+                                    <field name="remarks"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="total_time"/>
+                                <field name="price_unit" readonly="1"/>
+                                <field name="adjust"/>
+                                <field name="price_subtotal"/>
+                            </group>
+                        </form>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="sale.seq_sale_order" model="ir.sequence">
+            <field name="name">Sales Order</field>
+            <field name="code">sale.order</field>
+            <field name="prefix">%y/Venture/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Job Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">{
+                'search_default_my_sale_orders_filter': 1
+                }
+            </field>
+            <field name="domain">[('type','=','prototypes'),('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+            <field name="context">
+                {'default_type':'prototypes'}
+            </field>
+        </record>
+        <menuitem action="sale.action_orders" id="sale.menu_sale_order" string="Job Orders" parent="base.menu_sales"
+                  sequence="4" groups="base.group_sale_salesman,base.group_sale_manager"/>
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_type_sale_order_line" model="ir.sequence.type">
+            <field name="name">Sales Order Line</field>
+            <field name="code">sale.order.line</field>
+        </record>
+
+        <record id="seq_sale_order_line" model="ir.sequence">
+            <field name="name">Sales Order Line</field>
+            <field name="code">sale.order.line</field>
+            <field name="prefix">Product/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <template id="tgb_report_sale_document" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='page']" position="replace">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <h2 class="col-xs-12 text-center">
+                        <span t-if="o.state not in ['draft','sent']">Order</span>
+                        <span t-if="o.state in ['draft','sent']">Quotation</span>
+                    </h2>
+
+
+                    <div class="row mt32 mb32" id="informations">
+                        <div class="col-xs-6">
+                            <div t-field="o.partner_id"
+                                 t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;,&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <table class="table table-bordered" style="border: 1px 1px 1px 1px solid !important;">
+                                <tr>
+                                    <td>
+                                        <strong>Quotation Number:</strong>
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <strong>Date:</strong>
+                                        <span t-field="o.date_order"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-6">
+                            <strong>Att:
+                                <span t-if="o.requestor">
+                                    <span t-field="o.requestor.name"/>
+                                </span>
+                            </strong>
+                            <br/>
+                            <strong>Fax:
+                                <span t-if="o.requestor">
+                                    <span t-field="o.requestor.fax"/>
+                                </span>
+                            </strong>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" style="border: 1px 1px 1px 1px solid !important;">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th class="text-right">Qty</th>
+                                <th class="text-right">Unit</th>
+                                <th>Mat'l</th>
+                                <th class="text-right">Sub Amount</th>
+                                <th>Delivery</th>
+                            </tr>
+                        </thead>
+                        <t t-set="i" t-value="0"/>
+                        <tbody class="sale_tbody">
+                            <tr t-foreach="o.order_line" t-as="l">
+                                <t t-set="i" t-value="i+1"/>
+                                <td>
+                                    <span t-esc="i"/>
+                                </td>
+                                <td>
+                                    <span t-field="l.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.total_time"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.rate"/>
+                                </td>
+                                <td>
+                                    <span t-field="l.material"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.price_subtotal"
+                                          t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <table class="table table-condensed">
+                                <tr class="border-black">
+                                    <td>
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_total"
+                                              t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <p>
+                            <strong>Remark*</strong>
+                            <span t-field="o.note"/>
+                        </p>
+                        <p>
+                            <strong>Terms and Conditions</strong>
+                        </p>
+                        <p>1.Quoted price not inclusive of 7% GST</p>
+                        <p>2.All prices quoted are in:
+                            <span t-if="o.currency_term">
+                                <span t-field="o.currency_term"/>
+                            </span>
+                        </p>
+                        <p>3.Payment term:
+                            <span t-if="o.payment_term">
+                                <span t-field="o.payment_term.name"/>
+                            </span>
+                        </p>
+                        <p>4.This quotation is valid for the next 7 days</p>
+                        <p>5.Date of delivery stated is tentative and may change before receipt of order confirmation.
+                        </p>
+                        <div class="col-xs-4">
+                            <p>Quote prepared by:</p>
+                            <div t-if="o.sign_type == &quot;sign&quot; ">
+                                <span t-field="o.signature_image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}"/>
+                            </div>
+                            <div t-if="o.sign_type == &quot;image&quot; ">
+                            <span t-field="o.signature_image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}"/>
+                                </div>
+                            <p>Jonny Tan</p>
+                            <p>General Manager</p>
+                            <p>HP 96612185</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </xpath>
+        </template>
+
+        <!--Software Quotations -->
+        <record id="action_software_quotations" model="ir.actions.act_window">
+            <field name="name">Software Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="domain">[('type','!=','prototypes'), ('state','in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">
+                {'default_type': 'software'}
+            </field>
+        </record>
+
+        <record id="view_software_quotation_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('customer','=',True),('customer_type','!=','prototypes')]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="type" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']" position="replace">
+                    <field attrs="{'readonly':[('state','not in',['draft','progress','manual'])]}" name="order_line" view_mode="tree,form">
+                        <tree string="Sales Order Lines" editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="state" invisible="1"/>
+                            <field name="th_weight" invisible="1"/>
+                            <field name="product_id" string="Product"
+                                context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                groups="base.group_user"
+                                on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty"
+                                context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)"/>
+                            <field name="product_uom"
+                                on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, context)"
+                                groups="product.group_uom" options='{"no_open": True}'/>
+                            <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                            <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                            <field name="temp_price_unit"/>
+                            <field name="price_unit" invisible="1"/>
+                            <field name="margin" readonly="1"/>
+                            <field name="margin_percent" readonly="1"/>
+                            <field name="tax_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                            <field name="discount" groups="sale.group_discount_per_so_line"/>
+                            <field name="price_subtotal"/>
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+
+         <record id="action_software_quotations_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale.view_order_tree"/>
+            <field name="act_window_id" ref="action_software_quotations"/>
+        </record>
+        <record id="action_software_quotations_form_view" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_software_quotation_form_inherit"/>
+            <field name="act_window_id" ref="action_software_quotations"/>
+        </record>
+        <!--Prototypes quotation -->
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="domain">[('type','=','prototypes'),('is_start','=',False), ('state','in',('draft','sent','cancel'))]</field>
+            <field name="context">
+                {'default_type': 'prototypes'}
+            </field>
+        </record>
+        <record id="action_prototype_quotations_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_order_tree_inherit"/>
+            <field name="act_window_id" ref="sale.action_quotations"/>
+        </record>
+
+        <record id="action_prototype_quotations_form_view" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_order_form_inherit"/>
+            <field name="act_window_id" ref="sale.action_quotations"/>
+        </record>
+        <!--Prototype orders -->
+        <record id="action_prototype_order_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_order_tree_inherit"/>
+            <field name="act_window_id" ref="sale.action_orders"/>
+        </record>
+
+        <record id="action_prototype_order_form_view" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_order_form_inherit"/>
+            <field name="act_window_id" ref="sale.action_orders"/>
+        </record>
+
+        <menuitem id="menu_software_quotations"
+                action="action_software_quotations" parent="base.menu_sales"
+                sequence="5"/>
+
+
+        <!-- search by Salesteams -->
+        <record id="action_software_orders" model="ir.actions.act_window">
+            <field name="name">Software Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="domain">[('type','!=','prototypes'),('state','not in',('draft','sent','cancel'))]</field>
+            <field name="context">
+                {'default_type': 'software'}
+            </field>
+        </record>
+        <record id="action_software_order_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sale.view_order_tree"/>
+            <field name="act_window_id" ref="action_software_orders"/>
+        </record>
+        <record id="action_software_order_form_view" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_software_quotation_form_inherit"/>
+            <field name="act_window_id" ref="action_software_orders"/>
+        </record>
+        <menuitem id="menu_software_order"
+                action="action_software_orders" parent="base.menu_sales"
+                sequence="5"/>
+
+        <!--start order -->
+        <!--Software Quotations -->
+        <record id="action_start_orders" model="ir.actions.act_window">
+            <field name="name">Start Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="domain">[('type','=','prototypes'), ('is_start','=',True),('state','not in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">
+                {'default_type': 'prototypes'}
+            </field>
+        </record>
+        <record id="action_start_order_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_order_tree_inherit"/>
+            <field name="act_window_id" ref="action_start_orders"/>
+        </record>
+
+        <record id="action_start_order_form_view" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_order_form_inherit"/>
+            <field name="act_window_id" ref="action_start_orders"/>
+        </record>
+
+        <menuitem id="menu_start_orders"
+                action="action_start_orders" parent="base.menu_sales"
+                sequence="3"/>
+    </data>
+</openerp>

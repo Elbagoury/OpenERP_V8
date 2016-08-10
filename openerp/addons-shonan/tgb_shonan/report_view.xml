@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="tgb_shonan.report_employee_qweb">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div class="row">
+                                <span class="text-center">
+                                    <h1>Employee Information</h1>
+                                </span>
+                                <table class="table table-bordered" style="border: 1px 1px 1px 1px solid !important;">
+                                    <tr>
+                                    <th>
+                                    Employee name
+                                    </th>
+                                    <th>
+                                    Total working hour
+                                    </th>
+				    <th>
+                                    Total amount
+                                    </th>
+                                    </tr>
+                                    <t t-foreach="get_employee(o)" t-as="employee">
+                                    <tr>
+                                        <td>
+                                             <span t-esc="employee['name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="employee['hour']"/>
+                                        </td>
+                                        <td>
+                                            $<span t-esc="employee['amount']"/>
+                                        </td>
+
+                                    </tr>
+                                    </t>
+                                </table>
+
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report id="employee_job_qweb_report"
+                string="Employee Job Report"
+                model="employee.job.report"
+                report_type="qweb-pdf"
+                name="tgb_shonan.report_employee_qweb"/>
+
+        <record model="ir.ui.view" id="employee_job_report_form">
+            <field name="name">employee.job.report</field>
+            <field name="model">employee.job.report</field>
+            <field name="arch" type="xml">
+                <form string="Employee Job Report">
+                    <group string="Date Between" col="4" colspan="4">
+                        <field name="start_date" required="1"/>
+                        <field name="end_date" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Report" name="employee_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="wiz_employee_report_action">
+            <field name="name">Employee Report</field>
+            <field name="res_model">employee.job.report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="wiz_employee_report_action" id="employee_report_menu" string="Employee Job Report" parent="base.menu_sales"
+                  sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
+
+
+    </data>
+</openerp>
