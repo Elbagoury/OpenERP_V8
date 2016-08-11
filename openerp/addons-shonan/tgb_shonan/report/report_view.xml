@@ -25,6 +25,54 @@
 			name="quotation_report"
 	        string="Quotation"
 	        rml="tgb_shonan/report/quotation_report.ods"/>
+
+<!-- Delivery Order -->
+	    <record id="delivery_order_report" model="ir.actions.report.xml">
+	        <field name="name">delivery_order_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">stock.picking</field>
+	        <field name="report_name">delivery_order_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_shonan/report/delivery_order_report.py</field>
+	        <field name="report_rml">tgb_shonan/report/delivery_order_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="delivery_order_report"
+			model="stock.picking"
+			name="delivery_order_report"
+	        string="Delivery Order"
+	        rml="tgb_shonan/report/delivery_order_report.ods"/>
+	        
+<!-- Invoice -->
+	    <record id="invoice_report" model="ir.actions.report.xml">
+	        <field name="name">invoice_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">account.invoice</field>
+	        <field name="report_name">invoice_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_shonan/report/invoice_report.py</field>
+	        <field name="report_rml">tgb_shonan/report/invoice_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="invoice_report"
+			model="account.invoice"
+			name="invoice_report"
+	        string="Invoice"
+	        rml="tgb_shonan/report/invoice_report.ods"/>
         
 	</data>
 </openerp>

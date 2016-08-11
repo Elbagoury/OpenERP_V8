@@ -28,7 +28,7 @@
     'description': """
     """,
     'author': 'Ho Di',
-    'depends': ['hr', 'scrollable_tree_view', 'web_digital_sign', 'sale','report_aeroo'],
+    'depends': ['hr', 'stock', 'account_accountant', 'scrollable_tree_view', 'web_digital_sign', 'sale','report_aeroo'],
     'init_xml': [],
     'update_xml': [
         "report/report_view.xml",
