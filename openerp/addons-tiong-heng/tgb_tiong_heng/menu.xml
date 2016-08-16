@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<menuitem
+			id="menu_action_tgb_timing"
+			name="Timing"
+			action="action_tgb_timing"
+			parent="base.menu_base_config" sequence="100"/>
+			
+		<menuitem
+			id="menu_action_tgb_bus_capacity"
+			name="Bus Capacity"
+			action="action_tgb_bus_capacity"
+			parent="base.menu_base_config" sequence="105"/>
+			
+		<menuitem
+			id="menu_action_tgb_route"
+			name="Route"
+			action="action_tgb_route"
+			parent="base.menu_base_config" sequence="110"/>
+		
+	</data>
+</openerp>

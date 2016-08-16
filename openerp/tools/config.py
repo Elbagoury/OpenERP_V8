@@ -139,7 +139,8 @@ class configmanager(object):
         group.add_option("-P", "--import-partial", dest="import_partial", my_default='',
                         help="Use this for big data importation, if it crashes you will be able to continue at the current state. Provide a filename to store intermediate importation states.")
         group.add_option("--pidfile", dest="pidfile", help="file where the server pid will be stored")
-        group.add_option("--addons-path", dest="addons_path", my_default='openerp/addons,openerp/addons-aeroo-1404,openerp/addons-web-8.0,openerp/addons-seawalk-group,openerp/addons-supersonic,openerp/addons-rat-trading,openerp/addons-music-lodge,openerp/addons-tgb,openerp/addons-shonan',
+        group.add_option("--addons-path", dest="addons_path",
+                         my_default='openerp/addons,openerp/addons-aeroo-1404,openerp/addons-web-8.0,openerp/addons-seawalk-group,openerp/addons-supersonic,openerp/addons-rat-trading,openerp/addons-music-lodge,openerp/addons-tgb,openerp/addons-shonan,openerp/addons-tiong-heng',
                          help="specify additional addons paths (separated by commas).",
                          action="callback", callback=self._check_addons_path, nargs=1, type="string")
         group.add_option("--load", dest="server_wide_modules", help="Comma-separated list of server-wide modules default=web")
