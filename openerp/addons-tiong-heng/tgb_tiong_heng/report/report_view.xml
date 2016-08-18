@@ -2,7 +2,7 @@
 <openerp>
 	<data>
 	
-<!-- Sale Order -->
+<!-- Sale Order (.xls) -->
 	    <record id="sale_order_report" model="ir.actions.report.xml">
 	        <field name="name">sale_order_report</field>
 	        <field name="type">ir.actions.report.xml</field>
@@ -23,7 +23,31 @@
 			id="sale_order_report"
 			model="sale.order"
 			name="sale_order_report"
-	        string="Sale Order"
+	        string="Sale Order (.xls)"
+	        rml="tgb_tiong_heng/report/sale_order_report.ods"/>
+	        
+<!-- Sale Order (.pdf) -->
+	    <record id="sale_order_report_pdf" model="ir.actions.report.xml">
+	        <field name="name">sale_order_report_pdf</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">sale_order_report_pdf</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_tiong_heng/report/sale_order_report.py</field>
+	        <field name="report_rml">tgb_tiong_heng/report/sale_order_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="sale_order_report_pdf"
+			model="sale.order"
+			name="sale_order_report_pdf"
+	        string="Sale Order (.pdf)"
 	        rml="tgb_tiong_heng/report/sale_order_report.ods"/>
         
 	</data>

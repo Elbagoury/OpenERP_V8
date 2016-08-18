@@ -28,6 +28,24 @@ import time
 import openerp.addons.decimal_precision as dp
 from dateutil.relativedelta import relativedelta
 
+class sale_order(osv.osv):
+    _inherit = "sale.order"
+    
+    _defaults = {
+        'note': '''1.0) Please take note that the price quoted are exclusive of Sunday & Public Holiday service. 
+2.0) Price quoted are exclusive of GST.
+3.0) Price quoted are exclusive of ERP charges.
+4.0) Payment should made to TIONG HENG TRANSPORT PTE LTD by Cheque or GIRO.
+5.0) GIRO bank account detail: MayBank 0-419-10-3769-7
+6.0) Please email your transaction payment receipt with our job reference no.
+        to our account department triciawoo@tiongheng.com.Sg / chris@tiongheng.com.sg for payment advice. 
+7.0) Price quoted are valid for 14 days from the date of this quotation, prices shall be adjusted accordingly after.
+8.0) Upon confirmation, no refund will be granted on cancellation or amendments
+         allow for cancellation or amendments.'''
+    }
+
+sale_order()
+
 class sale_order_line(osv.osv):
     _inherit = "sale.order.line"
     
@@ -47,7 +65,6 @@ class sale_order_line(osv.osv):
         return res
 
 sale_order_line()
-
 
 class tgb_timing(osv.osv):
     _name = 'tgb.timing'

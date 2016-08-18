@@ -2,7 +2,7 @@
 <openerp>
 	<data>
 	
-<!-- Quotation -->
+<!-- Quotation (.xls) -->
 	    <record id="quotation_report" model="ir.actions.report.xml">
 	        <field name="name">quotation_report</field>
 	        <field name="type">ir.actions.report.xml</field>
@@ -23,10 +23,34 @@
 			id="quotation_report"
 			model="sale.order"
 			name="quotation_report"
-	        string="Quotation"
+	        string="Quotation (.xls)"
+	        rml="tgb_shonan/report/quotation_report.ods"/>
+	        
+<!-- Quotation (.pdf) -->
+	    <record id="quotation_report_pdf" model="ir.actions.report.xml">
+	        <field name="name">quotation_report_pdf</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_report_pdf</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_shonan/report/quotation_report.py</field>
+	        <field name="report_rml">tgb_shonan/report/quotation_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_report_pdf"
+			model="sale.order"
+			name="quotation_report_pdf"
+	        string="Quotation (.pdf)"
 	        rml="tgb_shonan/report/quotation_report.ods"/>
 
-<!-- Delivery Order -->
+<!-- Delivery Order (.xls) -->
 	    <record id="delivery_order_report" model="ir.actions.report.xml">
 	        <field name="name">delivery_order_report</field>
 	        <field name="type">ir.actions.report.xml</field>
@@ -47,10 +71,34 @@
 			id="delivery_order_report"
 			model="stock.picking"
 			name="delivery_order_report"
-	        string="Delivery Order"
+	        string="Delivery Order (.xls)"
 	        rml="tgb_shonan/report/delivery_order_report.ods"/>
 	        
-<!-- Invoice -->
+<!-- Delivery Order (.pdf) -->
+	    <record id="delivery_order_report_pdf" model="ir.actions.report.xml">
+	        <field name="name">delivery_order_report_pdf</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">stock.picking</field>
+	        <field name="report_name">delivery_order_report_pdf</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_shonan/report/delivery_order_report.py</field>
+	        <field name="report_rml">tgb_shonan/report/delivery_order_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="delivery_order_report_pdf"
+			model="stock.picking"
+			name="delivery_order_report_pdf"
+	        string="Delivery Order (.pdf)"
+	        rml="tgb_shonan/report/delivery_order_report.ods"/>
+	        
+<!-- Invoice (.xls) -->
 	    <record id="invoice_report" model="ir.actions.report.xml">
 	        <field name="name">invoice_report</field>
 	        <field name="type">ir.actions.report.xml</field>
@@ -71,7 +119,31 @@
 			id="invoice_report"
 			model="account.invoice"
 			name="invoice_report"
-	        string="Invoice"
+	        string="Invoice (.xls)"
+	        rml="tgb_shonan/report/invoice_report.ods"/>
+	        
+<!-- Invoice (.pdf) -->
+	    <record id="invoice_report_pdf" model="ir.actions.report.xml">
+	        <field name="name">invoice_report_pdf</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">account.invoice</field>
+	        <field name="report_name">invoice_report_pdf</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_shonan/report/invoice_report.py</field>
+	        <field name="report_rml">tgb_shonan/report/invoice_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="invoice_report_pdf"
+			model="account.invoice"
+			name="invoice_report_pdf"
+	        string="Invoice (.pdf)"
 	        rml="tgb_shonan/report/invoice_report.ods"/>
         
 	</data>
