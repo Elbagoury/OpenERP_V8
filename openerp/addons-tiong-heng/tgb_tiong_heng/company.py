@@ -1,8 +1,9 @@
-# -*- coding: utf-8# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
+#    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
+#    Copyright (C) 2010-2012 OpenERP SA (<http://openerp.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,26 +20,22 @@
 #
 ##############################################################################
 
-{
-    'name': 'TGB Tiong Heng',
-    'version': '1.0',
-    'category': 'TGB',
-    'sequence': 1,
-    'depends': ['sale','report_aeroo'],
-    'data': [
-        'report/report_view.xml',
-        'sale_view.xml',
-        'company_view.xml',
-        'menu.xml',
-    ],
-    'css' : [
-    ],
-    'qweb': [
-    ],
-    'js': [
-    ],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4: -*-
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from openerp import SUPERUSER_ID
+from datetime import datetime, timedelta
+import time
+import openerp.addons.decimal_precision as dp
+from dateutil.relativedelta import relativedelta
+
+class res_company(osv.osv):
+    _inherit = "res.company"
+    
+    _columns = {
+        'china_name': fields.char('China name', size=1024),
+    }
+
+res_company()
+
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
