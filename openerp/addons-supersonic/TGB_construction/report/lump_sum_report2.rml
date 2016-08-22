@@ -220,6 +220,9 @@
                     <para style="terp_default_9">
                         <b>[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[(o.partner_id and o.partner_id.name) or '' ]]</b>
                     </para>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
                     <para style="terp_default_9">[[ o.partner_id and get_tgb_address(o.partner_id) ]]</para>
                     <para style="terp_default_9"><b>Phone:</b> [[ o.partner_id and o.partner_id.phone ]]</para>
                     <para style="terp_default_9"><b>Fax:</b> [[ o.partner_id and o.partner_id.fax ]]</para>
@@ -468,11 +471,25 @@
             </tr>
             <tr>
                 <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <image width="130" height="30">[[ o.signature_image2 or removeParentNode('image') ]]
                     </image>
 
                     <image width="130" height="30">[[ o.signature_image or removeParentNode('image') ]]
                     </image>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <para style="terp_default_8">
+                        <font color="white">11</font>
+                    </para>
                 </td>
             </tr>
             <tr>

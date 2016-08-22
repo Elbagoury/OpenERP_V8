@@ -783,7 +783,7 @@ class sale_order(orm.Model):
                                           },
                                           multi='hr', help="The amount of HR", track_visibility='always'),
 
-        'tgb_remarks':fields.char('Remarks', size=1024),
+        'tgb_remarks':fields.text('Remarks'),
         
         'project_costing_id':fields.many2one('project.costing','Project Costing'),
 
