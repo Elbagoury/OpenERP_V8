@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<menuitem id="menu_action_tgb_inventory_inventory"
+    		name="Inventory"
+    		action="action_tgb_inventory_inventory"
+    		parent="base.menu_sales" sequence="10"/>
+    		
+	</data>
+</openerp>

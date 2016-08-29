@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+		<record id="view_tgb_inventory_inventory_filter" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.select</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <search string="Inventory">
+                	<field name="name"/>
+                    <group expand="0" string="Group By">
+                    	<!--<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>-->
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_tgb_inventory_inventory_tree" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.tree</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <tree string="Inventory">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_tgb_inventory_inventory_form" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.form</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <form string="Inventory" version='7.0'>
+					<header>
+					</header>
+                	<sheet>
+	                    <group col="4" colspan="2">
+		                    <field name="name" required='1'/>
+		                    <field name="type" required='1'/>
+	                    </group>
+	                    <notebook>
+	                    	<page string="Inventory" attrs="{'invisible': [('type','!=','inventory')]}">
+	                    		<field name="inventory_line">
+	                    			<tree editable='bottom'>
+	                    				<field name="employee_id"/>
+					            		<field name="brand"/>
+					            		<field name="specs"/>
+	                    				<field name="serial_no"/>
+	                    				<field name="model_part_no"/>
+	                    				<field name="date_out"/>
+	                    				<field name="date_of_hand_over"/>
+	                    			</tree>
+		                    	</field>
+	                    	</page>
+	                    	<page string="Card" attrs="{'invisible': [('type','!=','card')]}">
+	                    		<field name="inventory_card_line">
+	                    			<tree editable='bottom'>
+	                    				<field name="number"/>
+					            		<field name="type"/>
+					            	</tree>
+		                    	</field>
+	                    	</page>
+	                    	<page string="Mobile Plan" attrs="{'invisible': [('type','!=','mobile_plan')]}">
+	                    		<field name="inventory_mobile_plan_line">
+                    				<tree editable='bottom'>
+	                    				<field name="user_id"/>
+	                    				<field name="number"/>
+	                    				<field name="description"/>
+	                    			</tree>
+		                    	</field>
+	                    	</page>
+	                    	<page string="Phone Line" attrs="{'invisible': [('type','!=','phone_line')]}">
+	                    		<field name="inventory_phone_line">
+		                    		<tree editable='bottom'>
+	                    				<field name="name"/>
+	                    				<field name="number"/>
+	                    			</tree>
+		                    	</field>
+	                    	</page>
+	                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_tgb_inventory_inventory" model="ir.actions.act_window">
+            <field name="name">Inventory</field>
+            <field name="res_model">tgb.inventory.inventory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tgb_inventory_inventory_tree"/>
+            <field name="search_view_id" ref="view_tgb_inventory_inventory_filter"/>
+            <field name="context">{}</field>
+        </record>
+        
+    </data>
+</openerp>
