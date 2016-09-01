@@ -1,8 +1,9 @@
-# -*- coding: utf-8# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
-#
+#    
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
+#    Copyright (C) 2004-2010 OpenERP SA (<http://www.openerp.com>)
+#    Copyright (C) 2011-2015 Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,32 +21,24 @@
 ##############################################################################
 
 {
-    'name': 'TGB Music Lodge',
-    'version': '1.0',
-    'category': 'TGB',
-    'sequence': 1,
-    'depends': ['sale','account','account_accountant','account_voucher','report_aeroo','web_digital_big_sign','procurement','sale_stock','stock'],
+    "name" : "Web Digital Signature",
+    "version" : "1.0",
+    "author" : "Serpent Consulting Services Pvt. Ltd.",
+    "category": '',
+    'complexity': "easy",
+    'depends': ['web'],
+    "description": """
+        This module provides the functionality to store digital signature image for a record.
+        The example can be seen into the User's form view where we have added a test field under signature.
+    """,
     'data': [
-        'report/rental_agreement_report_view.xml',
-        'report/invoice_report_view.xml',
-        'wizard/create_sale_order_view.xml',
-        'product_view.xml',
-        'res_partner_view.xml',
-        'invoice_view.xml',
-        'sale_view.xml',
-        'sequence.xml',
-        'schedule.xml',
-        'report_view.xml',
-        'menu.xml',
+        'views/we_digital_sign_view.xml',
+        'users_view.xml'
     ],
-    'css' : [
-    ],
-    'qweb': [
-    ],
-    'js': [
-    ],
+    'website': 'http://www.serpentcs.com',
+    'qweb': ['static/src/xml/digital_sign.xml'],
     'installable': True,
     'auto_install': False,
-    'application': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4: -*-
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

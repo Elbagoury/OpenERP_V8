@@ -57,6 +57,7 @@ class account_invoice(osv.osv):
     _defaults = {
         'comment': 'Goods sold are not returnable & exchangeable\nDeposit is not refundable in any circumstance.',
         'heater': True,
+        'delivery': True,
     }
     
 account_invoice()

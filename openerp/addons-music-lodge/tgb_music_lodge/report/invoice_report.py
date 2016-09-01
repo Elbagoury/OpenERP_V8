@@ -70,7 +70,8 @@ class Parser(report_sxw.rml_parse):
     def get_lines(self, invoice_line):
         res = []
         num_of_line = len(invoice_line)
-        if num_of_line>3 and num_of_line<9:
+#         if num_of_line>3 and num_of_line<9:
+        if num_of_line>1 and num_of_line<9:
             for x in range(num_of_line,8):
                 res += [1,1]
             res += [1]
