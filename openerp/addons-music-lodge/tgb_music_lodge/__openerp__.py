@@ -28,6 +28,7 @@
     'data': [
         'report/rental_agreement_report_view.xml',
         'report/invoice_report_view.xml',
+        'report/account_invoice_report_view.xml',
         'wizard/create_sale_order_view.xml',
         'product_view.xml',
         'res_partner_view.xml',
