@@ -33,27 +33,45 @@ from datetime import datetime
 import time
 import calendar
 from dateutil.relativedelta import relativedelta
+import openerp.addons.decimal_precision as dp
+
 
 class sale_order(osv.osv):
     _inherit = "sale.order"
-    
+
     _columns = {
-        'customer_po_no': fields.char("Customer's PO No.", size=1024,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'sgd_acc_number': fields.boolean('SGD Account No',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'usd_acc_number': fields.boolean('USD Account No',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'client_order_ref': fields.char('Reference/Description', copy=False,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'note': fields.text('Terms and conditions',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'payment_term': fields.many2one('account.payment.term', 'Payment Term',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'fiscal_position': fields.many2one('account.fiscal.position', 'Fiscal Position',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'user_id': fields.many2one('res.users', 'Salesperson',readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, select=True, track_visibility='onchange'),
-        'incoterm': fields.many2one('stock.incoterms', 'Incoterm', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.",readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'warehouse_id': fields.many2one('stock.warehouse', 'Warehouse', required=True,readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
-        'origin': fields.char('Source Document', help="Reference of the document that generated this sales order request.",readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'customer_po_no': fields.char("Customer's PO No.", size=1024, readonly=True,
+                                      states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'sgd_acc_number': fields.boolean('SGD Account No', readonly=True,
+                                         states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'usd_acc_number': fields.boolean('USD Account No', readonly=True,
+                                         states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'client_order_ref': fields.char('Reference/Description', copy=False, readonly=True,
+                                        states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'note': fields.text('Terms and conditions', readonly=True,
+                            states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'payment_term': fields.many2one('account.payment.term', 'Payment Term', readonly=True,
+                                        states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'fiscal_position': fields.many2one('account.fiscal.position', 'Fiscal Position', readonly=True,
+                                           states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'user_id': fields.many2one('res.users', 'Salesperson', readonly=True,
+                                   states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, select=True,
+                                   track_visibility='onchange'),
+        'incoterm': fields.many2one('stock.incoterms', 'Incoterm',
+                                    help="International Commercial Terms are a series of predefined commercial terms used in international transactions.",
+                                    readonly=True,
+                                    states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'warehouse_id': fields.many2one('stock.warehouse', 'Warehouse', required=True, readonly=True,
+                                        states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
+        'origin': fields.char('Source Document',
+                              help="Reference of the document that generated this sales order request.", readonly=True,
+                              states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
         'parent_id': fields.many2one('sale.order', 'Parent'),
     }
-    
+
     def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
-        vals = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context=context)
+        vals = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id,
+                                                                       context=context)
         location_id = order.partner_shipping_id.property_stock_customer.id
         vals['location_id'] = location_id
         routes = line.route_id and [(4, line.route_id.id)] or []
@@ -63,59 +81,62 @@ class sale_order(osv.osv):
         vals['part_no'] = line.part_no
         vals['brand'] = line.brand
         return vals
-    
+
     def _prepare_invoice(self, cr, uid, order, lines, context=None):
         if context is None:
             context = {}
-            
+
         invoice_vals = super(sale_order, self)._prepare_invoice(cr, uid, order, lines, context)
         invoice_vals.update({
             'sgd_acc_number': order.sgd_acc_number,
             'usd_acc_number': order.usd_acc_number,
         })
         return invoice_vals
-    
+
     def write(self, cr, uid, ids, vals, context=None):
         for sale in self.browse(cr, uid, ids):
-            if sale.state in ['draft','sent'] and 'state' not in vals and 'message_last_post' not in vals and 'name' not in vals:
+            if sale.state in ['draft',
+                              'sent'] and 'state' not in vals and 'message_last_post' not in vals and 'name' not in vals:
                 if not sale.parent_id:
                     sql = '''
                         select count(id) from sale_order where parent_id=%s
-                    '''%(sale.id)
+                    ''' % (sale.id)
                     cr.execute(sql)
                     num_of_sale = cr.fetchone()[0]
-                    new_name = sale.name +'_R'+str(num_of_sale+1)
+                    new_name = sale.name + '_R' + str(num_of_sale + 1)
                     parent_id = False
                 else:
                     sql = '''
                         select count(id) from sale_order where parent_id=%s
-                    '''%(sale.parent_id.id)
+                    ''' % (sale.parent_id.id)
                     cr.execute(sql)
                     num_of_sale = cr.fetchone()[0]
-                    new_name = sale.parent_id.name +'_R'+str(num_of_sale+1)
+                    new_name = sale.parent_id.name + '_R' + str(num_of_sale + 1)
                     parent_id = sale.parent_id.id
                 old_name = sale.name
-                super(sale_order,self).write(cr, uid, [sale.id], {'name':new_name}, context)
-                default = {'parent_id': parent_id,'name': old_name}
+                super(sale_order, self).write(cr, uid, [sale.id], {'name': new_name}, context)
+                default = {'parent_id': parent_id, 'name': old_name}
                 new_id = self.copy(cr, uid, sale.id, default)
                 if not sale.parent_id:
                     sql = '''
                         update sale_order set parent_id=%s where id=%s;
                         update sale_order set parent_id=%s where parent_id=%s;
-                    '''%(new_id,sale.id,new_id,sale.id)
+                    ''' % (new_id, sale.id, new_id, sale.id)
                     cr.execute(sql)
-        return super(sale_order,self).write(cr, uid, ids, vals, context)
-    
+        return super(sale_order, self).write(cr, uid, ids, vals, context)
+
+
 sale_order()
+
 
 class sale_order_line(osv.osv):
     _inherit = "sale.order.line"
-    
+
     _columns = {
         'part_no': fields.char('Part No', size=1024),
         'brand': fields.char('Brand', size=1024),
     }
-    
+
     def _check_unit_price(self, cr, uid, ids, context=None):
         for so_line in self.browse(cr, uid, ids, context=context):
             if so_line.product_id and so_line.price_unit < so_line.product_id.standard_price:
@@ -123,31 +144,42 @@ class sale_order_line(osv.osv):
         return True
 
     _constraints = [
-        (_check_unit_price, 'The sale price much be greater than the cost price', ['product_id','price_unit']),
+        (_check_unit_price, 'The sale price much be greater than the cost price', ['product_id', 'price_unit']),
     ]
-    
+
     def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,
-            uom=False, qty_uos=0, uos=False, name='', partner_id=False,
-            lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False, flag=False, context=None):
-        
+                          uom=False, qty_uos=0, uos=False, name='', partner_id=False,
+                          lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False,
+                          flag=False, context=None):
+
         result = super(sale_order_line, self).product_id_change(cr, uid, ids, pricelist, product, qty,
-            uom, qty_uos, uos, name, partner_id,
-            lang, update_tax, date_order, packaging, fiscal_position, flag, context)
+                                                                uom, qty_uos, uos, name, partner_id,
+                                                                lang, update_tax, date_order, packaging,
+                                                                fiscal_position, flag, context)
         if product:
             product_obj = self.pool.get('product.product').browse(cr, uid, product)
+            currency_rate = 1
+            factor = 1
+            if product_obj.cost_currency_id:
+                currency_rate = product_obj.cost_currency_id.rate
+            if product_obj.factor:
+                factor = product_obj.factor
             result['value'].update({
                 'brand': product_obj.brand,
+                'price_unit': product_obj.standard_price * factor * currency_rate
             })
         return result
-    
+
     def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
         res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id, context)
         res.update({
-                'brand': line.brand,
-            })
+            'brand': line.brand,
+        })
         return res
-    
+
+
 sale_order_line()
+
 
 class procurement_order(osv.osv):
     _inherit = "procurement.order"
@@ -155,7 +187,7 @@ class procurement_order(osv.osv):
         'part_no': fields.char('Part No', size=1024),
         'brand': fields.char('Brand', size=1024),
     }
-    
+
     def _run_move_create(self, cr, uid, procurement, context=None):
         ''' Returns a dictionary of values that will be used to create a stock move from a procurement.
         This function assumes that the given procurement has a rule (action == 'move') set on it.
@@ -163,14 +195,15 @@ class procurement_order(osv.osv):
         :param procurement: browse record
         :rtype: dictionary
         '''
-        newdate = (datetime.strptime(procurement.date_planned, '%Y-%m-%d %H:%M:%S') - relativedelta(days=procurement.rule_id.delay or 0)).strftime('%Y-%m-%d %H:%M:%S')
+        newdate = (datetime.strptime(procurement.date_planned, '%Y-%m-%d %H:%M:%S') - relativedelta(
+            days=procurement.rule_id.delay or 0)).strftime('%Y-%m-%d %H:%M:%S')
         group_id = False
         if procurement.rule_id.group_propagation_option == 'propagate':
             group_id = procurement.group_id and procurement.group_id.id or False
         elif procurement.rule_id.group_propagation_option == 'fixed':
             group_id = procurement.rule_id.group_id and procurement.rule_id.group_id.id or False
-        #it is possible that we've already got some move done, so check for the done qty and create
-        #a new move with the correct qty
+        # it is possible that we've already got some move done, so check for the done qty and create
+        # a new move with the correct qty
         already_done_qty = 0
         already_done_qty_uos = 0
         for move in procurement.move_ids:
@@ -186,7 +219,8 @@ class procurement_order(osv.osv):
             'product_uom_qty': qty_left,
             'product_uos_qty': (procurement.product_uos and qty_uos_left) or qty_left,
             'product_uos': (procurement.product_uos and procurement.product_uos.id) or procurement.product_uom.id,
-            'partner_id': procurement.rule_id.partner_address_id.id or (procurement.group_id and procurement.group_id.partner_id.id) or False,
+            'partner_id': procurement.rule_id.partner_address_id.id or (
+                procurement.group_id and procurement.group_id.partner_id.id) or False,
             'location_id': procurement.rule_id.location_src_id.id,
             'location_dest_id': procurement.location_id.id,
             'move_dest_id': procurement.move_dest_id and procurement.move_dest_id.id or False,
@@ -207,6 +241,79 @@ class procurement_order(osv.osv):
         }
         return vals
 
+
 procurement_order()
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+class update_factor(osv.osv_memory):
+    _name = 'wizard.update.factor'
+    _columns = {
+        'product_line': fields.one2many('update.factor.line', 'update_id', 'Products'),
+        'currency_line': fields.one2many('update.currency.line', 'update_id', 'Currency'),
+    }
+
+    def update_price(self, cr, uid, ids, context=None):
+        currency_line_obj = self.pool.get('res.currency.rate')
+        product_obj = self.pool.get('product.template')
+        for obj in self.browse(cr, uid, ids):
+            for line in obj.product_line:
+                product_obj.write(cr, uid, line.product_id.id, {'factor': line.factor})
+            for line in obj.currency_line:
+                currency_line_obj.create(cr, uid, {'currency_id': line.cost_currency_id.id,
+                                                   'rate': line.rate,
+                                                   'name': time.strftime('%Y-%m-%d')})
+                self.pool.get('res.currency').write(cr, uid, line.cost_currency_id.id, {'rate': line.rate})
+
+    def load_product(self, cr, uid, ids, context=None):
+        product_obj = self.pool.get('product.template')
+        factor_line = self.pool.get('update.factor.line')
+        currency_line = self.pool.get('update.currency.line')
+        currency_list = []
+        for obj in self.browse(cr, uid, ids):
+            for product_id in product_obj.search(cr, uid, [('active', '=', True)]):
+                product = product_obj.browse(cr, uid, product_id)
+                if product.cost_currency_id not in currency_list:
+                    currency_list.append(product.cost_currency_id)
+                factor_line.create(cr, uid, {'update_id': obj.id,
+                                             'product_id': product_id,
+                                             'currency_id': product.cost_currency_id.id,
+                                             'cost_price': product.standard_price,
+                                             'factor': product.factor})
+            for currency in currency_list:
+                currency_line.create(cr, uid,
+                                     {'update_id': obj.id, 'cost_currency_id': currency.id, 'rate': currency.rate})
+            return {
+                'context': context,
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'wizard.update.factor',
+                'res_id': obj.id,
+                'view_id': False,
+                'type': 'ir.actions.act_window',
+                'target': 'new',
+            }
+
+
+class update_factor_line(osv.osv_memory):
+    _name = 'update.factor.line'
+    _columns = {
+        'update_id': fields.many2one('wizard.update.factor', 'Update Id'),
+        'product_id': fields.many2one('product.template', 'Product', required=True),
+        'factor': fields.float('Factor', digits_compute=dp.get_precision('Product Price')),
+        'cost_price': fields.float('Cost price', readonly=True, digits_compute=dp.get_precision('Product Price')),
+        'currency_id': fields.many2one('res.currency', "Currency", readonly=True,
+                                            help="The currency the field is expressed in."),
+    }
+
+
+class update_factor_line(osv.osv_memory):
+    _name = 'update.currency.line'
+    _columns = {
+        'update_id': fields.many2one('wizard.update.factor', 'Update Id'),
+        'cost_currency_id': fields.many2one('res.currency', "Currency", required=True,
+                                            help="The currency the field is expressed in."),
+        'rate': fields.float('Rate', digits=(12, 6)),
+    }
+
+
+    # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

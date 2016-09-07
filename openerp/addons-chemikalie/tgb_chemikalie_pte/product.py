@@ -33,15 +33,29 @@ from datetime import datetime
 import time
 import calendar
 from dateutil.relativedelta import relativedelta
+import openerp.addons.decimal_precision as dp
 
 class product_template(osv.osv):
     _inherit = "product.template"
-    
+
+    def _get_currency(self, cr, uid, ctx):
+        comp = self.pool.get('res.users').browse(cr,uid,uid).company_id
+        if not comp:
+            comp_id = self.pool.get('res.company').search(cr, uid, [])[0]
+            comp = self.pool.get('res.company').browse(cr, uid, comp_id)
+        return comp.currency_id.id
+
     _columns = {
         'brand': fields.char('Brand', size=1024),
+        'factor': fields.float('Factor', digits_compute= dp.get_precision('Product Price')),
+        'cost_currency_id' : fields.many2one('res.currency', "Currency", required=True, help="The currency the field is expressed in."),
         'supplier_pricelist_line': fields.one2many('supplier.pricelist', 'product_id', 'Pricelist'),
+
     }
-    
+    _defaults = {
+        'factor': 1,
+        "cost_currency_id": _get_currency
+    }
 product_template()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

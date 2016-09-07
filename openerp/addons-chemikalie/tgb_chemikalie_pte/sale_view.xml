@@ -19,5 +19,50 @@
             	</xpath>
             </field>
         </record>
+
+
+		<record id="update_factor_price" model="ir.ui.view">
+            <field name="name">Update Factor</field>
+            <field name="model">wizard.update.factor</field>
+            <field name="arch" type="xml">
+                <form string="Choose your date">
+					<header>
+						<button name="load_product" string="Load all" type="object"/>
+					</header>
+                    <group>
+                        <field name="product_line" mode="tree">
+							<tree editable="top">
+								<field name="product_id"/>
+                                <field name="cost_price"/>
+                                <field name="currency_id"/>
+								<field name="factor"/>
+							</tree>
+						</field>
+						<field name="currency_line" mode="tree">
+							<tree editable="top">
+								<field name="cost_currency_id"/>
+								<field name="rate"/>
+							</tree>
+						</field>
+                    </group>
+                    <footer>
+                        <button name="update_price" string="Update" type="object"  class="oe_highlight"  />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="update_factor_price_act" model="ir.actions.act_window">
+            <field name="name">Update Factor</field>
+            <field name="res_model">wizard.update.factor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="update_factor_price"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="update_factor_price_menu" action="update_factor_price_act" parent="base.menu_product" sequence="100	"/>
+
+
     </data>
 </openerp>

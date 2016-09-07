@@ -9,6 +9,10 @@
             	<xpath expr="//field[@name='list_price']" position="after">
             		<field name="brand"/>
             	</xpath>
+				<xpath expr="//field[@name='standard_price']" position="after">
+            		<field name="factor"/>
+					<field name="cost_currency_id"/>
+            	</xpath>
             	<xpath expr="//page[@string='Sales']" position="after">
             		<page string="Pricelist">
             			<group>
