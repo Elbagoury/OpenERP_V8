@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.actions.act_window" id="crm.crm_case_categ_phone_incoming0">
+            <field name="name">Customer Support</field>
+        </record>
+
+        <menuitem name="Customer Support" id="crm.menu_crm_case_phone_inbound"
+                  parent="crm.menu_crm_case_phone"
+                  action="crm.crm_case_categ_phone_incoming0"/>
+
+
+        <record model="ir.ui.view" id="crm_case_phone_form_view_extended">
+            <field name="name">CRM - Phone Calls Tree</field>
+            <field name="model">crm.phonecall</field>
+            <field name="inherit_id" ref="crm.crm_case_phone_form_view"/>
+            <field name="arch" type="xml">
+                  <form position="replace">
+                    <form>
+                        <header>
+                            <button name="action_save" string="Save" type="object" class="oe_highlight"/>
+                            <button string="Print" name="bt_print_report" type="object"/>
+                        </header>
+                        <sheet string="Phone Call">
+                            <group>
+                                <field name="call_type" invisible="1"/>
+                            </group>
+                            <group attrs="{'invisible': [('call_type','!=','Other')]}">
+                                <field name="description"/>
+                            </group>
+                            <group attrs="{'invisible': [('call_type','!=','Complain')]}">
+                                <div style="width: 60%; margin: 0px auto;">
+                                    <h3>Customer Complain Record Form</h3>
+                                </div>
+                                <br/>
+                                <div>
+                                   <group col="2" colspan="2">
+									<group col="6">
+                                         <field name="complain_do_no"/>
+                                         <field name="complain_customer_ac"/>
+                                         <field name="complain_delivery_date"/>
+                                         <field name="complain_order_take"/>
+                                         <field name="complain_order_asst"/>
+                                         <field name="complain_order_arr"/>
+                                         <field name="complain_order_qc"/>
+                                         <field name="complain_order_delivery"/>
+										<group colspan="2"/>
+                                             <field name="complain_date"/>
+											 <group colspan="4"/>
+											<span colspan="6"><b>Nature of Problems</b></span>
+                                            <field colspan="6" name="complain_problem" nolabel="1"/>
+											<span colspan="6"><b>Cause of Problems</b></span>
+                                            <field colspan="6" name="complain_problem_cause" nolabel="1"/>
+                                        <group colspan="6" col="2">
+                                            <group col="1" colspan="2">
+                                                <field name="complain_date_solve"/>
+                                            </group>
+											<span colspan="2"><b>Solutions Offer to Customer</b></span>
+                                            <field name="complain_solution" nolabel="1"/>
+                                        </group>
+                                            <field colspan="2" name="complain_amount" string="Invoice amount S$"/>
+                                            <group colspan="4" col="1">
+											    <div>
+                                                <span><b><field name="complain_customer_pay"/>Customer will pay S$</b></span>
+                                                <span><b><field name="complain_customer_pay_amount"/></b></span>
+												</div>
+												<div>
+                                                <span><b><field name="complain_charge_to"/>Charge To</b></span>
+                                                <span><b><field name="complain_charge_person"/>S$</b></span>
+												<span><b><field name="complain_charge_to_amount"/></b></span>
+												</div>
+												<div>
+                                                <span><b><field name="complain_forfeit"/>Forfeit No-Complain Reward S$</b></span>
+                                                <span><b><field name="complain_forfeit_amount"/></b></span>
+												</div>
+												<div>
+                                                <span><b><field name="complain_perform"/></b></span>
+                                                <span><b>Will perform<field name="complain_perform_amount"/>hr of voluteer work</b></span>
+												</div>
+												<div>
+                                                <span><b><field name="complain_write_off"/>Write-off by Company S$</b></span>
+                                                <span><b><field name="complain_write_off_amount"/></b></span>
+												</div>
+                                            </group>
+
+                                        <group colspan="6" col="2">
+                                            <field name="complain_record_signature" widget="signature"/>
+                                            <field name="complain_record_date"/>
+                                            <field name="complain_acknowledge_signature" widget="signature"/>
+                                            <field name="complain_acknowledge_date"/>
+                                        </group>
+                                        <group col="2" colspan="6">
+                                            <field name="complain_remarks"/>
+                                            <field name="end_date"/>
+                                        </group>
+										</group>
+										<group></group>
+                                    </group>
+                                </div>
+                            </group>
+                            <group attrs="{'invisible': [('call_type','!=','Order Taken')]}">
+                                <div style="width: 50%; margin: 0px auto;">
+                                    <h3>Hazel Order Form</h3>
+                                </div>
+                                <br/>
+                                <div>
+                                    <group col="2" colspan="2">
+                                        <group col="3" colspan="1">
+                                            <group>
+                                                <field name="complain_order_asst"/>
+                                                <field name="complain_order_arr"/>
+                                                <field name="complain_order_qc"/>
+                                                <field name="order_typed_by"/>
+                                                <field name="complain_order_take"/>
+                                            </group>
+                                            <group>
+                                                <field name="complain_customer_ac"/>
+                                                <field name="order_term"/>
+
+                                            </group>
+                                            <group colspan="1" col="2">
+
+                                                <field name="order_no"/>
+                                                <field name="complain_date" string="Date"/>
+                                                <group colspan="2">
+                                                    <span><field name="order_no_do" nolabel="1"/>No.D.O.</span>
+                                                    <span><field name="order_combine" nolabel="1"/>Combine Inv/E-inv</span>
+                                                </group>
+                                                <group colspan="2" col="3">
+                                                    <span><field name="order_customer" nolabel="1"/>Customer</span>
+                                                    <span><field name="order_lead" nolabel="1"/>Leads</span>
+                                                    <span><field name="order_add" nolabel="1"/>Add</span>
+                                                </group>
+												<div colspan="2" style="width:100%;height:2px;background-color:black;"/>
+                                                <group colspan="2" col="3">
+                                                    <span><b>Checked</b></span>
+                                                    <span><field name="order_statement" nolabel="1"/>Statement</span>
+                                                    <span><field name="order_stock" nolabel="1"/>Stock</span>
+                                                </group>
+												<group colspan="2">
+                                                <span><field name="order_delivery_address" nolabel="1"/>Delivery Address</span>
+                                                <span><field name="order_charge_card" nolabel="1"/>Charge Card</span>
+												</group>
+                                            </group>
+                                        </group>
+                                        <group></group>
+
+                                        <group col="6">
+                                            <field colspan="4" name="complain_delivery_date"/>
+                                            <field name="order_instruction"/>
+											<span colspan="6"><b>Receipient's Name and Address</b></span>
+                                            <field colspan="6" name="order_name_address" nolabel="1"/>
+
+                                            <group colspan="6" col="4">
+                                                <field name="order_to"/>
+                                                <field name="order_refer_to_do"/>
+                                                <group colspan="4" col="4">
+                                                    <field colspan="2" name="order_tel"/>
+                                                    <field name="order_tel_check" nolabel="1"/>
+                                                </group>
+                                                <field name="order_occasion"/>
+                                            </group>
+
+                                            <field colspan="6" name="order_message"/>
+                                            <field colspan="6" name="order_message_refer_do"/>
+                                            <field colspan="6" name="order_from"/>
+                                            <group colspan="6" col="4">
+                                                <field name="order_flower_setting"/>
+                                                <field name="order_flower"/>
+                                                <field name="order_flower_stock"/>
+                                                <field name="order_deco"/>
+                                            </group>
+                                            <group colspan="6" col="4">
+                                                <field name="order_flower_setting2"/>
+                                                <field name="order_flower2"/>
+                                                <field name="order_flower_stock2"/>
+                                                <field name="order_deco2"/>
+                                            </group>
+                                            <field colspan="6" name="order_store_use"/>
+                                            <field colspan="4" name="order_amount"/>
+                                            <field name="order_invoice"/>
+                                            <field name="order_reference"/>
+                                            <field name="order_rebate_ac"/>
+                                            <field name="order_bill_attn"/>
+                                            <field colspan="6" name="order_company"/>
+                                            <field colspan="6" name="order_company_address"/>
+                                            <group colspan="2"></group>
+                                            <field name="order_company_caller_id"/>
+                                            <field name="order_company_tel"/>
+                                            <field colspan="3" name="order_for_info"/>
+                                            <field colspan="3" name="order_order_by"/>
+                                            <field colspan="6" name="order_remarks"/>
+                                            <field name="order_charge_card2"/>
+                                            <field name="order_fax"/>
+                                            <field name="order_att_flower_catalog"/>
+                                            <field name="order_no_rebate_slip"/>
+                                            <field name="order_collect_cash"/>
+                                            <field name="order_cod"/>
+                                            <field name="order_charge"/>
+                                            <group colspan="4"/>
+                                            <field name="order_offset_coupon"/>
+                                            <group colspan="4"/>
+											<group colspan="6">
+											<field name="end_date"/>
+                                            <group colspan="4"/>
+											</group>
+                                        </group>
+                                        <group></group>
+                                    </group>
+                                </div>
+                            </group>
+                        </sheet>
+                    </form>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="crm_case_inbound_phone_tree_view_extended">
+            <field name="name">CRM - Phone Calls Tree</field>
+            <field name="model">crm.phonecall</field>
+            <field name="inherit_id" ref="crm.crm_case_inbound_phone_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="date" position="before">
+                    <field name="phone_id"/>
+                </field>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <button string="Open Form"
+                            name="action_show_form"
+                            type="object"/>
+                    <button string="Print"
+                            name="bt_print_report"
+                            type="object"/>
+                </xpath>
+
+                <field name="user_id" position="before">
+                    <field name="call_priority"/>
+                    <field name="call_type"/>
+                    <field name="mode"/>
+                    <field name="call_status"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="tgb_product_template_form_view">
+            <field name="name">product.template.product.website.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <!-- add state field in header -->
+                <field name="public_categ_ids" position="after">
+                    <field name="occasion_ids" widget="many2many_tags"/>
+                    <field name="featured"/>
+                    <field name="available_in_pos" widget="website_button"/>
+                </field>
+                <field name="website_published" position="replace">
+                    <field name="website_published" widget="website_button"/>
+                </field>
+                <field name="description" position="replace">
+                    <separator string="Chinese name"/>
+                    <field name="chinese_name"/>
+                    <separator string="Description"/>
+
+                    <field name="description"/>
+                    <separator string="Specs"/>
+
+                    <field name="specs"/>
+                </field>
+
+                <page string="Accounting" position="after">
+                    <page string="Microsite">
+                        <field name="microsite" mode="tree">
+                            <tree editable="top">
+                                <field name="site"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+                    <field name="occasion_ids" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_occasion_form_view" model="ir.ui.view">
+            <field name="name">product.occasion.form</field>
+            <field name="model">product.occasion</field>
+            <field name="arch" type="xml">
+                <form string="Product Occasions">
+                    <group>
+                        <field name="name"/>
+                        <field name="messages" mode="tree">
+                            <tree editable="top">
+                                <field name="message"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_occasion_tree_view" model="ir.ui.view">
+            <field name="name">product.occasion.tree</field>
+            <field name="model">product.occasion</field>
+            <field name="arch" type="xml">
+                <tree string="Product Occasions">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_occasion_action" model="ir.actions.act_window">
+            <field name="name">Products Occassion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.occasion</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="product_occasion_tree_view"/>
+        </record>
+        <menuitem
+                action="product_occasion_action"
+                id="menu_product_occasion"
+                parent="base.menu_product"
+                sequence="30"/>
+
+
+        <record id="product_microsite_form_view" model="ir.ui.view">
+            <field name="name">res.microsite.form</field>
+            <field name="model">res.microsite</field>
+            <field name="arch" type="xml">
+                <form string="Microsite">
+                    <group>
+                        <field name="name"/>
+                        <field name="product_ids" mode="tree">
+                            <tree editable="top">
+                                <field name="product_id"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_microsite_tree_view" model="ir.ui.view">
+            <field name="name">res.microsite.tree</field>
+            <field name="model">res.microsite</field>
+            <field name="arch" type="xml">
+                <tree string="Microsite">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_microsite_action" model="ir.actions.act_window">
+            <field name="name">Microsite</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.microsite</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="product_microsite_tree_view"/>
+        </record>
+        <menuitem
+                action="product_microsite_action"
+                id="menu_product_microsite"
+                parent="base.menu_product"
+                sequence="30"/>
+
+
+    </data>
+</openerp>
