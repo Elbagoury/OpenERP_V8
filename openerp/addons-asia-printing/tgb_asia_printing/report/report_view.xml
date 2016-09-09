@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+<!-- Quotation Booklet -->
+	    <record id="quotation_booklet_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_booklet_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_booklet_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_booklet_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_booklet_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_booklet_report"
+			model="sale.order"
+			name="quotation_booklet_report"
+	        string="Quotation Booklet"
+	        rml="tgb_asia_printing/report/quotation_booklet_report.ods"/>
+	        
+<!-- Quotation Brochure -->
+	    <record id="quotation_brochure_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_brochure_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_brochure_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_brochure_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_brochure_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_brochure_report"
+			model="sale.order"
+			name="quotation_brochure_report"
+	        string="Quotation Brochure"
+	        rml="tgb_asia_printing/report/quotation_brochure_report.ods"/>
+	        
+<!-- Quotation Envelope -->
+	    <record id="quotation_envelope_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_envelope_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_envelope_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_envelope_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_envelope_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_envelope_report"
+			model="sale.order"
+			name="quotation_envelope_report"
+	        string="Quotation Envelope"
+	        rml="tgb_asia_printing/report/quotation_envelope_report.ods"/>
+        
+<!-- Quotation Flyer -->
+	    <record id="quotation_flyer_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_flyer_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_flyer_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_flyer_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_flyer_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_flyer_report"
+			model="sale.order"
+			name="quotation_flyer_report"
+	        string="Quotation Flyer"
+	        rml="tgb_asia_printing/report/quotation_flyer_report.ods"/>
+        
+<!-- Quotation Letterhead Trayliner -->
+	    <record id="quotation_letterhead_trayliner_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_letterhead_trayliner_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_letterhead_trayliner_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_letterhead_trayliner_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_letterhead_trayliner_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_letterhead_trayliner_report"
+			model="sale.order"
+			name="quotation_letterhead_trayliner_report"
+	        string="Quotation Letterhead Trayliner"
+	        rml="tgb_asia_printing/report/quotation_letterhead_trayliner_report.ods"/>
+	        
+<!-- Quotation Name Card -->
+	    <record id="quotation_name_card_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_name_card_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_name_card_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_name_card_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_name_card_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_name_card_report"
+			model="sale.order"
+			name="quotation_name_card_report"
+	        string="Quotation Name Card"
+	        rml="tgb_asia_printing/report/quotation_name_card_report.ods"/>
+	        
+<!-- Quotation Paper Bag -->
+	    <record id="quotation_paper_bag_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_paper_bag_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_paper_bag_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_paper_bag_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_paper_bag_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_paper_bag_report"
+			model="sale.order"
+			name="quotation_paper_bag_report"
+	        string="Quotation Paper Bag"
+	        rml="tgb_asia_printing/report/quotation_paper_bag_report.ods"/>
+	        
+<!-- Quotation Paper Box -->
+	    <record id="quotation_paper_box_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_paper_box_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_paper_box_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_paper_box_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_paper_box_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_paper_box_report"
+			model="sale.order"
+			name="quotation_paper_box_report"
+	        string="Quotation Paper Box"
+	        rml="tgb_asia_printing/report/quotation_paper_box_report.ods"/>
+	        
+<!-- Quotation Plastic Bag -->
+	    <record id="quotation_plastic_bag_report" model="ir.actions.report.xml">
+	        <field name="name">quotation_plastic_bag_report</field>
+	        <field name="type">ir.actions.report.xml</field>
+	        <field name="model">sale.order</field>
+	        <field name="report_name">quotation_plastic_bag_report</field>
+	        <field name="report_type">aeroo</field>
+	        <field name="in_format">oo-ods</field>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-xls'),('compatible_types','=','oo-ods')]"/>
+	        <field name="parser_loc">tgb_asia_printing/report/quotation_plastic_bag_report.py</field>
+	        <field name="report_rml">tgb_asia_printing/report/quotation_plastic_bag_report.ods</field>
+	        <field name="parser_state">loc</field>
+	        <field name="tml_source">file</field>
+	        <field name="attachment_use" eval="0"/>
+    	</record>		    
+		<report 
+			auto="False" 
+			menu="True"
+			id="quotation_plastic_bag_report"
+			model="sale.order"
+			name="quotation_plastic_bag_report"
+	        string="Quotation Plastic Bag"
+	        rml="tgb_asia_printing/report/quotation_plastic_bag_report.ods"/>
+	        
+	</data>
+</openerp>
