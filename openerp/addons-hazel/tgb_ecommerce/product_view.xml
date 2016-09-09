@@ -19,7 +19,7 @@
                     <form>
                         <header>
                             <button name="action_save" string="Save" type="object" class="oe_highlight"/>
-                            <button string="Print" name="bt_print_report" type="object"/>
+                            <button string="Print" name="bt_print_report" type="object" attrs="{'invisible': [('call_type','!=','Order Taken')]}"/>
                         </header>
                         <sheet string="Phone Call">
                             <group>
@@ -230,7 +230,8 @@
                             type="object"/>
                     <button string="Print"
                             name="bt_print_report"
-                            type="object"/>
+                            type="object"
+                            attrs="{'invisible': [('call_type','!=','Order Taken')]}"/>
                 </xpath>
 
                 <field name="user_id" position="before">

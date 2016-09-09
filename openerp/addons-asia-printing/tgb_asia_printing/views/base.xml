@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<template id="assets_backend" name="business__alliance__tgb_asia_printing assets for backend" inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="/tgb_asia_printing/static/src/css/base.css" />
+			</xpath>
+		</template>
+	</data>
+</openerp>

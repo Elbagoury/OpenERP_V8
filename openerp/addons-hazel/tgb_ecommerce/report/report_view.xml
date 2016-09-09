@@ -10,7 +10,7 @@
 	        <field name="report_name">order_form_report</field>
 	        <field name="report_type">aeroo</field>
 	        <field name="in_format">oo-odt</field>
-	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-doc'),('compatible_types','=','oo-odt')]"/>
+	        <field name="out_format" model="report.mimetypes" search="[('code','=','oo-pdf'),('compatible_types','=','oo-odt')]"/>
 	        <field name="parser_loc">tgb_ecommerce/report/order_form_report.py</field>
 	        <field name="report_rml">tgb_ecommerce/report/order_form_report.odt</field>
 	        <field name="parser_state">loc</field>

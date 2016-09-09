@@ -26,6 +26,9 @@
                     <field name="ref_no"/>
                     <field name="valid_date"/>
                 </xpath>
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="class">oe_green_erp_scroll</attribute>
+                </xpath>
             </field>
         </record>
 

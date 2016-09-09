@@ -27,6 +27,7 @@
     'depends': ['sale', 'report_aeroo'],
     'data': [
         'report/report_view.xml',
+        'views/base.xml',
         'sale_view.xml',
     ],
     'css' : [
