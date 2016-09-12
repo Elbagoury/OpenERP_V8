@@ -30,6 +30,7 @@ class Parser(report_sxw.rml_parse):
             'convert_date_d_m_Y': self.convert_date_d_m_Y,
             'convert_datetime_A_B_d_Y': self.convert_datetime_A_B_d_Y,
             'convert': self.convert,
+            'get_lines_blank': self.get_lines_blank,
         })
         
     def get_datenow(self):
@@ -49,5 +50,12 @@ class Parser(report_sxw.rml_parse):
         amount_text = amount_to_text_en.amount_to_text(amount, 'en', ' ')
         return amount_text.upper()
     
-    
+    def get_lines_blank(self, line):
+        res = []
+        if len(line)>=6:
+            return []
+        if len(line)<6:
+            for l in range(len(line), 6):
+                res.append(1)
+        return res
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
