@@ -20,6 +20,7 @@
             <field name="arch" type="xml">
                 <tree string="Office Inventory">
                     <field name="name"/>
+                    <field name="tgb_type" invisible='1'/>
                 </tree>
             </field>
         </record>
@@ -29,6 +30,7 @@
             <field name="arch" type="xml">
                 <form string="Office Inventory" version='7.0'>
 					<header>
+						<field name="tgb_type" invisible='1'/>
 					</header>
                 	<sheet>
 	                    <group col="4" colspan="2">
@@ -86,7 +88,8 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_tgb_inventory_inventory_tree"/>
             <field name="search_view_id" ref="view_tgb_inventory_inventory_filter"/>
-            <field name="context">{}</field>
+            <field name="domain">[('tgb_type','=','office_inventory')]</field>
+            <field name="context">{'default_tgb_type': 'office_inventory'}</field>
         </record>
         <record id="action_tgb_inventory_inventory1" model="ir.actions.act_window.view">
             <field eval="1" name="sequence"/>
@@ -119,6 +122,7 @@
             <field name="arch" type="xml">
                 <tree string="Site Inventory">
                     <field name="name"/>
+                    <field name="tgb_type" invisible='1'/>
                 </tree>
             </field>
         </record>
@@ -128,6 +132,7 @@
             <field name="arch" type="xml">
                 <form string="Site Inventory" version='7.0'>
 					<header>
+						<field name="tgb_type" invisible='1'/>
 					</header>
                 	<sheet>
 	                    <group col="4" colspan="2">
@@ -159,7 +164,8 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_tgb_inventory_site_inventory_tree"/>
             <field name="search_view_id" ref="view_tgb_inventory_site_inventory_filter"/>
-            <field name="context">{}</field>
+            <field name="domain">[('tgb_type','=','site_inventory')]</field>
+            <field name="context">{'default_tgb_type': 'site_inventory'}</field>
         </record>
         <record id="action_tgb_inventory_site_inventory1" model="ir.actions.act_window.view">
             <field eval="1" name="sequence"/>

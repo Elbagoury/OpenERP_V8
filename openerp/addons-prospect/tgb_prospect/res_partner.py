@@ -52,6 +52,27 @@ class res_partner(osv.osv):
             if not ids:
                 ids = self.search(cr, user, [('job_site_no',operator,name)] + args, limit=limit, context=context)
         return self.name_get(cr, user, ids, context=context)
-
+    
+    def name_get(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for record in self.browse(cr, uid, ids, context=context):
+            name = record.name
+#             if record.parent_id and not record.is_company:
+#                 name = "%s, %s" % (record.parent_name, name)
+            if context.get('show_address_only'):
+                name = self._display_address(cr, uid, record, without_company=True, context=context)
+            if context.get('show_address'):
+                name = name + "\n" + self._display_address(cr, uid, record, without_company=True, context=context)
+            name = name.replace('\n\n','\n')
+            name = name.replace('\n\n','\n')
+            if context.get('show_email') and record.email:
+                name = "%s <%s>" % (name, record.email)
+            res.append((record.id, name))
+        return res
+    
 res_partner()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
