@@ -6,7 +6,7 @@
             <field name="name">tgb.inventory.inventory.select</field>
             <field name="model">tgb.inventory.inventory</field>
             <field name="arch" type="xml">
-                <search string="Inventory">
+                <search string="Office Inventory">
                 	<field name="name"/>
                     <group expand="0" string="Group By">
                     	<!--<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>-->
@@ -18,7 +18,7 @@
             <field name="name">tgb.inventory.inventory.tree</field>
             <field name="model">tgb.inventory.inventory</field>
             <field name="arch" type="xml">
-                <tree string="Inventory">
+                <tree string="Office Inventory">
                     <field name="name"/>
                 </tree>
             </field>
@@ -27,7 +27,7 @@
             <field name="name">tgb.inventory.inventory.form</field>
             <field name="model">tgb.inventory.inventory</field>
             <field name="arch" type="xml">
-                <form string="Inventory" version='7.0'>
+                <form string="Office Inventory" version='7.0'>
 					<header>
 					</header>
                 	<sheet>
@@ -80,13 +80,98 @@
             </field>
         </record>
         <record id="action_tgb_inventory_inventory" model="ir.actions.act_window">
-            <field name="name">Inventory</field>
+            <field name="name">Office Inventory</field>
             <field name="res_model">tgb.inventory.inventory</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_tgb_inventory_inventory_tree"/>
             <field name="search_view_id" ref="view_tgb_inventory_inventory_filter"/>
             <field name="context">{}</field>
+        </record>
+        <record id="action_tgb_inventory_inventory1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tgb_inventory_inventory_tree"/>
+            <field name="act_window_id" ref="action_tgb_inventory_inventory"/>
+        </record>
+        <record id="action_tgb_inventory_inventory2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_tgb_inventory_inventory_form"/>
+            <field name="act_window_id" ref="action_tgb_inventory_inventory"/>
+        </record>
+        
+        <record id="view_tgb_inventory_site_inventory_filter" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.select</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <search string="Site Inventory">
+                	<field name="name"/>
+                    <group expand="0" string="Group By">
+                    	<!--<filter name="group_by_partner_id" string="Customer" context="{'group_by':'partner_id'}"/>-->
+                    </group>
+               </search>
+            </field>
+        </record>
+    	<record id="view_tgb_inventory_site_inventory_tree" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.tree</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <tree string="Site Inventory">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_tgb_inventory_site_inventory_form" model="ir.ui.view">
+            <field name="name">tgb.inventory.inventory.form</field>
+            <field name="model">tgb.inventory.inventory</field>
+            <field name="arch" type="xml">
+                <form string="Site Inventory" version='7.0'>
+					<header>
+					</header>
+                	<sheet>
+	                    <group col="4" colspan="2">
+		                    <field name="name" required='1'/>
+	                    </group>
+	                    <notebook>
+	                    	<page string="Site Inventory">
+	                    		<field name="inventory_line">
+	                    			<tree editable='bottom'>
+	                    				<field name="site_no_id" on_change="onchange_site_no_id(site_no_id)" domain="[('parent_id','!=',False)]"/>
+					            		<field name="client_name_id"/>
+					            		<field name="brand"/>
+	                    				<field name="serial_no"/>
+	                    				<field name="date_out"/>
+	                    				<field name="date_of_hand_over"/>
+	                    				<field name="remark"/>
+	                    			</tree>
+		                    	</field>
+	                    	</page>
+	                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_tgb_inventory_site_inventory" model="ir.actions.act_window">
+            <field name="name">Site Inventory</field>
+            <field name="res_model">tgb.inventory.inventory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tgb_inventory_site_inventory_tree"/>
+            <field name="search_view_id" ref="view_tgb_inventory_site_inventory_filter"/>
+            <field name="context">{}</field>
+        </record>
+        <record id="action_tgb_inventory_site_inventory1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tgb_inventory_site_inventory_tree"/>
+            <field name="act_window_id" ref="action_tgb_inventory_site_inventory"/>
+        </record>
+        <record id="action_tgb_inventory_site_inventory2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_tgb_inventory_site_inventory_form"/>
+            <field name="act_window_id" ref="action_tgb_inventory_site_inventory"/>
         </record>
         
     </data>

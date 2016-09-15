@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_promotion_rules_form">
+            <field name="name">tgb_promos.rules.form</field>
+            <field name="model">tgb_promos.rules</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Promotions" version="7.0">
+                    <sheet>
+                    <h1>
+                       <field name="name" placeholder="Promotion Name" />
+                    </h1>
+                    <group col="4">
+                        <field name="partner_categories" colspan="2" widget="many2many_tags"/>
+                        <field name="sequence" colspan="2" />
+                        <field name="max_cust_number" colspan="2"/>
+                        <field name="minimum_amount" colspan="2"/>
+                        <field name="allow_voucher" colspan="2"/>
+                        <field name="active" colspan="2"/>
+                        <field name="accumulated" colspan="2" />
+                        <field name="combined" colspan="2"/>
+                        <field name="last_date" colspan="2" />
+                        <field name="stock" colspan="2"/>
+                        <field name="payment" colspan="2" />
+                        <field name="singapore_only" colspan="2"/>
+                        <field name="cheque_allowed" colspan="2"/>
+                        <field name="cash_voucher_used_once" colspan="2"/>
+                    </group>
+                    <group string="Mode of payment eligible" col="6">
+                        <field name="mode_of_payment_all" colspan="2" />
+                        <field name="mode_of_payment_credit" colspan="2" />
+                        <field name="mode_of_payment_card" colspan="2" />
+                        <field name="mode_of_payment_cash" colspan="2" />
+                        <field name="mode_of_payment_cheque" colspan="2" />
+                    </group>
+                    <group string="Mode of order" col="6">
+                        <field name="mode_of_order_fax" colspan="2" />
+                        <field name="mode_of_order_phone" colspan="2" />
+                        <field name="mode_of_order_online" colspan="2" />
+                    </group>
+			        <group col="8">
+                        <group>
+                            <separator string="Start/End Date of Promotion" colspan="4"/>
+                            <field name="from_date" nolabel="1"/>
+                            <field name="to_date" nolabel="1"/>
+                        </group>
+                        <group>
+                            <separator string="Start/End Date of Delivery" colspan="4"/>
+                            <field name="delivery_from_date" nolabel="1"/>
+                            <field name="delivery_to_date" nolabel="1"/>
+                        </group>
+                    </group>
+                    <group col="4">
+                    	<separator string="Start/End Date of Redemption" colspan="4"/>
+                        <field name="redemption_from_date" colspan="2" nolabel="1"/>
+                        <field name="redemption_to_date" colspan="2" nolabel="1"/>
+                    </group>
+                    <notebook>
+                    	<page string="Information">
+		                     <separator string="Promotion Conditions" colspan="4"/>
+		                            <field name="conditions" nolabel="1">
+		                                <tree string="Conditions"
+		                                    editable="bottom">
+		                                    <field name="product_category" />
+		                                    <field name="product_id"/>
+		                                    <field name="based_on" />
+		                                    <field name="from" />
+		                                    <field name="to" />
+		                                    <field name="discount_type" />
+		                                    <field name="value" />
+		                                    <field name="new_price" />
+		                                </tree>
+		                                <form>
+		                                     <field name="product_category" />
+		                                    <field name="product_id"/>
+		                                    <field name="based_on" />
+		                                    <field name="from" />
+		                                    <field name="to" />
+		                                    <field name="discount_type" />
+		                                    <field name="value" />
+		                                    <field name="new_price" />
+		                                </form>
+		                            </field>
+		                        <group col='4'>
+		                        	<field name="pick_only" colspan="2" />
+		                        	<field name="pick_qty" colspan="2" />
+		                        </group>
+		                        <separator string="Free products" colspan="4"/>
+		                            <field name="products" nolabel="1">
+		                                <tree editable="bottom" string="Free products">
+		                                    <field name="product_id" />
+		                                    <field name="qty"/>
+		                                </tree>
+		                                <form>
+		                                    <field name="product_id" />
+		                                    <field name="qty"/>
+		                                </form>
+		                            </field>
+                            </page>
+                            <page string="Include">
+	                            <group col="4">
+			                        <field name="products_to_include" colspan="2" widget="many2many_tags"/>
+			                        <field name="categories_to_include" colspan="2" widget="many2many_tags"/>
+			                        <field name="occasions_to_include" colspan="2" widget="many2many_tags"/>
+			                        <field name="customers_to_include" colspan="2" widget="many2many_tags"/>
+			                    </group>
+                            </page>
+                            <page string="Exclude">
+	                            <group col="4">
+			                        <field name="products_to_exclude" colspan="2" widget="many2many_tags"/>
+			                        <field name="categories_to_exclude" colspan="2" widget="many2many_tags"/>
+			                        <field name="occasions_to_exclude" colspan="2" widget="many2many_tags"/>
+			                        <field name="customers_to_exclude" colspan="2" widget="many2many_tags"/>
+			                    </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_promotion_rules_tree">
+            <field name="name">tgb_promos.rules.tree</field>
+            <field name="model">tgb_promos.rules</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Promotions">
+                    <field name="sequence" />
+                    <field name="name" />
+                    <!-- field name="shop" /-->
+                    <field name="active" />
+                    <field name="from_date" />
+                    <field name="to_date" />
+                </tree>
+            </field>
+        </record>
+        <record id="act_promotion_rules" model="ir.actions.act_window">
+            <field name="name">TGB Promotion Rules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tgb_promos.rules</field>
+            <field name="src_model">tgb_promos.rules</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <menuitem id="promos" action="act_promotion_rules"
+                    parent="base.menu_sale_config_sales" groups="group_promo_manager"/>
+    </data>
+</openerp>

@@ -52,10 +52,10 @@ class Parser(report_sxw.rml_parse):
     
     def get_lines_blank(self, line):
         res = []
-        if len(line)>=6:
+        if len(line)>=7:
             return []
-        if len(line)<6:
-            for l in range(len(line), 6):
+        if len(line)<7:
+            for l in range(len(line), 7):
                 res.append(1)
         return res
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

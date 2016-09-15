@@ -41,6 +41,9 @@ class tgb_inventory_inventory(osv.osv):
         'inventory_card_line': fields.one2many('tgb.inventory.card.line', 'inventory_id', 'Inventory Card Line'),
         'inventory_mobile_plan_line': fields.one2many('tgb.inventory.mobile.plan.line', 'inventory_id', 'Inventory Mobile Plan Line'),
         'inventory_phone_line': fields.one2many('tgb.inventory.phone.line', 'inventory_id', 'Inventory Phone Line'),
+        'tgb_type': fields.selection([('office_inventory', 'Office Inventor'),
+                                  ('site_inventory', 'Site Inventory'),
+                                  ('mobile_plan', 'Mobile Plan')], 'TGB Type'),
     }
     
     _defaults = {
@@ -58,10 +61,22 @@ class tgb_inventory_inventory_line(osv.osv):
         'brand': fields.char('Brand', size=1024),
         'specs': fields.char('Specs', size=1024),
         'serial_no': fields.char('Serial No', size=1024),
-        'model_part_no': fields.char('Brand', size=1024),
+        'model_part_no': fields.char('Model Part No', size=1024),
         'date_out': fields.date('Date Out'),
         'date_of_hand_over': fields.date('Date of Hand Over'),
+        'site_no_id': fields.many2one('res.partner', 'Site No'),
+        'client_name_id': fields.many2one('res.partner', "Client's Name"),
+        'remark': fields.char('Remarks', size=1024),
     }
+    
+    def onchange_site_no_id(self, cr, uid, ids, site_no_id=False, context=None):
+        vals = {}
+        if site_no_id:
+            site_no = self.pool.get('res.partner').browse(cr, uid, site_no_id)
+            vals = {
+                'client_name_id': site_no.parent_id and site_no.parent_id.id or False,
+            }
+        return {'value': vals}
     
 tgb_inventory_inventory_line()
 

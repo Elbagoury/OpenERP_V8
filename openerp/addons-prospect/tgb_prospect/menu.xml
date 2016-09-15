@@ -2,9 +2,14 @@
 <openerp>
     <data>
     	<menuitem id="menu_action_tgb_inventory_inventory"
-    		name="Inventory"
+    		name="Office Inventory"
     		action="action_tgb_inventory_inventory"
     		parent="base.menu_sales" sequence="10"/>
+    		
+		<menuitem id="menu_action_tgb_inventory_site_inventory"
+    		name="Site Inventory"
+    		action="action_tgb_inventory_site_inventory"
+    		parent="base.menu_sales" sequence="20"/>
     		
 	</data>
 </openerp>

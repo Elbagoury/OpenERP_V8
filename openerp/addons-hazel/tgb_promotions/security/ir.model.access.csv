@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_tgb_promos_rules","tgb_promotions_tgb_promos_rules","model_tgb_promos_rules",group_promo_manager,1,1,1,0
+"access_tgb_promos_condition","tgb_promotionstgb_promos_condition","model_tgb_promos_condition",group_promo_manager,1,1,1,1
+"access_tgb_promos_product","tgb_promotionstgb_promos_product","model_tgb_promos_product",group_promo_manager,1,1,1,1
